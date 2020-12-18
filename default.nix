@@ -7,7 +7,7 @@ pkgs.stdenv.mkDerivation {
 
   src = builtins.filterSource (path: type:
     let p = removePrefix (toString ./. + "/") (toString path); in
-    hasPrefix "platform/viewer/dist"
+    hasPrefix "platform/viewer/dist" p
   ) ./.;
   #  let p = removePrefix (toString ./. + "/") (toString path); in
   #  p == "aliases.config.js" ||
