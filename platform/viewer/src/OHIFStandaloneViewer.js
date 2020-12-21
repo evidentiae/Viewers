@@ -165,6 +165,11 @@ class OHIFStandaloneViewer extends Component {
       })
     );
 
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const token = queryParams.get('token');
+    console.log("OHIF viewer");
+    console.log(token);
+
     return (
       <>
         <NProgress isAnimating={this.state.isLoading}>
