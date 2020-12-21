@@ -169,6 +169,7 @@ class OHIFStandaloneViewer extends Component {
     const token = queryParams.get('token');
     console.log("OHIF viewer");
     console.log(token);
+    this.props.user.access_token = token;
 
     return (
       <>
