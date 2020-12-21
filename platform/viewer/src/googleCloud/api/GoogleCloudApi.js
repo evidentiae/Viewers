@@ -5,11 +5,12 @@ class GoogleCloudApi {
   }
 
   get fetchConfig() {
-    if (!this.accessToken) throw new Error('OIDC access_token is not set');
+    const access_token = this.accessToken || window.access_token;
+    if (access_token) throw new Error('OIDC access_token is not set');
     return {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer ' + this.accessToken,
+        Authorization: 'Bearer ' + access_token,
       },
     };
   }
