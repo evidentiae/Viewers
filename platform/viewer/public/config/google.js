@@ -7,6 +7,7 @@ window.config = {
     dicomWeb: [],
   },
   // This is an array, but we'll only use the first entry for now
+  /*
   oidc: [
     {
       // ~ REQUIRED
@@ -24,5 +25,6 @@ window.config = {
       revokeAccessTokenOnSignout: true,
     },
   ],
+  */
   studyListFunctionsEnabled: true,
 };
