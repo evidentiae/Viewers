@@ -6,7 +6,7 @@ class GoogleCloudApi {
 
   get fetchConfig() {
     const access_token = this.accessToken || window.access_token;
-    if (access_token) throw new Error('OIDC access_token is not set');
+    if (!access_token) throw new Error('OIDC access_token is not set');
     return {
       method: 'GET',
       headers: {
