@@ -79,7 +79,7 @@ class DatasetSelector extends Component {
   };
 
   render() {
-    const accessToken = this.props.user.access_token;
+    const accessToken = this.props.user.access_token || window.access_token;
 
     const { project, location, dataset } = this.state;
     const {
