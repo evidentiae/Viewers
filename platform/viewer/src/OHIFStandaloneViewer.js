@@ -16,6 +16,7 @@ import './variables.css';
 import './theme-tide.css';
 // Contexts
 import AppContext from './context/AppContext';
+
 const CallbackPage = asyncComponent(() =>
   retryImport(() => import(/* webpackChunkName: "CallbackPage" */ './routes/CallbackPage.js'))
 );
@@ -167,9 +168,28 @@ class OHIFStandaloneViewer extends Component {
 
     const queryParams = new URLSearchParams(this.props.location.search);
     const token = queryParams.get('token');
+    const projectId = queryParams.get('projectId');
     console.log("OHIF viewer");
     console.log(token);
-    window.access_token = token;
+    console.log(projectId);
+    if (token && projectId) {
+      window.access_token = token;
+      window.projectId = projectId;
+      sessionStorage.setItem(
+        'gcp-project-id',
+        JSON.stringify(projectId)
+      );
+      sessionStorage.setItem(
+        'gcp-access-token',
+        JSON.stringify(token)
+      );
+    } else {
+      window.projectId = JSON.parse(sessionStorage.getItem('gcp-project-id'));
+      window.access_token = JSON.parse(sessionStorage.getItem('gcp-access-token'));
+      console.log("In storage:");
+      console.log(window.access_token);
+      console.log(window.projectId);
+    }
 
     return (
       <>
