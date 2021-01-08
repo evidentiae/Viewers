@@ -18,6 +18,7 @@ export default class ProjectPicker extends Component {
 
   async componentDidMount() {
     api.setAccessToken(this.props.accessToken);
+    /*
     const response = await api.loadProjects();
 
     if (response.isError) {
@@ -27,9 +28,15 @@ export default class ProjectPicker extends Component {
 
       return;
     }
+    */
+
+    var project = {
+      name: "project",
+      projectId: window.projectId
+    };
 
     this.setState({
-      projects: response.data.projects || [],
+      projects: [project], //response.data.projects || [],
       filterStr: '',
       loading: false,
     });
