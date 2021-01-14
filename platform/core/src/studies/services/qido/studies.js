@@ -50,11 +50,13 @@ function getQIDOQueryParams(filter, serverSupportsQIDOIncludeField) {
   };
 
   // build the StudyDate range parameter
+  /*
   if (filter.studyDateFrom || filter.studyDateTo) {
     const dateFrom = dateToString(new Date(filter.studyDateFrom));
     const dateTo = dateToString(new Date(filter.studyDateTo));
     parameters.StudyDate = `${dateFrom}-${dateTo}`;
   }
+  */
 
   // Build the StudyInstanceUID parameter
   if (filter.StudyInstanceUID) {
