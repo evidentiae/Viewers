@@ -6,7 +6,7 @@ import { useLogger } from '@ohif/ui';
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
 import { withDialog } from '@ohif/ui';
 import moment from 'moment';
-import ConnectedHeader from './ConnectedHeader.js';
+//import ConnectedHeader from './ConnectedHeader.js';
 import ToolbarRow from './ToolbarRow.js';
 import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
 import ConnectedViewerMain from './ConnectedViewerMain.js';
