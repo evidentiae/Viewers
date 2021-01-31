@@ -112,6 +112,9 @@ export default class RetrieveMetadataLoaderAsync extends RetrieveMetadataLoader 
     // It's an array of Objects containing DICOM Tag values at the Series level
     const seriesData = await this.runLoaders(preLoaders);
 
+    if (seriesData.length === 0)
+      return null;
+
     const seriesSorted = sortStudySeries(
       seriesData,
       sortingCriteria.seriesSortCriteria.seriesInfoSortingCriteria
