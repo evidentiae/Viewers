@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
 import { withDialog } from '@ohif/ui';
 import moment from 'moment';
-//import ConnectedHeader from './ConnectedHeader.js';
 import ToolbarRow from './ToolbarRow.js';
 import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
 import ConnectedViewerMain from './ConnectedViewerMain.js';
@@ -236,37 +235,6 @@ class Viewer extends Component {
 
     return (
       <>
-        {/* HEADER */}
-        /*
-        <WhiteLabelingContext.Consumer>
-          {whiteLabeling => (
-            <UserManagerContext.Consumer>
-              {userManager => (
-                <AppContext.Consumer>
-                  {appContext => (
-                    <ConnectedHeader
-                      linkText={
-                        appContext.appConfig.showStudyList
-                          ? 'Study List'
-                          : undefined
-                      }
-                      linkPath={
-                        appContext.appConfig.showStudyList ? '/' : undefined
-                      }
-                      userManager={userManager}
-                    >
-                      {whiteLabeling &&
-                        whiteLabeling.createLogoComponentFn &&
-                        whiteLabeling.createLogoComponentFn(React)}
-                    </ConnectedHeader>
-                  )}
-                </AppContext.Consumer>
-              )}
-            </UserManagerContext.Consumer>
-          )}
-        </WhiteLabelingContext.Consumer>
-        */
-
         {/* TOOLBAR */}
         <ErrorBoundaryDialog context="ToolbarRow">
           <ToolbarRow

@@ -10,7 +10,6 @@ import {
   useDebounce,
   useMedia,
 } from '@ohif/ui';
-//import ConnectedHeader from '../connectedComponents/ConnectedHeader.js';
 import * as RoutesUtil from '../routes/routesUtil';
 import moment from 'moment';
 import ConnectedDicomFilesUploader from '../googleCloud/ConnectedDicomFilesUploader';
@@ -209,25 +208,6 @@ function StudyListRoute(props) {
         />
       ) : null}
       {healthCareApiWindows}
-      /*
-      <WhiteLabelingContext.Consumer>
-        {whiteLabeling => (
-          <UserManagerContext.Consumer>
-            {userManager => (
-              <ConnectedHeader
-                useLargeLogo={true}
-                user={user}
-                userManager={userManager}
-              >
-                {whiteLabeling &&
-                  whiteLabeling.createLogoComponentFn &&
-                  whiteLabeling.createLogoComponentFn(React)}
-              </ConnectedHeader>
-            )}
-          </UserManagerContext.Consumer>
-        )}
-      </WhiteLabelingContext.Consumer>
-      */
       <div className="study-list-header">
         <div className="header">
           <h1 style={{ fontWeight: 300, fontSize: '22px' }}>
