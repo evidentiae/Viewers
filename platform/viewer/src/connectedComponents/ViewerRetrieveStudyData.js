@@ -271,7 +271,8 @@ function ViewerRetrieveStudyData({
   const processStudies = (studiesData, filters) => {
     if (Array.isArray(studiesData) && studiesData.length > 0) {
       // Map studies to new format, update metadata manager?
-      const studies = studiesData.map(study => {
+      const studiesData_ = studiesData.filter(study => study !== null);
+      const studies = studiesData_.map(study => {
         setStudyData(study.StudyInstanceUID, _thinStudyData(study));
         const studyMetadata = new OHIFStudyMetadata(
           study,
