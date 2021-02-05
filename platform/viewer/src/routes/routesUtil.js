@@ -12,6 +12,9 @@ const IHEInvokeImageDisplay = asyncComponent(() =>
 const ViewerRouting = asyncComponent(() =>
   retryImport(() => import(/* webpackChunkName: "ViewerRouting" */ './ViewerRouting.js'))
 );
+const DentalViewerRouting = asyncComponent(() =>
+  retryImport(() => import(/* webpackChunkName: "DentalViewerRouting" */ './DentalViewerRouting.js'))
+);
 
 const StudyListRouting = asyncComponent(() =>
   retryImport(() => import(
@@ -56,6 +59,10 @@ const ROUTES_DEF = {
       path: '/IHEInvokeImageDisplay',
       component: IHEInvokeImageDisplay
     },
+    dental: {
+      path: '/dental/:studyInstanceUIDs',
+      component: DentalViewerRouting
+    }
   },
   gcloud: {
     viewer: {
