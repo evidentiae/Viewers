@@ -42,7 +42,9 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   }
 
   const server = useServer({ project, location, dataset, dicomStore });
+  console.log(studyInstanceUIDs);
   const studyUIDs = UrlUtil.paramString.parseParam(studyInstanceUIDs);
+  console.log(studyUIDs);
   const seriesUIDs = getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation);
 
   if (server && studyUIDs) {
