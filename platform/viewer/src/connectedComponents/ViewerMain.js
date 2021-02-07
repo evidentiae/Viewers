@@ -138,15 +138,15 @@ class ViewerMain extends Component {
     //console.log(studyInstanceUID);
     console.log(displaySetInstanceUID);
 
-    if (displaySetInstanceUID) {
-      let displaySet = this.findDisplaySet(
-        this.props.studies,
-        StudyInstanceUID,
-        displaySetInstanceUID
-      );
+    let displaySet = this.findDisplaySet(
+      this.props.studies,
+      StudyInstanceUID,
+      displaySetInstanceUID
+    );
 
-      console.log(displaySet);
+    console.log(displaySet);
 
+    if (displaySet) {
       if (displaySet.isDerived) {
         const { Modality } = displaySet;
         displaySet = displaySet.getSourceDisplaySet(this.props.studies);
