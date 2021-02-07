@@ -14,7 +14,9 @@ function StudyBrowser(props) {
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
-        {studies
+        { console.log("Rendering study browser");
+          console.log(studies);
+          studies
           .map((study, studyIndex) => {
             const { StudyInstanceUID } = study;
             return study.thumbnails.map((thumb, thumbIndex) => {
