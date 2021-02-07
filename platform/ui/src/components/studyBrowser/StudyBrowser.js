@@ -11,12 +11,13 @@ function StudyBrowser(props) {
     supportsDrag,
   } = props;
 
+  console.log("Rendering study browser");
+  console.log(studies);
+
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
-        { console.log("Rendering study browser");
-          console.log(studies);
-          studies
+        {studies
           .map((study, studyIndex) => {
             const { StudyInstanceUID } = study;
             return study.thumbnails.map((thumb, thumbIndex) => {
