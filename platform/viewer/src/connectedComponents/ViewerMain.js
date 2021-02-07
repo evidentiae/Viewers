@@ -176,9 +176,9 @@ class ViewerMain extends Component {
           `Referenced series for ${Modality} dataset not present.`
         );
       }
-    }
 
-    this.props.setViewportSpecificData(viewportIndex, displaySet);
+      this.props.setViewportSpecificData(viewportIndex, displaySet);
+    }
   };
 
   render() {
