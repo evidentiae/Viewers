@@ -170,6 +170,7 @@ class Viewer extends Component {
   };
 
   componentDidMount() {
+    console.log("Viewer componentDidMount()");
     const { studies, isStudyLoaded } = this.props;
     const { TimepointApi, MeasurementApi } = OHIF.measurements;
     const currentTimepointId = 'TimepointId';
@@ -244,6 +245,7 @@ class Viewer extends Component {
   }
 
   render() {
+    console.log("Viewer render()");
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 
