@@ -246,7 +246,6 @@ class Viewer extends Component {
 
   render() {
     console.log("Viewer render()");
-    console.log(this.props.studies);
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 
