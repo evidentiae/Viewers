@@ -12,10 +12,12 @@ import RetrieveMetadataLoaderAsync from './retrieveMetadataLoaderAsync';
  * @returns {Object} A study descriptor object
  */
 async function RetrieveMetadata(server, StudyInstanceUID, filters = {}) {
-  const RetrieveMetadataLoader =
+  const RetrieveMetadataLoader = RetrieveMetadataLoaderSync;
+  /*
     server.enableStudyLazyLoad != false
       ? RetrieveMetadataLoaderAsync
       : RetrieveMetadataLoaderSync;
+  */
 
   const retrieveMetadataLoader = new RetrieveMetadataLoader(
     server,
