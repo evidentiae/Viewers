@@ -36,6 +36,7 @@ class OHIFStandaloneViewer extends Component {
   };
 
   componentDidMount() {
+    console.log("OHIFStandaloneViewer componentDidMount()");
     this.unlisten = this.props.history.listen((location, action) => {
       if (this.props.setContext) {
         this.props.setContext(window.location.pathname);
@@ -44,10 +45,12 @@ class OHIFStandaloneViewer extends Component {
   }
 
   componentWillUnmount() {
+    console.log("OHIFStandaloneViewer componentWillUnmount()");
     this.unlisten();
   }
 
   render() {
+    console.log("OHIFStandaloneViewer render()");
     const { user, userManager } = this.props;
     const { appConfig = {} } = this.context;
     const userNotLoggedIn = userManager && (!user || user.expired);
