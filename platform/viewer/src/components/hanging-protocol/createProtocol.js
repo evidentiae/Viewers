@@ -39,6 +39,9 @@ export function createProto(viewports, studies) {
 
       // Series matching rules
       const SeriesInstanceUID = viewportSpecificData.SeriesInstanceUID;
+      console.log("createProto: series instance uid: " + SeriesInstanceUID);
+      console.log("createProto: study metadata: ");
+      console.log(studyMetadata);
       const seriesMetadata = studyMetadata.getSeriesByUID(SeriesInstanceUID);
       const seriesAttrs = metadataAttrs(seriesMetadata.getData());
       viewport.seriesMatchingRules = rulesFromAttrs(seriesAttrs);
