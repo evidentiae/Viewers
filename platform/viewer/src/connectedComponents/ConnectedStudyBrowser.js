@@ -7,7 +7,7 @@ import { servicesManager } from './../App.js';
 
 const { studyMetadataManager } = OHIF.utils;
 
-const { setActiveViewportSpecificData } = OHIF.redux.actions;
+const { setActiveViewportSpecificData, clearViewportSpecificData } = OHIF.redux.actions;
 
 // TODO
 // - Determine in which display set is active from Redux (activeViewportIndex and layout viewportData)
@@ -90,7 +90,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
-      dispatch(setActiveViewportSpecificData(displaySet));
+      //dispatch(setActiveViewportSpecificData(displaySet));
+      dispatch(clearViewportSpecificData());
     },
   };
 };
