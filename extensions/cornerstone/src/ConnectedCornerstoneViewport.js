@@ -2,7 +2,8 @@ import CornerstoneViewport from 'react-cornerstone-viewport';
 import OHIF from '@ohif/core';
 import { connect } from 'react-redux';
 import throttle from 'lodash.throttle';
-import { setEnabledElement } from './state';
+import { setEnabledElement, getEnabledElement } from './state';
+import cornerstone from 'cornerstone-core';
 
 const { setViewportActive, setViewportSpecificData } = OHIF.redux.actions;
 const {
@@ -57,7 +58,9 @@ const mapStateToProps = (state, ownProps) => {
     isPlaying,
     frameRate,
     //stack: viewportSpecificData.stack,
+    viewport: viewportSpecificData.viewport,
     // viewport: viewportSpecificData.viewport,
+    SOPInstanceUID: viewportSpecificData.SOPInstanceUID,
   };
 };
 
@@ -65,6 +68,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const { viewportIndex } = ownProps;
 
   return {
+    onNewImage: newImageData => {
+      ownProps.onNewImage && ownProps.onNewImage(newImageData);
+      dispatch(
+        setViewportSpecificData(viewportIndex, {
+          SOPInstanceUID: null,
+          frameIndex: null,
+        })
+      );
+    },
+
     setViewportActive: () => {
       dispatch(setViewportActive(viewportIndex));
     },
@@ -96,9 +109,45 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
+  let eventListeners = [];
+
+  if (propsFromState.viewport) {
+    const onImageRendered = () => {
+      const { viewportIndex } = ownProps;
+      const ee = getEnabledElement(viewportIndex);
+      if (!ee) return;
+      cornerstone.setViewport(ee, propsFromState.viewport);
+      propsFromDispatch.setViewportSpecificData({ viewport: null });
+    };
+
+    eventListeners = [
+      {
+        target: 'element',
+        eventName: cornerstone.EVENTS.IMAGE_RENDERED,
+        handler: onImageRendered,
+      },
+    ];
+  }
+
+  return {
+    ...ownProps,
+    ...propsFromState,
+    ...propsFromDispatch,
+    setViewportActive: propsFromState.isActive
+      ? undefined
+      : propsFromDispatch.setViewportActive,
+    onNewImage: !propsFromState.SOPInstanceUID
+      ? ownProps.onNewImage
+      : propsFromDispatch.onNewImage,
+    eventListeners,
+  };
+};
+
 const ConnectedCornerstoneViewport = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(CornerstoneViewport);
 
 export default ConnectedCornerstoneViewport;

@@ -177,15 +177,34 @@ class OHIFCornerstoneViewport extends Component {
     const { displaySet } = this.props.viewportData;
     const prevDisplaySet = prevProps.viewportData.displaySet;
 
+    const displaySetInstanceUIDChanged =
+      displaySet.displaySetInstanceUID !== prevDisplaySet.displaySetInstanceUID;
+    const frameIndexChanged =
+      displaySet.frameIndex &&
+      displaySet.frameIndex !== prevDisplaySet.frameIndex;
+    const sopInstanceUIDChanged =
+      displaySet.SOPInstanceUID &&
+      displaySet.SOPInstanceUID !== prevDisplaySet.SOPInstanceUID;
     if (
-      displaySet.displaySetInstanceUID !==
-      prevDisplaySet.displaySetInstanceUID ||
-      displaySet.SOPInstanceUID !== prevDisplaySet.SOPInstanceUID ||
-      displaySet.frameIndex !== prevDisplaySet.frameIndex
+      displaySetInstanceUIDChanged ||
+      sopInstanceUIDChanged ||
+      frameIndexChanged
     ) {
       this.setStateFromProps();
     }
   }
+
+  onNewImage = newImageData => {
+    if (this.state.viewportData.stack.currentImageIdIndex != null) {
+      this.setState(state => ({
+        ...state,
+        viewportData: {
+          ...state.viewportData,
+          stack: { ...state.viewportData.stack, currentImageIdIndex: null },
+        },
+      }));
+    }
+  };
 
   render() {
     let childrenWithProps = null;
@@ -237,6 +256,7 @@ class OHIFCornerstoneViewport extends Component {
           imageIdIndex={currentImageIdIndex}
           onNewImage={newImageHandler}
           onNewImageDebounceTime={700}
+          //onNewImage={this.onNewImage} cdekar/hanging-protocol
           // ~~ Connected (From REDUX)
           // frameRate={frameRate}
           // isPlaying={false}

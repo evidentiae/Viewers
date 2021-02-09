@@ -4,11 +4,13 @@ import { StudyMetadataSource } from '../classes/StudyMetadataSource.js';
 import { isImage } from '../utils/isImage.js';
 import { HPMatcher } from './HPMatcher.js';
 import { sortByScore } from './lib/sortByScore';
-import log from '../log.js';
+import _log from '../log.js';
 import sortBy from '../utils/sortBy.js';
 import { CustomViewportSettings } from './customViewportSettings';
 import Protocol from './classes/Protocol';
 import { ProtocolStore } from './protocolStore/classes';
+
+const log = { ..._log, trace: () => {} };
 
 /**
  * Import Constants
@@ -63,7 +65,7 @@ export default class ProtocolEngine {
     this.options = options;
 
     // Put protocol engine in a known state
-    this.reset();
+    // this.reset();
 
     // Create an array for new stage ids to be stored
     // while editing a stage
@@ -190,6 +192,11 @@ export default class ProtocolEngine {
         }
       });
     });
+    if (this.protocol) {
+      if (!this.matchedProtocols.has(this.protocol.id)) {
+        this.protocol = null;
+      }
+    }
   }
 
   _largestKeyByValue(obj) {
@@ -298,7 +305,7 @@ export default class ProtocolEngine {
         }
 
         // Invalid data
-        if (!priorStudy instanceof StudyMetadata) {
+        if (!(priorStudy instanceof StudyMetadata)) {
           return;
         }
 
@@ -649,6 +656,7 @@ export default class ProtocolEngine {
       }
 
       if (currentMatch && currentMatch.imageId) {
+        currentViewportData.plugin = 'cornerstone';
         currentViewportData.StudyInstanceUID = currentMatch.StudyInstanceUID;
         currentViewportData.SeriesInstanceUID = currentMatch.SeriesInstanceUID;
         currentViewportData.SOPInstanceUID = currentMatch.SOPInstanceUID;
@@ -701,7 +709,7 @@ export default class ProtocolEngine {
    * @param newProtocol
    * @param updateViewports
    */
-  setHangingProtocol(newProtocol, updateViewports = true) {
+  setHangingProtocol(newProtocol, stageIndex = 0, updateViewports = true) {
     log.trace('ProtocolEngine::setHangingProtocol newProtocol', newProtocol);
     log.trace(
       `ProtocolEngine::setHangingProtocol updateViewports = ${updateViewports}`
@@ -717,7 +725,7 @@ export default class ProtocolEngine {
       this.protocol.fromObject(newProtocol);
     }
 
-    this.stage = 0;
+    this.stage = stageIndex;
 
     // Update viewports by default
     if (updateViewports) {
@@ -794,9 +802,26 @@ export default class ProtocolEngine {
   nextProtocolStage() {
     log.trace('ProtocolEngine::nextProtocolStage');
 
-    if (!this.setCurrentProtocolStage(1)) {
+    if (!this.setCurrentProtocolStage(+1)) {
       log.trace('ProtocolEngine::nextProtocolStage failed');
+      return false;
     }
+    return true;
+  }
+
+  nextProtocolStageCircular() {
+    if (!this.nextProtocolStage()) {
+      this.nextProtocol();
+    }
+  }
+
+  nextProtocol() {
+    const protocols = Array.from(this.matchedProtocols.values());
+    let index = this.protocol
+      ? protocols.findIndex(p => p.id === this.protocol.id)
+      : -1;
+    index = (index + 1) % protocols.length;
+    this.setHangingProtocol(protocols[index]);
   }
 
   /**
