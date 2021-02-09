@@ -1,7 +1,7 @@
 import './ViewerMain.css';
 
 import { Component } from 'react';
-import { ConnectedViewportGrid } from './../components/ViewportGrid/index.js';
+import { ConnectedViewportGrid } from './../components/DentalGrid/index.js';
 import PropTypes from 'prop-types';
 import React from 'react';
 import memoize from 'lodash/memoize';
