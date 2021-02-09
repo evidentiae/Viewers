@@ -13,18 +13,18 @@ export function createProto(viewports, studies) {
 
   const proto = new Protocol(new Date().toLocaleString());
 
-  const study = studies[0];
-  const studyMetadata = study.metadata;
-  const studyAttrs = metadataAttrs(studyMetadata.getData());
-
   const rulesFromAttrs = attrs =>
     Object.entries(attrs).map(
       ([key, value]) => new Rule(key, { equals: { value } })
     );
 
-  rulesFromAttrs(studyAttrs).forEach(rule =>
-    proto.addProtocolMatchingRule(rule)
-  );
+  studies.forEach(study => {
+    const studyMetadata = study.metadata;
+    const studyAttrs = metadataAttrs(studyMetadata.getData());
+    rulesFromAttrs(studyAttrs).forEach(rule =>
+      proto.addProtocolMatchingRule(rule)
+    );
+  });
 
   const layout = new ViewportStructure('grid', {
     Rows: viewports.numRows,
@@ -39,10 +39,12 @@ export function createProto(viewports, studies) {
 
       // Series matching rules
       const SeriesInstanceUID = viewportSpecificData.SeriesInstanceUID;
-      console.log("createProto: series instance uid: " + SeriesInstanceUID);
-      console.log("createProto: study metadata: ");
-      console.log(studyMetadata);
-      const seriesMetadata = studyMetadata.getSeriesByUID(SeriesInstanceUID);
+      let seriesMetadata = null;
+      for (var i=0; i<studies.length; i++) {
+        seriesMetadata = studies[i].metadata.getSeriesByUID(SeriesInstanceUID);
+        if (seriesMetadata) break;
+      }
+
       const seriesAttrs = metadataAttrs(seriesMetadata.getData());
       viewport.seriesMatchingRules = rulesFromAttrs(seriesAttrs);
 
