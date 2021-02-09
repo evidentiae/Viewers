@@ -1,0 +1,10 @@
+- automatic grid dimensions appropriate for series
+- click on series in study browser opens it in grid
+- allow maximizing an instance in the grid
+- allow moving (exchanging) instances in grid
+- allow instance note
+- allow instance deletion
+- allow saving layout
+- allow viewing multiple instances in same viewport
+- above supported by ViewportPane
+- but how to end up in such a state? what is the UI interaction?
