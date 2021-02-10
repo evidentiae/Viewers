@@ -90,14 +90,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
-      //dispatch(setActiveViewportSpecificData(displaySet));
+      let displaySet2 = cloneDeep(displaySet);
+      displaySet2.SOPInstanceUID = "123";
+
+       //dispatch(setActiveViewportSpecificData(displaySet));
       dispatch(setViewportLayoutAndData(
         {
           numRows: 2,
           numColumns: 2,
           viewports: [{SeriesDescription: 'Test', InstanceNumber: 2},{},{},{}]
         },
-        [displaySet, displaySet, displaySet, displaySet]
+        [displaySet, displaySet, displaySet, displaySet2]
       ));
     },
   };
