@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         {
           numRows: 2,
           numColumns: 2,
-          viewports: [{},{},{},{}]
+          viewports: [{SeriesDescription: 'Test', InstanceNumber: 2},{},{},{}]
         },
         [displaySet, displaySet, displaySet, displaySet]
       ));
