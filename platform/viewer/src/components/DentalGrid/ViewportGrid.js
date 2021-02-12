@@ -150,7 +150,6 @@ ViewportGrid.propTypes = {
   numRows: PropTypes.number.isRequired,
   numColumns: PropTypes.number.isRequired,
 };
-
 ViewportGrid.defaultProps = {
   viewportData: [],
   numRows: 1,
