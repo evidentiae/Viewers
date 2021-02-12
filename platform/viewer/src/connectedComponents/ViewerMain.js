@@ -133,18 +133,11 @@ class ViewerMain extends Component {
     StudyInstanceUID,
     displaySetInstanceUID,
   }) => {
-    console.log("setViewportData");
-    console.log(this.props.studies);
-    //console.log(studyInstanceUID);
-    console.log(displaySetInstanceUID);
-
     let displaySet = this.findDisplaySet(
       this.props.studies,
       StudyInstanceUID,
       displaySetInstanceUID
     );
-
-    console.log(displaySet);
 
     if (displaySet) {
       if (displaySet.isDerived) {
