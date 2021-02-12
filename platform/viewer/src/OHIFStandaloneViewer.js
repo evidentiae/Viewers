@@ -36,7 +36,6 @@ class OHIFStandaloneViewer extends Component {
   };
 
   componentDidMount() {
-    console.log("OHIFStandaloneViewer componentDidMount()");
     this.unlisten = this.props.history.listen((location, action) => {
       if (this.props.setContext) {
         this.props.setContext(window.location.pathname);
@@ -45,12 +44,10 @@ class OHIFStandaloneViewer extends Component {
   }
 
   componentWillUnmount() {
-    console.log("OHIFStandaloneViewer componentWillUnmount()");
     this.unlisten();
   }
 
   render() {
-    console.log("OHIFStandaloneViewer render()");
     const { user, userManager } = this.props;
     const { appConfig = {} } = this.context;
     const userNotLoggedIn = userManager && (!user || user.expired);
@@ -172,9 +169,6 @@ class OHIFStandaloneViewer extends Component {
     const queryParams = new URLSearchParams(this.props.location.search);
     const token = queryParams.get('token');
     const projectId = queryParams.get('projectId');
-    console.log("OHIF viewer");
-    console.log(token);
-    console.log(projectId);
     if (token && projectId) {
       window.access_token = token;
       window.projectId = projectId;
@@ -189,9 +183,6 @@ class OHIFStandaloneViewer extends Component {
     } else {
       window.projectId = JSON.parse(sessionStorage.getItem('gcp-project-id'));
       window.access_token = JSON.parse(sessionStorage.getItem('gcp-access-token'));
-      console.log("In storage:");
-      console.log(window.access_token);
-      console.log(window.projectId);
     }
 
     return (
