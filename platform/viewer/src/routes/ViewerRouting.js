@@ -48,6 +48,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const seriesUIDs = getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation);
 
   if (server && studyUIDs) {
+    console.log("Has server and studyUIDs");
     return (
       <ConnectedViewerRetrieveStudyData
         studyInstanceUIDs={studyUIDs}
