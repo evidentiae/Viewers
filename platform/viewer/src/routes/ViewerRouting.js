@@ -30,6 +30,8 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
     seriesInstanceUIDs,
   } = routeMatch.params;
 
+  console.log("In ViewerRouting");
+
   // Set the user's default authToken for outbound DICOMWeb requests.
   // Is only applied if target server does not set `requestOptions` property.
   //
