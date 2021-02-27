@@ -68,7 +68,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log(displaySet2);
       */
 
-       //dispatch(setActiveViewportSpecificData(displaySet));
+      dispatch(setActiveViewportSpecificData(displaySet));
+      /*
       dispatch(setViewportLayoutAndData(
         {
           numRows: 2,
@@ -77,6 +78,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         [displaySet, displaySet, displaySet, displaySet]
       ));
+      */
     },
   };
 };
