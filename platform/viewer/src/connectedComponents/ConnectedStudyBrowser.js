@@ -92,6 +92,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       let displaySet2 = cloneDeep(displaySet);
       displaySet2.SOPInstanceUID = "123";
+      displaySet2.frameIndex = 2;
       console.log(displaySet2);
 
       //dispatch(setActiveViewportSpecificData(displaySet));
