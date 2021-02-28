@@ -166,6 +166,7 @@ class OHIFStandaloneViewer extends Component {
       })
     );
 
+    /*
     const queryParams = new URLSearchParams(this.props.location.search);
     const token = queryParams.get('token');
     const projectId = queryParams.get('projectId');
@@ -186,6 +187,7 @@ class OHIFStandaloneViewer extends Component {
       window.projectId = JSON.parse(sessionStorage.getItem('gcp-project-id'));
       window.access_token = JSON.parse(sessionStorage.getItem('gcp-access-token'));
     }
+    */
 
     return (
       <>
