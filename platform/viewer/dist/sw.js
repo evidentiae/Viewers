@@ -1,2 +1,139 @@
-!function(e){var t={};function o(r){if(t[r])return t[r].exports;var n=t[r]={i:r,l:!1,exports:{}};return e[r].call(n.exports,n,n.exports,o),n.l=!0,n.exports}o.m=e,o.c=t,o.d=function(e,t,r){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(e,t){if(1&t&&(e=o(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(o.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)o.d(r,n,function(t){return e[t]}.bind(null,n));return r},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="/",o(o.s=0)}([function(e,t){importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.0.0-beta.1/workbox-sw.js"),workbox.core.skipWaiting(),workbox.core.clientsClaim(),workbox.routing.registerRoute(/\.(?:js|css)$/,new workbox.strategies.StaleWhileRevalidate({cacheName:"static-resources"})),workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/,new workbox.strategies.StaleWhileRevalidate({cacheName:"google-fonts-stylesheets"})),workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/,new workbox.strategies.CacheFirst({cacheName:"google-fonts-webfonts",plugins:[new workbox.cacheableResponse.CacheableResponsePlugin({statuses:[0,200]}),new workbox.expiration.ExpirationPlugin({maxAgeSeconds:31536e3,maxEntries:30})]})),self.addEventListener("message",(function(e){if(e.data&&"SKIP_WAITING"===e.data.type)switch(e.data.type){case"SKIP_WAITING":break;default:console.warn("SW: Invalid message type: ".concat(e.data.type))}})),workbox.precaching.precacheAndRoute([{"revision":"2ebbd987b375d521249bba3768e908d7","url":"/0.bundle.56cf9d9c0b667447ea2c.js"},{"revision":"c307d458d54c9e1524984b0ae1f3e612","url":"/0.bundle.56cf9d9c0b667447ea2c.js.LICENSE"},{"revision":"d8d5b2db850df64217376414bea8aa6f","url":"/1.38275983b08f277d33f1.css"},{"revision":"2c4cd0ed67fc3739403eb9b1d59bd5dd","url":"/14.bundle.40a9979c6a57be9f632b.js"},{"revision":"2ae9dab2b7458fc3693bb3986f0b5a18","url":"/14.bundle.40a9979c6a57be9f632b.js.LICENSE"},{"revision":"fc0cf18410afd36c66b0b3a94736c0b9","url":"/15.38275983b08f277d33f1.css"},{"revision":"83477a3eff6664e5b3df80fd98b54696","url":"/15.bundle.b6b5356f98f698c18a93.js"},{"revision":"2b0442545e4c24fb2f7864a970d29cae","url":"/16.bundle.3d383914feb5f1826285.js"},{"revision":"be8d37f69f485ff33724e721ccc33173","url":"/17.38275983b08f277d33f1.css"},{"revision":"04717506fa2ec0758df0d05b33d3d5f1","url":"/17.bundle.35c8acd0323887acab16.js"},{"revision":"c35fe230b9365ba2ccb29e5c08ce2c65","url":"/18.bundle.f1de84b55e61a2ee357f.js"},{"revision":"2927ed0b08cec7175606145d7e87df99","url":"/19.bundle.e96ec1b5fe50d4d19350.js"},{"revision":"6da39071cfed8c2c9d563459fef26a46","url":"/20.bundle.23adaf335b63f500fbcc.js"},{"revision":"3fc6ff4c81cd6a523bee927348ab17ad","url":"/20.bundle.23adaf335b63f500fbcc.js.LICENSE"},{"revision":"2f48fad32b43bb43c8375a6ad28fa2f8","url":"/8.38275983b08f277d33f1.css"},{"revision":"a258dba2ecf487f3e131e3fa43859cf4","url":"/9.38275983b08f277d33f1.css"},{"revision":"2d6109d2ab99f02dc7406fe5751fc374","url":"/CallbackPage.bundle.7c87a4a658732f6b61c9.js"},{"revision":"2f14b8e348d92b8407aceded1583ba47","url":"/ConnectedStandaloneRouting.bundle.ba1c8b23e5eaa930eca8.js"},{"revision":"f876ec0f01b5712d0a6334979949fae5","url":"/ConnectedStandaloneRouting~DentalViewerRouting~IHEInvokeImageDisplay~ViewerLocalFileData~ViewerRouting.bundle.3b5a8d0e43adf9c6b499.js"},{"revision":"7270ac93a56a01d9334be41c027df56c","url":"/DentalViewerRouting.bundle.6af92148c5430884e88b.js"},{"revision":"0c45dc38d6b4efbdece47445ec3eba03","url":"/DentalViewerRouting~ViewerRouting.bundle.8d44d2201bce34c45c13.js"},{"revision":"07933247565cd502b8c562f1dad822bf","url":"/IHEInvokeImageDisplay.bundle.93c03558d601dcb3a876.js"},{"revision":"4ea6f767732e846b5795370c517d4365","url":"/StudyListRouting.bundle.71846dc2a85f769c5dec.js"},{"revision":"e20f3c9b77ce6f4e1f35285689e29ddb","url":"/ViewerLocalFileData.bundle.8581d9742e062c025f65.js"},{"revision":"f5ead1ba194e75a08091fcc5064adf6b","url":"/ViewerRouting.bundle.a816ff516925a5e52eee.js"},{"revision":"aa91819bea699fdc736a6f1204e9fe14","url":"/app-config.js"},{"revision":"59f33adc8007ee3b65c3bb481befbd17","url":"/app.38275983b08f277d33f1.css"},{"revision":"65f14f3d1d8447d373f26380816f4f33","url":"/app.bundle.9c68b061c55e39a8cf18.js.LICENSE"},{"revision":"473e74a795f5a95dcfba304960bbcdf8","url":"/assets/Button_File.svg"},{"revision":"271da60b435c1445580caab72e656818","url":"/assets/Button_Folder.svg"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/android-chrome-144x144.png"},{"revision":"5cde390de8a619ebe55a669d2ac3effd","url":"/assets/android-chrome-192x192.png"},{"revision":"e7466a67e90471de05401e53b8fe20be","url":"/assets/android-chrome-256x256.png"},{"revision":"9bbe9b80156e930d19a4e1725aa9ddae","url":"/assets/android-chrome-36x36.png"},{"revision":"5698b2ac0c82fe06d84521fc5482df04","url":"/assets/android-chrome-384x384.png"},{"revision":"56bef3fceec344d9747f8abe9c0bba27","url":"/assets/android-chrome-48x48.png"},{"revision":"3e8b8a01290992e82c242557417b0596","url":"/assets/android-chrome-512x512.png"},{"revision":"517925e91e2ce724432d296b687d25e2","url":"/assets/android-chrome-72x72.png"},{"revision":"4c3289bc690f8519012686888e08da71","url":"/assets/android-chrome-96x96.png"},{"revision":"cf464289183184df09292f581df0fb4f","url":"/assets/apple-touch-icon-1024x1024.png"},{"revision":"0857c5282c594e4900e8b31e3bade912","url":"/assets/apple-touch-icon-114x114.png"},{"revision":"4208f41a28130a67e9392a9dfcee6011","url":"/assets/apple-touch-icon-120x120.png"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/apple-touch-icon-144x144.png"},{"revision":"977d293982af7e9064ba20806b45cf35","url":"/assets/apple-touch-icon-152x152.png"},{"revision":"6de91b4d2a30600b410758405cb567b4","url":"/assets/apple-touch-icon-167x167.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon-180x180.png"},{"revision":"647386c34e75f1213830ea9a38913525","url":"/assets/apple-touch-icon-57x57.png"},{"revision":"0c200fe83953738b330ea431083e7a86","url":"/assets/apple-touch-icon-60x60.png"},{"revision":"517925e91e2ce724432d296b687d25e2","url":"/assets/apple-touch-icon-72x72.png"},{"revision":"c9989a807bb18633f6dcf254b5b56124","url":"/assets/apple-touch-icon-76x76.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon-precomposed.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon.png"},{"revision":"05fa74ea9c1c0c3931ba96467999081d","url":"/assets/apple-touch-startup-image-1182x2208.png"},{"revision":"9e2cd03e1e6fd0520eea6846f4278018","url":"/assets/apple-touch-startup-image-1242x2148.png"},{"revision":"5591e3a1822cbc8439b99c1a40d53425","url":"/assets/apple-touch-startup-image-1496x2048.png"},{"revision":"337de578c5ca04bd7d2be19d24d83821","url":"/assets/apple-touch-startup-image-1536x2008.png"},{"revision":"cafb4ab4eafe6ef946bd229a1d88e7de","url":"/assets/apple-touch-startup-image-320x460.png"},{"revision":"d9bb9e558d729eeac5efb8be8d6111cc","url":"/assets/apple-touch-startup-image-640x1096.png"},{"revision":"038b5b02bac8b82444bf9a87602ac216","url":"/assets/apple-touch-startup-image-640x920.png"},{"revision":"2177076eb07b1d64d663d7c03268be00","url":"/assets/apple-touch-startup-image-748x1024.png"},{"revision":"4fc097443815fe92503584c4bd73c630","url":"/assets/apple-touch-startup-image-750x1294.png"},{"revision":"2e29914062dce5c5141ab47eea2fc5d9","url":"/assets/apple-touch-startup-image-768x1004.png"},{"revision":"f692ec286b3a332c17985f4ed38b1076","url":"/assets/browserconfig.xml"},{"revision":"f3d9a3b647853c45b0e132e4acd0cc4a","url":"/assets/coast-228x228.png"},{"revision":"533ba1dcac7b716dec835a2fae902860","url":"/assets/favicon-16x16.png"},{"revision":"783e9edbcc23b8d626357ca7101161e0","url":"/assets/favicon-32x32.png"},{"revision":"0711f8e60267a1dfc3aaf1e3818e7185","url":"/assets/favicon.ico"},{"revision":"5df2a5b0cee399ac0bc40af74ba3c2cb","url":"/assets/firefox_app_128x128.png"},{"revision":"11fd9098c4b07c8a07e1d2a1e309e046","url":"/assets/firefox_app_512x512.png"},{"revision":"27cddfc922dca3bfa27b4a00fc2f5e36","url":"/assets/firefox_app_60x60.png"},{"revision":"2017d95fae79dcf34b5a5b52586d4763","url":"/assets/manifest.webapp"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/mstile-144x144.png"},{"revision":"334895225e16a7777e45d81964725a97","url":"/assets/mstile-150x150.png"},{"revision":"e295cca4af6ed0365cf7b014d91b0e9d","url":"/assets/mstile-310x150.png"},{"revision":"cbefa8c42250e5f2443819fe2c69d91e","url":"/assets/mstile-310x310.png"},{"revision":"aa411a69df2b33a1362fa38d1257fa9d","url":"/assets/mstile-70x70.png"},{"revision":"5609af4f69e40e33471aee770ea1d802","url":"/assets/yandex-browser-50x50.png"},{"revision":"cfea70d7ddc8f06f276ea0c85c4b2adf","url":"/assets/yandex-browser-manifest.json"},{"revision":"0ca44a1b8719e835645ffa804a9d1395","url":"/es6-shim.min.js"},{"revision":"aa91819bea699fdc736a6f1204e9fe14","url":"/google.js"},{"revision":"26e48dd3a8da0d3c30313c2c587c78dc","url":"/index.html"},{"revision":"4e41fd55c08031edf19119a1df1a0538","url":"/init-service-worker.js"},{"revision":"870f848acf5470b2cf369f6604fac737","url":"/manifest.json"},{"revision":"754d698a7b334af57c00f29723fd9751","url":"/oidc-client.min.js"},{"revision":"d05a380d50b74e629738ae6f62fb7e78","url":"/polyfill.min.js"},{"revision":"f528b6861c82ee4415fce0821fd695c1","url":"/silent-refresh.html"},{"revision":"879ab8e447c27408412c71293eaf2a18","url":"/vendors~ConnectedStandaloneRouting~DentalViewerRouting~IHEInvokeImageDisplay~ViewerLocalFileData~Vie~7c275954.bundle.df89e55d4ce7161d6f46.js"},{"revision":"4c43a18771edec7f650507c1542d1ff4","url":"/vendors~ViewerLocalFileData.bundle.d0f93cf4ea3b7a218078.js"},{"revision":"980bc7dd82d9cb92cbe1f5e87f07191f","url":"/vendors~dicom-microscopy-viewer.bundle.d9e75e93bd71e041f78c.js"},{"revision":"2de3eb75701d6cb3d4158adbb65e9f3e","url":"/vendors~dicom-microscopy-viewer.bundle.d9e75e93bd71e041f78c.js.LICENSE"}])}]);
-//# sourceMappingURL=sw.js.map
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+// https://developers.google.com/web/tools/workbox/guides/troubleshoot-and-debug
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0-beta.1/workbox-sw.js'); // Install newest
+// https://developers.google.com/web/tools/workbox/modules/workbox-core
+
+workbox.core.skipWaiting();
+workbox.core.clientsClaim(); // Cache static assets that aren't precached
+
+workbox.routing.registerRoute(/\.(?:js|css)$/, new workbox.strategies.StaleWhileRevalidate({
+  cacheName: 'static-resources'
+})); // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
+
+workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, new workbox.strategies.StaleWhileRevalidate({
+  cacheName: 'google-fonts-stylesheets'
+})); // Cache the underlying font files with a cache-first strategy for 1 year.
+
+workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, new workbox.strategies.CacheFirst({
+  cacheName: 'google-fonts-webfonts',
+  plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({
+    statuses: [0, 200]
+  }), new workbox.expiration.ExpirationPlugin({
+    maxAgeSeconds: 60 * 60 * 24 * 365,
+    // 1 Year
+    maxEntries: 30
+  })]
+})); // MESSAGE HANDLER
+
+self.addEventListener('message', function (event) {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    switch (event.data.type) {
+      case 'SKIP_WAITING':
+        // TODO: We'll eventually want this to be user prompted
+        // workbox.core.skipWaiting();
+        // workbox.core.clientsClaim();
+        // TODO: Global notification to indicate incoming reload
+        break;
+
+      default:
+        console.warn("SW: Invalid message type: ".concat(event.data.type));
+    }
+  }
+});
+workbox.precaching.precacheAndRoute([{"revision":"195836e65618792431ec29e40dec4ab3","url":"/0.bundle.13c93a360fba0be38845.js"},{"revision":"5bd474e145fe51c28b1f2044ce71653b","url":"/1.1055773049de817a2980.css"},{"revision":"37c6b1e97da96446a8c1dfb903184661","url":"/15.1055773049de817a2980.css"},{"revision":"167b52604202d61fc79cc221818d6f85","url":"/15.bundle.fd8c664f44ef6c23fbf2.js"},{"revision":"ff64ca18cd11f4698df33779f1004c3e","url":"/16.bundle.506d657bbe1e4cb4e0ff.js"},{"revision":"2625d1e558407a60e7b9a096615ba423","url":"/17.1055773049de817a2980.css"},{"revision":"191a8404d63aa032f827230a6c816cc9","url":"/17.bundle.d885e441a1c818dab76a.js"},{"revision":"c35ded6a4159fb677e98f94c62d6807d","url":"/18.bundle.137dbb004ea1669cf038.js"},{"revision":"9bf40d91690157b1aa2fcc7ffaa8f9a3","url":"/19.bundle.37e4fedfc31ae0379dcc.js"},{"revision":"381ac46b81fe82df9a37bff3ff8e7543","url":"/20.bundle.8d5a6bcf0a5fb7a295ec.js"},{"revision":"0731d3258f53b657979535b290f4c7a3","url":"/8.1055773049de817a2980.css"},{"revision":"260f7b0ecd47a2d3473d498bf9653b59","url":"/9.1055773049de817a2980.css"},{"revision":"bdb36be392a2dba93ed3041d5e93a524","url":"/CallbackPage.bundle.a43e39f83f1777ea4b1c.js"},{"revision":"324fb1f14f196a2848090c0f782adfd3","url":"/ConnectedStandaloneRouting.bundle.d6fcea74c80fda5a53ad.js"},{"revision":"c04107c4c4175cdea207f90d65684d7a","url":"/ConnectedStandaloneRouting~DentalViewerRouting~IHEInvokeImageDisplay~ViewerLocalFileData~ViewerRouting.bundle.dc5fc53687c1de8d3cd5.js"},{"revision":"e6e1933eb7c90407fa00fc04ce321a54","url":"/DentalViewerRouting.bundle.7aac7f2e71f1d7b94909.js"},{"revision":"de7b127f350666fd13961aaddb4ccd1a","url":"/DentalViewerRouting~ViewerRouting.bundle.29dadcf66e1cf8b183b1.js"},{"revision":"4c94cef729f0e7a00883f45fe6620add","url":"/IHEInvokeImageDisplay.bundle.195421ea27e2236a5b53.js"},{"revision":"4068ff24ff303015ade993d68a9a8bdc","url":"/StudyListRouting.bundle.8127e95b669662e2856d.js"},{"revision":"0a4dcc72a30da9ce03d42b5d9eccff3d","url":"/ViewerLocalFileData.bundle.12a448652a1d964a408a.js"},{"revision":"3a0c18a97949161e161ed473c74228f4","url":"/ViewerRouting.bundle.153edfeba0737f3db309.js"},{"revision":"aa91819bea699fdc736a6f1204e9fe14","url":"/app-config.js"},{"revision":"fd36557cf8e897e44483200aea886ffb","url":"/app.1055773049de817a2980.css"},{"revision":"473e74a795f5a95dcfba304960bbcdf8","url":"/assets/Button_File.svg"},{"revision":"271da60b435c1445580caab72e656818","url":"/assets/Button_Folder.svg"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/android-chrome-144x144.png"},{"revision":"5cde390de8a619ebe55a669d2ac3effd","url":"/assets/android-chrome-192x192.png"},{"revision":"e7466a67e90471de05401e53b8fe20be","url":"/assets/android-chrome-256x256.png"},{"revision":"9bbe9b80156e930d19a4e1725aa9ddae","url":"/assets/android-chrome-36x36.png"},{"revision":"5698b2ac0c82fe06d84521fc5482df04","url":"/assets/android-chrome-384x384.png"},{"revision":"56bef3fceec344d9747f8abe9c0bba27","url":"/assets/android-chrome-48x48.png"},{"revision":"3e8b8a01290992e82c242557417b0596","url":"/assets/android-chrome-512x512.png"},{"revision":"517925e91e2ce724432d296b687d25e2","url":"/assets/android-chrome-72x72.png"},{"revision":"4c3289bc690f8519012686888e08da71","url":"/assets/android-chrome-96x96.png"},{"revision":"cf464289183184df09292f581df0fb4f","url":"/assets/apple-touch-icon-1024x1024.png"},{"revision":"0857c5282c594e4900e8b31e3bade912","url":"/assets/apple-touch-icon-114x114.png"},{"revision":"4208f41a28130a67e9392a9dfcee6011","url":"/assets/apple-touch-icon-120x120.png"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/apple-touch-icon-144x144.png"},{"revision":"977d293982af7e9064ba20806b45cf35","url":"/assets/apple-touch-icon-152x152.png"},{"revision":"6de91b4d2a30600b410758405cb567b4","url":"/assets/apple-touch-icon-167x167.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon-180x180.png"},{"revision":"647386c34e75f1213830ea9a38913525","url":"/assets/apple-touch-icon-57x57.png"},{"revision":"0c200fe83953738b330ea431083e7a86","url":"/assets/apple-touch-icon-60x60.png"},{"revision":"517925e91e2ce724432d296b687d25e2","url":"/assets/apple-touch-icon-72x72.png"},{"revision":"c9989a807bb18633f6dcf254b5b56124","url":"/assets/apple-touch-icon-76x76.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon-precomposed.png"},{"revision":"87bff140e3773bd7479a620501c4aa5c","url":"/assets/apple-touch-icon.png"},{"revision":"05fa74ea9c1c0c3931ba96467999081d","url":"/assets/apple-touch-startup-image-1182x2208.png"},{"revision":"9e2cd03e1e6fd0520eea6846f4278018","url":"/assets/apple-touch-startup-image-1242x2148.png"},{"revision":"5591e3a1822cbc8439b99c1a40d53425","url":"/assets/apple-touch-startup-image-1496x2048.png"},{"revision":"337de578c5ca04bd7d2be19d24d83821","url":"/assets/apple-touch-startup-image-1536x2008.png"},{"revision":"cafb4ab4eafe6ef946bd229a1d88e7de","url":"/assets/apple-touch-startup-image-320x460.png"},{"revision":"d9bb9e558d729eeac5efb8be8d6111cc","url":"/assets/apple-touch-startup-image-640x1096.png"},{"revision":"038b5b02bac8b82444bf9a87602ac216","url":"/assets/apple-touch-startup-image-640x920.png"},{"revision":"2177076eb07b1d64d663d7c03268be00","url":"/assets/apple-touch-startup-image-748x1024.png"},{"revision":"4fc097443815fe92503584c4bd73c630","url":"/assets/apple-touch-startup-image-750x1294.png"},{"revision":"2e29914062dce5c5141ab47eea2fc5d9","url":"/assets/apple-touch-startup-image-768x1004.png"},{"revision":"f692ec286b3a332c17985f4ed38b1076","url":"/assets/browserconfig.xml"},{"revision":"f3d9a3b647853c45b0e132e4acd0cc4a","url":"/assets/coast-228x228.png"},{"revision":"533ba1dcac7b716dec835a2fae902860","url":"/assets/favicon-16x16.png"},{"revision":"783e9edbcc23b8d626357ca7101161e0","url":"/assets/favicon-32x32.png"},{"revision":"0711f8e60267a1dfc3aaf1e3818e7185","url":"/assets/favicon.ico"},{"revision":"5df2a5b0cee399ac0bc40af74ba3c2cb","url":"/assets/firefox_app_128x128.png"},{"revision":"11fd9098c4b07c8a07e1d2a1e309e046","url":"/assets/firefox_app_512x512.png"},{"revision":"27cddfc922dca3bfa27b4a00fc2f5e36","url":"/assets/firefox_app_60x60.png"},{"revision":"2017d95fae79dcf34b5a5b52586d4763","url":"/assets/manifest.webapp"},{"revision":"cb4f64534cdf8dd88f1d7219d44490db","url":"/assets/mstile-144x144.png"},{"revision":"334895225e16a7777e45d81964725a97","url":"/assets/mstile-150x150.png"},{"revision":"e295cca4af6ed0365cf7b014d91b0e9d","url":"/assets/mstile-310x150.png"},{"revision":"cbefa8c42250e5f2443819fe2c69d91e","url":"/assets/mstile-310x310.png"},{"revision":"aa411a69df2b33a1362fa38d1257fa9d","url":"/assets/mstile-70x70.png"},{"revision":"5609af4f69e40e33471aee770ea1d802","url":"/assets/yandex-browser-50x50.png"},{"revision":"cfea70d7ddc8f06f276ea0c85c4b2adf","url":"/assets/yandex-browser-manifest.json"},{"revision":"0ca44a1b8719e835645ffa804a9d1395","url":"/es6-shim.min.js"},{"revision":"aa91819bea699fdc736a6f1204e9fe14","url":"/google.js"},{"revision":"13652db819d2d48b9e8861883272bc4e","url":"/index.html"},{"revision":"4e41fd55c08031edf19119a1df1a0538","url":"/init-service-worker.js"},{"revision":"870f848acf5470b2cf369f6604fac737","url":"/manifest.json"},{"revision":"754d698a7b334af57c00f29723fd9751","url":"/oidc-client.min.js"},{"revision":"d05a380d50b74e629738ae6f62fb7e78","url":"/polyfill.min.js"},{"revision":"f528b6861c82ee4415fce0821fd695c1","url":"/silent-refresh.html"},{"revision":"51469d2f8969dd8bc1b0d92a8abc0de2","url":"/vendors~ConnectedStandaloneRouting~DentalViewerRouting~IHEInvokeImageDisplay~ViewerLocalFileData~Vie~7c275954.bundle.9a3a0e6644e5d183b859.js"},{"revision":"16a200afab24a9e423a5ee0932724943","url":"/vendors~ViewerLocalFileData.bundle.8eed09f6de4cc0d5e3ab.js"},{"revision":"f9dbe218aa4b67cb5929c399e05b13ce","url":"/vendors~dicom-microscopy-viewer.bundle.f3de1a087e129a4652a3.js"}]); // TODO: Cache API
+// https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/cache-api
+// Store DICOMs?
+// Clear Service Worker cache?
+// navigator.storage.estimate().then(est => console.log(est)); (2GB?)
+
+/***/ })
+/******/ ]);
