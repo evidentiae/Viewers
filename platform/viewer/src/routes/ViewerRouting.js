@@ -48,6 +48,9 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const studyUIDs = UrlUtil.paramString.parseParam(studyInstanceUIDs);
   const seriesUIDs = getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation);
 
+  console.log(server);
+  console.log(studyUIDs);
+
   if (server && studyUIDs) {
     console.log("Has server and studyUIDs");
     return (
