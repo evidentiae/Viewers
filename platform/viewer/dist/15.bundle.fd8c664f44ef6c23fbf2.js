@@ -41,21 +41,21 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/OHIFComponentPlugin.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/OHIFComponentPlugin.js
 
 
 
@@ -70,15 +70,15 @@ OHIFComponentPlugin.propTypes = {
   children: prop_types_default.a.node
 };
 /* harmony default export */ var src_OHIFComponentPlugin = (OHIFComponentPlugin);
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/dicom-parser/dist/dicomParser.min.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/dicom-parser/dist/dicomParser.min.js
 var dicomParser_min = __webpack_require__(132);
 var dicomParser_min_default = /*#__PURE__*/__webpack_require__.n(dicomParser_min);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/pdfjs-dist/build/pdf.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/pdfjs-dist/build/pdf.js
 var build_pdf = __webpack_require__(1038);
 var pdf_default = /*#__PURE__*/__webpack_require__.n(build_pdf);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/TypedArrayProp.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/TypedArrayProp.js
 // https://github.com/facebook/prop-types/issues/69
 var TypedArrayProp = {
   any: function any(props, propName, componentName) {
@@ -150,14 +150,14 @@ var TypedArrayProp = {
   }
 };
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/DicomPDFViewport.css
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/DicomPDFViewport.css
 var src_DicomPDFViewport = __webpack_require__(1080);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/pdfjs-dist/build/pdf.worker.entry.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/pdfjs-dist/build/pdf.worker.entry.js
 var pdf_worker_entry = __webpack_require__(1081);
 var pdf_worker_entry_default = /*#__PURE__*/__webpack_require__.n(pdf_worker_entry);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/DicomPDFViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/DicomPDFViewport.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -577,7 +577,7 @@ _defineProperty(DicomPDFViewport_DicomPDFViewport, "defaultProps", {
 });
 
 /* harmony default export */ var dicom_pdf_src_DicomPDFViewport = (DicomPDFViewport_DicomPDFViewport);
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/OHIFDicomPDFViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/OHIFDicomPDFViewport.js
 function OHIFDicomPDFViewport_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { OHIFDicomPDFViewport_typeof = function _typeof(obj) { return typeof obj; }; } else { OHIFDicomPDFViewport_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return OHIFDicomPDFViewport_typeof(obj); }
 
 function OHIFDicomPDFViewport_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -703,7 +703,7 @@ OHIFDicomPDFViewport_defineProperty(OHIFDicomPDFViewport_OHIFDicomPDFViewport, "
 OHIFDicomPDFViewport_defineProperty(OHIFDicomPDFViewport_OHIFDicomPDFViewport, "id", 'DicomPDFViewportPDF');
 
 /* harmony default export */ var src_OHIFDicomPDFViewport = (OHIFDicomPDFViewport_OHIFDicomPDFViewport);
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-pdf/src/ConnectedOHIFDicomPDFViewer.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-pdf/src/ConnectedOHIFDicomPDFViewer.js
 
 
 
