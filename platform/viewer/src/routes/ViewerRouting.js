@@ -22,6 +22,7 @@ const getSeriesInstanceUIDs = (seriesInstanceUIDs, routeLocation) => {
 
 function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const {
+    token,
     project,
     location,
     dataset,
@@ -32,6 +33,10 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
 
   console.log("In ViewerRouting");
 
+  /*
+  // Waern: token in query parameters seems to end up in studyInstanceUIDs.
+  // So instead of using the below code snippet, we add token as a path component.
+  //
   // Set the user's default authToken for outbound DICOMWeb requests.
   // Is only applied if target server does not set `requestOptions` property.
   //
@@ -39,9 +44,10 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   let query = useQuery();
   const authToken = query.get('token');
   console.log(authToken);
+  */
 
-  if (authToken) {
-    user.getAccessToken = () => authToken;
+  if (token) {
+    user.getAccessToken = () => token;
   }
 
   const server = useServer({ project, location, dataset, dicomStore });

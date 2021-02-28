@@ -83,6 +83,14 @@ const ROUTES_DEF = {
         return showList && !!appConfig.enableGoogleCloudAdapter;
       },
     },
+    oryx: {
+      path:
+        '/oryx/:token/projects/:project/locations/:location/datasets/:dataset/dicomStores/:dicomStore/study/:studyInstanceUIDs',
+      component: ViewerRouting,
+      condition: appConfig => {
+        return !!appConfig.enableGoogleCloudAdapter;
+      },
+    }
   },
 };
 
