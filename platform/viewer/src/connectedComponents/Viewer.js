@@ -220,7 +220,6 @@ class Viewer extends Component {
   }
 
   render() {
-    console.log("Viewer render");
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 

@@ -212,7 +212,6 @@ function ViewerRetrieveStudyData({
   clearViewportSpecificData,
   setStudyData,
 }) {
-  console.log("Start of ViewerRetrieveStudyData");
   // hooks
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
@@ -421,8 +420,6 @@ function ViewerRetrieveStudyData({
 
     return <NotFound message="Failed to retrieve study data" />;
   }
-
-  console.log("In ViewerRetrieveStudyData");
 
   return (
     <ConnectedViewer
