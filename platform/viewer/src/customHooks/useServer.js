@@ -106,16 +106,9 @@ export default function useServer({
   dicomStore,
 } = {}) {
   // Hooks
-  console.log("useServer()");
-  console.log(project);
-  console.log(location);
-  console.log(dataset);
-  console.log(dicomStore);
   const servers = useSelector(state => state && state.servers);
   const previousServers = usePrevious(servers);
   const dispatch = useDispatch();
-  console.log(servers);
-  console.log(previousServers);
 
   const { appConfig = {} } = useContext(AppContext);
 
@@ -135,11 +128,8 @@ export default function useServer({
   );
 
   if (shouldUpdateServer) {
-    console.log("setServers");
     setServers(dispatch, urlBasedServers);
   } else if (isValidServer(activeServer, appConfig)) {
-    console.log("returning activeServer");
-    console.log(activeServer);
     return activeServer;
   }
 }

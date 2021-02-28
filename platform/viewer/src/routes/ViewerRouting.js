@@ -31,8 +31,6 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
     seriesInstanceUIDs,
   } = routeMatch.params;
 
-  console.log("In ViewerRouting");
-
   /*
   // Waern: token in query parameters seems to end up in studyInstanceUIDs.
   // So instead of using the below code snippet, we add token as a path component.
@@ -55,11 +53,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const studyUIDs = UrlUtil.paramString.parseParam(studyInstanceUIDs);
   const seriesUIDs = getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation);
 
-  console.log(server);
-  console.log(studyUIDs);
-
   if (server && studyUIDs) {
-    console.log("Has server and studyUIDs");
     return (
       <ConnectedViewerRetrieveStudyData
         studyInstanceUIDs={studyUIDs}
