@@ -38,6 +38,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   // See: `getAuthorizationHeaders.js`
   let query = useQuery();
   const authToken = query.get('token');
+  console.log(authToken);
 
   if (authToken) {
     user.getAccessToken = () => authToken;
