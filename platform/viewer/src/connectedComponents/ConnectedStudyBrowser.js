@@ -41,6 +41,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: displaySetInstanceUID => {
+      console.log("onThumbnailClick");
+      console.log(ownProps.studyMetadata);
+
       let displaySet = findDisplaySetByUID(
         ownProps.studyMetadata,
         displaySetInstanceUID
@@ -62,8 +65,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
+      // TODO: based on study metadata, set dimensions, and add displaysets
+
       let displaySet2 = cloneDeep(displaySet);
-      displaySet2.SOPInstanceUID = "123";
       displaySet2.frameIndex = 2;
       console.log(displaySet2);
 
@@ -72,7 +76,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         {
           numRows: 2,
           numColumns: 2,
-          viewports: [{SeriesDescription: 'Test', InstanceNumber: 2},{},{},{}]
+          viewports: [{},{},{},{}]
         },
         [displaySet, displaySet, displaySet, displaySet2]
       ));
