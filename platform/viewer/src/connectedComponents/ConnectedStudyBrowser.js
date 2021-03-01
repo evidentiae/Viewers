@@ -65,21 +65,58 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
-      // TODO: based on study metadata, set dimensions, and add displaysets
+      var numFrames = displaySet.numImageFrames;
+      var numRows = 2;
+      var numColumns = 2;
 
-      let displaySet2 = cloneDeep(displaySet);
-      displaySet2.frameIndex = 2;
-      console.log(displaySet2);
+      if (numFrames == 1) {
+        numRows = 1;
+        numColumns = 1;
+      } else if (numFrames == 2) {
+        numRows = 1;
+        numColumns = 2;
+      } else if (numFrames == 3) {
+        numRows = 1;
+        numColumns = 3;
+      } else if (numFrames == 4) {
+        numRows = 2;
+        numColumns = 2;
+      } else if (numFrames == 5) {
+        numRows = 2;
+        numColumns = 3;
+      } else if (numFrames == 6) {
+        numRows = 2;
+        numColumns = 3;
+      } else if (numFrames == 7) {
+        numRows = 2;
+        numColumns = 4;
+      } else if (numFrames == 8) {
+        numRows = 2;
+        numColumns = 4;
+      } else if (numFrames == 9) {
+        numRows = 3;
+        numColumns = 3;
+      } else if (numFrames == 10) {
+        numRows = 3;
+        numColumns = 4;
+      }
+
+      var displaySets = [];
+      var viewports = [];
+
+      for (var i=0; i<numFrames; i++) {
+        var set = cloneDeep(displaySet);
+        set.frameIndex = i;
+        displaySets.push(set);
+        viewports.push({});
+      }
+
+      dispatch(setViewportLayoutAndData(
+        {numRows: numRows, numColumns: numColumns, viewports: viewports},
+        displaySets
+      ));
 
       //dispatch(setActiveViewportSpecificData(displaySet));
-      dispatch(setViewportLayoutAndData(
-        {
-          numRows: 2,
-          numColumns: 2,
-          viewports: [{},{},{},{}]
-        },
-        [displaySet, displaySet, displaySet, displaySet2]
-      ));
     },
   };
 };
