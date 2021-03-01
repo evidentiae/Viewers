@@ -7,7 +7,7 @@ import { servicesManager } from './../App.js';
 
 const { studyMetadataManager } = OHIF.utils;
 
-const { setActiveViewportSpecificData, setViewportLayoutAndData } = OHIF.redux.actions;
+const { clearViewportSpecificData, setActiveViewportSpecificData, setViewportLayoutAndData } = OHIF.redux.actions;
 
 // TODO
 // - Determine in which display set is active from Redux (activeViewportIndex and layout viewportData)
