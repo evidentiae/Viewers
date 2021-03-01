@@ -111,6 +111,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         viewports.push({});
       }
 
+      dispatch(clearViewportSpecificData(0));
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
         displaySets
