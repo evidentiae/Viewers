@@ -1,4 +1,4 @@
-import OHIF from '@ohif/core';
+import { OHIF, utils } from '@ohif/core';
 import { connect } from 'react-redux';
 import { StudyBrowser } from '@ohif/ui';
 import cloneDeep from 'lodash.clonedeep';
@@ -114,6 +114,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         set.numImageFrames = 1;
         set.images = [displaySet.images[i]];
         set.frameIndex = 0;
+        set.displaySetInstanceUID = utils.guid();
         displaySets.push(set);
         viewports.push({});
       }
