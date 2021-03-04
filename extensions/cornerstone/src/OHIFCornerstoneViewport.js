@@ -73,9 +73,12 @@ class OHIFCornerstoneViewport extends Component {
       throw new Error('Study not found.');
     }
 
+    const displaySet = this.props.viewportData.displaySet;
+    /*
     const displaySet = study.displaySets.find(set => {
       return set.displaySetInstanceUID === displaySetInstanceUID;
     });
+    */
 
     if (!displaySet) {
       throw new Error('Display Set not found.');
