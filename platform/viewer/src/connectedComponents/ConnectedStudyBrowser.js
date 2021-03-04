@@ -111,8 +111,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       for (var i=0; i<numFrames; i++) {
         var set = cloneDeep(displaySet);
-        set.frameIndex = i;
+        set.numImageFrames = 1;
         set.images = [displaySet.images[i]];
+        set.frameIndex = 0;
         displaySets.push(set);
         viewports.push({});
       }
