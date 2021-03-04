@@ -95,7 +95,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       var numFrames = displaySet.numImageFrames;
 
-      console.log("numFrames in display set found: " + numFrames.toString);
+      console.log("numFrames in display set found");
+      console.log(numFrames);
+      console.log(displaySet);
 
       var numRows = 2;
       var numColumns = 2;
