@@ -140,12 +140,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       for (var i=0; i<numFrames; i++) {
         var set = cloneDeep(displaySet);
         set.frameIndex = i;
+        set.images = [displaySet.images[i]];
         displaySets.push(set);
         viewports.push({});
       }
       console.log(displaySets);
 
-      dispatch(clearViewportSpecificData(0));
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
         displaySets
