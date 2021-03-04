@@ -48,6 +48,7 @@ class OHIFCornerstoneViewport extends Component {
   static getCornerstoneStack(
     studies,
     StudyInstanceUID,
+    displaySet,
     displaySetInstanceUID,
     SOPInstanceUID,
     frameIndex = 0
@@ -73,7 +74,6 @@ class OHIFCornerstoneViewport extends Component {
       throw new Error('Study not found.');
     }
 
-    const displaySet = this.props.viewportData.displaySet;
     /*
     const displaySet = study.displaySets.find(set => {
       return set.displaySetInstanceUID === displaySetInstanceUID;
@@ -116,6 +116,7 @@ class OHIFCornerstoneViewport extends Component {
   getViewportData = async (
     studies,
     StudyInstanceUID,
+    displaySet,
     displaySetInstanceUID,
     SOPInstanceUID,
     frameIndex
@@ -125,6 +126,7 @@ class OHIFCornerstoneViewport extends Component {
     const stack = OHIFCornerstoneViewport.getCornerstoneStack(
       studies,
       StudyInstanceUID,
+      displaySet,
       displaySetInstanceUID,
       SOPInstanceUID,
       frameIndex
@@ -162,6 +164,7 @@ class OHIFCornerstoneViewport extends Component {
     this.getViewportData(
       studies,
       StudyInstanceUID,
+      displaySet,
       displaySetInstanceUID,
       SOPInstanceUID,
       frameIndex
