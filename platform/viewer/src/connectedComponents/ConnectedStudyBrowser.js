@@ -143,6 +143,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         displaySets.push(set);
         viewports.push({});
       }
+      console.log(sets);
 
       dispatch(clearViewportSpecificData(0));
       dispatch(setViewportLayoutAndData(
