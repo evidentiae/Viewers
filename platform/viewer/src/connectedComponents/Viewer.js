@@ -41,8 +41,7 @@ class Viewer extends Component {
             Modality: PropTypes.string.isRequired,
             images: PropTypes.arrayOf(
               PropTypes.shape({
-                getImageId: PropTypes.func.isRequired,
-                getData: PropTypes.func.isRequired
+                getImageId: PropTypes.func.isRequired
               })
             ),
           })

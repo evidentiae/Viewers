@@ -27,6 +27,42 @@ const ViewportGrid = function (props) {
     isStudyLoaded,
   } = props;
 
+  if (viewportData.displaySet) {
+    var numFrames = viewportData.displaySet;
+
+    if (numFrames == 1) {
+      numRows = 1;
+      numColumns = 1;
+    } else if (numFrames == 2) {
+      numRows = 1;
+      numColumns = 2;
+    } else if (numFrames == 3) {
+      numRows = 1;
+      numColumns = 3;
+    } else if (numFrames == 4) {
+      numRows = 2;
+      numColumns = 2;
+    } else if (numFrames == 5) {
+      numRows = 2;
+      numColumns = 3;
+    } else if (numFrames == 6) {
+      numRows = 2;
+      numColumns = 3;
+    } else if (numFrames == 7) {
+      numRows = 2;
+      numColumns = 4;
+    } else if (numFrames == 8) {
+      numRows = 2;
+      numColumns = 4;
+    } else if (numFrames == 9) {
+      numRows = 3;
+      numColumns = 3;
+    } else if (numFrames == 10) {
+      numRows = 3;
+      numColumns = 4;
+    }
+  }
+
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
 
