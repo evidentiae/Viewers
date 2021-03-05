@@ -48,7 +48,6 @@ class OHIFCornerstoneViewport extends Component {
   static getCornerstoneStack(
     studies,
     StudyInstanceUID,
-    displaySet,
     displaySetInstanceUID,
     SOPInstanceUID,
     frameIndex = 0
@@ -74,19 +73,15 @@ class OHIFCornerstoneViewport extends Component {
       throw new Error('Study not found.');
     }
 
-    /*
     const displaySet = study.displaySets.find(set => {
       return set.displaySetInstanceUID === displaySetInstanceUID;
     });
-    */
 
     if (!displaySet) {
       throw new Error('Display Set not found.');
     }
 
     // Get stack from Stack Manager
-    console.log("displaySet given to findOrCreateStack");
-    console.log(displaySet);
     const storedStack = StackManager.findOrCreateStack(study, displaySet);
 
     // Clone the stack here so we don't mutate it
@@ -118,7 +113,6 @@ class OHIFCornerstoneViewport extends Component {
   getViewportData = async (
     studies,
     StudyInstanceUID,
-    displaySet,
     displaySetInstanceUID,
     SOPInstanceUID,
     frameIndex
@@ -128,7 +122,6 @@ class OHIFCornerstoneViewport extends Component {
     const stack = OHIFCornerstoneViewport.getCornerstoneStack(
       studies,
       StudyInstanceUID,
-      displaySet,
       displaySetInstanceUID,
       SOPInstanceUID,
       frameIndex
@@ -166,7 +159,6 @@ class OHIFCornerstoneViewport extends Component {
     this.getViewportData(
       studies,
       StudyInstanceUID,
-      displaySet,
       displaySetInstanceUID,
       SOPInstanceUID,
       frameIndex
