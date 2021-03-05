@@ -11,9 +11,6 @@ function StudyBrowser(props) {
     supportsDrag,
   } = props;
 
-  console.log("Rendering study browser");
-  console.log(studies);
-
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
