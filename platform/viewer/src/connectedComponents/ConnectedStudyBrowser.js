@@ -134,14 +134,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         numColumns = 4;
       }
 
-      var viewports = [];
-      for (var i=0; i<numFrames; i++) {
-        viewports.push({});
-      }
-      /*
       var displaySets = [];
+      var viewports = [];
 
-      console.log(displaySet);
       for (var i=0; i<numFrames; i++) {
         var set = cloneDeep(displaySet);
         set.numImageFrames = 1;
@@ -151,7 +146,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         displaySets.push(set);
         viewports.push({});
       }
-      */
       //console.log(displaySets);
       //console.log(ownProps.studies);
       //console.log(ownProps.studyMetadata);

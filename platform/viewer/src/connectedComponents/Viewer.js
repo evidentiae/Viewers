@@ -42,6 +42,7 @@ class Viewer extends Component {
             images: PropTypes.arrayOf(
               PropTypes.shape({
                 getImageId: PropTypes.func.isRequired,
+                getData: PropTypes.func.isRequired
               })
             ),
           })
