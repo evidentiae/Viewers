@@ -158,7 +158,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       // then let the viewer distribute it.
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
-        displaySet
+        displaySets
       ));
 
       //dispatch(setActiveViewportSpecificData(displaySet));
