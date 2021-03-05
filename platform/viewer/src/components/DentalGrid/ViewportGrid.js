@@ -13,7 +13,7 @@ import EmptyViewport from './EmptyViewport.js';
 const { loadAndCacheDerivedDisplaySets } = utils;
 
 const ViewportGrid = function (props) {
-  const {
+  var {
     activeViewportIndex,
     availablePlugins,
     defaultPlugin: defaultPluginName,
@@ -27,6 +27,7 @@ const ViewportGrid = function (props) {
     isStudyLoaded,
   } = props;
 
+  console.log(viewportData);
   if (viewportData.displaySet) {
     var numFrames = viewportData.displaySet;
 
