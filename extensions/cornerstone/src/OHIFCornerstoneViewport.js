@@ -86,6 +86,8 @@ class OHIFCornerstoneViewport extends Component {
     }
 
     // Get stack from Stack Manager
+    console.log("displaySet given to findOrCreateStack");
+    console.log(displaySet);
     const storedStack = StackManager.findOrCreateStack(study, displaySet);
 
     // Clone the stack here so we don't mutate it
