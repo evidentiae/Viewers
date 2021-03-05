@@ -142,11 +142,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         //var image = cloneDeep(displaySet.images[i]); // already cloned?
         //image._study.
         set.numImageFrames = 1;
-        set.images = [displaySet.images[i]];
+        set.images = [set.images[i]];
         set.frameIndex = 0;
         set.displaySetInstanceUID = utils.guid();
         displaySets.push(set);
         viewports.push({});
+        console.log(set.images);
       }
       //console.log(displaySets);
       //console.log(ownProps.studies);
