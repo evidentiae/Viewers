@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: displaySetInstanceUID => {
       console.log("onThumbnailClick");
-      console.log(ownProps.studyMetadata);
+      //console.log(ownProps.studyMetadata);
 
       let displaySet = findDisplaySetByUID(
         ownProps.studyMetadata,
@@ -67,9 +67,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       var numFrames = displaySet.numImageFrames;
 
-      console.log("numFrames in display set found");
-      console.log(numFrames);
-      console.log(displaySet);
+      //console.log("numFrames in display set found");
+      //console.log(numFrames);
+      //console.log(displaySet);
 
       var numRows = 2;
       var numColumns = 2;
@@ -120,9 +120,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         displaySets.push(set);
         viewports.push({});
       }
-      console.log(displaySets);
-      console.log(ownProps.studies);
-      console.log(ownProps.studyMetadata);
+      //console.log(displaySets);
+      //console.log(ownProps.studies);
+      //console.log(ownProps.studyMetadata);
 
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
