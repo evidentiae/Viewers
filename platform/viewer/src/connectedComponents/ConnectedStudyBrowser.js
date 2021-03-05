@@ -65,6 +65,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
+      /*
       var numFrames = displaySet.numImageFrames;
 
       //console.log("numFrames in display set found");
@@ -132,8 +133,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
         displaySets
       ));
+      */
 
-      //dispatch(setActiveViewportSpecificData(displaySet));
+      dispatch(setActiveViewportSpecificData(displaySet));
     },
   };
 };
