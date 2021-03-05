@@ -137,16 +137,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       var displaySets = [];
       var viewports = [];
 
-      var images = cloneDeep(displaySet.images);
-      console.log("deep copy");
       console.log(displaySet);
-      console.log(images);
       for (var i=0; i<numFrames; i++) {
         var set = cloneDeep(displaySet);
-        //var image = cloneDeep(displaySet.images[i]); // already cloned?
-        //image._study.
         set.numImageFrames = 1;
-        set.images = [images[i]];
+        set.images = [displaySet.images[i]];
         set.frameIndex = 0;
         set.displaySetInstanceUID = utils.guid();
         displaySets.push(set);
