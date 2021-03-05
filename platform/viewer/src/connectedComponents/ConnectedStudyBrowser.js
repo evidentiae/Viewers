@@ -106,8 +106,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         numColumns = 4;
       }
 
-      var displaySets = [];
       var viewports = [];
+      for (var i=0; i<numFrames; i++) {
+        viewports.push({});
+      }
+      /*
+      var displaySets = [];
 
       console.log(displaySet);
       for (var i=0; i<numFrames; i++) {
@@ -119,13 +123,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         displaySets.push(set);
         viewports.push({});
       }
+      */
       //console.log(displaySets);
       //console.log(ownProps.studies);
       //console.log(ownProps.studyMetadata);
 
+      // NOTE: seems like going through dispatch looses non-emumerable
+      // properties. So we need to let viewport find the display set
+      // by UID later instead. To do that, we need the display sets
+      // to be part of the studies.
+      // Maybe we should send the existing display set only, and
+      // then let the viewer distribute it.
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
-        displaySets
+        displaySet
       ));
 
       //dispatch(setActiveViewportSpecificData(displaySet));
