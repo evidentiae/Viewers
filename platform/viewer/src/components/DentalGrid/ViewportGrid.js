@@ -103,6 +103,9 @@ const ViewportGrid = function (props) {
         return null;
       }
 
+      console.log("displaySet sent to ViewportComponent");
+      console.log(displaySet);
+
       const data = {
         displaySet,
         studies,
