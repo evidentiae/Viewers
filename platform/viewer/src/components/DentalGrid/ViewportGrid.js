@@ -32,6 +32,11 @@ const ViewportGrid = function (props) {
 
   if (activeDisplaySet) {
     var numFrames = activeDisplaySet.numImageFrames;
+
+    for (var i=1; i<numFrames; i++) {
+      layout.viewports.push({});
+    }
+
     if (numFrames == 1) {
       numRows = 1;
       numColumns = 1;
