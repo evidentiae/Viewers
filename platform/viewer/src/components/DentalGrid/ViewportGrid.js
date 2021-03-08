@@ -28,10 +28,10 @@ const ViewportGrid = function (props) {
   } = props;
 
   console.log(viewportData);
-  const displaySet = viewportData[activeViewportIndex];
+  const activeDisplaySet = viewportData[activeViewportIndex];
 
-  if (displaySet) {
-    var numFrames = displaySet.numImageFrames;
+  if (activeDisplaySet) {
+    var numFrames = activeDisplaySet.numImageFrames;
     if (numFrames == 1) {
       numRows = 1;
       numColumns = 1;
@@ -97,10 +97,11 @@ const ViewportGrid = function (props) {
 
   const getViewportPanes = () =>
     layout.viewports.map((layout, viewportIndex) => {
-      const displaySet = viewportData[viewportIndex];
+      var displaySet = viewportData[viewportIndex];
 
       if (!displaySet) {
-        return null;
+        displaySet = activeDisplaySet;
+        //return null;
       }
 
       console.log("displaySet sent to ViewportComponent");
