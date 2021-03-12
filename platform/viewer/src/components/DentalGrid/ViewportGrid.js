@@ -31,7 +31,7 @@ const ViewportGrid = function (props) {
 
   const displaySet = viewportData[0];
 
-  if (activeDisplaySet) {
+  if (displaySet) {
     var numFrames = displaySet.numImageFrames;
     for (var i=1; i<numFrames; i++) {
       //layout.viewports.push({});
