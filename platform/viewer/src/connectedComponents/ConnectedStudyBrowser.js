@@ -42,9 +42,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: displaySetInstanceUID => {
-      console.log("onThumbnailClick");
-      //console.log(ownProps.studyMetadata);
-
       let displaySet = findDisplaySetByUID(
         ownProps.studyMetadata,
         displaySetInstanceUID
@@ -138,25 +135,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
         [displaySet]
       ));
-
-      /*
-      //console.log(displaySets);
-      //console.log(ownProps.studies);
-      //console.log(ownProps.studyMetadata);
-
-      // NOTE: seems like going through dispatch looses non-emumerable
-      // properties. So we need to let viewport find the display set
-      // by UID later instead. To do that, we need the display sets
-      // to be part of the studies.
-      // Maybe we should send the existing display set only, and
-      // then let the viewer distribute it.
-      dispatch(setViewportLayoutAndData(
-        {numRows: numRows, numColumns: numColumns, viewports: viewports},
-        displaySets
-      ));
-      */
-
-      //dispatch(setActiveViewportSpecificData(displaySet));
     },
   };
 };

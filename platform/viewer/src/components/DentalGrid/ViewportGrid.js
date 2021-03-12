@@ -28,8 +28,6 @@ const ViewportGrid = function (props) {
     isStudyLoaded,
   } = props;
 
-  console.log(viewportData);
-
   const displaySet = viewportData[0];
 
   if (displaySet) {
@@ -50,7 +48,6 @@ const ViewportGrid = function (props) {
       for (var i=1; i<numFrames; i++) {
         //layout.viewports.push({});
         var ds = cloneDeep(displaySet);
-        console.log(ds);
         ds.frameIndex = i;
         ds.displaySetInstanceUID = utils.guid();
         ds.clonedUID = displaySet.displaySetInstanceUID;
@@ -112,6 +109,8 @@ const ViewportGrid = function (props) {
     */
   }
 
+  console.log(viewportData);
+
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
 
@@ -149,9 +148,6 @@ const ViewportGrid = function (props) {
       if (!displaySet) {
         return null;
       }
-
-      console.log("displaySet sent to ViewportComponent");
-      console.log(displaySet);
 
       const data = {
         displaySet,
