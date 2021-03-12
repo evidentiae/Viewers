@@ -40,6 +40,7 @@ const ViewportGrid = function (props) {
       var ds = cloneDeep(displaySet);
       console.log(ds);
       ds.frameIndex = i;
+      ds.displaySetInstanceUID = utils.guid();
       viewportData[i] = ds;
     }
 
