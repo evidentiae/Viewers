@@ -93,13 +93,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
       }
 
-      /*
       var numFrames = displaySet.numImageFrames;
-
-      //console.log("numFrames in display set found");
-      //console.log(numFrames);
-      //console.log(displaySet);
-
       var numRows = 2;
       var numColumns = 2;
 
@@ -135,18 +129,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         numColumns = 4;
       }
 
-      var displaySets = [];
       var viewports = [];
-
       for (var i=0; i<numFrames; i++) {
-        var set = cloneDeep(displaySet);
-        set.numImageFrames = 1;
-        set.images = [displaySet.images[i]];
-        set.frameIndex = 0;
-        set.displaySetInstanceUID = utils.guid();
-        displaySets.push(set);
         viewports.push({});
       }
+
+      dispatch(setViewportLayoutAndData(
+        {numRows: numRows, numColumns: numColumns, viewports: viewports},
+        [displaySet]
+      ));
+
+      /*
       //console.log(displaySets);
       //console.log(ownProps.studies);
       //console.log(ownProps.studyMetadata);
@@ -163,7 +156,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       ));
       */
 
-      dispatch(setActiveViewportSpecificData(displaySet));
+      //dispatch(setActiveViewportSpecificData(displaySet));
     },
   };
 };

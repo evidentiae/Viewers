@@ -29,8 +29,9 @@ const ViewportGrid = function (props) {
 
   console.log(viewportData);
 
-  const activeDisplaySet = viewportData[activeViewportIndex];
+  const displaySet = viewportData[0];
 
+  /*
   if (activeDisplaySet) {
     var numFrames = activeDisplaySet.numImageFrames;
 
@@ -71,6 +72,7 @@ const ViewportGrid = function (props) {
       numColumns = 4;
     }
   }
+  */
 
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
