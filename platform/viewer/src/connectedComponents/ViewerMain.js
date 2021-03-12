@@ -28,14 +28,20 @@ class ViewerMain extends Component {
   }
 
   getDisplaySets(studies) {
+    if (!studies || studies.length == 0) return [];
+    var study = studies[0];
+
+    if (!study.displaySets || study.displaySets.length == 0) return [];
+    var seriesNumber = study.displaySets[0].SeriesNumber;
+
     const displaySets = [];
-    studies.forEach(study => {
-      study.displaySets.forEach(dSet => {
+    study.displaySets.forEach(dSet => {
+      if (dSet.SeriesNumber === seriesNumber) {
         if (!dSet.plugin) {
           dSet.plugin = 'cornerstone';
         }
         displaySets.push(dSet);
-      });
+      }
     });
 
     return displaySets;
