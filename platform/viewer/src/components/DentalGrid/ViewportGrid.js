@@ -55,16 +55,22 @@ const ViewportGrid = function (props) {
       }
 
       var relevantStudy;
+      var relevantDisplaySet;
+      console.log("relevant display set: ");
+      console.log(relevantDisplaySet);
       studies.forEach(study => {
         study.displaySets.forEach(set => {
           if (set.displaySetInstanceUID === displaySet.displaySetInstanceUID) {
             relevantStudy = study;
+            relevantDisplaySet = set;
           }
         });
       });
       if (relevantStudy) {
         for (var k=1; k < numFrames; k++) {
-          relevantStudy.displaySets.push(viewportData[k]);
+          var ds = viewportData[k];
+          ds.images = relevantDisplaySet.images;
+          relevantStudy.displaySets.push(ds);
         }
       }
     }
