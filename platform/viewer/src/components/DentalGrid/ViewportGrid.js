@@ -35,11 +35,9 @@ const ViewportGrid = function (props) {
     var numFrames = activeDisplaySet.numImageFrames;
 
     layout.viewports = [{}];
-    /*
     for (var i=1; i<numFrames; i++) {
       layout.viewports.push({});
     }
-    */
 
     if (numFrames == 1) {
       numRows = 1;
@@ -109,8 +107,8 @@ const ViewportGrid = function (props) {
       var displaySet = viewportData[viewportIndex];
 
       if (!displaySet) {
-        displaySet = activeDisplaySet;
-        //return null;
+        //displaySet = activeDisplaySet;
+        return null;
       }
 
       console.log("displaySet sent to ViewportComponent");
