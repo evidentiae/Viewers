@@ -31,10 +31,14 @@ const ViewportGrid = function (props) {
 
   const displaySet = viewportData[0];
 
-  /*
   if (activeDisplaySet) {
-    var numFrames = activeDisplaySet.numImageFrames;
+    var numFrames = displaySet.numImageFrames;
+    for (var i=1; i<numFrames; i++) {
+      //layout.viewports.push({});
+      viewportData[i] = displaySet;
+    }
 
+    /*
     layout.viewports = [{}];
     for (var i=1; i<numFrames; i++) {
       layout.viewports.push({});
@@ -71,8 +75,8 @@ const ViewportGrid = function (props) {
       numRows = 3;
       numColumns = 4;
     }
+    */
   }
-  */
 
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
