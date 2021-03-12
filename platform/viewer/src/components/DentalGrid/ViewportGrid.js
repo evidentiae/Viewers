@@ -35,13 +35,41 @@ const ViewportGrid = function (props) {
   if (displaySet) {
     var numFrames = displaySet.numImageFrames;
     displaySet.frameIndex = 0;
-    for (var i=1; i<numFrames; i++) {
-      //layout.viewports.push({});
-      var ds = cloneDeep(displaySet);
-      console.log(ds);
-      ds.frameIndex = i;
-      ds.displaySetInstanceUID = utils.guid();
-      viewportData[i] = ds;
+
+    var j = 1;
+    studies.forEach(study => {
+      study.displaySets.forEach(set => {
+        if (set.clonedUID && set.clonedUID === displaySet.displaySetInstanceUID) {
+          viewportData[j] = set;
+          j++;
+        }
+      });
+    });
+
+    if (j == 1) {
+      for (var i=1; i<numFrames; i++) {
+        //layout.viewports.push({});
+        var ds = cloneDeep(displaySet);
+        console.log(ds);
+        ds.frameIndex = i;
+        ds.displaySetInstanceUID = utils.guid();
+        ds.clonedUID = displaySet.displaySetInstanceUID;
+        viewportData[i] = ds;
+      }
+
+      var relevantStudy;
+      studies.forEach(study => {
+        study.displaySets.forEach(set => {
+          if (set.displaySetInstanceUID === displaySet.displaySetInstanceUID) {
+            relevantStudy = study;
+          }
+        });
+      });
+      if (relevantStudy) {
+        for (var k=1; k < numFrames; k++) {
+          relevantStudy.displaySets.push(viewportData[k]);
+        }
+      }
     }
 
     /*
