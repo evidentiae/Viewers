@@ -28,15 +28,18 @@ const ViewportGrid = function (props) {
   } = props;
 
   console.log(viewportData);
+
   const activeDisplaySet = viewportData[activeViewportIndex];
 
   if (activeDisplaySet) {
     var numFrames = activeDisplaySet.numImageFrames;
 
     layout.viewports = [{}];
+    /*
     for (var i=1; i<numFrames; i++) {
       layout.viewports.push({});
     }
+    */
 
     if (numFrames == 1) {
       numRows = 1;
