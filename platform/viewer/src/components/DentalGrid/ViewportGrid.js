@@ -107,7 +107,6 @@ const ViewportGrid = function (props) {
       var displaySet = viewportData[viewportIndex];
 
       if (!displaySet) {
-        //displaySet = activeDisplaySet;
         return null;
       }
 
