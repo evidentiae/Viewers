@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { utils } from '@ohif/core';
 import { useSnackbarContext } from '@ohif/ui';
+import cloneDeep from 'lodash.clonedeep';
 //
 import ViewportPane from './ViewportPane.js';
 import DefaultViewport from './DefaultViewport.js';
@@ -33,9 +34,13 @@ const ViewportGrid = function (props) {
 
   if (displaySet) {
     var numFrames = displaySet.numImageFrames;
+    displaySet.frameIndex = 0;
     for (var i=1; i<numFrames; i++) {
       //layout.viewports.push({});
-      viewportData[i] = displaySet;
+      var ds = cloneDeep(displaySet);
+      console.log(ds);
+      ds.frameIndex = i;
+      viewportData[i] = ds;
     }
 
     /*
