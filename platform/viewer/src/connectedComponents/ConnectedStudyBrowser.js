@@ -128,7 +128,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       var viewports = [];
       for (var i=0; i<numFrames; i++) {
-        viewports.push({});
+        viewports.push({plugin: "cornerstone"});
       }
 
       dispatch(setViewportLayoutAndData(
