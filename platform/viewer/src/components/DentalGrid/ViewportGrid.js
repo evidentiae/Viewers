@@ -116,6 +116,11 @@ const ViewportGrid = function (props) {
   }
 
   console.log(viewportData);
+  console.log(layout.viewports);
+
+  if (viewportData.length > 1) {
+    viewportData[0].images = viewportData[1].images;
+  }
 
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
