@@ -42,7 +42,7 @@ function ImageThumbnail(props) {
   const showStackLoadingProgressBar = stackPercentComplete !== undefined;
 
   const shouldRenderToCanvas = () => {
-    return imageId && !imageSrc && !loadingOrError;
+    return imageId && !imageSrc && !(propsError || error);
   };
 
   const fetchImagePromise = () => {
