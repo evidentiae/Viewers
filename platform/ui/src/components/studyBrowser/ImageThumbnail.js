@@ -57,7 +57,7 @@ function ImageThumbnail(props) {
         if (error.isCanceled) return;
         setLoading(false);
         setError(true);
-        throw new Error(error);
+        //throw new Error(error);
       });
   };
 
