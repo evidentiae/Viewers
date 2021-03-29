@@ -40,7 +40,7 @@ function ImageThumbnail(props) {
   const showStackLoadingProgressBar = stackPercentComplete !== undefined;
 
   const shouldRenderToCanvas = () => {
-    return imageId && !imageSrc && !(propsError || error);
+    return imageId && !imageSrc;
   };
 
   const fetchImagePromise = () => {
@@ -55,10 +55,10 @@ function ImageThumbnail(props) {
       })
       .catch(error => {
         console.log(error);
-        //if (error.isCanceled) return;
+        if (error.isCanceled && !error.hasOwnProperty('error')) return;
         setLoading(false);
         setError(true);
-        //throw new Error(error);
+        throw new Error(error);
       });
   };
 
