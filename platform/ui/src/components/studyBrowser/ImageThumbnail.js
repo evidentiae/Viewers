@@ -55,7 +55,7 @@ function ImageThumbnail(props) {
       })
       .catch(error => {
         console.log(error);
-        if (error.isCanceled) return;
+        //if (error.isCanceled) return;
         setLoading(false);
         setError(true);
         throw new Error(error);
