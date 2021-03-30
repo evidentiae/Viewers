@@ -34,16 +34,20 @@ const ViewportGrid = function (props) {
     var numFrames = displaySet.numImageFrames;
     displaySet.frameIndex = 0;
 
+    // try to find clones of display set in studies
+    // use them to fill up grid (viewport data)
     var j = 1;
     studies.forEach(study => {
       study.displaySets.forEach(set => {
         if (set.clonedUID && set.clonedUID === displaySet.displaySetInstanceUID) {
+          set.frameIndex = j; // reset index if it was changed by user
           viewportData[j] = set;
           j++;
         }
       });
     });
 
+    // if we did not find any clone, make clones
     if (j == 1) {
       for (var i=1; i<numFrames; i++) {
         //layout.viewports.push({});
@@ -54,10 +58,9 @@ const ViewportGrid = function (props) {
         viewportData[i] = ds;
       }
 
+      // find study with this display set
       var relevantStudy;
       var relevantDisplaySet;
-      console.log("relevant display set: ");
-      console.log(relevantDisplaySet);
       studies.forEach(study => {
         study.displaySets.forEach(set => {
           if (set.displaySetInstanceUID === displaySet.displaySetInstanceUID) {
@@ -66,6 +69,8 @@ const ViewportGrid = function (props) {
           }
         });
       });
+
+      // if found, add the cloned display sets
       if (relevantStudy) {
         for (var k=1; k < numFrames; k++) {
           var ds = viewportData[k];
