@@ -62,7 +62,7 @@ function ImageThumbnail(props) {
           // then isCanceled is still true (for some reason).
           // In that case we must still set the error flag to
           // signal that we should not retry the image fetch.
-          if (error.hasOwnProperty('error') {
+          if (error.hasOwnProperty('error')) {
             setLoading(false);
             setError(true);
           }
