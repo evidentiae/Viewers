@@ -55,9 +55,9 @@ function ImageThumbnail(props) {
       })
       .catch(error => {
         console.log(error);
-        if (error.isCanceled && !error.hasOwnProperty('error')) return;
         setLoading(false);
         setError(true);
+        if (error.isCanceled) return;
         throw new Error(error);
       });
   };
@@ -90,12 +90,12 @@ function ImageThumbnail(props) {
   }, [canvasRef, image, image.imageId]);
 
   useEffect(() => {
-    if (!image.imageId || image.imageId !== imageId) {
+    if (!error && (!image.imageId || image.imageId !== imageId)) {
       purgeCancelablePromise();
       setImagePromise();
       fetchImagePromise();
     }
-  }, [fetchImagePromise, image.imageId, imageId, purgeCancelablePromise, setImagePromise]);
+  }, [fetchImagePromise, image.imageId, imageId, purgeCancelablePromise, setImagePromise, error]);
 
   return (
     <div className="ImageThumbnail">
