@@ -55,9 +55,19 @@ function ImageThumbnail(props) {
       })
       .catch(error => {
         console.log(error);
+        if (error.isCanceled) {
+          // If there is an actual error in loading the image,
+          // then isCanceled is still true (for some reason).
+          // In that case we must still set the error flag to
+          // signal that we should not retry the image fetch.
+          if (error.hasOwnProperty('error') {
+            setLoading(false);
+            setError(true);
+          }
+          return;
+        }
         setLoading(false);
         setError(true);
-        if (error.isCanceled) return;
         throw new Error(error);
       });
   };
