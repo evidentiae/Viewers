@@ -166,17 +166,12 @@ const viewports = (state = DEFAULT_STATE, action) => {
         1, 1,
         action.viewportSpecificData
       );
-      const activeViewportIndex = getActiveViewportIndex(
-        1, 1,
-        state.activeViewportIndex
-      );
       return {
         ...state,
         numRows: 1,
         numColumns: 1,
-        layout: { viewports: [state.layout.viewports[activeViewportIndex]] },
+        layout: { viewports: [state.layout.viewports[state.activeViewportIndex]] },
         viewportSpecificData,
-        activeViewportIndex,
       };
     }
 
