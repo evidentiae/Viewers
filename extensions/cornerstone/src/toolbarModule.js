@@ -106,6 +106,7 @@ const definitions = [
     type: TOOLBAR_BUTTON_TYPES.COMMAND,
     commandName: 'resetViewport',
   },
+  /*
   {
     id: 'Cine',
     label: 'CINE',
@@ -116,6 +117,7 @@ const definitions = [
       behavior: TOOLBAR_BUTTON_BEHAVIORS.CINE,
     },
   },
+  */
   {
     id: 'More',
     label: 'More',
