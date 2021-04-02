@@ -134,6 +134,7 @@ const actions = {
   setViewportSpecificData,
   setViewportLayoutAndData,
   setLayout,
+  maximize,
   clearViewportSpecificData,
   setActiveViewportSpecificData,
   /**
