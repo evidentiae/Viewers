@@ -161,7 +161,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
       };
     }
 
-    case SET_VIEWPORT_LAYOUT_AND_DATA: {
+    case TOGGLE_MAXIMIZE: {
       const { numRows, numColumns } = action;
       const viewportSpecificData = findActiveViewportSpecificData(
         numRows,
