@@ -162,23 +162,19 @@ const viewports = (state = DEFAULT_STATE, action) => {
     }
 
     case TOGGLE_MAXIMIZE: {
-      const { numRows, numColumns } = action;
       const viewportSpecificData = findActiveViewportSpecificData(
-        numRows,
-        numColumns,
+        1, 1,
         action.viewportSpecificData
       );
       const activeViewportIndex = getActiveViewportIndex(
-        numRows,
-        numColumns,
+        1, 1,
         state.activeViewportIndex
       );
-
       return {
         ...state,
         numRows: 1,
         numColumns: 1,
-        layout: { viewports: [...action.viewports] },
+        layout: { viewports: [state.layout.viewports[activeViewportIndex]] },
         viewportSpecificData,
         activeViewportIndex,
       };
