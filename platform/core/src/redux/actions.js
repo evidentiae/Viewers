@@ -10,6 +10,7 @@ import {
   SET_VIEWPORT_ACTIVE,
   SET_VIEWPORT_LAYOUT,
   SET_VIEWPORT_LAYOUT_AND_DATA,
+  TOGGLE_MAXIMIZE,
   SET_USER_PREFERENCES,
 } from './constants/ActionTypes.js';
 
@@ -47,6 +48,10 @@ export const setLayout = ({ numRows, numColumns, viewports }) => ({
   numRows,
   numColumns,
   viewports,
+});
+
+export const maximize = () => ({
+  type: TOGGLE_MAXIMIZE
 });
 
 /**

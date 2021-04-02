@@ -27,6 +27,7 @@ class ToolbarRow extends Component {
     selectedLeftSidePanel: PropTypes.string.isRequired,
     selectedRightSidePanel: PropTypes.string.isRequired,
     handleSidePanelChange: PropTypes.func.isRequired,
+    handleMaximize: PropTypes.func.isRequired,
     activeContexts: PropTypes.arrayOf(PropTypes.string).isRequired,
     studies: PropTypes.array,
     t: PropTypes.func.isRequired,
@@ -168,6 +169,10 @@ class ToolbarRow extends Component {
     }
   };
 
+  onMaximize = () => {
+    this.props.handleMaximize();
+  };
+
   render() {
     const buttonComponents = _getButtonComponents.call(
       this,
@@ -193,6 +198,12 @@ class ToolbarRow extends Component {
           </div>
           {buttonComponents}
           <ConnectedLayoutButton />
+          <ToolbarButton
+            label={'Maximize'}
+            icon='th'
+            isActive={true}
+            onClick={this.onMaximize}
+          />
           <div
             className="pull-right m-t-1 rm-x-1"
             style={{ marginLeft: 'auto' }}
