@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Viewer from './Viewer.js';
 import OHIF from '@ohif/core';
 
-const { setTimepoints, setMeasurements } = OHIF.redux.actions;
+const { setTimepoints, setMeasurements, maximize } = OHIF.redux.actions;
 
 const getActiveServer = servers => {
   const isActive = a => a.active === true;
@@ -26,6 +26,9 @@ const mapDispatchToProps = dispatch => {
     onMeasurementsUpdated: measurements => {
       dispatch(setMeasurements(measurements));
     },
+    onMaximize: () => {
+      dispatch(maximize());
+    }
   };
 };
 

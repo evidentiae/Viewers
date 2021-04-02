@@ -55,6 +55,7 @@ class Viewer extends Component {
     }),
     onTimepointsUpdated: PropTypes.func,
     onMeasurementsUpdated: PropTypes.func,
+    onMaximize: PropTypes.func,
     // window.store.getState().viewports.viewportSpecificData
     viewports: PropTypes.object.isRequired,
     // window.store.getState().viewports.activeViewportIndex
@@ -299,6 +300,7 @@ class Viewer extends Component {
 
               this.setState(updatedState);
             }}
+            handleMaximize={() => {this.props.onMaximize();}}
             studies={this.props.studies}
           />
         </ErrorBoundaryDialog>
