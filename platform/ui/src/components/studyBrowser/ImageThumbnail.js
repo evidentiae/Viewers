@@ -67,7 +67,7 @@ function ImageThumbnail(props) {
         }
         setLoading(false);
         setError(true);
-        throw new Error(error);
+        //throw new Error(error);
       });
   };
 
