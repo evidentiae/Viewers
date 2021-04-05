@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log(ownProps.studyMetadata);
       var displaySets = [];
       for (var i=0; i<ownProps.studyMetadata; i++) {
-        var study = ownProps.studyMetdata[i];
+        var study = ownProps.studyMetadata[i];
         for (var j=0; j<study.displaySets; j++) {
           var set = study.displaySets[j];
           if (set.SeriesInstanceUID === seriesInstanceUID) {
