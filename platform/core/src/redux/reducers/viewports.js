@@ -164,16 +164,12 @@ const viewports = (state = DEFAULT_STATE, action) => {
     case TOGGLE_MAXIMIZE: {
       console.log("TOGGLE_MAXIMIZE prev state:");
       console.log(state);
-      const viewportSpecificData = findActiveViewportSpecificData(
-        1, 1,
-        action.viewportSpecificData
-      );
       var next_state = {
         ...state,
         numRows: 1,
         numColumns: 1,
         layout: { viewports: [state.layout.viewports[state.activeViewportIndex]] },
-        viewportSpecificData,
+        viewportSpecificData: [state.viewportSpecificData[state.activeViewportIndex]],
       };
       console.log("next state:");
       console.log(next_state);
