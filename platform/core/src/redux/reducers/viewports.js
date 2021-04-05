@@ -168,7 +168,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
     case TOGGLE_MAXIMIZE: {
       console.log("TOGGLE_MAXIMIZE");
       console.log(state);
-      var next_state = {...state, maximized: !state.maximized};
+      var next_state = Object.assign({}, state, {maximized: !state.maximized});
       console.log(next_state);
       return next_state;
     }

@@ -8,7 +8,11 @@ const {
 } = OHIF.redux.actions;
 
 const mapStateToProps = state => {
-  const { activeViewportIndex, layout, viewportSpecificData } = state.viewports;
+  const { activeViewportIndex, layout, viewportSpecificData, maximized } = state.viewports;
+
+  console.log("ConnectedViewerMain mapStateToProps");
+  console.log(maximized);
+  console.log(layout);
 
   return {
     activeViewportIndex,
