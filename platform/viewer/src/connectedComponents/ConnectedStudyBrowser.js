@@ -41,6 +41,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
+      console.log("onThumbnailClick");
+      console.log(seriesInstanceUID);
       var displaySets = [];
       for (var i=0; i<ownProps.studyMetadata; i++) {
         var study = ownProps.studyMetdata[i];
@@ -51,6 +53,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           }
         }
       }
+      console.log(displaySets);
 
       /*
       let displaySet = findDisplaySetByUID(
