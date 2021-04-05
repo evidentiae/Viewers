@@ -44,6 +44,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
       console.log("onThumbnailClick");
       console.log(seriesInstanceUID);
+      console.log(ownProps.studyMetadata);
       var displaySets = [];
       for (var i=0; i<ownProps.studyMetadata; i++) {
         var study = ownProps.studyMetdata[i];
