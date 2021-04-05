@@ -10,15 +10,12 @@ const {
 const mapStateToProps = state => {
   const { activeViewportIndex, layout, viewportSpecificData, maximized } = state.viewports;
 
-  console.log("ConnectedViewerMain mapStateToProps");
-  console.log(maximized);
-  console.log(layout);
-
   return {
     activeViewportIndex,
     layout,
     viewportSpecificData,
     viewports: state.viewports,
+    maximized
   };
 };
 
