@@ -23,7 +23,7 @@ const mapStateToProps = state => {
     defaultPlugin = viewportModules[0].extensionId;
   }
 
-  const { numRows, numColumns, layout, activeViewportIndex } = state.viewports;
+  const { numRows, numColumns, layout, activeViewportIndex, maximized } = state.viewports;
 
   return {
     numRows,
@@ -34,6 +34,7 @@ const mapStateToProps = state => {
     availablePlugins: availableViewportModules,
     // TODO: rename `defaultViewportModule`
     defaultPlugin,
+    maximized
   };
 };
 

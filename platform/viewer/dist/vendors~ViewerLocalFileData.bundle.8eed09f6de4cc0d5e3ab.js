@@ -12,15 +12,15 @@ module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]=
 
 "use strict";
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/tslib/tslib.es6.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -218,7 +218,7 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/file-selector/dist/es5/file.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/file-selector/dist/es5/file.js
 var COMMON_MIME_TYPES = new Map([
     ['avi', 'video/avi'],
     ['gif', 'image/gif'],
@@ -273,7 +273,7 @@ function withMimeType(file) {
     return file;
 }
 //# sourceMappingURL=file.js.map
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/file-selector/dist/es5/file-selector.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/file-selector/dist/es5/file-selector.js
 
 
 var FILES_TO_IGNORE = [
@@ -443,14 +443,14 @@ function fromFileEntry(entry) {
     });
 }
 //# sourceMappingURL=file-selector.js.map
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/file-selector/dist/es5/index.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/file-selector/dist/es5/index.js
 
 //# sourceMappingURL=index.js.map
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/attr-accept/dist/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/attr-accept/dist/index.js
 var dist = __webpack_require__(1067);
 var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-dropzone/dist/es/utils/index.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-dropzone/dist/es/utils/index.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
  // Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
@@ -540,7 +540,7 @@ function composeEventHandlers() {
     });
   };
 }
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-dropzone/dist/es/index.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-dropzone/dist/es/index.js
 /* unused harmony export useDropzone */
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
