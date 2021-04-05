@@ -26,6 +26,7 @@ const ViewportGrid = function (props) {
     viewportData,
     children,
     isStudyLoaded,
+    maximized
   } = props;
 
   /*
@@ -83,8 +84,11 @@ const ViewportGrid = function (props) {
   }
   */
 
-  const rowSize = 100 / numRows;
-  const colSize = 100 / numColumns;
+  const effectiveNumRows = maximized ? 1 : numRows;
+  const effectiveNumColumns = maximized ? 1 : numColumns;
+
+  const rowSize = 100 / effectiveNumRows;
+  const colSize = 100 / effectiveNumColumns;
 
   // http://grid.malven.co/
   if (!viewportData || !viewportData.length) {
@@ -113,8 +117,10 @@ const ViewportGrid = function (props) {
     }
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
-  const getViewportPanes = () =>
-    layout.viewports.map((layout, viewportIndex) => {
+  const getViewportPanes = () => {
+    const maximizedViewport = layout.viewports[activeViewportIndex];
+    const viewports = maximized ? maximizedViewport : layout.viewports;
+    return layout.viewports.map((layout, viewportIndex) => {
       var displaySet = viewportData[viewportIndex];
 
       console.log("In getViewportPanes viewport loop. Display set:");
@@ -167,7 +173,7 @@ const ViewportGrid = function (props) {
           {ViewportComponent}
         </ViewportPane>
       );
-    });
+    })};
 
   const ViewportPanes = React.useMemo(getViewportPanes, [
     layout,
@@ -185,8 +191,8 @@ const ViewportGrid = function (props) {
       data-cy="viewprt-grid"
       style={{
         display: 'grid',
-        gridTemplateRows: `repeat(${numRows}, ${rowSize}%)`,
-        gridTemplateColumns: `repeat(${numColumns}, ${colSize}%)`,
+        gridTemplateRows: `repeat(${effectiveNumRows}, ${rowSize}%)`,
+        gridTemplateColumns: `repeat(${effectiveNumColumns}, ${colSize}%)`,
         height: '100%',
         width: '100%',
       }}

@@ -13,24 +13,24 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/dcmjs/build/dcmjs.es.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/dcmjs/build/dcmjs.es.js
 var dcmjs_es = __webpack_require__(35);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-html/src/TypedArrayProp.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-html/src/TypedArrayProp.js
 // https://github.com/facebook/prop-types/issues/69
 var TypedArrayProp = {
   any: function any(props, propName, componentName) {
@@ -102,10 +102,10 @@ var TypedArrayProp = {
   }
 };
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-html/src/DicomHtmlViewport.css
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-html/src/DicomHtmlViewport.css
 var src_DicomHtmlViewport = __webpack_require__(1069);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-html/src/DicomHtmlViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-html/src/DicomHtmlViewport.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -388,7 +388,7 @@ _defineProperty(DicomHtmlViewport_DicomHtmlViewport, "propTypes", {
 });
 
 /* harmony default export */ var dicom_html_src_DicomHtmlViewport = (DicomHtmlViewport_DicomHtmlViewport);
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-html/src/ConnectedDicomHtmlViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-html/src/ConnectedDicomHtmlViewport.js
 
 
 
@@ -416,7 +416,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 
 var ConnectedDicomHtmlViewport = Object(es["b" /* connect */])(mapStateToProps, mapDispatchToProps)(dicom_html_src_DicomHtmlViewport);
 /* harmony default export */ var src_ConnectedDicomHtmlViewport = (ConnectedDicomHtmlViewport);
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/dicom-html/src/OHIFDicomHtmlViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/dicom-html/src/OHIFDicomHtmlViewport.js
 function OHIFDicomHtmlViewport_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { OHIFDicomHtmlViewport_typeof = function _typeof(obj) { return typeof obj; }; } else { OHIFDicomHtmlViewport_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return OHIFDicomHtmlViewport_typeof(obj); }
 
 function OHIFDicomHtmlViewport_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }

@@ -22,6 +22,7 @@ export const DEFAULT_STATE = {
     viewports: [{}],
   },
   viewportSpecificData: {},
+  maximized: false
 };
 
 /**
@@ -160,20 +161,14 @@ const viewports = (state = DEFAULT_STATE, action) => {
         layout: { viewports: [...action.viewports] },
         viewportSpecificData,
         activeViewportIndex,
+        maximized: false
       };
     }
 
     case TOGGLE_MAXIMIZE: {
-      console.log("TOGGLE_MAXIMIZE prev state:");
+      console.log("TOGGLE_MAXIMIZE");
       console.log(state);
-      var next_state = {
-        ...state,
-        numRows: 1,
-        numColumns: 1,
-        layout: { viewports: [state.layout.viewports[state.activeViewportIndex]] },
-        viewportSpecificData: [state.viewportSpecificData[state.activeViewportIndex]],
-      };
-      console.log("next state:");
+      var next_state = {...state, maximized: !state.maximized};
       console.log(next_state);
       return next_state;
     }

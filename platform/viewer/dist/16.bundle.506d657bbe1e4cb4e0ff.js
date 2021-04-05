@@ -1340,17 +1340,17 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 "use strict";
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-dom/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-dom/index.js
 var react_dom = __webpack_require__(22);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js
 var ResizeObserver_es = __webpack_require__(1071);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/raf-schd/dist/raf-schd.esm.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/raf-schd/dist/raf-schd.esm.js
 var rafSchd = function rafSchd(fn) {
   var lastArgs = [];
   var frameId = null;
@@ -1386,10 +1386,10 @@ var rafSchd = function rafSchd(fn) {
 
 /* harmony default export */ var raf_schd_esm = (rafSchd);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/isObject.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/isObject.js
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -1422,10 +1422,10 @@ function isObject(value) {
 
 /* harmony default export */ var lodash_es_isObject = (isObject);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_freeGlobal.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_freeGlobal.js
 var _freeGlobal = __webpack_require__(1072);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_root.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_root.js
 
 
 /** Detect free variable `self`. */
@@ -1436,7 +1436,7 @@ var root = _freeGlobal["a" /* default */] || freeSelf || Function('return this')
 
 /* harmony default export */ var _root = (root);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/now.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/now.js
 
 
 /**
@@ -1461,7 +1461,7 @@ var now = function() {
 
 /* harmony default export */ var lodash_es_now = (now);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_Symbol.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_Symbol.js
 
 
 /** Built-in value references. */
@@ -1469,7 +1469,7 @@ var _Symbol_Symbol = _root.Symbol;
 
 /* harmony default export */ var _Symbol = (_Symbol_Symbol);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_getRawTag.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_getRawTag.js
 
 
 /** Used for built-in method references. */
@@ -1517,7 +1517,7 @@ function getRawTag(value) {
 
 /* harmony default export */ var _getRawTag = (getRawTag);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_objectToString.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_objectToString.js
 /** Used for built-in method references. */
 var _objectToString_objectProto = Object.prototype;
 
@@ -1541,7 +1541,7 @@ function objectToString(value) {
 
 /* harmony default export */ var _objectToString = (objectToString);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/_baseGetTag.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/_baseGetTag.js
 
 
 
@@ -1571,7 +1571,7 @@ function baseGetTag(value) {
 
 /* harmony default export */ var _baseGetTag = (baseGetTag);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/isObjectLike.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/isObjectLike.js
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -1602,7 +1602,7 @@ function isObjectLike(value) {
 
 /* harmony default export */ var lodash_es_isObjectLike = (isObjectLike);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/isSymbol.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/isSymbol.js
 
 
 
@@ -1633,7 +1633,7 @@ function isSymbol(value) {
 
 /* harmony default export */ var lodash_es_isSymbol = (isSymbol);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/toNumber.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/toNumber.js
 
 
 
@@ -1701,7 +1701,7 @@ function toNumber(value) {
 
 /* harmony default export */ var lodash_es_toNumber = (toNumber);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/debounce.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/debounce.js
 
 
 
@@ -1894,7 +1894,7 @@ function debounce(func, wait, options) {
 
 /* harmony default export */ var lodash_es_debounce = (debounce);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash-es/throttle.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash-es/throttle.js
 
 
 
@@ -1965,7 +1965,7 @@ function throttle(func, wait, options) {
 
 /* harmony default export */ var lodash_es_throttle = (throttle);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-resize-detector/lib/esm/lib/utils.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-resize-detector/lib/esm/lib/utils.js
 
 
 var listHandle = {
@@ -1984,7 +1984,7 @@ var isSSR = function isSSR() {
 var isDOMElement = function isDOMElement(element) {
   return element instanceof Element || element instanceof HTMLDocument;
 };
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-resize-detector/lib/esm/components/ChildWrapper.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-resize-detector/lib/esm/components/ChildWrapper.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2028,7 +2028,7 @@ function (_PureComponent) {
 }(react["PureComponent"]);
 
 /* harmony default export */ var components_ChildWrapper = (ChildWrapper);
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-resize-detector/lib/esm/components/ResizeDetector.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-resize-detector/lib/esm/components/ResizeDetector.js
 function ResizeDetector_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { ResizeDetector_typeof = function _typeof(obj) { return typeof obj; }; } else { ResizeDetector_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return ResizeDetector_typeof(obj); }
 
 function ResizeDetector_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2301,7 +2301,7 @@ ResizeDetector_ResizeDetector.defaultProps = {
   nodeType: 'div'
 };
 /* harmony default export */ var components_ResizeDetector = (ResizeDetector_ResizeDetector);
-// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-resize-detector/lib/esm/index.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-resize-detector/lib/esm/index.js
 
 
 

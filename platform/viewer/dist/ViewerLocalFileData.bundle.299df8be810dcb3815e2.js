@@ -5,7 +5,7 @@
 
 "use strict";
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.min.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.min.js
 var cornerstoneWADOImageLoader_min = __webpack_require__(55);
 var cornerstoneWADOImageLoader_min_default = /*#__PURE__*/__webpack_require__.n(cornerstoneWADOImageLoader_min);
 
@@ -149,10 +149,10 @@ function (_FileLoader) {
   return _temp;
 }(FileLoader), pdfFileLoader_temp)();
 /* harmony default export */ var pdfFileLoader = (PDFFileLoader);
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/dcmjs/build/dcmjs.es.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/dcmjs/build/dcmjs.es.js
 var dcmjs_es = __webpack_require__(35);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
 // CONCATENATED MODULE: ./lib/localFileLoaders/dicomFileLoader.js
