@@ -27,9 +27,15 @@ class Viewer extends Component {
         StudyInstanceUID: PropTypes.string.isRequired,
         StudyDate: PropTypes.string,
         PatientID: PropTypes.string,
+        series: PropTypes.arrayOf(
+          PropTypes.shape({
+            SeriesInstanceUID: PropTypes.string.isRequired
+          })
+        ),
         displaySets: PropTypes.arrayOf(
           PropTypes.shape({
             displaySetInstanceUID: PropTypes.string.isRequired,
+            SeriesInstanceUID: PropTypes.string.isRequired,
             SeriesDescription: PropTypes.string,
             SeriesNumber: PropTypes.number,
             InstanceNumber: PropTypes.number,
@@ -352,12 +358,22 @@ const _mapStudiesToThumbnails = function(studies) {
   return studies.map(study => {
     const { StudyInstanceUID } = study;
 
-    const thumbnails = study.displaySets.map(displaySet => {
+    const thumbnails = study.series.map(series => {
+      var displaySet = undefined
+      for (var i=0; i<study.displaySets.length; i++) {
+        const set = study.displaySets[i];
+        if (set.SeriesInstanceUID === series.SeriesInstanceUID) {
+          displaySet = set;
+          break;
+        }
+      }
+
       const {
         displaySetInstanceUID,
         SeriesDescription,
         InstanceNumber,
         numImageFrames,
+        SeriesInstanceUID,
         SeriesNumber,
       } = displaySet;
 
@@ -384,6 +400,7 @@ const _mapStudiesToThumbnails = function(studies) {
         SeriesDescription,
         InstanceNumber,
         numImageFrames,
+        SeriesInstanceUID,
         SeriesNumber,
       };
     });

@@ -156,7 +156,8 @@ export class StudyMetadata extends Metadata {
     // Split Multi-frame instances and Single-image modalities
     // into their own specific display sets. Place the rest of each
     // series into another display set.
-    const stackableInstances = [];
+    //const stackableInstances = [];
+    var i = 0;
     series.forEachInstance(instance => {
       // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
       if (
@@ -192,10 +193,21 @@ export class StudyMetadata extends Metadata {
         });
         displaySets.push(displaySet);
       } else {
-        stackableInstances.push(instance);
+        displaySet = makeDisplaySet(series, [instance]);
+        displaySet.setAttributes({
+          sopClassUIDs,
+          StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
+          SeriesInstanceUID: series.getSeriesInstanceUID(),
+          InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
+          AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+        });
+        displaySet.frameIndex = i;
+        displaySets.push(displaySet);
+        //stackableInstances.push(instance);
       }
     });
 
+    /*
     if (stackableInstances.length) {
       const displaySet = makeDisplaySet(series, stackableInstances);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
@@ -204,6 +216,7 @@ export class StudyMetadata extends Metadata {
       });
       displaySets.push(displaySet);
     }
+    */
 
     return displaySets;
   }

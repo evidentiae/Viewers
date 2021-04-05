@@ -25,6 +25,7 @@ function StudyBrowser(props) {
                 imageId,
                 InstanceNumber,
                 numImageFrames,
+                SeriesInstanceUID,
                 SeriesDescription,
                 SeriesNumber,
                 stackPercentComplete,
@@ -54,7 +55,8 @@ function StudyBrowser(props) {
                     // Events
                     onClick={onThumbnailClick.bind(
                       undefined,
-                      displaySetInstanceUID
+                      displaySetInstanceUID,
+                      SeriesInstanceUID
                     )}
                     onDoubleClick={onThumbnailDoubleClick}
                   />
@@ -81,6 +83,7 @@ StudyBrowser.propTypes = {
           imageId: PropTypes.string,
           InstanceNumber: PropTypes.number,
           numImageFrames: PropTypes.number,
+          SeriesInstanceUID: PropTypes.string,
           SeriesDescription: PropTypes.string,
           SeriesNumber: PropTypes.number,
           stackPercentComplete: PropTypes.number,

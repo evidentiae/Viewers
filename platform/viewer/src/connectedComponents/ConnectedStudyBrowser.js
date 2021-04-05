@@ -40,12 +40,26 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onThumbnailClick: displaySetInstanceUID => {
+    onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
+      var displaySets;
+      for (var i=0; i<ownProps.studyMetadata; i++) {
+        var study = ownProps.studyMetdata[i];
+        for (var j=0; j<study.displaySets; j++) {
+          var set = study.displaySets[j];
+          if (set.SeriesInstanceUID === seriesInstanceUID) {
+            displaySets.push(set);
+          }
+        }
+      }
+
+      /*
       let displaySet = findDisplaySetByUID(
         ownProps.studyMetadata,
         displaySetInstanceUID
       );
+      */
 
+      /*
       if (displaySet.isDerived) {
         const { Modality } = displaySet;
 
@@ -61,8 +75,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           throw new Error('Source data not present');
         }
       }
+      */
 
-      var numFrames = displaySet.numImageFrames;
+      var numFrames = displaySets.length; //displaySet.numImageFrames;
       var numRows = 2;
       var numColumns = 2;
 
@@ -105,7 +120,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       dispatch(setViewportLayoutAndData(
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
-        [displaySet]
+        displaySets
       ));
     },
   };
