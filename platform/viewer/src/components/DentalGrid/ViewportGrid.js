@@ -29,6 +29,9 @@ const ViewportGrid = function (props) {
     maximized
   } = props;
 
+  console.log("ViewportGrid");
+  console.log(maximized);
+
   /*
   const displaySet = viewportData[0];
 
@@ -214,6 +217,7 @@ ViewportGrid.propTypes = {
   defaultPlugin: PropTypes.string,
   numRows: PropTypes.number.isRequired,
   numColumns: PropTypes.number.isRequired,
+  maximized: PropTypes.bool.isRequired
 };
 ViewportGrid.defaultProps = {
   viewportData: [],
@@ -228,6 +232,7 @@ ViewportGrid.defaultProps = {
     DefaultViewport,
   },
   defaultPlugin: 'defaultViewportPlugin',
+  maximized: false
 };
 
 /**

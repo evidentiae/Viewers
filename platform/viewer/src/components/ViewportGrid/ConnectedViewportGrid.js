@@ -25,6 +25,9 @@ const mapStateToProps = state => {
 
   const { numRows, numColumns, layout, activeViewportIndex, maximized } = state.viewports;
 
+  console.log("ConnectedViewportGrid mapStateToProps");
+  console.log(maximized);
+
   return {
     numRows,
     numColumns,
