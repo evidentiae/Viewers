@@ -123,7 +123,7 @@ const ViewportGrid = function (props) {
   const getViewportPanes = () => {
     const maximizedViewport = layout.viewports[activeViewportIndex];
     const viewports = maximized ? maximizedViewport : layout.viewports;
-    return layout.viewports.map((layout, viewportIndex) => {
+    return viewports.map((layout, viewportIndex) => {
       var displaySet = viewportData[viewportIndex];
 
       console.log("In getViewportPanes viewport loop. Display set:");
