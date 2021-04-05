@@ -42,7 +42,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
-      var displaySets;
+      var displaySets = [];
       for (var i=0; i<ownProps.studyMetadata; i++) {
         var study = ownProps.studyMetdata[i];
         for (var j=0; j<study.displaySets; j++) {
