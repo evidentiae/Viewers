@@ -187,6 +187,7 @@ const ViewportGrid = function (props) {
     defaultPluginName,
     setViewportData,
     activeViewportIndex,
+    maximized
   ]);
 
   return (
