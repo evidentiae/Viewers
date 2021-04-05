@@ -139,6 +139,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT_AND_DATA: {
+      console.log("SET_VIEWPORT_LAYOUT_AND_DATA");
+      console.log(action);
       const { numRows, numColumns } = action;
       const viewportSpecificData = findActiveViewportSpecificData(
         numRows,

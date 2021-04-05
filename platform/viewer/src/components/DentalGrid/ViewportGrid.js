@@ -117,6 +117,9 @@ const ViewportGrid = function (props) {
     layout.viewports.map((layout, viewportIndex) => {
       var displaySet = viewportData[viewportIndex];
 
+      console.log("In getViewportPanes viewport loop. Display set:");
+      console.log(displaySet);
+
       if (!displaySet) {
         return null;
       }
