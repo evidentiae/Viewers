@@ -15,6 +15,7 @@ const mapStateToProps = state => {
     viewports: viewports.viewportSpecificData,
     activeViewportIndex: viewports.activeViewportIndex,
     activeServer: getActiveServer(servers),
+    maximized: viewports.maximized
   };
 };
 
