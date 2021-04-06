@@ -28,7 +28,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Arrows</dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -43,14 +42,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1426"
+     inkscape:window-width="1198"
      inkscape:window-height="449"
      id="namedview19"
      showgrid="false"
      inkscape:zoom="13.111111"
-     inkscape:cx="-4.3474576"
-     inkscape:cy="9"
-     inkscape:window-x="1112"
+     inkscape:cx="13.805085"
+     inkscape:cy="10.069235"
+     inkscape:window-x="1340"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
      inkscape:current-layer="g15" />
@@ -58,15 +57,17 @@
      id="title">Arrows</title>
   <g
      id="g15"
-     transform="rotate(-37.08,9,9)"
+     transform="matrix(0.84074996,-0.84074996,0.84074996,0.84074996,-6.1334993,9)"
      style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
-    <path
-       d="M 1,9 H 17"
-       id="path5"
-       inkscape:connector-curvature="0" />
+    <polyline
+       points="7 3 9 1 11 3"
+       id="polyline7" />
     <polyline
        points="15 11 17 9 15 7"
        id="polyline9" />
+    <polyline
+       points="11 15 9 17 7 15"
+       id="polyline11" />
     <polyline
        points="3 7 1 9 3 11"
        id="polyline13" />
