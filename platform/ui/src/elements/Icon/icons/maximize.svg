@@ -47,8 +47,8 @@
      id="namedview19"
      showgrid="false"
      inkscape:zoom="13.111111"
-     inkscape:cx="13.805085"
-     inkscape:cy="10.069235"
+     inkscape:cx="4.1949153"
+     inkscape:cy="8.5587279"
      inkscape:window-x="1340"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
@@ -61,15 +61,19 @@
      style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
     <polyline
        points="7 3 9 1 11 3"
-       id="polyline7" />
+       id="polyline7"
+       transform="matrix(1.1275,0,0,1.1275,-1.1475,-1.1475)" />
     <polyline
        points="15 11 17 9 15 7"
-       id="polyline9" />
+       id="polyline9"
+       transform="matrix(1.1275,0,0,1.1275,-1.1475,-1.1475)" />
     <polyline
        points="11 15 9 17 7 15"
-       id="polyline11" />
+       id="polyline11"
+       transform="matrix(1.1275,0,0,1.1275,-1.1475,-1.1475)" />
     <polyline
        points="3 7 1 9 3 11"
-       id="polyline13" />
+       id="polyline13"
+       transform="matrix(1.1275,0,0,1.1275,-1.1475,-1.1475)" />
   </g>
 </svg>
