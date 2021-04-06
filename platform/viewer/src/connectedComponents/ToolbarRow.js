@@ -34,6 +34,7 @@ class ToolbarRow extends Component {
     // NOTE: withDialog, withModal HOCs
     dialog: PropTypes.any,
     modal: PropTypes.any,
+    maximized: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
@@ -228,7 +229,7 @@ class ToolbarRow extends Component {
           {buttonComponents}
           <ConnectedLayoutButton />
           <ToolbarButton
-            label={'Maximize'}
+            label={this.props.maximized ? 'Minimize' : 'Maximize'}
             icon='maximize'
             isActive={true}
             onClick={this.onMaximize}

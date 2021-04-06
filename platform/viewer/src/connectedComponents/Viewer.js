@@ -68,6 +68,7 @@ class Viewer extends Component {
     activeViewportIndex: PropTypes.number.isRequired,
     isStudyLoaded: PropTypes.bool,
     dialog: PropTypes.object,
+    maximized
   };
 
   constructor(props) {
@@ -308,6 +309,7 @@ class Viewer extends Component {
             }}
             handleMaximize={() => {this.props.onMaximize();}}
             studies={this.props.studies}
+            maximized={this.props.maximized}
           />
         </ErrorBoundaryDialog>
 
