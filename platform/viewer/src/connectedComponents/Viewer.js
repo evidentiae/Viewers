@@ -64,7 +64,7 @@ class Viewer extends Component {
     activeViewportIndex: PropTypes.number.isRequired,
     isStudyLoaded: PropTypes.bool,
     dialog: PropTypes.object,
-    maximized
+    maximized: PropTypes.bool.isRequired
   };
 
   constructor(props) {
