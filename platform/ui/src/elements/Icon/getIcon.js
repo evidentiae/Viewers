@@ -78,6 +78,7 @@ import star from './icons/star.svg';
 import stepBackward from './icons/step-backward.svg';
 import stepForward from './icons/step-forward.svg';
 import sun from './icons/sun.svg';
+import maximize from './icons/maximize.svg';
 import th from './icons/th.svg';
 import thLarge from './icons/th-large.svg';
 import thList from './icons/th-list.svg';
@@ -98,6 +99,7 @@ const ICONS = {
   user,
   sort,
   th,
+  maximize,
   star,
   'sort-up': sortUp,
   sphere,
