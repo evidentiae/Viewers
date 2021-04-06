@@ -178,6 +178,7 @@ const ViewportGrid = function (props) {
       );
     })};
 
+  /*
   const ViewportPanes = React.useMemo(getViewportPanes, [
     layout,
     viewportData,
@@ -189,6 +190,9 @@ const ViewportGrid = function (props) {
     activeViewportIndex,
     maximized
   ]);
+  */
+
+  const ViewportPanes = getViewportPanes();
 
   return (
     <div
