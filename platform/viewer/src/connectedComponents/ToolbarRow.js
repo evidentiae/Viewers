@@ -229,7 +229,7 @@ class ToolbarRow extends Component {
           <ConnectedLayoutButton />
           <ToolbarButton
             label={'Maximize'}
-            icon='th'
+            icon='maximize'
             isActive={true}
             onClick={this.onMaximize}
           />
