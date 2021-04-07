@@ -588,11 +588,12 @@ const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
 
     const thumbnails = study.series.map(series => {
       var displaySet = undefined
+      var numImageFrames = 1;
       for (var i=0; i<study.displaySets.length; i++) {
         const set = study.displaySets[i];
         if (set.SeriesInstanceUID === series.SeriesInstanceUID) {
-          displaySet = set;
-          break;
+          if (!displaySet) displaySet = set;
+          if (set.Maximized) numImageFrames = set.numImageFrames;
         }
       }
 
@@ -600,7 +601,6 @@ const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
         displaySetInstanceUID,
         SeriesDescription,
         InstanceNumber,
-        numImageFrames,
         SeriesInstanceUID,
         SeriesNumber,
       } = displaySet;
