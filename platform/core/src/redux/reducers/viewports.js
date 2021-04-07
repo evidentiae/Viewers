@@ -113,11 +113,13 @@ const viewports = (state = DEFAULT_STATE, action) => {
      */
     case SET_VIEWPORT_LAYOUT: {
       const { numRows, numColumns } = action;
+      /*
       const viewportSpecificData = findActiveViewportSpecificData(
         numRows,
         numColumns,
         state.viewportSpecificData
       );
+      */
       const activeViewportIndex = getActiveViewportIndex(
         numRows,
         numColumns,
@@ -129,7 +131,6 @@ const viewports = (state = DEFAULT_STATE, action) => {
         numRows: action.numRows,
         numColumns: action.numColumns,
         layout: { viewports: [...action.viewports] },
-        viewportSpecificData,
         activeViewportIndex,
       };
     }
@@ -143,11 +144,14 @@ const viewports = (state = DEFAULT_STATE, action) => {
       console.log("SET_VIEWPORT_LAYOUT_AND_DATA");
       console.log(action);
       const { numRows, numColumns } = action;
+      const viewportSpecificData = cloneDeep(action.viewportSpecificData);
+      /*
       const viewportSpecificData = findActiveViewportSpecificData(
         numRows,
         numColumns,
         action.viewportSpecificData
       );
+      */
       const activeViewportIndex = getActiveViewportIndex(
         numRows,
         numColumns,
