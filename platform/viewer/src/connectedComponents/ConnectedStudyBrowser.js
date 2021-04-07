@@ -53,8 +53,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           var set = study.displaySets[j];
           if (set.SeriesInstanceUID === seriesInstanceUID) {
             displaySets.push(set);
+            if (!set.Maximized) numFrames++;
           }
-          if (!set.Maximized) numFrames++;
         }
       }
       console.log(displaySets);
