@@ -17,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
   // progress bar is updated
   const stackLoadingProgressMap = state.loading.progress;
   const studiesWithLoadingData = cloneDeep(ownProps.studies);
-  const numViewports = state.viewports.layout.viewports.length;
 
   studiesWithLoadingData.forEach(study => {
     study.thumbnails.forEach(data => {
@@ -31,7 +30,6 @@ const mapStateToProps = (state, ownProps) => {
       }
 
       data.stackPercentComplete = stackPercentComplete;
-      data.numImageFrames = numViewports;
     });
   });
 
