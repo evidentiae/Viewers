@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log(seriesInstanceUID);
       console.log(ownProps.studyMetadata);
       var displaySets = [];
+      var numFrames = 0;
       for (var i=0; i<ownProps.studyMetadata.length; i++) {
         var study = ownProps.studyMetadata[i];
         for (var j=0; j<study.displaySets.length; j++) {
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           if (set.SeriesInstanceUID === seriesInstanceUID) {
             displaySets.push(set);
           }
+          if (!set.Maximized) numFrames++;
         }
       }
       console.log(displaySets);
@@ -109,7 +111,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
       */
 
-      var numFrames = displaySets.length; //displaySet.numImageFrames;
       var numRows = 2;
       var numColumns = 2;
 

@@ -120,6 +120,68 @@ const ViewportGrid = function (props) {
     }
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
+  const getMaximizedViewportPane = (layout, viewportIndex) => {
+    var displaySet = viewportData[viewportIndex];
+
+    for (var i=0; i<viewportData.length; i++) {
+      var set = viewportData[i];
+      if (set.Maximized) {
+        displaySet = set;
+      }
+    }
+
+    console.log("In getMaximizedViewportPane viewport loop. Display set:");
+    console.log(displaySets);
+
+    if (!displaySets) {
+      return null;
+    }
+
+    const data = {
+      displaySet,
+      studies,
+    };
+
+    // JAMES TODO:
+
+    // Use whichever plugin is currently in use in the panel
+    // unless nothing is specified. If nothing is specified
+    // and the display set has a plugin specified, use that.
+    //
+    // TODO: Change this logic to:
+    // - Plugins define how capable they are of displaying a SopClass
+    // - When updating a panel, ensure that the currently enabled plugin
+    // in the viewport is capable of rendering this display set. If not
+    // then use the most capable available plugin
+
+    const pluginName =
+      !layout.plugin && displaySet && displaySet.plugin
+        ? displaySet.plugin
+        : layout.plugin;
+
+    const ViewportComponent = _getViewportComponent(
+      data, // Why do we pass this as `ViewportData`, when that's not really what it is?
+      viewportIndex,
+      children,
+      availablePlugins,
+      pluginName,
+      defaultPluginName
+    );
+
+    return (
+      <ViewportPane
+        onDrop={setViewportData}
+        viewportIndex={viewportIndex} // Needed by `setViewportData`
+        className={classNames('viewport-container', {
+          active: activeViewportIndex === viewportIndex,
+        })}
+        key={viewportIndex}
+      >
+        {ViewportComponent}
+      </ViewportPane>
+    );
+  };
+
   const getViewportPane = (layout, viewportIndex) => {
     var displaySet = viewportData[viewportIndex];
 
@@ -177,8 +239,7 @@ const ViewportGrid = function (props) {
 
   const getViewportPanes = () => {
     if (maximized) {
-      const maximizedViewport = layout.viewports[activeViewportIndex];
-      return [getViewportPane(layout, activeViewportIndex)];
+      return [getMaximizedViewportPane(layout, activeViewportIndex)];
     } else {
       return layout.viewports.map((layout, idx) => getViewportPane(layout, idx));
     }

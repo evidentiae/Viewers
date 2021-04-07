@@ -204,20 +204,19 @@ class StudyMetadata extends Metadata {
         });
         displaySet.frameIndex = i;
         displaySets.push(displaySet);
-        //stackableInstances.push(instance);
+        stackableInstances.push(instance);
       }
     });
 
-    /*
     if (stackableInstances.length) {
       const displaySet = makeDisplaySet(series, stackableInstances);
+      displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
       displaySet.setAttributes({
         sopClassUIDs,
       });
       displaySets.push(displaySet);
     }
-    */
 
     return displaySets;
   }
