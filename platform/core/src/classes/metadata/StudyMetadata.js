@@ -157,7 +157,7 @@ class StudyMetadata extends Metadata {
     // Split Multi-frame instances and Single-image modalities
     // into their own specific display sets. Place the rest of each
     // series into another display set.
-    //const stackableInstances = [];
+    const stackableInstances = [];
     var i = 0;
     series.forEachInstance(instance => {
       // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
