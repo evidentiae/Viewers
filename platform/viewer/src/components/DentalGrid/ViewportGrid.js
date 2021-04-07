@@ -121,19 +121,22 @@ const ViewportGrid = function (props) {
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
   const getMaximizedViewportPane = (layout, viewportIndex) => {
+    console.log("In getMaximizedViewportPane");
+    console.log(viewportData);
     var displaySet = viewportData[viewportIndex];
 
     for (var i=0; i<viewportData.length; i++) {
       var set = viewportData[i];
       if (set.Maximized) {
         displaySet = set;
+        break;
       }
     }
 
-    console.log("In getMaximizedViewportPane viewport loop. Display set:");
-    console.log(displaySets);
+    console.log("In getMaximizedViewportPane, after fetching maximized display set:");
+    console.log(displaySet);
 
-    if (!displaySets) {
+    if (!displaySet) {
       return null;
     }
 

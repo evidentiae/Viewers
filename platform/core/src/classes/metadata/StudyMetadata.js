@@ -181,6 +181,7 @@ class StudyMetadata extends Metadata {
           numImageFrames: instance.getTagValue('NumberOfFrames'), // Override the default value of instances.length
           InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
           AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+          Maximized: false
         });
         displaySets.push(displaySet);
       } else if (isSingleImageModality(instance.Modality)) {
@@ -191,6 +192,7 @@ class StudyMetadata extends Metadata {
           SeriesInstanceUID: series.getSeriesInstanceUID(),
           InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
           AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+          Maximized: false
         });
         displaySets.push(displaySet);
       } else {
@@ -201,6 +203,7 @@ class StudyMetadata extends Metadata {
           SeriesInstanceUID: series.getSeriesInstanceUID(),
           InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
           AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+          Maximized: false
         });
         displaySet.frameIndex = i;
         displaySets.push(displaySet);
