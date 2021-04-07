@@ -133,6 +133,8 @@ const ViewportGrid = function (props) {
       }
     }
 
+    set.frameIndex = viewportIndex;
+
     console.log("In getMaximizedViewportPane, after fetching maximized display set:");
     console.log(displaySet);
 
