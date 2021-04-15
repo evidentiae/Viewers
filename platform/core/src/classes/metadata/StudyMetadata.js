@@ -54,6 +54,8 @@ export class StudyMetadata extends Metadata {
         writable: true,
         value: null,
       },
+      // TODO:
+      // add structure display, hanging protocols, etc?
     });
     // Initialize Public Properties
     this._definePublicProperties();
@@ -758,6 +760,8 @@ export class StudyMetadata extends Metadata {
 
     return result.instance;
   }
+
+  // TODO: method to add structured displays, hanging protocols?
 }
 
 /**

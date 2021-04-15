@@ -73,6 +73,14 @@ const ROUTES_DEF = {
         return !!appConfig.enableGoogleCloudAdapter;
       },
     },
+    viewer_no_studies: {
+      path:
+        '/projects/:project/locations/:location/datasets/:dataset/dicomStores/:dicomStore',
+      component: ViewerRouting,
+      condition: appConfig => {
+        return !!appConfig.enableGoogleCloudAdapter;
+      },
+    },
     list: {
       path:
         '/projects/:project/locations/:location/datasets/:dataset/dicomStores/:dicomStore',
