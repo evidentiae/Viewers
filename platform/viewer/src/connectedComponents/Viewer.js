@@ -307,6 +307,9 @@ class Viewer extends Component {
                   studies={this.state.thumbnails}
                   studyMetadata={this.props.studies}
                 />
+                <div className="button-label">
+                  {"New study"}
+                </div>
               )}
             </SidePanel>
           </ErrorBoundaryDialog>
