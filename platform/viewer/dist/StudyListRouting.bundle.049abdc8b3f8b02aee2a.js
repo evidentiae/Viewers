@@ -528,7 +528,7 @@ var isEqualServer = function isEqualServer() {
 
 "use strict";
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.min.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.min.js
 var cornerstoneWADOImageLoader_min = __webpack_require__(55);
 var cornerstoneWADOImageLoader_min_default = /*#__PURE__*/__webpack_require__.n(cornerstoneWADOImageLoader_min);
 
@@ -672,10 +672,10 @@ function (_FileLoader) {
   return _temp;
 }(FileLoader), pdfFileLoader_temp)();
 /* harmony default export */ var pdfFileLoader = (PDFFileLoader);
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/dcmjs/build/dcmjs.es.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/dcmjs/build/dcmjs.es.js
 var dcmjs_es = __webpack_require__(35);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
 // CONCATENATED MODULE: ./lib/localFileLoaders/dicomFileLoader.js
@@ -1047,33 +1047,33 @@ function _filesToStudies() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-router/esm/react-router.js + 1 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-router/esm/react-router.js + 1 modules
 var react_router = __webpack_require__(75);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-i18next/dist/es/index.js + 9 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-i18next/dist/es/index.js + 9 modules
 var dist_es = __webpack_require__(34);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/ui/src/index.js + 123 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/ui/src/index.js + 123 modules
 var ui_src = __webpack_require__(13);
 
 // EXTERNAL MODULE: ./routes/routesUtil.js
 var routesUtil = __webpack_require__(166);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/moment/moment.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/moment/moment.js
 var moment = __webpack_require__(6);
 var moment_default = /*#__PURE__*/__webpack_require__.n(moment);
 
@@ -1139,10 +1139,10 @@ function () {
 }();
 
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/dicomweb-client/build/dicomweb-client.es.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/dicomweb-client/build/dicomweb-client.es.js
 var dicomweb_client_es = __webpack_require__(48);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/errorHandler.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/errorHandler.js
 var errorHandler = __webpack_require__(40);
 
 // CONCATENATED MODULE: ./googleCloud/api/DicomUploadService.js
