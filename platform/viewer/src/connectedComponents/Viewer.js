@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useLogger } from '@ohif/ui';
 
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
-import { withDialog } from '@ohif/ui';
+import { ToolbarButton, withDialog } from '@ohif/ui';
 import moment from 'moment';
 import ToolbarRow from './ToolbarRow.js';
 import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
