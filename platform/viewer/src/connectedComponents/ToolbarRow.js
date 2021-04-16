@@ -227,7 +227,6 @@ class ToolbarRow extends Component {
             />
           </div>
           {buttonComponents}
-          <!-- <ConnectedLayoutButton /> -->
           <ToolbarButton
             label={this.props.maximized ? 'Minimize' : 'Maximize'}
             icon='maximize'
