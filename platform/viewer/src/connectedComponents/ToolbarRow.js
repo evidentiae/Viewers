@@ -236,7 +236,7 @@ class ToolbarRow extends Component {
           <ToolbarButton
             label={this.props.maximized ? 'Minimize' : 'Maximize'}
             icon='maximize'
-            isActive={true}
+            isActive={this.props.studies.length > 0}
             onClick={this.onMaximize}
           />
           <div
