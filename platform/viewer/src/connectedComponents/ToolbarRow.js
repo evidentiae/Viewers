@@ -197,6 +197,12 @@ class ToolbarRow extends Component {
               onValueChanged={onPressLeft}
             />
           </div>
+          <ToolbarButton
+            label="New study"
+            icon='th'
+            isActive={true}
+            onClick={() => alert("test")}
+          />
           {buttonComponents}
           <ToolbarButton
             label={this.props.maximized ? 'Minimize' : 'Maximize'}
