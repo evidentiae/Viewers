@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useLogger } from '@ohif/ui';
 
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
-import { ToolbarButton, withDialog } from '@ohif/ui';
+import { withDialog } from '@ohif/ui';
 import moment from 'moment';
 import ToolbarRow from './ToolbarRow.js';
 import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
@@ -329,14 +329,6 @@ class Viewer extends Component {
                 />
               ) : (
                 <div>
-                  <div className="ToolbarRow">
-                    <ToolbarButton
-                      label="New study"
-                      icon='th'
-                      isActive={true}
-                      onClick={() => alert("test")}
-                    />
-                  </div>
                   <ConnectedStudyBrowser
                     studies={this.state.thumbnails}
                     studyMetadata={this.props.studies}
