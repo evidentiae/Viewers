@@ -303,12 +303,14 @@ class Viewer extends Component {
                   activeIndex={this.props.activeViewportIndex}
                 />
               ) : (
-                <ConnectedStudyBrowser
-                  studies={this.state.thumbnails}
-                  studyMetadata={this.props.studies}
-                />
-                <div className="button-label">
-                  {"New study"}
+                <div>
+                  <ConnectedStudyBrowser
+                    studies={this.state.thumbnails}
+                    studyMetadata={this.props.studies}
+                  />
+                  <button className="btn" onClick={() => alert("test")}>
+                    New study
+                  </button>
                 </div>
               )}
             </SidePanel>
