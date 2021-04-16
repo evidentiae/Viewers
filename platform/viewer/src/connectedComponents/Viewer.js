@@ -329,18 +329,18 @@ class Viewer extends Component {
                 />
               ) : (
                 <div>
-                  <div className="ToolbarRow">
-                    <ToolbarButton
-                      label="Add study"
-                      icon='maximize'
-                      isActive={true}
-                      onClick={alert("test")}
-                    />
-                  </div>
                   <ConnectedStudyBrowser
                     studies={this.state.thumbnails}
                     studyMetadata={this.props.studies}
                   />
+                  <div className="ToolbarRow">
+                    <ToolbarButton
+                      label="New study"
+                      icon='th'
+                      isActive={true}
+                      onClick={alert("test")}
+                    />
+                  </div>
                 </div>
               )}
             </SidePanel>
