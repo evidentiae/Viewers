@@ -23,23 +23,23 @@ function usePrevious(value) {
 
 "use strict";
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/classes/metadata/index.js + 3 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/classes/metadata/index.js + 3 modules
 var metadata = __webpack_require__(85);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/studies/index.js + 8 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/studies/index.js + 8 modules
 var src_studies = __webpack_require__(163);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/utils/index.js + 15 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/utils/index.js + 15 modules
 var utils = __webpack_require__(133);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/log.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/log.js
 var log = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./customHooks/usePrevious.js
@@ -48,14 +48,14 @@ var usePrevious = __webpack_require__(1012);
 // EXTERNAL MODULE: ./connectedComponents/ConnectedViewer.js + 16 modules
 var ConnectedViewer = __webpack_require__(1018);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./App.js + 33 modules
 var App = __webpack_require__(252);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/ui/src/index.js + 123 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/ui/src/index.js + 123 modules
 var src = __webpack_require__(13);
 
 // EXTERNAL MODULE: ./context/AppContext.js
@@ -611,7 +611,7 @@ ViewerRetrieveStudyData.propTypes = {
   setStudyData: prop_types_default.a.func.isRequired
 };
 /* harmony default export */ var connectedComponents_ViewerRetrieveStudyData = (ViewerRetrieveStudyData);
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var core_src = __webpack_require__(16);
 
 // CONCATENATED MODULE: ./connectedComponents/ConnectedViewerRetrieveStudyData.js
@@ -852,21 +852,21 @@ var objectKeys = Object.keys || function (obj) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/querystring-es3/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/querystring-es3/index.js
 var querystring_es3 = __webpack_require__(1027);
 var querystring_es3_default = /*#__PURE__*/__webpack_require__.n(querystring_es3);
 

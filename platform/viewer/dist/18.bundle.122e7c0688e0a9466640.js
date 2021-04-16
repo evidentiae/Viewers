@@ -6,28 +6,28 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-cornerstone-viewport/dist/index.umd.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-cornerstone-viewport/dist/index.umd.js
 var index_umd = __webpack_require__(1041);
 var index_umd_default = /*#__PURE__*/__webpack_require__.n(index_umd);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/platform/core/src/index.js + 28 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/platform/core/src/index.js + 28 modules
 var src = __webpack_require__(16);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/react-redux/es/index.js + 21 modules
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/react-redux/es/index.js + 21 modules
 var es = __webpack_require__(58);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/lodash.throttle/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/lodash.throttle/index.js
 var lodash_throttle = __webpack_require__(191);
 var lodash_throttle_default = /*#__PURE__*/__webpack_require__.n(lodash_throttle);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/extensions/cornerstone/src/state.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/extensions/cornerstone/src/state.js
 var state = __webpack_require__(57);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/cornerstone/src/ConnectedCornerstoneViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/cornerstone/src/ConnectedCornerstoneViewport.js
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -122,15 +122,15 @@ var ConnectedCornerstoneViewport_mapDispatchToProps = function mapDispatchToProp
 
 var ConnectedCornerstoneViewport = Object(es["b" /* connect */])(mapStateToProps, ConnectedCornerstoneViewport_mapDispatchToProps)(index_umd_default.a);
 /* harmony default export */ var src_ConnectedCornerstoneViewport = (ConnectedCornerstoneViewport);
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/prop-types/index.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
-// EXTERNAL MODULE: /home/david/dev/evs/viewers-clean/node_modules/cornerstone-core/dist/cornerstone.js
+// EXTERNAL MODULE: /home/david/dev/evs/viewer/ohif/node_modules/cornerstone-core/dist/cornerstone.js
 var cornerstone = __webpack_require__(9);
 var cornerstone_default = /*#__PURE__*/__webpack_require__.n(cornerstone);
 
-// CONCATENATED MODULE: /home/david/dev/evs/viewers-clean/extensions/cornerstone/src/OHIFCornerstoneViewport.js
+// CONCATENATED MODULE: /home/david/dev/evs/viewer/ohif/extensions/cornerstone/src/OHIFCornerstoneViewport.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
