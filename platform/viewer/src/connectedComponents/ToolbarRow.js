@@ -201,7 +201,7 @@ class ToolbarRow extends Component {
             label="New study"
             icon='th'
             isActive={true}
-            onClick={() => alert(this.props.studies.length.toString)}
+            onClick={() => alert("numstudies: " + this.props.studies.length.toString())}
           />
           {buttonComponents}
           <ToolbarButton
