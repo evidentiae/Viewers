@@ -28,6 +28,7 @@ class ToolbarRow extends Component {
     selectedRightSidePanel: PropTypes.string.isRequired,
     handleSidePanelChange: PropTypes.func.isRequired,
     handleMaximize: PropTypes.func.isRequired,
+    handleNewStudy: PropTypes.func.isRequired,
     activeContexts: PropTypes.arrayOf(PropTypes.string).isRequired,
     studies: PropTypes.array,
     t: PropTypes.func.isRequired,
@@ -199,10 +200,6 @@ class ToolbarRow extends Component {
     }
   };
 
-  onMaximize = () => {
-    this.props.handleMaximize();
-  };
-
   render() {
     const buttonComponents = _getButtonComponents.call(
       this,
@@ -230,7 +227,7 @@ class ToolbarRow extends Component {
             label="New study"
             icon='th'
             isActive={true}
-            onClick={() => alert("numstudies: " + this.props.studies.length.toString())}
+            onClick={this.props.handleNewStudy}
           />
           {buttonComponents}
           {this.props.studies.length > 0 &&
@@ -238,7 +235,7 @@ class ToolbarRow extends Component {
               label={this.props.maximized ? 'Minimize' : 'Maximize'}
               icon='maximize'
               isActive={this.props.studies.length > 0}
-              onClick={this.onMaximize}
+              onClick={this.props.handleMaximize}
             />
           }
           <div

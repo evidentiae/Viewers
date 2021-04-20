@@ -29,7 +29,10 @@ const mapDispatchToProps = dispatch => {
     },
     onMaximize: () => {
       dispatch(maximize());
-    }
+    },
+    onNewStudy: () => {
+      alert('onNewStudy dispatch');
+    },
   };
 };
 
