@@ -204,12 +204,14 @@ class ToolbarRow extends Component {
             onClick={() => alert("numstudies: " + this.props.studies.length.toString())}
           />
           {buttonComponents}
-          <ToolbarButton
-            label={this.props.maximized ? 'Minimize' : 'Maximize'}
-            icon='maximize'
-            isActive={this.props.studies.length > 0}
-            onClick={this.onMaximize}
-          />
+          {this.props.studies.length > 0 &&
+            <ToolbarButton
+              label={this.props.maximized ? 'Minimize' : 'Maximize'}
+              icon='maximize'
+              isActive={this.props.studies.length > 0}
+              onClick={this.onMaximize}
+            />
+          }
           <div
             className="pull-right m-t-1 rm-x-1"
             style={{ marginLeft: 'auto' }}
