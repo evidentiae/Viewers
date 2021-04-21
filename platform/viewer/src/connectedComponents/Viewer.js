@@ -16,7 +16,8 @@ import { extensionManager } from './../App.js';
 import { ReconstructionIssues } from './../../../core/src/enums.js';
 import dcmjs from 'dcmjs';
 import guid from '../utils/guid.js';
-import { utils } from '@ohif/core';
+import { user, utils } from '@ohif/core';
+import { api } from 'dicomweb-client';
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
@@ -258,14 +259,9 @@ class Viewer extends Component {
   }
 
   getClient(url) {
-    const headers = this.retrieveAuthHeaderFunc();
-    const errorInterceptor = errorHandler.getHTTPErrorHandler();
-
-    // TODO: a bit weird we are creating a new dicomweb client instance for every upload
-    return new api.DICOMwebClient({
-      url,
-      headers,
-    });
+    const token = user.getAccessToken();
+    const headers = {Authorization: 'Bearer ' + token};
+    return new api.DICOMwebClient({url, headers});
   }
 
   createNewStudy(layout) {
