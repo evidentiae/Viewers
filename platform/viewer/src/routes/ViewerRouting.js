@@ -45,6 +45,8 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   */
 
   if (token) {
+    console.log("setting token");
+    console.log(token);
     user.getAccessToken = () => token;
     window.access_token = token;
   }
