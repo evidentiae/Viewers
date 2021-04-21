@@ -16,8 +16,7 @@ export default class LayoutPickerDialog extends Component {
     super(props);
 
     this.state = {
-      layouts: [],
-      selected: 
+      layouts: []
     };
   }
 
