@@ -17,7 +17,8 @@ export default class LayoutPickerDialog extends Component {
     super(props);
 
     this.state = {
-      layouts: []
+      layouts: ['Panoramic', 'Four Bitewings'],
+      pick: -1
     };
   }
 
@@ -40,20 +41,13 @@ export default class LayoutPickerDialog extends Component {
         rootClass="LayoutPickerDialog"
       >
         <TableList headless={true}>
-          <TableListItem
-            itemClass="LayoutPickerItem"
-            itemMetaClass="LayoutPickerItemMeta"
-            onItemClick={() => alert('click')}
-          >
-            Panoramic
-          </TableListItem>
-          <TableListItem
-            itemClass="LayoutPickerItem"
-            itemMetaClass="LayoutPickerItemMeta"
-            onItemClick={() => alert('click')}
-          >
-            Four Bitewings
-          </TableListItem>
+          {this.state.layouts.map((name, index) =>
+            <TableListItem
+              itemClass={index == this.state.pick ? "SelectedLayoutPickerItem" : "LayoutPickerItem"}
+              itemMetaClass="LayoutPickerItemMeta"
+              onItemClick={() => this.setState({pick: index})}
+            >{name}</TableListItem>
+          )}
         </TableList>
       </SimpleDialog>
     );
@@ -65,10 +59,7 @@ export default class LayoutPickerDialog extends Component {
 
   onConfirm = e => {
     e.preventDefault();
-    this.props.onConfirm({});
-  };
-
-  handleChange = event => {
-    this.setState({});
+    var layout = this.state.pick < 0 ? null : this.state.layouts[this.state.pick];
+    this.props.onConfirm(layout);
   };
 }
