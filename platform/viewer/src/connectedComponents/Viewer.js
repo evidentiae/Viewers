@@ -12,7 +12,7 @@ import SidePanel from './../components/SidePanel.js';
 import ErrorBoundaryDialog from './../components/ErrorBoundaryDialog';
 import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
-import guid from '../utils/guid.js';
+import { utils } from '@ohif/core';
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
@@ -21,6 +21,8 @@ import AppContext from '../context/AppContext';
 
 import './Viewer.css';
 import { finished } from 'stream';
+
+const { guid } = utils;
 
 class Viewer extends Component {
   static propTypes = {
@@ -282,9 +284,6 @@ class Viewer extends Component {
         }
       });
     });
-
-    console.log("render");
-    console.log(this.state.isSelectingLayout);
 
     return (
       <>
