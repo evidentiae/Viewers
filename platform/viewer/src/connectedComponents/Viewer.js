@@ -12,6 +12,7 @@ import SidePanel from './../components/SidePanel.js';
 import ErrorBoundaryDialog from './../components/ErrorBoundaryDialog';
 import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
+import guid from '../utils/guid.js';
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
@@ -229,6 +230,45 @@ class Viewer extends Component {
     return this.props.viewports[this.props.activeViewportIndex];
   }
 
+  getClient(url) {
+    const headers = this.retrieveAuthHeaderFunc();
+    const errorInterceptor = errorHandler.getHTTPErrorHandler();
+
+    // TODO: a bit weird we are creating a new dicomweb client instance for every upload
+    return new api.DICOMwebClient({
+      url,
+      headers,
+    });
+  }
+
+  createNewStudy(layout) {
+    console.log("createNewStudy");
+
+    // dialog should return some representation of layout, like frames, positions, etc
+    // then we create new study, series, structured display from that
+    // http://dicom.nema.org/medical/dicom/current/output/html/part18.html#chapter_F
+
+    var dataset = [
+      {
+        "0020000D": {"vr": "UI", "Value": [guid()]} // StudyInstanceUID
+      }
+    ];
+
+    const url = this.props.activeServer.wadoRoot;
+    console.log(url);
+    const client = this.getClient(url);
+    const content = new Uint8Array(JSON.stringify(dataset)).buffer
+    console.log(content);
+    client.storeInstances({ datasets: [content] }).then(function (result) {
+      console.log(result);
+      alert('stored');
+    });
+
+    // then make dicomWeb call to create these in google healthcare
+    // after call, update redux state with new study, series and structured display
+    // that state should automatically be reflected by study browser and viewer
+  }
+
   render() {
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
@@ -251,8 +291,13 @@ class Viewer extends Component {
         {/* LAYOUT DIALOG */}
         {this.state.isSelectingLayout &&
           <LayoutPickerDialog
-            onCancel={() => { alert('cancel'); this.setState({isSelectingLayout: false}); }}
-            onConfirm={() => { alert('cancel'); this.setState({isSelectingLayout: false}); }}
+            onCancel={() => {
+              this.setState({isSelectingLayout: false});
+            }}
+            onConfirm={result => {
+              this.setState({isSelectingLayout: false});
+              this.createNewStudy(result);
+            }}
           />
         }
         {/* TOOLBAR */}
