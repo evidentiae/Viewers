@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import SimpleDialog from '../SimpleDialog/SimpleDialog.js';
+import './LayoutPickerDialog.css';
 
 export default class LayoutPickerDialog extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ export default class LayoutPickerDialog extends Component {
         headerTitle="Pick Layout"
         onClose={this.onClose}
         onConfirm={this.onConfirm}
-        //rootClass="editDescriptionDialog"
+        rootClass="LayoutPickerDialog"
       >
         <h2>Test</h2>
         /*
