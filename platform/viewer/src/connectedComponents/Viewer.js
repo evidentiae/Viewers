@@ -58,7 +58,6 @@ class Viewer extends Component {
     onTimepointsUpdated: PropTypes.func,
     onMeasurementsUpdated: PropTypes.func,
     onMaximize: PropTypes.func,
-    onNewStudy: PropTypes.func,
     // window.store.getState().viewports.viewportSpecificData
     viewports: PropTypes.object.isRequired,
     // window.store.getState().viewports.activeViewportIndex
@@ -98,6 +97,7 @@ class Viewer extends Component {
   state = {
     isLeftSidePanelOpen: true,
     isRightSidePanelOpen: false,
+    isSelectingLayout: false,
     selectedRightSidePanel: '',
     selectedLeftSidePanel: 'studies', // TODO: Don't hardcode this
     thumbnails: [],
@@ -284,7 +284,7 @@ class Viewer extends Component {
               this.setState(updatedState);
             }}
             handleMaximize={this.props.onMaximize}
-            handleNewStudy={this.props.onNewStudy}
+            handleNewStudy={() => { this.state.isSelectingLayout = true; }}
             studies={this.props.studies}
             maximized={this.props.maximized}
           />
@@ -317,12 +317,15 @@ class Viewer extends Component {
 
           {/* MAIN */}
           <div className={classNames('main-content')}>
-            <ErrorBoundaryDialog context="ViewerMain">
-              <ConnectedViewerMain
-                studies={this.props.studies}
-                isStudyLoaded={this.props.isStudyLoaded}
-              />
-            </ErrorBoundaryDialog>
+            {this.state.isSelectingLayout ?
+              <p>Please select layout...</p> :
+              <ErrorBoundaryDialog context="ViewerMain">
+                <ConnectedViewerMain
+                  studies={this.props.studies}
+                  isStudyLoaded={this.props.isStudyLoaded}
+                />
+              </ErrorBoundaryDialog>
+            }
           </div>
 
           {/* RIGHT */}
