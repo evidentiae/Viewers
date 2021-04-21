@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TableList, TableListItem } from '@ohif/ui';
 import SimpleDialog from '../SimpleDialog/SimpleDialog.js';
 import './LayoutPickerDialog.css';
 
@@ -38,17 +39,10 @@ export default class LayoutPickerDialog extends Component {
         onConfirm={this.onConfirm}
         rootClass="LayoutPickerDialog"
       >
-        <h2>Test</h2>
-        /*
-        <input
-          value={this.state.description}
-          className="simpleDialogInput"
-          id="description"
-          autoComplete="off"
-          autoFocus
-          onChange={this.handleChange}
-        />
-        */
+        <TableList>
+          <TableListItem>Panoramic</TableListItem>
+          <TableListItem>Four Bitewings</TableListItem>
+        </TableList>
       </SimpleDialog>
     );
   }
