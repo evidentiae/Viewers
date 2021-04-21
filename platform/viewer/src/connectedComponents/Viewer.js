@@ -10,6 +10,7 @@ import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
 import ConnectedViewerMain from './ConnectedViewerMain.js';
 import SidePanel from './../components/SidePanel.js';
 import ErrorBoundaryDialog from './../components/ErrorBoundaryDialog';
+import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
 
 // Contexts
@@ -247,6 +248,13 @@ class Viewer extends Component {
 
     return (
       <>
+        {/* LAYOUT DIALOG */}
+        {this.state.isSelectingLayout &&
+          <LayoutPickerDialog
+            onCancel={() => { alert('cancel'); this.setState({isSelectingLayout: false}); }}
+            onConfirm={() => { alert('cancel'); this.setState({isSelectingLayout: false}); }}
+          />
+        }
         {/* TOOLBAR */}
         <ErrorBoundaryDialog context="ToolbarRow">
           <ToolbarRow
