@@ -16,6 +16,7 @@ import { extensionManager } from './../App.js';
 import { ReconstructionIssues } from './../../../core/src/enums.js';
 import dcmjs from 'dcmjs';
 import guid from '../utils/guid.js';
+import { utils } from '@ohif/core';
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
@@ -25,6 +26,8 @@ import AppContext from '../context/AppContext';
 import './Viewer.css';
 import { finished } from 'stream';
 import { cornerstoneWADOImageLoader } from 'cornerstone-wado-image-loader';
+
+const { guid } = utils;
 
 class Viewer extends Component {
   static propTypes = {
@@ -306,9 +309,6 @@ class Viewer extends Component {
         }
       });
     });
-
-    console.log("render");
-    console.log(this.state.isSelectingLayout);
 
     return (
       <>
