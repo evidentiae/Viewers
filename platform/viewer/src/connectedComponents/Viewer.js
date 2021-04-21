@@ -287,7 +287,7 @@ class Viewer extends Component {
               this.setState(updatedState);
             }}
             handleMaximize={this.props.onMaximize}
-            handleNewStudy={() => { alert('foo'); this.state.isSelectingLayout = true; }}
+            handleNewStudy={() => { this.setState({isSelectingLayout: true}); }}
             studies={this.props.studies}
             maximized={this.props.maximized}
           />
