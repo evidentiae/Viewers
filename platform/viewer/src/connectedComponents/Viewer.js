@@ -242,6 +242,9 @@ class Viewer extends Component {
       });
     });
 
+    console.log("render");
+    console.log(this.state.isSelectingLayout);
+
     return (
       <>
         {/* TOOLBAR */}
@@ -284,7 +287,7 @@ class Viewer extends Component {
               this.setState(updatedState);
             }}
             handleMaximize={this.props.onMaximize}
-            handleNewStudy={() => { this.state.isSelectingLayout = true; }}
+            handleNewStudy={() => { alert('foo'); this.state.isSelectingLayout = true; }}
             studies={this.props.studies}
             maximized={this.props.maximized}
           />
