@@ -39,9 +39,21 @@ export default class LayoutPickerDialog extends Component {
         onConfirm={this.onConfirm}
         rootClass="LayoutPickerDialog"
       >
-        <TableList>
-          <TableListItem>Panoramic</TableListItem>
-          <TableListItem>Four Bitewings</TableListItem>
+        <TableList headless={true}>
+          <TableListItem
+            itemClass="LayoutPickerItem"
+            itemMetaClass="LayoutPickerItemMeta"
+            onItemClick={() => alert('click')}
+          >
+            Panoramic
+          </TableListItem>
+          <TableListItem
+            itemClass="LayoutPickerItem"
+            itemMetaClass="LayoutPickerItemMeta"
+            onItemClick={() => alert('click')}
+          >
+            Four Bitewings
+          </TableListItem>
         </TableList>
       </SimpleDialog>
     );
