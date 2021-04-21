@@ -234,7 +234,7 @@ class Viewer extends Component {
   }
 
   getClient(url) {
-    const token = user.getAccessToken();
+    const token = window.access_token;
     console.log("token:");
     console.log(token);
     const headers = {Authorization: 'Bearer ' + token};
