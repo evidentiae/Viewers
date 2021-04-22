@@ -14,6 +14,7 @@ import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
 import { user, utils } from '@ohif/core';
 import { api } from 'dicomweb-client';
+import dcmjs from 'dcmjs';
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
@@ -237,7 +238,7 @@ class Viewer extends Component {
     const token = window.access_token;
     console.log("token:");
     console.log(token);
-    const headers = {Authorization: 'Bearer ' + token, Content-Type: 'application/dicom+json'};
+    const headers = {Authorization: 'Bearer ' + token};
     return new api.DICOMwebClient({url, headers});
   }
 
@@ -248,22 +249,22 @@ class Viewer extends Component {
     // then we create new study, series, structured display from that
     // http://dicom.nema.org/medical/dicom/current/output/html/part18.html#chapter_F
 
-    var dataset = [
-      {
-        "0020000D": {"vr": "UI", "Value": [guid()]}, // Study Instance UID
-        "0020000E": {"vr": "UI", "Value": [guid()]}, // Series Instance UID
-        "00200013": {"vr": "IS", "Value": ["0"]}, // Instance Number
-        "00080018": {"vr": "UI", "Value": [guid()]}, // SOP Instance UID
-        "00080016": {"vr": "UI", "Value": ["1.2.840.10008.5.1.4.1.1.131"]}, // Structured Display SOP Class UID
-      }
-    ];
+    var dict = new dcmjs.data.DicomDic();
+    dict.upsertTag("0020000D", "UI", [guid()]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [guid()]); // Series Instance UID
+    dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
+    dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.131"]); // Structured Display SOP Class UID
+    var buffer = dict.write();
+    console.log("buffer:");
+    console.log(buffer);
 
     const url = this.props.activeServer.wadoRoot;
     console.log(url);
+
     const client = this.getClient(url);
-    var encoder = new TextEncoder();
-    const buffer = encoder.encode(JSON.stringify(dataset));
-    console.log(buffer);
+    //var encoder = new TextEncoder();
+    //const buffer = encoder.encode(JSON.stringify(dataset));
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       console.log(result);
       alert('stored');
