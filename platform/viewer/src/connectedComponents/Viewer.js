@@ -249,7 +249,7 @@ class Viewer extends Component {
     // then we create new study, series, structured display from that
     // http://dicom.nema.org/medical/dicom/current/output/html/part18.html#chapter_F
 
-    var dict = new dcmjs.data.DicomDic();
+    var dict = new dcmjs.data.DicomDict();
     dict.upsertTag("0020000D", "UI", [guid()]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [guid()]); // Series Instance UID
     dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
