@@ -237,7 +237,7 @@ class Viewer extends Component {
     const token = window.access_token;
     console.log("token:");
     console.log(token);
-    const headers = {Authorization: 'Bearer ' + token};
+    const headers = {Authorization: 'Bearer ' + token, Content-Type: 'application/dicom+json'};
     return new api.DICOMwebClient({url, headers});
   }
 
