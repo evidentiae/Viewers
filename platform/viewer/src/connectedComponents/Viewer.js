@@ -261,9 +261,10 @@ class Viewer extends Component {
     const url = this.props.activeServer.wadoRoot;
     console.log(url);
     const client = this.getClient(url);
-    const content = new Uint8Array(JSON.stringify(dataset)).buffer
-    console.log(content);
-    client.storeInstances({ datasets: [content] }).then(function (result) {
+    var encoder = new TextEncoder();
+    const buffer = encoder.encode(JSON.stringify(dataset));
+    console.log(buffer);
+    client.storeInstances({ datasets: [buffer] }).then(function (result) {
       console.log(result);
       alert('stored');
     });
