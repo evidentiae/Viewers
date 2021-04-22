@@ -251,6 +251,8 @@ class Viewer extends Component {
     var dataset = [
       {
         "0020000D": {"vr": "UI", "Value": [guid()]}, // Study Instance UID
+        "0020000E": {"vr": "UI", "Value": [guid()]}, // Series Instance UID
+        "00200013": {"vr": "IS", "Value": ["0"]}, // Instance Number
         "00080018": {"vr": "UI", "Value": [guid()]}, // SOP Instance UID
         "00080016": {"vr": "UI", "Value": ["1.2.840.10008.5.1.4.1.1.131"]}, // Structured Display SOP Class UID
       }
