@@ -250,6 +250,7 @@ class Viewer extends Component {
     // http://dicom.nema.org/medical/dicom/current/output/html/part18.html#chapter_F
 
     var dict = new dcmjs.data.DicomDict();
+    dict.upsertTag("00020010", "UI", ["1.2.840.10008.1.2"]); // Transfer Syntax UID
     dict.upsertTag("0020000D", "UI", [guid()]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [guid()]); // Series Instance UID
     dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
