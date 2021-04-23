@@ -479,6 +479,10 @@ const _mapStudiesToThumbnails = function(studies) {
         }
       }
 
+      if (!displaySet) {
+        return null;
+      }
+
       const {
         displaySetInstanceUID,
         SeriesDescription,
@@ -513,7 +517,7 @@ const _mapStudiesToThumbnails = function(studies) {
         SeriesInstanceUID,
         SeriesNumber,
       };
-    });
+    }).filter(x => x);
 
     return {
       StudyInstanceUID,
