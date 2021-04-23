@@ -7,9 +7,13 @@ const isActive = a => a.active === true;
 
 const mapStateToProps = (state, ownProps) => {
   const activeServer = state.servers.servers.find(isActive);
+  console.log("mapStateToProps for ConnectedViewerRetrieveStudyData");
+  console.log(state.studies);
+  const studyInstanceUIDs = Object.keys(state.studies);
 
   return {
     server: ownProps.server || activeServer,
+    studyInstanceUIDs: studyInstanceUIDs
   };
 };
 const mapDispatchToProps = dispatch => {
