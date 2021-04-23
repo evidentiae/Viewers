@@ -706,6 +706,10 @@ const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
         }
       }
 
+      if (!displaySet) {
+        return null;
+      }
+
       const {
         displaySetInstanceUID,
         SeriesDescription,
@@ -744,7 +748,7 @@ const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
         SeriesNumber,
         hasWarnings,
       };
-    });
+    }).filter(x => x);
 
     return {
       StudyInstanceUID,
