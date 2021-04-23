@@ -396,7 +396,8 @@ function ViewerRetrieveStudyData({
   useEffect(() => {
     const hasStudyInstanceUIDsChanged = !(
       prevStudyInstanceUIDs &&
-      prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e))
+      prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
+      studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
     );
 
     console.log("hasStudyInstanceUIDsChanged");
