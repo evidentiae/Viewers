@@ -464,6 +464,8 @@ export default withDialog(Viewer);
  */
 const _mapStudiesToThumbnails = function(studies) {
   return studies.map(study => {
+    console.log("_mapStudiesToThumbnails");
+    console.log(study);
     const { StudyInstanceUID } = study;
 
     const thumbnails = study.series.map(series => {
