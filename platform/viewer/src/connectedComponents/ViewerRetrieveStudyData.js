@@ -223,6 +223,9 @@ function ViewerRetrieveStudyData({
     maxConcurrentMetadataRequests,
   } = appConfig;
 
+  console.log("ViewerRetrieveStudyData()");
+  console.log(studyInstanceUIDs);
+
   let cancelableSeriesPromises;
   let cancelableStudiesPromises;
   /**
@@ -398,6 +401,9 @@ function ViewerRetrieveStudyData({
       prevStudyInstanceUIDs &&
       prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e))
     );
+
+    console.log("hasStudyInstanceUIDsChanged");
+    console.log(hasStudyInstanceUIDsChanged);
 
     if (hasStudyInstanceUIDsChanged) {
       studyMetadataManager.purge();
