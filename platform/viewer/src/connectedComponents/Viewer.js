@@ -285,7 +285,7 @@ class Viewer extends Component {
     dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.131"]); // Structured Display SOP Class UID
 
     var imageBox = {
-      "00720302": 0, // Image Box Number
+      "00720302": {vr: "US", Value: [0]}, // Image Box Number
     };
     dict.upsertTag("00720422", "SQ", [imageBox]); // Structured Display Image Box Sequence
 
