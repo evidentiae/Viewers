@@ -70,6 +70,7 @@ class Viewer extends Component {
     onTimepointsUpdated: PropTypes.func,
     onMeasurementsUpdated: PropTypes.func,
     onMaximize: PropTypes.func,
+    onNewStudy: PropTypes.func,
     // window.store.getState().viewports.viewportSpecificData
     viewports: PropTypes.object.isRequired,
     // window.store.getState().viewports.activeViewportIndex
@@ -330,7 +331,7 @@ class Viewer extends Component {
     //var encoder = new TextEncoder();
     //const buffer = encoder.encode(JSON.stringify(dataset));
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      onNewStudy(layout);
+      this.props.onNewStudy(layout);
     });
 
     // then make dicomWeb call to create these in google healthcare
