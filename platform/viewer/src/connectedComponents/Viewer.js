@@ -691,6 +691,8 @@ const _checkForSeriesInconsistencesWarnings = async function (displaySet, studie
  */
 const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
   return studies.map(study => {
+    console.log("_mapStudiesToThumbnails");
+    console.log(study);
     const { StudyInstanceUID } = study;
 
     const thumbnails = study.series.map(series => {
