@@ -301,18 +301,23 @@ class Viewer extends Component {
       }
     };
 
-    var dict = new DicomDict(metadata);
-    //dict.upsertTag("00020010", "UI", ["1.2.840.10008.1.2"]); // Transfer Syntax UID
-    dict.upsertTag("0020000D", "UI", [guid()]); // Study Instance UID
-    dict.upsertTag("0020000E", "UI", [guid()]); // Series Instance UID
-    dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
-    dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
-    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.131"]); // Structured Display SOP Class UID
-
-    var imageBox = {
-      "00720302": {vr: "US", Value: [0]}, // Image Box Number
+    var layout = {
+      StudyInstanceUID: guid(),
+      SeriesInstanceUID: guid(),
+      SOPInstanceUID: guid(),
+      SOPClassUID: "1.2.840.10008.5.1.4.1.1.131", // Structured Display
+      ImageBoxes: [{
+        "00720302": {vr: "US", Value: [0]}, // Image Box Number
+      }];
     };
-    dict.upsertTag("00720422", "SQ", [imageBox]); // Structured Display Image Box Sequence
+
+    var dict = new DicomDict(metadata);
+    dict.upsertTag("0020000D", "UI", [layout.StudyInstanceUID]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [layout.SeriesInstanceUID]); // Series Instance UID
+    dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
+    dict.upsertTag("00080018", "UI", [layout.SOPInstanceUID]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", [layout.SOPClassUID]); 
+    dict.upsertTag("00720422", "SQ", [layout.ImageBoxes[0]["00720422"]]); // Structured Display Image Box Sequence
 
     var buffer = dict.write();
     console.log("buffer:");
@@ -325,8 +330,7 @@ class Viewer extends Component {
     //var encoder = new TextEncoder();
     //const buffer = encoder.encode(JSON.stringify(dataset));
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      console.log(result);
-      alert('stored');
+      onNewStudy(layout);
     });
 
     // then make dicomWeb call to create these in google healthcare
