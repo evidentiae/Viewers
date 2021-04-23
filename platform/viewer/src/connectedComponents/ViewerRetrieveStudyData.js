@@ -335,6 +335,7 @@ function ViewerRetrieveStudyData({
   };
 
   const loadStudies = async () => {
+    console.log("loadStudies()");
     try {
       const filters = {};
       // Use the first, discard others
@@ -420,7 +421,7 @@ function ViewerRetrieveStudyData({
     return () => {
       purgeCancellablePromises();
     };
-  }, []);
+  }, [studyInstanceUIDs]);
 
   if (error) {
     const content = JSON.stringify(error);
