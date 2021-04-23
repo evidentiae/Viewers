@@ -328,10 +328,11 @@ class Viewer extends Component {
     console.log(url);
 
     const client = this.getClient(url);
+    const props = this.props;
     //var encoder = new TextEncoder();
     //const buffer = encoder.encode(JSON.stringify(dataset));
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      this.props.onNewStudy(layout);
+      props.onNewStudy(layout);
     });
 
     // then make dicomWeb call to create these in google healthcare
