@@ -396,17 +396,15 @@ function ViewerRetrieveStudyData({
   });
 
   const prevStudyInstanceUIDs = usePrevious(studyInstanceUIDs);
+  const hasStudyInstanceUIDsChanged = !(
+    prevStudyInstanceUIDs &&
+    prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
+    studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
+  );
+  console.log("hasStudyInstanceUIDsChanged");
+  console.log(hasStudyInstanceUIDsChanged);
 
   useEffect(() => {
-    const hasStudyInstanceUIDsChanged = !(
-      prevStudyInstanceUIDs &&
-      prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
-      studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
-    );
-
-    console.log("hasStudyInstanceUIDsChanged");
-    console.log(hasStudyInstanceUIDsChanged);
-
     if (hasStudyInstanceUIDsChanged) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
@@ -414,13 +412,14 @@ function ViewerRetrieveStudyData({
   }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
-    cancelableSeriesPromises = {};
-    cancelableStudiesPromises = {};
-    loadStudies();
-
-    return () => {
-      purgeCancellablePromises();
-    };
+    if (hasStudyInstanceUIDsChanged) {
+      cancelableSeriesPromises = {};
+      cancelableStudiesPromises = {};
+      loadStudies();
+      return () => {
+        purgeCancellablePromises();
+      };
+    }
   }, [studyInstanceUIDs]);
 
   if (error) {
