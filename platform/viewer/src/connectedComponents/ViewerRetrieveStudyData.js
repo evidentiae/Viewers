@@ -184,11 +184,15 @@ const _updateStudyMetadataManager = (study, studyMetadata) => {
 };
 
 const _updateStudyDisplaySets = (study, studyMetadata) => {
+  console.log("_updateStudyDisplaySets");
+  console.log(study);
+
   const sopClassHandlerModules =
     extensionManager.modules['sopClassHandlerModule'];
 
   if (!study.displaySets) {
     study.displaySets = studyMetadata.createDisplaySets(sopClassHandlerModules);
+    console.log(study.displaySets);
   }
 
   if (study.derivedDisplaySets) {
@@ -272,6 +276,8 @@ function ViewerRetrieveStudyData({
    * @param {string} [filters.seriesInstanceUID] - series instance uid to filter results against
    */
   const processStudies = (studiesData, filters) => {
+    console.log("processStudies");
+    console.log(studiesData);
     if (Array.isArray(studiesData) && studiesData.length > 0) {
       // Map studies to new format, update metadata manager?
       const studiesData_ = studiesData.filter(study => study !== null);
@@ -398,8 +404,6 @@ function ViewerRetrieveStudyData({
     prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
   );
-  console.log("hasStudyInstanceUIDsChanged");
-  console.log(hasStudyInstanceUIDsChanged);
 
   useEffect(() => {
     if (hasStudyInstanceUIDsChanged) {
