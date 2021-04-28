@@ -27,6 +27,8 @@ const ViewportGrid = function(props) {
     isStudyLoaded,
   } = props;
 
+  console.log("ViewportGrid()");
+
   const rowSize = 100 / numRows;
   const colSize = 100 / numColumns;
 
