@@ -730,7 +730,7 @@ const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
         const imageIndex = Math.floor(displaySet.images.length / 2);
         imageId = displaySet.images[imageIndex].getImageId();
       } else {
-        altImageText = displaySet.Modality ? displaySet.Modality : 'UN';
+        altImageText = displaySet.Modality ? displaySet.Modality : '';
       }
 
       const hasWarnings = _checkForSeriesInconsistencesWarnings(displaySet, studies);
