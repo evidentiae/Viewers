@@ -107,7 +107,7 @@ export class StudyMetadata extends Metadata {
    */
   _createDisplaySetsForSeries(sopClassHandlerModules, series) {
     console.log("_createDisplaySetsForSeries");
-    console.log(series)"
+    console.log(series);
     const study = this;
     const displaySets = [];
 
