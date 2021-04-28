@@ -69,6 +69,7 @@ export default class RetrieveMetadataLoaderSync extends RetrieveMetadataLoader {
   }
 
   async load(preLoadData) {
+    console.log("load() in wado retrieveMetadataLoaderSync");
     const loaders = this.getLoaders();
     const result = this.runLoaders(loaders);
     return result;
