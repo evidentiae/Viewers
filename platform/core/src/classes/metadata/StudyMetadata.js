@@ -173,7 +173,8 @@ export class StudyMetadata extends Metadata {
         console.log("structured display instance:");
         console.log(instance);
         // structured display
-        var boxes = instance.getTagValue('StructuredDisplayImageBoxSequence');
+        var seq = instance.getTagValue('StructuredDisplayImageBoxSequence');
+        var boxes = Array.isArray(seq) ? seq : [seq];
         console.log("boxes:");
         console.log(boxes);
 
