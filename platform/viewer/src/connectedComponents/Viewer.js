@@ -504,7 +504,7 @@ const _mapStudiesToThumbnails = function(studies) {
 
         imageId = displaySet.images[imageIndex].getImageId();
       } else {
-        altImageText = displaySet.Modality ? displaySet.Modality : 'UN';
+        altImageText = displaySet.Modality ? displaySet.Modality : '';
       }
 
       return {
