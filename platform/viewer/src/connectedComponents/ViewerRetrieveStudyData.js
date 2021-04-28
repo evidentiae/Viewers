@@ -186,13 +186,14 @@ const _updateStudyMetadataManager = (study, studyMetadata) => {
 const _updateStudyDisplaySets = (study, studyMetadata) => {
   console.log("_updateStudyDisplaySets");
   console.log(study);
+  console.log(studyMetadata);
 
   const sopClassHandlerModules =
     extensionManager.modules['sopClassHandlerModule'];
 
   if (!study.displaySets) {
     study.displaySets = studyMetadata.createDisplaySets(sopClassHandlerModules);
-    console.log(study.displaySets);
+    // returns [] for our layout study
   }
 
   if (study.derivedDisplaySets) {

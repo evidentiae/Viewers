@@ -152,6 +152,8 @@ class StudyMetadata extends Metadata {
       }
     }
 
+    // WAERN TODO: either add sop class plugin, or  change isImage logic (create display set even if not image)
+
     // WE NEED A BETTER WAY TO NOTE THAT THIS IS THE DEFAULT BEHAVIOR FOR LOADING
     // A DISPLAY SET IF THERE IS NO MATCHING SOP CLASS PLUGIN
 
@@ -162,6 +164,35 @@ class StudyMetadata extends Metadata {
     const stackableInstances = [];
     var i = 0;
     series.forEachInstance(instance => {
+      if (instance.getTagValue('SOPClassUID') === '1.2.840.10008.5.1.4.1.1.131') {
+        console.log("structured display instance:");
+        console.log(instance);
+        // structured display
+        var boxes = instance.getTagValue('StructuredDisplayImageBoxSequence');
+        console.log("boxes:");
+        console.log(boxes);
+
+        boxes.forEach(box => {
+          const displaySet = new ImageSet([instance]);
+          const seriesData = series.getData();
+
+          displaySet.setAttributes({
+            displaySetInstanceUID: displaySet.uid,
+            SeriesDate: seriesData.SeriesDate,
+            SeriesTime: seriesData.SeriesTime,
+            SeriesInstanceUID: series.getSeriesInstanceUID(),
+            SeriesNumber: instance.getTagValue('SeriesNumber'),
+            SeriesDescription: instance.getTagValue('SeriesDescription'),
+            numImageFrames: 1,
+            frameRate: instance.getTagValue('FrameTime'),
+            Modality: instance.getTagValue('Modality'),
+            isMultiFrame: isMultiFrame(instance),
+          });
+
+          displaySets.push(displaySet);
+        });
+      }
+
       // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
       if (
         !isImage(instance.getTagValue('SOPClassUID')) &&
