@@ -190,7 +190,7 @@ class StudyMetadata extends Metadata {
             SeriesInstanceUID: series.getSeriesInstanceUID(),
             SeriesNumber: instance.getTagValue('SeriesNumber'),
             SeriesDescription: instance.getTagValue('SeriesDescription'),
-            numImageFrames: 1,
+            numImageFrames: 0,
             frameRate: instance.getTagValue('FrameTime'),
             Modality: instance.getTagValue('Modality'),
             isMultiFrame: isMultiFrame(instance),
