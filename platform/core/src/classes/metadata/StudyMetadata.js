@@ -106,6 +106,8 @@ export class StudyMetadata extends Metadata {
    * @returns {Array} The list of display sets created for the given series object
    */
   _createDisplaySetsForSeries(sopClassHandlerModules, series) {
+    console.log("_createDisplaySetsForSeries");
+    console.log(series)"
     const study = this;
     const displaySets = [];
 
@@ -151,6 +153,8 @@ export class StudyMetadata extends Metadata {
       }
     }
 
+    console.log("foo");
+
     // WAERN TODO: either add sop class plugin, or  change isImage logic (create display set even if not image)
 
     // WE NEED A BETTER WAY TO NOTE THAT THIS IS THE DEFAULT BEHAVIOR FOR LOADING
@@ -163,6 +167,8 @@ export class StudyMetadata extends Metadata {
     const stackableInstances = [];
     var i = 0;
     series.forEachInstance(instance => {
+      console.log("bar");
+      console.log(instance.getTagValue('SOPClassUID'));
       if (instance.getTagValue('SOPClassUID') === '1.2.840.10008.5.1.4.1.1.131') {
         console.log("structured display instance:");
         console.log(instance);
