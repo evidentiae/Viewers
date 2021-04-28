@@ -244,6 +244,7 @@ const ViewportGrid = function (props) {
   };
 
   const getViewportPanes = () => {
+    console.log("getViewportPanes");
     if (maximized) {
       return [getMaximizedViewportPane(layout, activeViewportIndex)];
     } else {
@@ -330,6 +331,7 @@ function _getViewportComponent(
   pluginName,
   defaultPluginName
 ) {
+  console.log("_getViewportComponent");
   if (viewportData.displaySet) {
     pluginName = pluginName || defaultPluginName;
     const ViewportComponent = availablePlugins[pluginName];
