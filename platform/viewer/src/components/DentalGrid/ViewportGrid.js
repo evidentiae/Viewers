@@ -103,6 +103,7 @@ const ViewportGrid = function (props) {
   useEffect(() => {
     if (isStudyLoaded) {
       viewportData.forEach(displaySet => {
+        console.log("loadAndCacheDerivedDisplaySets");
         const promises = loadAndCacheDerivedDisplaySets(displaySet, studies);
 
         promises.forEach(promise => {
