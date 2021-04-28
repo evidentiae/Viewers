@@ -180,7 +180,7 @@ class StudyMetadata extends Metadata {
         console.log(boxes);
 
         boxes.forEach(box => {
-          const displaySet = new ImageSet([instance]);
+          const displaySet = new ImageSet([]);
           const seriesData = series.getData();
 
           displaySet.setAttributes({
