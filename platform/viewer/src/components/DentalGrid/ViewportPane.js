@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import './ViewportPane.css';
 
 const ViewportPane = function (props) {
+  console.log("ViewportPane");
+
   const { children, onDrop, viewportIndex, className: propClassName } = props;
   const [{ hovered, highlighted }, drop] = useDrop({
     accept: 'thumbnail',
