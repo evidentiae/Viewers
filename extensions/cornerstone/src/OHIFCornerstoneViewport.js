@@ -237,8 +237,7 @@ class OHIFCornerstoneViewport extends Component {
       return <OHIFCornerstoneViewportOverlay {...props} inconsistencyWarnings={inconsistencyWarnings} />
     };
 
-    return <div></div>;
-    /*return (
+    return (imageIds &&
       <>
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
@@ -257,7 +256,7 @@ class OHIFCornerstoneViewport extends Component {
         />
         {childrenWithProps}
       </>
-    );*/
+    );
   }
 }
 
