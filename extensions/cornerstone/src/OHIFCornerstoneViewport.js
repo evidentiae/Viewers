@@ -238,7 +238,7 @@ class OHIFCornerstoneViewport extends Component {
     };
 
     return (
-      <>
+      <> {imageIds ?
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
           imageIds={imageIds || []}
@@ -255,8 +255,8 @@ class OHIFCornerstoneViewport extends Component {
           {...this.props.customProps}
         />
         {childrenWithProps}
-      </>
-    );
+      </> : <div></div>
+    });
   }
 }
 
