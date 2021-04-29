@@ -329,6 +329,10 @@ class Viewer extends Component {
       });
     });
 
+    console.log("Viewer render()");
+    console.log(this.props.viewports);
+    console.log(his.props.activeViewportIndex);
+
     return (
       <>
         {/* LAYOUT DIALOG */}
