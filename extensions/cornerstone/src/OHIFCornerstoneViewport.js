@@ -236,7 +236,10 @@ class OHIFCornerstoneViewport extends Component {
     console.log(currentImageIdIndex);
     console.log(viewportIndex);
 
-    return (imageIds &&
+    if (imageIds.length === 0)
+      return null;
+    else
+      return (
       <>
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
