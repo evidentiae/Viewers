@@ -357,6 +357,7 @@ class Viewer extends Component {
     console.log("Viewer render()");
     console.log(this.props.viewports);
     console.log(this.props.activeViewportIndex);
+    console.log(this.props.studies);
 
     return (
       <>
