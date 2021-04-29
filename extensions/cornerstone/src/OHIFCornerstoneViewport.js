@@ -240,7 +240,7 @@ class OHIFCornerstoneViewport extends Component {
       <>
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
-          imageIds={imageIds}
+          imageIds={imageIds || []}
           imageIdIndex={currentImageIdIndex}
           onNewImage={newImageHandler}
           onNewImageDebounceTime={700}
