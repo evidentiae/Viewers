@@ -73,9 +73,9 @@ function ImageThumbnail(props) {
 
   const setImagePromise = () => {
     if (shouldRenderToCanvas()) {
+      console.log("calling loadAndCacheImage");
+      console.log(imageId);
       cancelablePromise = utils.makeCancelable(
-        console.log("calling loadAndCacheImage");
-        console.log(imageId);
         cornerstone.loadAndCacheImage(imageId)
       );
     }
