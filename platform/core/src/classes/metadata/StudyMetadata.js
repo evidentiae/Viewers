@@ -184,6 +184,7 @@ export class StudyMetadata extends Metadata {
 
           displaySet.setAttributes({
             displaySetInstanceUID: displaySet.uid,
+            StudyInstanceUID: study.getStudyInstanceUID(),
             SeriesDate: seriesData.SeriesDate,
             SeriesTime: seriesData.SeriesTime,
             SeriesInstanceUID: series.getSeriesInstanceUID(),
