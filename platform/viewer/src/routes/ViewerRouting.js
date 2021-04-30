@@ -65,7 +65,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
     studyUIDs.forEach(uid => {
       dispatch(setStudyData(uid, {}));
     });
-  }, [studyUIDs]);
+  });
 
   if (server && studyUIDs) {
     //studyInstanceUIDs={studyUIDs}
