@@ -237,14 +237,11 @@ class OHIFCornerstoneViewport extends Component {
       return <OHIFCornerstoneViewportOverlay {...props} inconsistencyWarnings={inconsistencyWarnings} />
     };
 
-    if (imageIds.length === 0)
-      return null;
-    else
-      return (
+    return (
       <>
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
-          imageIds={imageIds}
+          imageIds={imageIds.length === 0 ? ['no-id://'] : imageIds}
           imageIdIndex={currentImageIdIndex}
           onNewImageDebounced={newImageHandler}
           onNewImageDebounceTime={300}
