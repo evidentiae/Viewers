@@ -236,14 +236,11 @@ class OHIFCornerstoneViewport extends Component {
     console.log(currentImageIdIndex);
     console.log(viewportIndex);
 
-    if (imageIds.length === 0)
-      return null;
-    else
-      return (
+    return (
       <>
         <ConnectedCornerstoneViewport
           viewportIndex={viewportIndex}
-          imageIds={imageIds}
+          imageIds={imageIds.length === 0 ? ['no-id://'] : imageIds}
           imageIdIndex={currentImageIdIndex}
           onNewImage={newImageHandler}
           onNewImageDebounceTime={700}
