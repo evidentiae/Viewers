@@ -5,6 +5,8 @@ import { OHIF, utils, user } from '@ohif/core';
 import ConnectedViewerRetrieveStudyData from '../connectedComponents/ConnectedViewerRetrieveStudyData';
 import useServer from '../customHooks/useServer';
 import useQuery from '../customHooks/useQuery';
+import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
+
 const { urlUtil: UrlUtil } = utils;
 const { setStudyData } = OHIF.redux.actions;
 
