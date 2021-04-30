@@ -93,7 +93,7 @@ const ROUTES_DEF = {
     },
     oryx_no_studies: {
       path:
-        '/oryx/:token/projects/:project/locations/:location/datasets/:dataset/dicomStores/:dicomStore',
+        '/oryx/:token/projects/:project/locations/:location/datasets/:dataset/dicomStores/:dicomStore/patient/:patientID',
       component: ViewerRouting,
       condition: appConfig => {
         return !!appConfig.enableGoogleCloudAdapter;

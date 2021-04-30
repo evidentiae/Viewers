@@ -216,6 +216,7 @@ function ViewerRetrieveStudyData({
   seriesInstanceUIDs,
   clearViewportSpecificData,
   setStudyData,
+  patientID
 }) {
   // hooks
   const [error, setError] = useState(false);
@@ -441,6 +442,7 @@ function ViewerRetrieveStudyData({
       studies={studies}
       isStudyLoaded={isStudyLoaded}
       studyInstanceUIDs={studyInstanceUIDs}
+      patientID={patientID}
     />
   );
 }
