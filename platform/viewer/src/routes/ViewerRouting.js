@@ -61,6 +61,8 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   console.log("studyUIDs:");
   console.log(studyUIDs);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log("test");
     studyUIDs.forEach(uid => {
