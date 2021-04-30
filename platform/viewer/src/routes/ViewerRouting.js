@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { utils, user } from '@ohif/core';
 //
@@ -6,6 +6,7 @@ import ConnectedViewerRetrieveStudyData from '../connectedComponents/ConnectedVi
 import useServer from '../customHooks/useServer';
 import useQuery from '../customHooks/useQuery';
 const { urlUtil: UrlUtil } = utils;
+const { setStudyData } = OHIF.redux.actions;
 
 /**
  * Get array of seriesUIDs from param or from queryString
