@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { utils, user } from '@ohif/core';
+import { OHIF, utils, user } from '@ohif/core';
 //
 import ConnectedViewerRetrieveStudyData from '../connectedComponents/ConnectedViewerRetrieveStudyData';
 import useServer from '../customHooks/useServer';
@@ -62,7 +62,9 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   console.log(studyUIDs);
 
   useEffect(() => {
+    console.log("test");
     studyUIDs.forEach(uid => {
+      console.log(uid);
       dispatch(setStudyData(uid, {}));
     });
   });
