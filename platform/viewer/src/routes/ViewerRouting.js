@@ -27,6 +27,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
     location,
     dataset,
     dicomStore,
+    patientID,
     studyInstanceUIDs,
     seriesInstanceUIDs,
   } = routeMatch.params;
@@ -61,6 +62,7 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
       <ConnectedViewerRetrieveStudyData
         studyInstanceUIDs={studyUIDs}
         seriesInstanceUIDs={seriesUIDs}
+        patientID={patientID}
       />
     );
   }
