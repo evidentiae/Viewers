@@ -283,11 +283,11 @@ class Viewer extends Component {
       SeriesInstanceUID: guid(),
       SOPInstanceUID: guid(),
       SOPClassUID: "1.2.840.10008.5.1.4.1.1.131", // Structured Display
-      ImageBoxes: [{
-        "00720302": {vr: "US", Value: [0]}, // Image Box Number
-        "00720302": {vr: "US", Value: [1]}, // Image Box Number
-        "00720302": {vr: "US", Value: [2]}  // Image Box Number
-      }]
+      ImageBoxes: [
+        {"00720302": {vr: "US", Value: [0]}}, // Image Box Number
+        {"00720302": {vr: "US", Value: [1]}}, // Image Box Number
+        {"00720302": {vr: "US", Value: [2]}}  // Image Box Number
+      ]
     };
 
     var dict = new DicomDict(metadata);
