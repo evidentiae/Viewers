@@ -57,6 +57,9 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const studyUIDs = studyInstanceUIDs ? UrlUtil.paramString.parseParam(studyInstanceUIDs) : [];
   const seriesUIDs = seriesInstanceUIDs ? getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation) : [];
 
+  console.log("studyUIDs:");
+  console.log(studyUIDs);
+
   if (server && studyUIDs) {
     return (
       <ConnectedViewerRetrieveStudyData
