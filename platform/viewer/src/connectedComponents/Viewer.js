@@ -295,7 +295,7 @@ class Viewer extends Component {
     dict.upsertTag("00080018", "UI", [layout.SOPInstanceUID]); // SOP Instance UID
     dict.upsertTag("00080016", "UI", [layout.SOPClassUID]); 
     dict.upsertTag("00720422", "SQ", layout.ImageBoxes); // Structured Display Image Box Sequence
-    dict.upsertTag("00100020", "LO", [patientID]);
+    dict.upsertTag("00100020", "LO", [this.props.patientID]);
 
     var buffer = dict.write();
     console.log("buffer:");
