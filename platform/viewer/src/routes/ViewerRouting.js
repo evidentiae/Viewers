@@ -60,10 +60,16 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   console.log("studyUIDs:");
   console.log(studyUIDs);
 
+  useEffect(() => {
+    studyUIDs.forEach(uid => {
+      dispatch(setStudyData(uid, {}));
+    });
+  }, [studyUIDs]);
+
   if (server && studyUIDs) {
+    //studyInstanceUIDs={studyUIDs}
     return (
       <ConnectedViewerRetrieveStudyData
-        studyInstanceUIDs={studyUIDs}
         seriesInstanceUIDs={seriesUIDs}
         patientID={patientID}
       />
