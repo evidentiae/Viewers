@@ -423,7 +423,7 @@ class Viewer extends Component {
             }}
             handleMaximize={this.props.onMaximize}
             handleNewStudy={() => { this.setState({isSelectingLayout: true}); }}
-            handleUpload={this.uploadImage}
+            handleUpload={this.uploadImage.bind(this)}
             studies={this.props.studies}
             maximized={this.props.maximized}
           />
