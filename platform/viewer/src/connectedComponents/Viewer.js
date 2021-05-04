@@ -350,8 +350,19 @@ class Viewer extends Component {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     document.body.appendChild(input);
-    var r = input.click();
-    console.log(r);
+
+    input.onchange = e => { 
+       var file = e.target.files[0]; 
+       var reader = new FileReader();
+       reader.readAsArrayBuffer(file);
+       reader.onload = ev => {
+         var content = ev.target.result;
+         console.log('done reading file');
+         console.log(content);
+       }
+    }
+
+    input.click();
     document.body.removeChild(input);
   }
 
