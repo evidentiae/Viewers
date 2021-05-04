@@ -327,7 +327,7 @@ class Viewer extends Component {
   uploadImage() {
     var vp = this._getActiveViewport();
     console.log("uploadImage()");
-    consol.log(vp);
+    console.log(vp);
     var index = this.props.activeViewportIndex;
     const URLObj = window.URL || window.webkitURL;
     const input = document.createElement('input');
