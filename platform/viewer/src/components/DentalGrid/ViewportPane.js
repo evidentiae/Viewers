@@ -38,7 +38,7 @@ const ViewportPane = function (props) {
       )}
       ref={drop}
       data-cy={`viewport-container-${viewportIndex}`}
-      onClick={this.props.onClick}
+      onClick={onClick}
     >
       {children}
     </div>
