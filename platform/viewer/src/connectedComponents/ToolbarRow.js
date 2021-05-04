@@ -29,6 +29,7 @@ class ToolbarRow extends Component {
     handleSidePanelChange: PropTypes.func.isRequired,
     handleMaximize: PropTypes.func.isRequired,
     handleNewStudy: PropTypes.func.isRequired,
+    handleUpload: PropTypes.func.isRequired,
     activeContexts: PropTypes.arrayOf(PropTypes.string).isRequired,
     studies: PropTypes.array,
     t: PropTypes.func.isRequired,
@@ -236,6 +237,14 @@ class ToolbarRow extends Component {
               icon='maximize'
               isActive={this.props.studies.length > 0}
               onClick={this.props.handleMaximize}
+            />
+          }
+          {this.props.studies.length > 0 &&
+            <ToolbarButton
+              label='Upload image'
+              icon='download'
+              isActive={this.props.studies.length > 0}
+              onClick={this.props.handleUpload}
             />
           }
           <div

@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => {
     },
     onNewStudy: (layout) => {
       dispatch(setStudyData(layout.StudyInstanceUID, layout));
-    },
+    }
   };
 };
 

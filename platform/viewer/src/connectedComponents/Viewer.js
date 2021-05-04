@@ -344,6 +344,11 @@ class Viewer extends Component {
     // that state should automatically be reflected by study browser and viewer
   }
 
+  uploadImage() {
+    var index = this.props.activeViewportIndex;
+    console.log("uploadImage, index: " + index.toString);
+  }
+
   render() {
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
@@ -419,6 +424,7 @@ class Viewer extends Component {
             }}
             handleMaximize={this.props.onMaximize}
             handleNewStudy={() => { this.setState({isSelectingLayout: true}); }}
+            handleUpload={this.uploadImage}
             studies={this.props.studies}
             maximized={this.props.maximized}
           />
