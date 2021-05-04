@@ -270,6 +270,26 @@ class Viewer extends Component {
     return new api.DICOMwebClient({url, headers});
   }
 
+  createNewImageInstance(bytes) {
+    const fileMetaInformationVersionArray = new Uint8Array(2);
+    fileMetaInformationVersionArray[1] = 1;
+    const metadata = {
+      "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
+      "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
+      "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+      "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
+      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+    };
+    var dict = new DicomDict(metadata);
+    dict.upsertTag("0020000D", "UI", [layout.StudyInstanceUID]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [layout.SeriesInstanceUID]); // Series Instance UID
+    dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
+    dict.upsertTag("00080018", "UI", [layout.SOPInstanceUID]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", [layout.SOPClassUID]); 
+    dict.upsertTag("00720422", "SQ", layout.ImageBoxes); // Structured Display Image Box Sequence
+    dict.upsertTag("00100020", "LO", [this.props.patientID]);
+  }
+
   createNewStudy(layout) {
     console.log("createNewStudy");
 
@@ -281,26 +301,11 @@ class Viewer extends Component {
     fileMetaInformationVersionArray[1] = 1;
 
     const metadata = {
-      "00020001": {
-        Value: [fileMetaInformationVersionArray.buffer],
-        vr: "OB"
-      },
-      "00020012": {
-        Value: ["1.2.840.113819.7.1.1997.1.0"], // TODO: update (Implementation Class UID)
-        vr: "UI"
-      },
-      "00020002": {
-        Value: ["1.2.840.10008.5.1.4.1.1.131"], // Media Storage SOP Class UID = Basic Structured Display Storage
-        vr: "UI"
-      },
-      "00020003": {
-        Value: [DicomMetaDictionary.uid()], // Media Storage SOP Instance UID = new uid
-        vr: "UI"
-      },
-      "00020010": {
-        Value: ["1.2.840.10008.1.2"], // Transfer Syntax UID
-        vr: "UI"
-      }
+      "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
+      "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
+      "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.131"], vr: "UI" }, // Media Storage SOP Class UID = Basic Structured Display Storage
+      "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
+      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
 
     var layout = {
@@ -345,21 +350,24 @@ class Viewer extends Component {
   }
 
   uploadImage() {
+    var vp = this._getActiveViewport();
     console.log("uploadImage()");
+    consol.log(vp);
+    var index = this.props.activeViewportIndex;
     const URLObj = window.URL || window.webkitURL;
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     document.body.appendChild(input);
 
     input.onchange = e => { 
-       var file = e.target.files[0]; 
-       var reader = new FileReader();
-       reader.readAsArrayBuffer(file);
-       reader.onload = ev => {
-         var content = ev.target.result;
-         console.log('done reading file');
-         console.log(content);
-       }
+      var file = e.target.files[0]; 
+      var reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = ev => {
+        var content = ev.target.result;
+        console.log('done reading file');
+        console.log(content);
+      }
     }
 
     input.click();
