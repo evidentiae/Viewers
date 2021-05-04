@@ -26,7 +26,8 @@ const ViewportGrid = function (props) {
     viewportData,
     children,
     isStudyLoaded,
-    maximized
+    maximized,
+    onSetActiveViewport
   } = props;
 
   console.log("ViewportGrid");
@@ -232,7 +233,7 @@ const ViewportGrid = function (props) {
     return (
       <ViewportPane
         onDrop={setViewportData}
-        onClick={() => alert('foo')}
+        onClick={onSetActiveViewport}
         viewportIndex={viewportIndex} // Needed by `setViewportData`
         className={classNames('viewport-container', {
           active: activeViewportIndex === viewportIndex,
