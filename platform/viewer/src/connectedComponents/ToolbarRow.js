@@ -213,7 +213,7 @@ class ToolbarRow extends Component {
           {this.props.studies.length > 0 &&
             <ToolbarButton
               label='Upload image'
-              icon='download'
+              icon='create-screen-capture'
               isActive={this.props.studies.length > 0}
               onClick={this.props.handleUpload}
             />
