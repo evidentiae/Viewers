@@ -3,6 +3,7 @@ import { MODULE_TYPES } from '@ohif/core';
 import { connect } from 'react-redux';
 import { extensionManager } from './../../App.js';
 import memoize from 'lodash/memoize';
+import OHIF from '@ohif/core';
 const { setViewportActive } = OHIF.redux.actions;
 
 const getAvailableViewportModules = memoize(viewportModules => {
