@@ -322,6 +322,13 @@ class Viewer extends Component {
   uploadImage() {
     var index = this.props.activeViewportIndex;
     console.log("uploadImage, index: " + index.toString);
+    const URLObj = window.URL || window.webkitURL;
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    document.body.appendChild(input);
+    var r = input.click();
+    console.log(r);
+    document.body.removeChild(input);
   }
 
   render() {
