@@ -178,6 +178,7 @@ const ViewportGrid = function (props) {
     return (
       <ViewportPane
         onDrop={setViewportData}
+        onClick={() => null}
         viewportIndex={viewportIndex} // Needed by `setViewportData`
         className={classNames('viewport-container', {
           active: activeViewportIndex === viewportIndex,
