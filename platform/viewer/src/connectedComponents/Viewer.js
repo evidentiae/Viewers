@@ -345,7 +345,7 @@ class Viewer extends Component {
   }
 
   uploadImage() {
-    console.log("uploadImage, index: " + index.toString);
+    console.log("uploadImage()");
     const URLObj = window.URL || window.webkitURL;
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
