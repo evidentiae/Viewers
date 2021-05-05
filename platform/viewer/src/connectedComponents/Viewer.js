@@ -331,18 +331,19 @@ class Viewer extends Component {
 
   uploadImage() {
     var index = this.props.activeViewportIndex;
-    const URLObj = window.URL || window.webkitURL;
     const input = document.createElement('input');
+    const image = document.createElement('img');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
-    document.body.appendChild(input);
-    var image = document.createElement("img");
-    document.body.appendChild(image);
-
     input.onchange = e => { 
       var file = e.target.files[0]; 
       var reader = new FileReader();
+      reader.onerror = ev => {
+        console.log("reader error");
+        console.log(ev);
+      };
       reader.onload = ev => {
+        console.log("reader onload");
         image.onload = ev => {
           console.log("image onload");
           console.log(image.naturalWidth);
@@ -361,14 +362,17 @@ class Viewer extends Component {
           console.log("image onerror");
           console.log(ev);
         };
+        console.log("setting src");
+        console.log(ev.target.result);
         image.src = ev.target.result;
       }
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
     }
-
+    document.body.appendChild(input);
+    document.body.appendChild(image);
     input.click();
-    document.body.removeChild(input);
+    //document.body.removeChild(input);
   }
 
   createNewImageInstance(index, data) {
