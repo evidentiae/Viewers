@@ -248,36 +248,38 @@ class Viewer extends Component {
   createNewImageInstance(index, url) {
     var image = document.createElement("img");
     image.src = url;
-    console.log("image");
-    console.log(image.naturalWidth);
-    console.log(image.naturalHeight);
-    var canvas = document.createElement("canvas");
-    canvas.width = image.naturalWidth;
-    canvas.height = image.naturalHeight;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(image, 0, 0);
-    var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-    console.log("image data");
-    console.log(imageData);
+    image.onload = function () {
+      console.log("image");
+      console.log(image.naturalWidth);
+      console.log(image.naturalHeight);
+      var canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(image, 0, 0);
+      var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+      console.log("image data");
+      console.log(imageData);
 
-    var viewport = this.props.viewports[index];
-    const fileMetaInformationVersionArray = new Uint8Array(2);
-    fileMetaInformationVersionArray[1] = 1;
-    const metadata = {
-      "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
-      "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
-      "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
-      "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
-      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+      var viewport = this.props.viewports[index];
+      const fileMetaInformationVersionArray = new Uint8Array(2);
+      fileMetaInformationVersionArray[1] = 1;
+      const metadata = {
+        "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
+        "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
+        "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+        "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
+        "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+      };
+      var dict = new DicomDict(metadata);
+      dict.upsertTag("00100020", "LO", [this.props.patientID]);
+      dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
+      dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
+      dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
+      dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
+      dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+      dict.upsertTag("7FE00010", "OB", layout.ImageBoxes); // Pixel Data
     };
-    var dict = new DicomDict(metadata);
-    dict.upsertTag("00100020", "LO", [this.props.patientID]);
-    dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
-    dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
-    dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
-    dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
-    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
-    dict.upsertTag("7FE00010", "OB", layout.ImageBoxes); // Pixel Data
   }
 
   createNewStudy(layout) {
