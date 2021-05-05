@@ -306,12 +306,19 @@ class Viewer extends Component {
 
   uploadImage() {
     var index = this.props.activeViewportIndex;
+
     const input = document.createElement('input');
-    const image = document.createElement('img');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.onchange = e => { 
       var file = e.target.files[0]; 
+      const objectURL = window.URL.createObjectURL(file);
+      console.log("object url:");
+      console.log(objectURL);
+      image.src = objectURL;
+      window.URL.revokeObjectURL(objectURL);
+
+      /*
       var reader = new FileReader();
       reader.onerror = ev => {
         console.log("reader error");
@@ -343,7 +350,29 @@ class Viewer extends Component {
       }
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
+      */
     }
+
+    const image = document.createElement('img');
+    image.onload = ev => {
+      console.log("image onload");
+      console.log(image.naturalWidth);
+      console.log(image.naturalHeight);
+      var canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(image, 0, 0);
+      var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+      console.log("image data");
+      console.log(imageData);
+      this.createNewImageInstance(index, imageData);
+    };
+    image.onerror = ev => {
+      console.log("image onerror");
+      console.log(ev);
+    };
+
     document.body.appendChild(input);
     document.body.appendChild(image);
     input.click();
