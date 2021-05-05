@@ -272,7 +272,6 @@ class Viewer extends Component {
 
   createNewImageInstance(index, url) {
     var image = document.createElement("img");
-    image.src = url;
     image.onload = function () {
       console.log("image");
       console.log(image.naturalWidth);
@@ -305,6 +304,7 @@ class Viewer extends Component {
       dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
       dict.upsertTag("7FE00010", "OB", layout.ImageBoxes); // Pixel Data
     };
+    image.src = url;
     document.body.appendChild(image);
   }
 
