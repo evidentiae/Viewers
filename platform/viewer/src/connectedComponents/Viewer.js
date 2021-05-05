@@ -246,6 +246,7 @@ class Viewer extends Component {
   }
 
   createNewImageInstance(index, url) {
+    console.log(url);
     var image = document.createElement("img");
     image.onerror = function (err) {
       console.log("error");
