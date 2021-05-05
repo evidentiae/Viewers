@@ -270,7 +270,23 @@ class Viewer extends Component {
     return new api.DICOMwebClient({url, headers});
   }
 
-  createNewImageInstance(bytes) {
+  createNewImageInstance(index, url) {
+    var image = document.createElement("img");
+    image.src = url;
+    console.log("image");
+    console.log(image.width);
+    console.log(image.height);
+    var canvas = document.createElement("canvas");
+    //canvas.width = image.width;
+    //canvas.height = image.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(image, 0, 0);
+    var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+    console.log("image data");
+    console.log(imageData);
+    
+
+    var viewport = this.props.viewports[index];
     const fileMetaInformationVersionArray = new Uint8Array(2);
     fileMetaInformationVersionArray[1] = 1;
     const metadata = {
@@ -281,11 +297,11 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
     var dict = new DicomDict(metadata);
-    dict.upsertTag("0020000D", "UI", [layout.StudyInstanceUID]); // Study Instance UID
-    dict.upsertTag("0020000E", "UI", [layout.SeriesInstanceUID]); // Series Instance UID
-    dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
-    dict.upsertTag("00080018", "UI", [layout.SOPInstanceUID]); // SOP Instance UID
-    dict.upsertTag("00080016", "UI", [layout.SOPClassUID]); 
+    dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
+    dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
+    dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
     dict.upsertTag("00720422", "SQ", layout.ImageBoxes); // Structured Display Image Box Sequence
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
   }
@@ -350,21 +366,21 @@ class Viewer extends Component {
   }
 
   uploadImage() {
-    var vp = this._getActiveViewport();
-    console.log("uploadImage()");
-    console.log(vp);
     var index = this.props.activeViewportIndex;
     const URLObj = window.URL || window.webkitURL;
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
     document.body.appendChild(input);
 
     input.onchange = e => { 
       var file = e.target.files[0]; 
       var reader = new FileReader();
-      reader.readAsArrayBuffer(file);
+      //reader.readAsArrayBuffer(file);
+      reader.readAsDataURL(file);
       reader.onload = ev => {
-        var content = ev.target.result;
+        var url = ev.target.result;
+        this.createNewImageInstance(index, url);
         console.log('done reading file');
         console.log(content);
       }
