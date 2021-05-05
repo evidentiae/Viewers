@@ -247,6 +247,10 @@ class Viewer extends Component {
 
   createNewImageInstance(index, url) {
     var image = document.createElement("img");
+    image.onerror = function (err) {
+      console.log("error");
+      console.log(err);
+    };
     image.onload = function () {
       console.log("image");
       console.log(image.naturalWidth);
