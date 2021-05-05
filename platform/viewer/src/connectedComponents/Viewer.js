@@ -383,7 +383,6 @@ class Viewer extends Component {
         var url = ev.target.result;
         this.createNewImageInstance(index, url);
         console.log('done reading file');
-        console.log(content);
       }
     }
 
