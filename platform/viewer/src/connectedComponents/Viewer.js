@@ -245,49 +245,6 @@ class Viewer extends Component {
     return new api.DICOMwebClient({url, headers});
   }
 
-  createNewImageInstance(index, url) {
-    console.log(url);
-    var image = document.createElement("img");
-    image.onerror = function (err) {
-      console.log("error");
-      console.log(err);
-    };
-    image.onload = function () {
-      console.log("image");
-      console.log(image.naturalWidth);
-      console.log(image.naturalHeight);
-      var canvas = document.createElement("canvas");
-      canvas.width = image.naturalWidth;
-      canvas.height = image.naturalHeight;
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(image, 0, 0);
-      var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-      console.log("image data");
-      console.log(imageData);
-
-      var viewport = this.props.viewports[index];
-      const fileMetaInformationVersionArray = new Uint8Array(2);
-      fileMetaInformationVersionArray[1] = 1;
-      const metadata = {
-        "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
-        "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
-        "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
-        "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
-        "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
-      };
-      var dict = new DicomDict(metadata);
-      dict.upsertTag("00100020", "LO", [this.props.patientID]);
-      dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
-      dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
-      dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
-      dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
-      dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
-      dict.upsertTag("7FE00010", "OB", layout.ImageBoxes); // Pixel Data
-    };
-    image.src = url;
-    document.body.appendChild(image);
-  }
-
   createNewStudy(layout) {
     console.log("createNewStudy");
 
@@ -354,21 +311,60 @@ class Viewer extends Component {
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     document.body.appendChild(input);
+    var image = document.createElement("img");
+    document.body.appendChild(image);
 
     input.onchange = e => { 
       var file = e.target.files[0]; 
       var reader = new FileReader();
+      reader.onload = ev => {
+        image.onload = ev => {
+          console.log("image onload");
+          console.log(image.naturalWidth);
+          console.log(image.naturalHeight);
+          var canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(image, 0, 0);
+          var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+          console.log("image data");
+          console.log(imageData);
+          this.createNewImageInstance(index, imageData);
+        };
+        image.onerror = ev => {
+          console.log("image onerror");
+          console.log(ev);
+        };
+        image.src = ev.target.result;
+      }
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
-      reader.onload = ev => {
-        var url = ev.target.result;
-        this.createNewImageInstance(index, url);
-        console.log('done reading file');
-      }
     }
 
     input.click();
     document.body.removeChild(input);
+  }
+
+  createNewImageInstance(index, data) {
+    var viewport = this.props.viewports[index];
+    const fileMetaInformationVersionArray = new Uint8Array(2);
+    fileMetaInformationVersionArray[1] = 1;
+    const metadata = {
+      "00020001": { Value: [fileMetaInformationVersionArray.buffer], vr: "OB" },
+      "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
+      "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+      "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
+      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+    };
+    var dict = new DicomDict(metadata);
+    dict.upsertTag("00100020", "LO", [this.props.patientID]);
+    dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
+    dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
+    dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+    dict.upsertTag("7FE00010", "OB", data); // Pixel Data
   }
 
   render() {
