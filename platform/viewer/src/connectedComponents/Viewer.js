@@ -338,13 +338,14 @@ class Viewer extends Component {
     input.onchange = e => { 
       var file = e.target.files[0]; 
       console.log(file);
+      /*
       const objectURL = window.URL.createObjectURL(file);
       console.log("object url:");
       console.log(objectURL);
       image.src = objectURL;
-      //window.URL.revokeObjectURL(objectURL);
+      window.URL.revokeObjectURL(objectURL);
+      */
 
-      /*
       var reader = new FileReader();
       reader.onerror = ev => {
         console.log("reader error");
@@ -366,17 +367,17 @@ class Viewer extends Component {
           console.log(imageData);
           this.createNewImageInstance(index, imageData);
         };
-        image.onerror = ev => {
+        image.onerror = (ev, msg) => {
           console.log("image onerror");
           console.log(ev);
+          console.log(msg);
         };
         console.log("setting src");
         console.log(ev.target.result);
         image.src = ev.target.result;
-      }
+      };
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
-      */
     }
 
     const image = document.createElement('img');
