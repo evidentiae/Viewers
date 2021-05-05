@@ -312,11 +312,12 @@ class Viewer extends Component {
     input.setAttribute('accept', 'image/*');
     input.onchange = e => { 
       var file = e.target.files[0]; 
+      console.log(file);
       const objectURL = window.URL.createObjectURL(file);
       console.log("object url:");
       console.log(objectURL);
       image.src = objectURL;
-      window.URL.revokeObjectURL(objectURL);
+      //window.URL.revokeObjectURL(objectURL);
 
       /*
       var reader = new FileReader();
