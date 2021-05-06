@@ -375,7 +375,7 @@ class Viewer extends Component {
         console.log("setting src");
         console.log(ev.target.result);
         image.src = ev.target.result;
-        //document.body.appendChild(image);
+        document.body.appendChild(image);
       };
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
