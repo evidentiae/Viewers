@@ -329,28 +329,26 @@ class Viewer extends Component {
       reader.onload = ev => {
         console.log("reader onload");
         const image = document.createElement('img');
-        image.onload = ev => {
-          console.log("image onload");
-          console.log(image.naturalWidth);
-          console.log(image.naturalHeight);
-          var canvas = document.createElement("canvas");
-          canvas.width = image.naturalWidth;
-          canvas.height = image.naturalHeight;
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(image, 0, 0);
-          var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-          console.log("image data");
-          console.log(imageData);
-          this.createNewImageInstance(index, imageData);
-        };
-        image.onerror = ev => {
-          console.log("image onerror");
-          console.log(ev);
-        };
-        console.log("setting src");
-        console.log(ev.target.result);
         image.src = ev.target.result;
-        document.body.appendChild(image);
+        image.decode()
+          .then(() => {
+            console.log("image onload");
+            console.log(image.naturalWidth);
+            console.log(image.naturalHeight);
+            var canvas = document.createElement("canvas");
+            canvas.width = image.naturalWidth;
+            canvas.height = image.naturalHeight;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0);
+            var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+            console.log("image data");
+            console.log(imageData);
+            this.createNewImageInstance(index, imageData);
+          })
+          .catch((encodingError) => {
+            // Do something with the error.
+            console.log(encodingError);
+          });
       };
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
