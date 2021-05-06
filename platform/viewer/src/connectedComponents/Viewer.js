@@ -343,15 +343,14 @@ class Viewer extends Component {
           console.log(imageData);
           this.createNewImageInstance(index, imageData);
         };
-        image.onerror = (ev, msg) => {
+        image.onerror = ev => {
           console.log("image onerror");
           console.log(ev);
-          console.log(msg);
         };
         console.log("setting src");
         console.log(ev.target.result);
         image.src = ev.target.result;
-        document.body.appendChild(image);
+        //document.body.appendChild(image);
       };
       //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
