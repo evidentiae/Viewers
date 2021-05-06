@@ -355,6 +355,7 @@ class Viewer extends Component {
         console.log("reader onload");
         const image = document.createElement('img');
         image.src = ev.target.result;
+        document.body.appendChild(image);
         image.decode()
           .then(() => {
             console.log("image onload");
