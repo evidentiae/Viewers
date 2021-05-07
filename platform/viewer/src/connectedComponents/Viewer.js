@@ -383,6 +383,16 @@ class Viewer extends Component {
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
     dict.upsertTag("7FE00010", "OB", [data.buffer]); // Pixel Data
     // TODO instance creation time
+
+    var buffer = dict.write();
+    const url = this.props.activeServer.wadoRoot;
+    const client = this.getClient(url);
+    const props = this.props;
+    client.storeInstances({ datasets: [buffer] }).then(function (result) {
+      console.log("result:");
+      console.log(result);
+      //props.onNewStudy(layout);
+    });
   }
 
   render() {
