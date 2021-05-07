@@ -390,6 +390,7 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
     var dict = new DicomDict(metadata);
+    console.log('IS: ' + index.toString);
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
     dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
