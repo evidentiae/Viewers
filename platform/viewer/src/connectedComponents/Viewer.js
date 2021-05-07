@@ -306,8 +306,9 @@ class Viewer extends Component {
 
   uploadImage() {
     var index = this.props.activeViewportIndex;
+    var self = this;
     this.loadImage(function (imageData) {
-      this.createNewImageInstance(index, imageData);
+      self.createNewImageInstance(index, imageData);
     });
   }
 
