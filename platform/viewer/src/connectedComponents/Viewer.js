@@ -306,31 +306,25 @@ class Viewer extends Component {
 
   uploadImage() {
     var index = this.props.activeViewportIndex;
+    loadImage(function (imageData) {
+      this.createNewImageInstance(index, imageData);
+    });
+  }
 
+  loadImage(onSuccess) {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.onchange = e => { 
       var file = e.target.files[0]; 
-      console.log(file);
-      /*
-      const objectURL = window.URL.createObjectURL(file);
-      console.log("object url:");
-      console.log(objectURL);
-      image.src = objectURL;
-      window.URL.revokeObjectURL(objectURL);
-      */
-
       var reader = new FileReader();
       reader.onerror = ev => {
         console.log("reader error");
         console.log(ev);
       };
       reader.onload = ev => {
-        console.log("reader onload");
         const image = document.createElement('img');
         image.src = ev.target.result;
-        document.body.appendChild(image);
         image.decode()
           .then(() => {
             console.log("image onload");
@@ -344,14 +338,12 @@ class Viewer extends Component {
             var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
             console.log("image data");
             console.log(imageData);
-            this.createNewImageInstance(index, imageData);
+            onSuccess(imageData);
           })
-          .catch((encodingError) => {
-            // Do something with the error.
-            console.log(encodingError);
+          .catch(err => {
+            console.log(err);
           });
       };
-      //reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file);
     }
 
@@ -377,8 +369,19 @@ class Viewer extends Component {
     dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
     dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
     dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
-    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
-    dict.upsertTag("7FE00010", "OB", data); // Pixel Data
+    // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
+    dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); 
+    dict.upsertTag("00280006", "US", [0]); // Planar Configuration
+    dict.upsertTag("00280004", "CS", ["RGB"]); // Photometric Interpretation
+    dict.upsertTag("00280002", "US", [3]); // Samples per Pixel
+    dict.upsertTag("00280010", "US", [data.height]); // Rows
+    dict.upsertTag("00280011", "US", [data.width]); // Columns
+    dict.upsertTag("00280100", "US", [8]); // Bits Allocated
+    dict.upsertTag("00280101", "US", [8]); // Bits Stored
+    dict.upsertTag("00280102", "US", [7]); // High Bit
+    dict.upsertTag("00280103", "US", [0]); // Pixel Representation
+    dict.upsertTag("7FE00010", "OB", [data.buffer]); // Pixel Data
+    // TODO instance creation time
   }
 
   render() {
