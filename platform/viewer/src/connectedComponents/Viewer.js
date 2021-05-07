@@ -390,11 +390,11 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
     var dict = new DicomDict(metadata);
-    console.log('IS: ' + index.toString);
+    console.log('IS: ' + index.toString());
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
     dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
-    dict.upsertTag("00200013", "IS", [index.toString]); // Instance Number
+    dict.upsertTag("00200013", "IS", [index.toString()]); // Instance Number
     dict.upsertTag("00080018", "UI", [guid()]); // SOP Instance UID
     // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
     dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); 
