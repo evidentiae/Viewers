@@ -409,8 +409,6 @@ class Viewer extends Component {
     dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
 
-    // convert from Uint8ClampedArray to Uint8Array
-    //var pixels = new Uint8Array(imageData.data.buffer);
     var pixels = imageData.data.buffer;
     console.log(imageData.data);
     console.log(pixels);
@@ -422,6 +420,11 @@ class Viewer extends Component {
     const url = this.props.activeServer.wadoRoot;
     const client = this.getClient(url);
     const props = this.props;
+
+    console.log("buffer:");
+    console.log(buffer.length);
+    console.log(buffer);
+
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       console.log("result:");
       console.log(result);
