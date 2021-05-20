@@ -378,7 +378,7 @@ class Viewer extends Component {
     document.body.removeChild(input);
   }
 
-  createNewImageInstance(index, data) {
+  createNewImageInstance(index, imageData) {
     var viewport = this.props.viewports[index];
     const fileMetaInformationVersionArray = new Uint8Array(2);
     fileMetaInformationVersionArray[1] = 1;
@@ -389,8 +389,9 @@ class Viewer extends Component {
       "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
+
     var dict = new DicomDict(metadata);
-    console.log('IS: ' + index.toString());
+
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
     dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
@@ -401,13 +402,17 @@ class Viewer extends Component {
     dict.upsertTag("00280006", "US", [0]); // Planar Configuration
     dict.upsertTag("00280004", "CS", ["RGB"]); // Photometric Interpretation
     dict.upsertTag("00280002", "US", [3]); // Samples per Pixel
-    dict.upsertTag("00280010", "US", [data.height]); // Rows
-    dict.upsertTag("00280011", "US", [data.width]); // Columns
+    dict.upsertTag("00280010", "US", [imageData.height]); // Rows
+    dict.upsertTag("00280011", "US", [imageData.width]); // Columns
     dict.upsertTag("00280100", "US", [8]); // Bits Allocated
     dict.upsertTag("00280101", "US", [8]); // Bits Stored
     dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
-    dict.upsertTag("7FE00010", "OB", [data.buffer]); // Pixel Data
+
+    // convert from Uint8ClampedArray to Uint8Array
+    var pixels = new Uint8Array(imageData.data.buffer);
+    dict.upsertTag("7FE00010", "OB", [pixels]); // Pixel Data
+
     // TODO instance creation time
 
     var buffer = dict.write();
