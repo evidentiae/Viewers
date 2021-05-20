@@ -410,7 +410,8 @@ class Viewer extends Component {
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
 
     // convert from Uint8ClampedArray to Uint8Array
-    var pixels = new Uint8Array(imageData.data.buffer);
+    //var pixels = new Uint8Array(imageData.data.buffer);
+    var pixels = imageData.data;
     dict.upsertTag("7FE00010", "OB", [pixels]); // Pixel Data
 
     // TODO instance creation time
