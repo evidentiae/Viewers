@@ -411,7 +411,9 @@ class Viewer extends Component {
 
     // convert from Uint8ClampedArray to Uint8Array
     //var pixels = new Uint8Array(imageData.data.buffer);
-    var pixels = Array.from(imageData.data);
+    var pixels = imageData.data.buffer;
+    console.log(imageData.data);
+    console.log(pixels);
     dict.upsertTag("7FE00010", "OB", [pixels]); // Pixel Data
 
     // TODO instance creation time
