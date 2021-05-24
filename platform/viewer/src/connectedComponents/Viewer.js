@@ -391,8 +391,15 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
 
-    var dict = new DicomDict(metadata);
+    /*
+    var data = {
+      SOPInstanceUID: guid(),
+      StudyInstanceUID: viewport.StudyInstanceUID,
+      SeriesInstanceUID: viewport.SeriesInstanceUID,
+    };
+    */
 
+    var dict = new DicomDict(metadata);
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
     dict.upsertTag("0020000D", "UI", [viewport.StudyInstanceUID]); // Study Instance UID
     dict.upsertTag("0020000E", "UI", [viewport.SeriesInstanceUID]); // Series Instance UID
@@ -446,17 +453,9 @@ class Viewer extends Component {
       console.log(viewport);
       console.log("props:");
       console.log(props);
-      var displaySet = {
-        SeriesInstanceUID: viewport.SeriesInstanceUID,
-        SeriesDescription: viewport.SeriesDescription,
-        SeriesNumber: viewport.SeriesNumber,
-        InstanceNumber: index,
-        numImageFrames: 1,
-        images: [{
-          InstanceNumber: index
-        }]
-      };
-      props.afterUpload(index, displaySet);
+      //var ohifInstanceMetadata = new OHIFInstanceMetadata(data, [], [], data.SOPInstanceUID);
+      //viewport.images = [ohifInstanceMetadata]; 
+      props.afterUpload();
     });
   }
 
