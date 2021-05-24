@@ -71,6 +71,7 @@ class Viewer extends Component {
     onMeasurementsUpdated: PropTypes.func,
     onMaximize: PropTypes.func,
     onNewStudy: PropTypes.func,
+    afterUpload: PropTypes.func,
     // window.store.getState().viewports.viewportSpecificData
     viewports: PropTypes.object.isRequired,
     // window.store.getState().viewports.activeViewportIndex
@@ -441,7 +442,21 @@ class Viewer extends Component {
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       console.log("result:");
       console.log(result);
-      //props.onNewStudy(layout);
+      console.log("viewport:");
+      console.log(viewport);
+      console.log("props:");
+      console.log(props);
+      var displaySet = {
+        SeriesInstanceUID: viewport.SeriesInstanceUID,
+        SeriesDescription: viewport.SeriesDescription,
+        SeriesNumber: viewport.SeriesNumber,
+        InstanceNumber: index,
+        numImageFrames: 1,
+        images: [{
+          InstanceNumber: index
+        }]
+      };
+      props.afterUpload(index, displaySet);
     });
   }
 
