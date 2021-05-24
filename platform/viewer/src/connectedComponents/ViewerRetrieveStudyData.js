@@ -359,13 +359,12 @@ function ViewerRetrieveStudyData({
         }
       }
 
-      if (
+      var separateUIDFilters = 
         appConfig.splitQueryParameterCalls ||
-        appConfig.enableGoogleCloudAdapter
-      ) {
-        retrieveParams.push(true); // Seperate SeriesInstanceUID filter calls.
-        retrieveParams.push(refresh);
-      }
+        appConfig.enableGoogleCloudAdapter;
+    
+      retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
+      retrieveParams.push(refresh);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
         retrieveStudiesMetadata(...retrieveParams)
