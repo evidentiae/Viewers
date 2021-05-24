@@ -384,10 +384,23 @@ class Viewer extends Component {
     dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
 
-    var pixels = imageData.data.buffer;
-    console.log(imageData.data);
-    console.log(pixels);
-    dict.upsertTag("7FE00010", "OB", [pixels]); // Pixel Data
+    var argb_buffer = new Uint32Array(imageData.data.buffer);
+    var rgb_buffer  = new Uint8Array(new ArrayBuffer(imageData.height*imageData.width*3));
+
+    console.log(argb_buffer);
+
+    var j = 0;
+    for (var i=0; i<argb_buffer.length; i++) {
+      var word = argb_buffer[i];
+      rgb_buffer[j+0] = word & 0x00ff0000 >> 24;
+      rgb_buffer[j+1] = word & 0x0000ff00 >> 16;
+      rgb_buffer[j+2] = word & 0x000000ff;
+      j+= 3;
+    }
+
+    console.log(rgb_buffer);
+
+    dict.upsertTag("7FE00010", "OB", [argb_buffer.buffer]); // Pixel Data
 
     // TODO instance creation time
 
