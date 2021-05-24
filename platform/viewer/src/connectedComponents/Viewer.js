@@ -392,9 +392,9 @@ class Viewer extends Component {
     var j = 0;
     for (var i=0; i<argb_buffer.length; i++) {
       var word = argb_buffer[i];
-      rgb_buffer[j+0] = (word & 0x00ff0000) >> 16;
+      rgb_buffer[j+0] = (word & 0x000000ff);
       rgb_buffer[j+1] = (word & 0x0000ff00) >> 8;
-      rgb_buffer[j+2] = (word & 0x000000ff);
+      rgb_buffer[j+2] = (word & 0x00ff0000) >> 16;
       j+= 3;
     }
 
