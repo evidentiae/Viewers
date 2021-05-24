@@ -425,7 +425,7 @@ class Viewer extends Component {
 
     console.log(rgb_buffer);
 
-    dict.upsertTag("7FE00010", "OB", [argb_buffer.buffer]); // Pixel Data
+    dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
 
     // TODO instance creation time
 
