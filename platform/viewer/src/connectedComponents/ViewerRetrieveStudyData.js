@@ -233,6 +233,8 @@ function ViewerRetrieveStudyData({
   console.log("ViewerRetrieveStudyData()");
   console.log(studyInstanceUIDs);
 
+  var state = this.state;
+
   let cancelableSeriesPromises;
   let cancelableStudiesPromises;
   /**
@@ -422,10 +424,10 @@ function ViewerRetrieveStudyData({
 
   useEffect(() => {
     if (reloadStudies) {
+      state.refresh = false;
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
       loadStudies();
-      setRefresh(false);
       return () => {
         purgeCancellablePromises();
       };
