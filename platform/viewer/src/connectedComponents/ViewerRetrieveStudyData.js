@@ -412,6 +412,7 @@ function ViewerRetrieveStudyData({
 
   console.log("RELOAD STUDIES: ");
   console.log(reloadStudies);
+  console.log(refreshVar[0]);
 
   useEffect(() => {
     if (reloadStudies) {
