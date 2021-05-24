@@ -19,7 +19,8 @@ export default function retrieveStudiesMetadata(
   server,
   studyInstanceUIDs,
   filters,
-  separateSeriesInstanceUIDFilters = false
+  separateSeriesInstanceUIDFilters = false,
+  force = false
 ) {
   // Create an empty array to store the Promises for each metaData retrieval call
   const promises = [];
@@ -31,7 +32,8 @@ export default function retrieveStudiesMetadata(
       server,
       StudyInstanceUID,
       filters,
-      separateSeriesInstanceUIDFilters
+      separateSeriesInstanceUIDFilters,
+      force
     );
 
     // Add the current promise to the array of promises
