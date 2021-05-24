@@ -413,7 +413,7 @@ function ViewerRetrieveStudyData({
       studyMetadataManager.purge();
       purgeCancellablePromises();
     }
-  }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
+  }, [refresh, prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
     if (reloadStudies) {
@@ -425,7 +425,7 @@ function ViewerRetrieveStudyData({
         purgeCancellablePromises();
       };
     }
-  }, [studyInstanceUIDs]);
+  }, [refresh, studyInstanceUIDs]);
 
   if (error) {
     const content = JSON.stringify(error);
