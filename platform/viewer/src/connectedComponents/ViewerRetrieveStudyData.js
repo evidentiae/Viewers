@@ -410,6 +410,9 @@ function ViewerRetrieveStudyData({
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
   );
 
+  console.log("RELOAD STUDIES: ");
+  console.log(reloadStudies);
+
   useEffect(() => {
     if (reloadStudies) {
       studyMetadataManager.purge();
