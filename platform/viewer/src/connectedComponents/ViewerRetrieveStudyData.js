@@ -446,7 +446,7 @@ function ViewerRetrieveStudyData({
       patientID={patientID}
       afterUpload={() => {
         console.log("AFTER UPLOAD");
-        refresVar[1](true);
+        refreshVar[1](true);
       }}
     />
   );
