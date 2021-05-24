@@ -364,6 +364,8 @@ function ViewerRetrieveStudyData({
         appConfig.enableGoogleCloudAdapter;
     
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
+      console.log("refresh param:");
+      console.log(refresh);
       retrieveParams.push(refresh);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
