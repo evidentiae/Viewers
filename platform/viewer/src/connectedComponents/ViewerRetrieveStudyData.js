@@ -222,7 +222,6 @@ function ViewerRetrieveStudyData({
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
   const [isStudyLoaded, setIsStudyLoaded] = useState(false);
-  const refreshVar = useState(false);
   const snackbarContext = useSnackbarContext();
   const { appConfig = {} } = useContext(AppContext);
   const {
@@ -340,7 +339,7 @@ function ViewerRetrieveStudyData({
     return await Promise.all(promises);
   };
 
-  const loadStudies = async () => {
+  const loadStudies = async (refresh) => {
     console.log("loadStudies()");
     try {
       const filters = {};
@@ -361,9 +360,7 @@ function ViewerRetrieveStudyData({
         appConfig.enableGoogleCloudAdapter;
     
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
-      console.log("refresh param:");
-      console.log(refreshVar[0]);
-      retrieveParams.push(refreshVar[0]);
+      retrieveParams.push(refresh);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
         retrieveStudiesMetadata(...retrieveParams)
@@ -404,34 +401,29 @@ function ViewerRetrieveStudyData({
   });
 
   const prevStudyInstanceUIDs = usePrevious(studyInstanceUIDs);
-  const reloadStudies = refreshVar[0] || !(
+  const reloadStudies = !(
     prevStudyInstanceUIDs &&
     prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
   );
-
-  console.log("RELOAD STUDIES: ");
-  console.log(reloadStudies);
-  console.log(refreshVar[0]);
 
   useEffect(() => {
     if (reloadStudies) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
     }
-  }, [refreshVar[0], prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
+  }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
     if (reloadStudies) {
-      refreshVar[0] = false;
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
-      loadStudies();
+      loadStudies(false);
       return () => {
         purgeCancellablePromises();
       };
     }
-  }, [refreshVar[0], studyInstanceUIDs]);
+  }, [studyInstanceUIDs]);
 
   if (error) {
     const content = JSON.stringify(error);
@@ -450,7 +442,11 @@ function ViewerRetrieveStudyData({
       patientID={patientID}
       afterUpload={() => {
         console.log("AFTER UPLOAD");
-        refreshVar[1](true);
+        studyMetadataManager.purge();
+        purgeCancellablePromises();
+        cancelableSeriesPromises = {};
+        cancelableStudiesPromises = {};
+        loadStudies(true);
       }}
     />
   );
