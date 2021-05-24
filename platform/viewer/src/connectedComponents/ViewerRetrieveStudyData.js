@@ -222,6 +222,7 @@ function ViewerRetrieveStudyData({
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
   const [isStudyLoaded, setIsStudyLoaded] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const snackbarContext = useSnackbarContext();
   const { appConfig = {} } = useContext(AppContext);
   const {
@@ -401,24 +402,25 @@ function ViewerRetrieveStudyData({
   });
 
   const prevStudyInstanceUIDs = usePrevious(studyInstanceUIDs);
-  const hasStudyInstanceUIDsChanged = !(
+  const reloadStudies = refresh || !(
     prevStudyInstanceUIDs &&
     prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
   );
 
   useEffect(() => {
-    if (hasStudyInstanceUIDsChanged) {
+    if (reloadStudies) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
     }
   }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
-    if (hasStudyInstanceUIDsChanged) {
+    if (reloadStudies) {
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
       loadStudies();
+      setRefresh(false);
       return () => {
         purgeCancellablePromises();
       };
@@ -440,6 +442,7 @@ function ViewerRetrieveStudyData({
       isStudyLoaded={isStudyLoaded}
       studyInstanceUIDs={studyInstanceUIDs}
       patientID={patientID}
+      afterUpload={() => setRefresh(true)}
     />
   );
 }
