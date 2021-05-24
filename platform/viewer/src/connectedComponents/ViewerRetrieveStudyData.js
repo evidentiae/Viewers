@@ -222,7 +222,7 @@ function ViewerRetrieveStudyData({
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
   const [isStudyLoaded, setIsStudyLoaded] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+  const refreshVar = useState(false);
   const snackbarContext = useSnackbarContext();
   const { appConfig = {} } = useContext(AppContext);
   const {
@@ -232,8 +232,6 @@ function ViewerRetrieveStudyData({
 
   console.log("ViewerRetrieveStudyData()");
   console.log(studyInstanceUIDs);
-
-  var state = this.state;
 
   let cancelableSeriesPromises;
   let cancelableStudiesPromises;
@@ -364,8 +362,8 @@ function ViewerRetrieveStudyData({
     
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
       console.log("refresh param:");
-      console.log(refresh);
-      retrieveParams.push(refresh);
+      console.log(refreshVar[0]);
+      retrieveParams.push(refreshVar[0]);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
         retrieveStudiesMetadata(...retrieveParams)
@@ -406,7 +404,7 @@ function ViewerRetrieveStudyData({
   });
 
   const prevStudyInstanceUIDs = usePrevious(studyInstanceUIDs);
-  const reloadStudies = refresh || !(
+  const reloadStudies = refreshVar[0] || !(
     prevStudyInstanceUIDs &&
     prevStudyInstanceUIDs.every(e => studyInstanceUIDs.includes(e)) &&
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
@@ -417,11 +415,11 @@ function ViewerRetrieveStudyData({
       studyMetadataManager.purge();
       purgeCancellablePromises();
     }
-  }, [refresh, prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
+  }, [refreshVar[0], prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
     if (reloadStudies) {
-      state.refresh = false;
+      refreshVar[0] = false;
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
       loadStudies();
@@ -429,7 +427,7 @@ function ViewerRetrieveStudyData({
         purgeCancellablePromises();
       };
     }
-  }, [refresh, studyInstanceUIDs]);
+  }, [refreshVar[0], studyInstanceUIDs]);
 
   if (error) {
     const content = JSON.stringify(error);
@@ -448,7 +446,7 @@ function ViewerRetrieveStudyData({
       patientID={patientID}
       afterUpload={() => {
         console.log("AFTER UPLOAD");
-        setRefresh(true);
+        refresVar[1](true);
       }}
     />
   );
