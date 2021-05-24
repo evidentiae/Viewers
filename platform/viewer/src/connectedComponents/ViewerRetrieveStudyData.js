@@ -445,7 +445,10 @@ function ViewerRetrieveStudyData({
       isStudyLoaded={isStudyLoaded}
       studyInstanceUIDs={studyInstanceUIDs}
       patientID={patientID}
-      afterUpload={() => setRefresh(true)}
+      afterUpload={() => {
+        console.log("AFTER UPLOAD");
+        setRefresh(true);
+      }}
     />
   );
 }
