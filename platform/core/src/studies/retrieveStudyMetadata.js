@@ -22,7 +22,8 @@ export function retrieveStudyMetadata(
   separateSeriesInstanceUIDFilters = false,
   force = false
 ) {
-  console.log("retrieveStudyMetadata");
+  console.log("retrieveStudyMetadata: ");
+  console.log(force);
   // @TODO: Whenever a study metadata request has failed, its related promise will be rejected once and for all
   // and further requests for that metadata will always fail. On failure, we probably need to remove the
   // corresponding promise from the "StudyMetaDataPromises" map...

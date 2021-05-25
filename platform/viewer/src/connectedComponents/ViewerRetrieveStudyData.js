@@ -351,7 +351,9 @@ function ViewerRetrieveStudyData({
       var separateUIDFilters = 
         appConfig.splitQueryParameterCalls ||
         appConfig.enableGoogleCloudAdapter;
-    
+   
+      console.log("refresh:");
+      console.log(refresh);
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
       retrieveParams.push(refresh);
 
