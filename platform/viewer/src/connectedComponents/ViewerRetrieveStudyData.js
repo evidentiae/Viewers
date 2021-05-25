@@ -184,10 +184,6 @@ const _updateStudyMetadataManager = (study, studyMetadata) => {
 };
 
 const _updateStudyDisplaySets = (study, studyMetadata) => {
-  console.log("_updateStudyDisplaySets");
-  console.log(study);
-  console.log(studyMetadata);
-
   const sopClassHandlerModules =
     extensionManager.modules['sopClassHandlerModule'];
 
@@ -218,6 +214,8 @@ function ViewerRetrieveStudyData({
   setStudyData,
   patientID
 }) {
+  console.log("ViewerRetrieveStudyData render");
+
   // hooks
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
@@ -228,9 +226,6 @@ function ViewerRetrieveStudyData({
     filterQueryParam: isFilterStrategy = false,
     maxConcurrentMetadataRequests,
   } = appConfig;
-
-  console.log("ViewerRetrieveStudyData()");
-  console.log(studyInstanceUIDs);
 
   let cancelableSeriesPromises;
   let cancelableStudiesPromises;
@@ -277,8 +272,6 @@ function ViewerRetrieveStudyData({
    * @param {string} [filters.seriesInstanceUID] - series instance uid to filter results against
    */
   const processStudies = (studiesData, filters) => {
-    console.log("processStudies");
-    console.log(studiesData);
     if (Array.isArray(studiesData) && studiesData.length > 0) {
       // Map studies to new format, update metadata manager?
       const studiesData_ = studiesData.filter(study => study !== null);

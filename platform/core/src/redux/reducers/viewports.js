@@ -141,8 +141,6 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT_AND_DATA: {
-      console.log("SET_VIEWPORT_LAYOUT_AND_DATA");
-      console.log(action);
       const { numRows, numColumns } = action;
       const viewportSpecificData = cloneDeep(action.viewportSpecificData);
       /*
@@ -170,10 +168,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
     }
 
     case TOGGLE_MAXIMIZE: {
-      console.log("TOGGLE_MAXIMIZE");
-      console.log(state);
       var next_state = Object.assign({}, state, {maximized: !state.maximized});
-      console.log(next_state);
       return next_state;
     }
 

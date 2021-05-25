@@ -28,11 +28,9 @@ class OHIFCornerstoneViewport extends Component {
   static id = 'OHIFCornerstoneViewport';
 
   static init() {
-    console.log('OHIFCornerstoneViewport init()');
   }
 
   static destroy() {
-    console.log('OHIFCornerstoneViewport destroy()');
     StackManager.clearStacks();
   }
 
