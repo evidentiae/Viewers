@@ -408,6 +408,7 @@ function ViewerRetrieveStudyData({
   );
 
   useEffect(() => {
+    console.log("useEffect() 1");
     if (reloadStudies) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
@@ -415,6 +416,7 @@ function ViewerRetrieveStudyData({
   }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
+    console.log("useEffect() 2");
     if (reloadStudies) {
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
