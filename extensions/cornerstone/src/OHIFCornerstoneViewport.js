@@ -27,11 +27,9 @@ class OHIFCornerstoneViewport extends Component {
   static id = 'OHIFCornerstoneViewport';
 
   static init() {
-    console.log('OHIFCornerstoneViewport init()');
   }
 
   static destroy() {
-    console.log('OHIFCornerstoneViewport destroy()');
     StackManager.clearStacks();
   }
 
@@ -230,11 +228,6 @@ class OHIFCornerstoneViewport extends Component {
         });
       }
     };
-
-    console.log("imageIds:");
-    console.log(imageIds);
-    console.log(currentImageIdIndex);
-    console.log(viewportIndex);
 
     if (imageIds.length === 0)
       return null;

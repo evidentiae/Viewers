@@ -45,12 +45,9 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   // See: `getAuthorizationHeaders.js`
   let query = useQuery();
   const authToken = query.get('token');
-  console.log(authToken);
   */
 
   if (token) {
-    console.log("setting token");
-    console.log(token);
     user.getAccessToken = () => token;
     window.access_token = token;
   }
@@ -59,16 +56,10 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
 
   const studyUIDs = studyInstanceUIDs ? UrlUtil.paramString.parseParam(studyInstanceUIDs) : [];
   const seriesUIDs = seriesInstanceUIDs ? getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation) : [];
-
-  console.log("studyUIDs:");
-  console.log(studyUIDs);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("test");
     studyUIDs.forEach(uid => {
-      console.log(uid);
       dispatch(setStudyData(uid, {}));
     });
   });
