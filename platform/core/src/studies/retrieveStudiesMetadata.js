@@ -20,7 +20,7 @@ export default function retrieveStudiesMetadata(
   studyInstanceUIDs,
   filters,
   separateSeriesInstanceUIDFilters = false,
-  force = false
+  force
 ) {
   console.log("retrieveStudiesMetadata: ");
   console.log(force);
