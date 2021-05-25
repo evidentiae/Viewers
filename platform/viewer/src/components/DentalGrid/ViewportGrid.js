@@ -30,8 +30,7 @@ const ViewportGrid = function (props) {
     onSetActiveViewport
   } = props;
 
-  console.log("ViewportGrid");
-  console.log(maximized);
+  console.log("ViewportGrid render");
 
   /*
   const displaySet = viewportData[0];
@@ -104,7 +103,6 @@ const ViewportGrid = function (props) {
   useEffect(() => {
     if (isStudyLoaded) {
       viewportData.forEach(displaySet => {
-        console.log("loadAndCacheDerivedDisplaySets");
         const promises = loadAndCacheDerivedDisplaySets(displaySet, studies);
 
         promises.forEach(promise => {
@@ -123,8 +121,6 @@ const ViewportGrid = function (props) {
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
   const getMaximizedViewportPane = (layout, viewportIndex) => {
-    console.log("In getMaximizedViewportPane");
-    console.log(viewportData);
     var displaySet = viewportData[viewportIndex];
 
     for (var i=0; i<viewportData.length; i++) {
@@ -136,9 +132,6 @@ const ViewportGrid = function (props) {
     }
 
     set.frameIndex = viewportIndex;
-
-    console.log("In getMaximizedViewportPane, after fetching maximized display set:");
-    console.log(displaySet);
 
     if (!displaySet) {
       return null;
@@ -193,9 +186,6 @@ const ViewportGrid = function (props) {
   const getViewportPane = (layout, viewportIndex) => {
     var displaySet = viewportData[viewportIndex];
 
-    console.log("In getViewportPanes viewport loop. Display set:");
-    console.log(displaySet);
-
     if (!displaySet) {
       return null;
     }
@@ -247,7 +237,6 @@ const ViewportGrid = function (props) {
   };
 
   const getViewportPanes = () => {
-    console.log("getViewportPanes");
     if (maximized) {
       return [getMaximizedViewportPane(layout, activeViewportIndex)];
     } else {
@@ -334,7 +323,6 @@ function _getViewportComponent(
   pluginName,
   defaultPluginName
 ) {
-  console.log("_getViewportComponent");
   if (viewportData.displaySet) {
     pluginName = pluginName || defaultPluginName;
     const ViewportComponent = availablePlugins[pluginName];

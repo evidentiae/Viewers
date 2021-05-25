@@ -265,15 +265,11 @@ class Viewer extends Component {
 
   getClient(url) {
     const token = window.access_token;
-    console.log("token:");
-    console.log(token);
     const headers = {Authorization: 'Bearer ' + token};
     return new api.DICOMwebClient({url, headers});
   }
 
   createNewStudy(layout) {
-    console.log("createNewStudy");
-
     // dialog should return some representation of layout, like frames, positions, etc
     // then we create new study, series, structured display from that
     // http://dicom.nema.org/medical/dicom/current/output/html/part18.html#chapter_F
@@ -311,11 +307,8 @@ class Viewer extends Component {
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
 
     var buffer = dict.write();
-    console.log("buffer:");
-    console.log(buffer);
 
     const url = this.props.activeServer.wadoRoot;
-    console.log(url);
 
     const client = this.getClient(url);
     const props = this.props;
@@ -354,17 +347,12 @@ class Viewer extends Component {
         image.src = ev.target.result;
         image.decode()
           .then(() => {
-            console.log("image onload");
-            console.log(image.naturalWidth);
-            console.log(image.naturalHeight);
             var canvas = document.createElement("canvas");
             canvas.width = image.naturalWidth;
             canvas.height = image.naturalHeight;
             var ctx = canvas.getContext("2d");
             ctx.drawImage(image, 0, 0);
             var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
-            console.log("image data");
-            console.log(imageData);
             onSuccess(imageData);
           })
           .catch(err => {
@@ -420,8 +408,6 @@ class Viewer extends Component {
     var argb_buffer = new Uint32Array(imageData.data.buffer);
     var rgb_buffer  = new Uint8Array(new ArrayBuffer(imageData.height*imageData.width*3));
 
-    console.log(argb_buffer);
-
     var j = 0;
     for (var i=0; i<argb_buffer.length; i++) {
       var word = argb_buffer[i];
@@ -430,8 +416,6 @@ class Viewer extends Component {
       rgb_buffer[j+2] = (word & 0x00ff0000) >> 16;
       j+= 3;
     }
-
-    console.log(rgb_buffer);
 
     dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
 
@@ -442,17 +426,7 @@ class Viewer extends Component {
     const client = this.getClient(url);
     const props = this.props;
 
-    console.log("buffer:");
-    console.log(buffer.length);
-    console.log(buffer);
-
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      console.log("result:");
-      console.log(result);
-      console.log("viewport:");
-      console.log(viewport);
-      console.log("props:");
-      console.log(props);
       //var ohifInstanceMetadata = new OHIFInstanceMetadata(data, [], [], data.SOPInstanceUID);
       //viewport.images = [ohifInstanceMetadata]; 
       props.afterUpload();
@@ -460,6 +434,8 @@ class Viewer extends Component {
   }
 
   render() {
+    console.log("Viewer render");
+
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 
@@ -472,11 +448,6 @@ class Viewer extends Component {
         }
       });
     });
-
-    console.log("Viewer render()");
-    console.log(this.props.viewports);
-    console.log(this.props.activeViewportIndex);
-    console.log(this.props.studies);
 
     return (
       <>
@@ -816,8 +787,6 @@ const _checkForSeriesInconsistencesWarnings = async function (displaySet, studie
  */
 const _mapStudiesToThumbnails = function(studies, activeDisplaySetInstanceUID) {
   return studies.map(study => {
-    console.log("_mapStudiesToThumbnails");
-    console.log(study);
     const { StudyInstanceUID } = study;
 
     const thumbnails = study.series.map(series => {
