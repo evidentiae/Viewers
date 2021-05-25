@@ -345,6 +345,8 @@ function ViewerRetrieveStudyData({
         // Query param filtering controlled by appConfig property
         if (isFilterStrategy) {
           retrieveParams.push(filters);
+        } else {
+          retrieveParams.push([]);
         }
       }
 
