@@ -179,6 +179,8 @@ const _initMeasurementService = measurementService => {
   };
 
   /* Mappings */
+  /*
+  WAERN: skip as it produces many warnings
   measurementService.addMapping(
     csToolsVer4MeasurementSource,
     'Length',
@@ -186,6 +188,7 @@ const _initMeasurementService = measurementService => {
     toAnnotation,
     toMeasurement
   );
+  */
 
   return csToolsVer4MeasurementSource;
 };
