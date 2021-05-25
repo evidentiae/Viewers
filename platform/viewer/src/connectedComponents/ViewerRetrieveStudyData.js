@@ -361,6 +361,7 @@ function ViewerRetrieveStudyData({
       console.log(refresh);
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
       retrieveParams.push(refresh);
+      console.log(retrieveParams);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
         retrieveStudiesMetadata(...retrieveParams)
