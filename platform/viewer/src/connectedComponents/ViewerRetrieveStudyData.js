@@ -348,6 +348,8 @@ function ViewerRetrieveStudyData({
         } else {
           retrieveParams.push([]);
         }
+      } else {
+        retrieveParams.push([]);
       }
 
       var separateUIDFilters = 
