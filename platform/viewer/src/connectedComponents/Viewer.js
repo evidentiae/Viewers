@@ -16,7 +16,7 @@ import { extensionManager } from './../App.js';
 import { user, utils } from '@ohif/core';
 import { api } from 'dicomweb-client';
 import dcmjs from 'dcmjs';
-const { DicomMetaDictionary, DicomDict } = dcmjs.data;
+const { DicomMessage, DicomMetaDictionary, DicomDict, WriteBufferStream } = dcmjs.data;
 
 // Contexts
 import WhiteLabelingContext from '../context/WhiteLabelingContext.js';
