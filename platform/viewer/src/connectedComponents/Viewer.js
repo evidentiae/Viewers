@@ -299,6 +299,7 @@ class Viewer extends Component {
   }
 
   uploadImage() {
+    console.log("uploadImage()");
     var index = this.props.activeViewportIndex;
     var self = this;
     this.loadImage(function (imageData) {
@@ -343,6 +344,7 @@ class Viewer extends Component {
   }
 
   createNewImageInstance(index, imageData) {
+    console.log("createNewImageInstance()");
     var viewport = this.props.viewports[index];
     const fileMetaInformationVersionArray = new Uint8Array(2);
     fileMetaInformationVersionArray[1] = 1;
@@ -401,9 +403,11 @@ class Viewer extends Component {
     const client = this.getClient(url);
     const props = this.props;
 
+    console.log("storeInstances()");
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       //var ohifInstanceMetadata = new OHIFInstanceMetadata(data, [], [], data.SOPInstanceUID);
       //viewport.images = [ohifInstanceMetadata]; 
+      console.log("call afterUpload");
       props.afterUpload();
     });
   }
