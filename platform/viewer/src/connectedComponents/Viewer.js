@@ -400,7 +400,7 @@ class Viewer extends Component {
     }
     */
     console.log("jpeg encode");
-    var jpegImageData = jpeg.encode(imageData, 100);
+    var jpegImageData = jpeg.encode(imageData, 90);
     console.log(jpegImageData.data.buffer);
 
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
