@@ -5,6 +5,7 @@ import { useLogger } from '@ohif/ui';
 
 import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
 import { withDialog } from '@ohif/ui';
+import jpeg from 'jpeg-js';
 import moment from 'moment';
 import ToolbarRow from './ToolbarRow.js';
 import ConnectedStudyBrowser from './ConnectedStudyBrowser.js';
@@ -407,19 +408,27 @@ class Viewer extends Component {
     dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
 
-    var argb_buffer = new Uint32Array(imageData.data.buffer);
-    var rgb_buffer  = new Uint8Array(new ArrayBuffer(imageData.height*imageData.width*3));
+    dict.upsertTag("00282110", "CS", ["01"]); // Lossy Image Compression
+    dict.upsertTag("00282114", "CS", ["ISO_10918_1"]); // Lossy Image Compression Method
 
+    /*
+    var argb_buffer = new Uint32Array(imageData.data.buffer);
+    var rgb_buffer  = new Uint8Array(new ArrayBuffer(imageData.height*imageData.width*4));
     var j = 0;
     for (var i=0; i<argb_buffer.length; i++) {
       var word = argb_buffer[i];
       rgb_buffer[j+0] = (word & 0x000000ff);
       rgb_buffer[j+1] = (word & 0x0000ff00) >> 8;
       rgb_buffer[j+2] = (word & 0x00ff0000) >> 16;
-      j+= 3;
+        j+= 3;
     }
+    */
+    console.log("jpeg encode");
+    var jpegImageData = jpeg.encode(imageData);
+    console.log(jpegImageData);
 
-    dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
+    //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
+    dict.upsertTag("7FE00010", "OB", [jpegImageData.data.buffer]); // Pixel Data
 
     // TODO instance creation time
 
@@ -429,6 +438,7 @@ class Viewer extends Component {
     const props = this.props;
 
     console.log("storeInstances()");
+    // XXX: we need a spinner here
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       //var ohifInstanceMetadata = new OHIFInstanceMetadata(data, [], [], data.SOPInstanceUID);
       //viewport.images = [ohifInstanceMetadata]; 
