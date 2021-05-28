@@ -379,8 +379,8 @@ class Viewer extends Component {
       "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
       "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
       "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
-      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
-      //"00020010": { Value: ["1.2.840.10008.1.2.4.50"], vr: "UI" } // Transfer Syntax UID
+      //"00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+      "00020010": { Value: ["1.2.840.10008.1.2.4.50"], vr: "UI" } // Transfer Syntax UID
     };
 
     /*
@@ -408,9 +408,9 @@ class Viewer extends Component {
     dict.upsertTag("00280101", "US", [8]); // Bits Stored
     dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
-
     dict.upsertTag("00282110", "CS", ["01"]); // Lossy Image Compression
     dict.upsertTag("00282114", "CS", ["ISO_10918_1"]); // Lossy Image Compression Method
+    // TODO instance creation time
 
     /*
     var argb_buffer = new Uint32Array(imageData.data.buffer);
@@ -431,13 +431,11 @@ class Viewer extends Component {
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
     dict.upsertTag("7FE00010", "OB", [jpegImageData.data.buffer]); // Pixel Data
 
-    // TODO instance creation time
-
     var buffer = dict.write();
+
     const url = this.props.activeServer.wadoRoot;
     const client = this.getClient(url);
     const props = this.props;
-
     console.log("storeInstances()");
     // XXX: we need a spinner here
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
@@ -447,6 +445,18 @@ class Viewer extends Component {
       props.afterUpload();
     });
   }
+
+  /*
+  download(filename, bytes) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:application/dicom,' + encodeURIComponent(bytes));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+  */
 
   render() {
     console.log("Viewer render");
