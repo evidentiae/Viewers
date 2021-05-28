@@ -354,7 +354,8 @@ class Viewer extends Component {
       "00020012": { Value: ["1.2.840.113819.7.1.1997.1.0"], vr: "UI" }, // TODO: update (Implementation Class UID)
       "00020002": { Value: ["1.2.840.10008.5.1.4.1.1.1.1"], vr: "UI" }, // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
       "00020003": { Value: [DicomMetaDictionary.uid()], vr: "UI" },  // Media Storage SOP Instance UID = new uid
-      "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+      //"00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
+      "00020010": { Value: ["1.2.840.10008.1.2.4.50"], vr: "UI" } // Transfer Syntax UID
     };
 
     /*
@@ -399,8 +400,8 @@ class Viewer extends Component {
     }
     */
     console.log("jpeg encode");
-    var jpegImageData = jpeg.encode(imageData);
-    console.log(jpegImageData);
+    var jpegImageData = jpeg.encode(imageData, 100);
+    console.log(jpegImageData.data.buffer);
 
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
     dict.upsertTag("7FE00010", "OB", [jpegImageData.data.buffer]); // Pixel Data
