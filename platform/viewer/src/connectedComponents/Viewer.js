@@ -403,9 +403,11 @@ class Viewer extends Component {
     console.log("jpeg encode");
     var jpegImageData = jpeg.encode(imageData, 90);
     console.log(jpegImageData.data.buffer);
+    var buf = new ArrayBuffer(jpegImageData.data.buffer.byteLength + 1);
+    new Uint8Array(buf).set(new Uint8Array(jpegImageData.data.buffer));
 
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
-    dict.upsertTag("7FE00010", "OB", [jpegImageData.data.buffer]); // Pixel Data
+    dict.upsertTag("7FE00010", "OB", [buf]); // Pixel Data
 
     var buffer = dict.write({fragmentMultiframe: false, allowInvalidVRLength: true});
     this.download("test.dcm", buffer);
