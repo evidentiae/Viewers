@@ -380,9 +380,9 @@ class Viewer extends Component {
     dict.upsertTag("00280002", "US", [3]); // Samples per Pixel
     dict.upsertTag("00280010", "US", [imageData.height]); // Rows
     dict.upsertTag("00280011", "US", [imageData.width]); // Columns
-    dict.upsertTag("00280100", "US", [4]); // Bits Allocated
-    dict.upsertTag("00280101", "US", [4]); // Bits Stored
-    dict.upsertTag("00280102", "US", [3]); // High Bit
+    dict.upsertTag("00280100", "US", [8]); // Bits Allocated
+    dict.upsertTag("00280101", "US", [8]); // Bits Stored
+    dict.upsertTag("00280102", "US", [7]); // High Bit
     dict.upsertTag("00280103", "US", [0]); // Pixel Representation
     dict.upsertTag("00282110", "CS", ["01"]); // Lossy Image Compression
     dict.upsertTag("00282114", "CS", ["ISO_10918_1"]); // Lossy Image Compression Method
