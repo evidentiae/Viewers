@@ -401,16 +401,25 @@ class Viewer extends Component {
     }
     */
     console.log("jpeg encode");
+
     var jpegImageData = jpeg.encode(imageData, 90);
     console.log(jpegImageData.data.buffer);
-    var buf = new ArrayBuffer(jpegImageData.data.buffer.byteLength + 1);
-    new Uint8Array(buf).set(new Uint8Array(jpegImageData.data.buffer));
+
+    // We need to manually pad the buffer to avoid complaints from Google even
+    // though dcmjs also adds padding (could be a bug in dcmjs encapsulation logic).
+    var buf;
+    if (jpegImageData.data.buffer.byteLength & 1) {
+      buf = new ArrayBuffer(jpegImageData.data.buffer.byteLength + 1);
+      new Uint8Array(buf).set(new Uint8Array(jpegImageData.data.buffer));
+    } else {
+      buf = jpegImageData.data.buffer;
+    }
 
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
     dict.upsertTag("7FE00010", "OB", [buf]); // Pixel Data
 
     var buffer = dict.write({
-      fragmentMultiframe: false,
+      fragmentMultiframe: false, // storeInstances does not seem to work with multiframes
       allowInvalidVRLength: true
     });
     //this.download("test.dcm", buffer);
