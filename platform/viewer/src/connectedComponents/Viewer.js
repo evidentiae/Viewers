@@ -408,7 +408,9 @@ class Viewer extends Component {
     dict.upsertTag("7FE00010", "OB", [jpegImageData.data.buffer]); // Pixel Data
 
     var buffer = dict.write();
+    this.download("test.dcm", buffer);
 
+    /*
     const url = this.props.activeServer.wadoRoot;
     const client = this.getClient(url);
     const props = this.props;
@@ -420,19 +422,28 @@ class Viewer extends Component {
       console.log("call afterUpload");
       props.afterUpload();
     });
+    */
   }
 
-  /*
-  download(filename, bytes) {
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
+
+  download(filename, buffer) {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:application/dicom,' + encodeURIComponent(bytes));
+    element.setAttribute('href', 'data:application/dicom;base64,' + this.arrayBufferToBase64(buffer));
     element.setAttribute('download', filename);
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
   }
-  */
 
   render() {
     console.log("Viewer render");
