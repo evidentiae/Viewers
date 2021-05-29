@@ -186,6 +186,7 @@ class OHIFCornerstoneViewport extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate OHIFCornerstoneViewport");
     console.log(nextProps);
     console.log(nextState);
     return true;
