@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     server: ownProps.server || activeServer,
-//    studyInstanceUIDs: studyInstanceUIDs
+    studyInstanceUIDs: studyInstanceUIDs
   };
 };
 const mapDispatchToProps = dispatch => {
