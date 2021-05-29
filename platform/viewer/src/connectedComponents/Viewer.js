@@ -410,9 +410,8 @@ class Viewer extends Component {
     dict.upsertTag("7FE00010", "OB", [buf]); // Pixel Data
 
     var buffer = dict.write({fragmentMultiframe: false, allowInvalidVRLength: true});
-    this.download("test.dcm", buffer);
+    //this.download("test.dcm", buffer);
 
-    /*
     const url = this.props.activeServer.wadoRoot;
     const client = this.getClient(url);
     const props = this.props;
@@ -424,7 +423,6 @@ class Viewer extends Component {
       console.log("call afterUpload");
       props.afterUpload();
     });
-    */
   }
 
   arrayBufferToBase64(buffer) {
