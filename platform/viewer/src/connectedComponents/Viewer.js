@@ -375,7 +375,7 @@ class Viewer extends Component {
     // Media Storage SOP Class UID = Digital X-Ray Image Storage - For Presentation
     dict.upsertTag("00080016", "UI", ["1.2.840.10008.5.1.4.1.1.1.1"]); 
     dict.upsertTag("00280006", "US", [0]); // Planar Configuration
-    dict.upsertTag("00280004", "CS", ["YBR_FULL"]); // Photometric Interpretation
+    dict.upsertTag("00280004", "CS", ["YBR_RCT"]); // Photometric Interpretation
     //dict.upsertTag("00280004", "CS", ["RGB"]); // Photometric Interpretation
     dict.upsertTag("00280002", "US", [3]); // Samples per Pixel
     dict.upsertTag("00280010", "US", [imageData.height]); // Rows
