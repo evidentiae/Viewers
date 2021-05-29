@@ -434,7 +434,10 @@ class Viewer extends Component {
     //dict.upsertTag("7FE00010", "OB", [rgb_buffer.buffer]); // Pixel Data
     dict.upsertTag("7FE00010", "OB", [buf]); // Pixel Data
 
-    var buffer = dict.write({fragmentMultiframe: false, allowInvalidVRLength: true});
+    var buffer = dict.write({
+      fragmentMultiframe: false,
+      allowInvalidVRLength: true
+    });
     //this.download("test.dcm", buffer);
 
     const url = this.props.activeServer.wadoRoot;
