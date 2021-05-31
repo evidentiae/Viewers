@@ -189,15 +189,12 @@ class OHIFCornerstoneViewport extends Component {
     }
   }
 
-  /*
   shouldComponentUpdate(nextProps, nextState) {
     console.log("shouldComponentUpdate OHIFCornerstoneViewport");
     console.log(nextProps);
     console.log(nextState);
-    //var changed =    !(this.props === nextProps && this.state === nextState);
-    return true;
+    return !(this.props.viewportData === nextProps.viewportData);
   }
-  */
 
   render() {
     console.log("OHIFCornerstoneViewport render()");
