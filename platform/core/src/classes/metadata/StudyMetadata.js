@@ -868,7 +868,6 @@ const makeDisplaySet = (series, instances, displaySets) => {
   if (instances.length === 1) {
     // insert in existing layout
     // insert based on instance number
-    var instance = instances[0];
     displaySets.forEach((set, index) => {
       if (set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[index] = imageSet;
