@@ -199,6 +199,8 @@ export class StudyMetadata extends Metadata {
 
         let displaySet;
 
+        console.log("creating display sets");
+
         if (isMultiFrame(instance)) {
           displaySet = makeDisplaySet(series, [instance], displaySets);
 
@@ -249,6 +251,9 @@ export class StudyMetadata extends Metadata {
         sopClassUIDs,
       });
     }
+
+    console.log("created display sets:");
+    console.log(displaySets);
 
     return displaySets;
   }
