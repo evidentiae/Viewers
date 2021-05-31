@@ -927,10 +927,17 @@ const makeDisplaySet = (series, instances, displaySets) => {
         displayReconstructableInfo.reconstructionIssues;
   }
 
+  console.log("inserting image set, based on instance: ");
+  console.log(instance);
+  
   if (instances.length === 1) {
     // insert in existing layout
     // insert based on instance number
     displaySets.forEach((set, index) => {
+      console.log("looking to insert");
+      console.log(set.numImageFrames);
+      console.log(set.InstanceNumber);
+      console.log(instance.getTagValue('InstanceNumber'));
       if (set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[index] = imageSet;
         return imageSet;
