@@ -168,10 +168,10 @@ export class StudyMetadata extends Metadata {
         var seq = instance.getTagValue('StructuredDisplayImageBoxSequence');
         var boxes = Array.isArray(seq) ? seq : [seq];
 
+        var instanceNumber = 0;
         boxes.forEach(box => {
           const displaySet = new ImageSet([]);
           const seriesData = series.getData();
-
           displaySet.setAttributes({
             displaySetInstanceUID: displaySet.uid,
             StudyInstanceUID: study.getStudyInstanceUID(),
@@ -184,71 +184,70 @@ export class StudyMetadata extends Metadata {
             frameRate: instance.getTagValue('FrameTime'),
             Modality: instance.getTagValue('Modality'),
             isMultiFrame: isMultiFrame(instance),
+            InstanceNumber: instanceNumber++
           });
-
           displaySets.push(displaySet);
         });
-      }
-
-      // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
-      if (
-        !isImage(instance.getTagValue('SOPClassUID')) &&
-        !instance.getTagValue('Rows')
-      ) {
-        return;
-      }
-
-      let displaySet;
-
-      if (isMultiFrame(instance)) {
-        displaySet = makeDisplaySet(series, [instance]);
-
-        displaySet.setAttributes({
-          sopClassUIDs,
-          isClip: true,
-          SeriesInstanceUID: series.getSeriesInstanceUID(),
-          StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID for drag/drop purposes
-          numImageFrames: instance.getTagValue('NumberOfFrames'), // Override the default value of instances.length
-          InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
-          AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
-          Maximized: false
-        });
-        displaySets.push(displaySet);
-      } else if (isSingleImageModality(instance.Modality)) {
-        displaySet = makeDisplaySet(series, [instance]);
-        displaySet.setAttributes({
-          sopClassUIDs,
-          StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
-          SeriesInstanceUID: series.getSeriesInstanceUID(),
-          InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
-          AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
-          Maximized: false
-        });
-        displaySets.push(displaySet);
       } else {
-        displaySet = makeDisplaySet(series, [instance]);
-        displaySet.setAttributes({
-          sopClassUIDs,
-          StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
-          SeriesInstanceUID: series.getSeriesInstanceUID(),
-          InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
-          AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
-          Maximized: false
-        });
-        displaySet.frameIndex = i;
-        displaySets.push(displaySet);
-        stackableInstances.push(instance);
+        // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
+        if (
+          !isImage(instance.getTagValue('SOPClassUID')) &&
+          !instance.getTagValue('Rows')
+        ) {
+          return;
+        }
+
+        let displaySet;
+
+        if (isMultiFrame(instance)) {
+          displaySet = makeDisplaySet(series, [instance], displaySets);
+
+          displaySet.setAttributes({
+            sopClassUIDs,
+            isClip: true,
+            SeriesInstanceUID: series.getSeriesInstanceUID(),
+            StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID for drag/drop purposes
+            numImageFrames: instance.getTagValue('NumberOfFrames'), // Override the default value of instances.length
+            InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
+            AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+            Maximized: false
+          });
+          //displaySets.push(displaySet);
+        } else if (isSingleImageModality(instance.Modality)) {
+          displaySet = makeDisplaySet(series, [instance], displaySets);
+          displaySet.setAttributes({
+            sopClassUIDs,
+            StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
+            SeriesInstanceUID: series.getSeriesInstanceUID(),
+            InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
+            AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+            Maximized: false
+          });
+          //displaySets.push(displaySet);
+        } else {
+          displaySet = makeDisplaySet(series, [instance], displaySets);
+          displaySet.setAttributes({
+            sopClassUIDs,
+            StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
+            SeriesInstanceUID: series.getSeriesInstanceUID(),
+            InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
+            AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
+            Maximized: false
+          });
+          displaySet.frameIndex = i;
+          //displaySets.push(displaySet);
+          stackableInstances.push(instance);
+        }
       }
     });
 
     if (stackableInstances.length) {
-      const displaySet = makeDisplaySet(series, stackableInstances);
+      const displaySet = makeDisplaySet(series, stackableInstances, displaySets);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
       displaySet.setAttributes({
         sopClassUIDs,
       });
-      displaySets.push(displaySet);
     }
 
     return displaySets;
@@ -815,7 +814,7 @@ const isMultiFrame = instance => {
   return instance.getTagValue('NumberOfFrames') > 1;
 };
 
-const makeDisplaySet = (series, instances) => {
+const makeDisplaySet = (series, instances, displaySets) => {
   const instance = instances[0];
   const imageSet = new ImageSet(instances);
   const seriesData = series.getData();
@@ -864,6 +863,23 @@ const makeDisplaySet = (series, instances) => {
     // TODO -> This is currently unused, but may be used for reconstructing
     // Volumes with gaps later on.
     imageSet.missingFrames = isReconstructable.missingFrames;
+  }
+
+  if (instances.length === 1) {
+    // insert in existing layout
+    // insert based on instance number
+    var instance = instances[0];
+    displaySets.forEach((set, index) => {
+      if (set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
+        displaySets[index] = imageSet;
+        return imageSet;
+      }
+    });
+    // no layout frame found: just add to display sets
+    // XXX: what about order: it is not sorted by instance number?
+    displaySets.push(imageSet);
+  } else {
+    displaySets.push(imageSet);
   }
 
   return imageSet;
