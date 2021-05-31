@@ -105,7 +105,7 @@ function ImageThumbnail(props) {
       cornerstone.renderToCanvas(canvasRef.current, image);
       setLoading(false);
     }
-  }, [canvasRef, image.imageId]);
+  }, [image.imageId]);
 
   useEffect(() => {
     if (!error && (!image.imageId || image.imageId !== imageId)) {
