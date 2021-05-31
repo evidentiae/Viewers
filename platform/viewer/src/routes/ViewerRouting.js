@@ -58,20 +58,18 @@ function ViewerRouting({ match: routeMatch, location: routeLocation }) {
   const seriesUIDs = seriesInstanceUIDs ? getSeriesInstanceUIDs(seriesInstanceUIDs, routeLocation) : [];
   const dispatch = useDispatch();
 
-  /*
   useEffect(() => {
     studyUIDs.forEach(uid => {
       dispatch(setStudyData(uid, {}));
     });
   });
-  */
 
   if (server && studyUIDs) {
+    //studyInstanceUIDs={studyUIDs}
     return (
       <ConnectedViewerRetrieveStudyData
         seriesInstanceUIDs={seriesUIDs}
         patientID={patientID}
-        studyInstanceUIDs={studyUIDs}
       />
     );
   }
