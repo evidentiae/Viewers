@@ -35,6 +35,7 @@ function StudyBrowser(props) {
               } = thumb;
 
               seriesIndex++;
+              var index = seriesIndex; // copy to this closure
 
               return (
                 <div
@@ -43,7 +44,7 @@ function StudyBrowser(props) {
                   data-cy="thumbnail-list"
                 >
                   <Thumbnail
-                    active={seriesIndex === activeSeriesIndex}
+                    active={index === activeSeriesIndex}
                     supportsDrag={supportsDrag}
                     key={`${studyIndex}_${thumbIndex}`}
                     id={`${studyIndex}_${thumbIndex}`} // Unused?
@@ -60,7 +61,6 @@ function StudyBrowser(props) {
                     stackPercentComplete={stackPercentComplete}
                     // Events
                     onClick={() => {
-                      var index = seriesIndex;
                       setActiveSeriesIndex(index);
                       onThumbnailClick(displaySetInstanceUID, SeriesInstanceUID);
                     }}
