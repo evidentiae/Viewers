@@ -16,8 +16,8 @@ function StudyBrowser(props) {
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
-        {studies
-          .map((study, studyIndex) => {
+        { var seriesIndex=0;
+          studies.map((study, studyIndex) => {
             const { StudyInstanceUID } = study;
             return study.thumbnails.map((thumb, thumbIndex) => {
               // TODO: Thumb has more props than we care about?
@@ -35,10 +35,6 @@ function StudyBrowser(props) {
                 hasWarnings,
               } = thumb;
 
-              console.log("active:");
-              console.log(thumbIndex);
-              console.log(activeSeriesIndex);
-
               return (
                 <div
                   key={thumb.displaySetInstanceUID}
@@ -46,7 +42,7 @@ function StudyBrowser(props) {
                   data-cy="thumbnail-list"
                 >
                   <Thumbnail
-                    active={thumbIndex === activeSeriesIndex}
+                    active={seriesIndex === activeSeriesIndex}
                     supportsDrag={supportsDrag}
                     key={`${studyIndex}_${thumbIndex}`}
                     id={`${studyIndex}_${thumbIndex}`} // Unused?
@@ -64,8 +60,7 @@ function StudyBrowser(props) {
                     stackPercentComplete={stackPercentComplete}
                     // Events
                     onClick={() => {
-                      console.log("THUMBNAIL CLICK");
-                      setActiveSeriesIndex(thumbIndex);
+                      setActiveSeriesIndex(seriesIndex);
                       onThumbnailClick(displaySetInstanceUID, SeriesInstanceUID);
                     }}
                     onDoubleClick={onThumbnailDoubleClick}
