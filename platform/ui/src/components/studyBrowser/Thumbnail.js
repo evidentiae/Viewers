@@ -172,7 +172,7 @@ function Thumbnail(props) {
       )}
       {/* SHOW TEXT ALTERNATIVE */}
       {!hasImage && hasAltText && (
-        <div className={'alt-image-text p-x-1'} style={active ? {borderColor: '#fff'} : {}}>
+        <div className={'alt-image-text p-x-1'} style={active ? {borderColor: '#fff', borderMargin: '1px'} : undefined}>
           <h1>{altImageText}</h1>
         </div>
       )}
