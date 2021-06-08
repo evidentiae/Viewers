@@ -261,7 +261,7 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
 
-    var layout = {
+    var structuredDisplay = {
       StudyInstanceUID: guid(),
       SeriesInstanceUID: guid(),
       SOPInstanceUID: guid(),
@@ -274,12 +274,12 @@ class Viewer extends Component {
     };
 
     var dict = new DicomDict(metadata);
-    dict.upsertTag("0020000D", "UI", [layout.StudyInstanceUID]); // Study Instance UID
-    dict.upsertTag("0020000E", "UI", [layout.SeriesInstanceUID]); // Series Instance UID
+    dict.upsertTag("0020000D", "UI", [structuredDisplay.StudyInstanceUID]); // Study Instance UID
+    dict.upsertTag("0020000E", "UI", [structuredDisplay.SeriesInstanceUID]); // Series Instance UID
     dict.upsertTag("00200013", "IS", ["0"]); // Instance Number
-    dict.upsertTag("00080018", "UI", [layout.SOPInstanceUID]); // SOP Instance UID
-    dict.upsertTag("00080016", "UI", [layout.SOPClassUID]); 
-    dict.upsertTag("00720422", "SQ", layout.ImageBoxes); // Structured Display Image Box Sequence
+    dict.upsertTag("00080018", "UI", [structuredDisplay.SOPInstanceUID]); // SOP Instance UID
+    dict.upsertTag("00080016", "UI", [structuredDisplay.SOPClassUID]); 
+    dict.upsertTag("00720422", "SQ", structuredDisplay.ImageBoxes); // Structured Display Image Box Sequence
     dict.upsertTag("00100020", "LO", [this.props.patientID]);
 
     var buffer = dict.write();
@@ -290,8 +290,11 @@ class Viewer extends Component {
     const props = this.props;
     //var encoder = new TextEncoder();
     //const buffer = encoder.encode(JSON.stringify(dataset));
+    var viewports = [{plugin: "cornerstone"}, {plugin: "cornerstone"}, {plugin: "cornerstone"}];
+    var layout = {numRows: 1, numColumns: 3, viewports: viewports};
+
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      props.onNewStudy(layout);
+      props.onNewStudy(structuredDisplay, layout);
     });
 
     // then make dicomWeb call to create these in google healthcare
