@@ -13,11 +13,12 @@ function StudyBrowser(props) {
 
   const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
 
+  var seriesIndex = -1;
+
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
-        { var seriesIndex=0;
-          studies.map((study, studyIndex) => {
+        {studies.map((study, studyIndex) => {
             const { StudyInstanceUID } = study;
             return study.thumbnails.map((thumb, thumbIndex) => {
               // TODO: Thumb has more props than we care about?
@@ -32,6 +33,8 @@ function StudyBrowser(props) {
                 SeriesNumber,
                 stackPercentComplete,
               } = thumb;
+
+              seriesIndex++;
 
               return (
                 <div
