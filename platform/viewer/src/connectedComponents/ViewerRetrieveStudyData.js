@@ -212,6 +212,7 @@ function ViewerRetrieveStudyData({
   seriesInstanceUIDs,
   clearViewportSpecificData,
   setStudyData,
+  doneLoadingStudies,
   patientID
 }) {
   console.log("ViewerRetrieveStudyData render");
@@ -308,6 +309,7 @@ function ViewerRetrieveStudyData({
       });
 
       setStudies(studies);
+      doneLoadingStudies(studies);
     }
   };
 
@@ -463,6 +465,7 @@ ViewerRetrieveStudyData.propTypes = {
   server: PropTypes.object,
   clearViewportSpecificData: PropTypes.func.isRequired,
   setStudyData: PropTypes.func.isRequired,
+  doneLoadingStudies: PropTypes.func.isRequired,
 };
 
 export default ViewerRetrieveStudyData;
