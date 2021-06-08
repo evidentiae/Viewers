@@ -117,7 +117,7 @@ function ImageThumbnail(props) {
   }, [fetchImagePromise, image.imageId, imageId, purgeCancelablePromise, setImagePromise, error]);
 
   return (
-    <div className={classNames('ImageThumbnail', { active: active })}>
+    <div className="ImageThumbnail" style={active ? {borderColor: '#ccc', borderWidth: '1px'} : undefined}>
       <div className="image-thumbnail-canvas">
         {shouldRenderToCanvas() ? (
           <canvas ref={canvasRef} width={width} height={height} />
