@@ -99,6 +99,7 @@ function Thumbnail(props) {
       {/* SHOW IMAGE */}
       {hasImage && (
         <ImageThumbnail
+          active={active}
           imageSrc={imageSrc}
           imageId={imageId}
           error={error}
@@ -107,7 +108,7 @@ function Thumbnail(props) {
       )}
       {/* SHOW TEXT ALTERNATIVE */}
       {!hasImage && hasAltText && (
-        <div className={'alt-image-text p-x-1'}>
+        <div className={'alt-image-text p-x-1'} style={active ? 'border-color: #fff' : ''}>
           <h1>{altImageText}</h1>
         </div>
       )}
