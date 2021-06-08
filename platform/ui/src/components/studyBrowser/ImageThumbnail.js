@@ -15,6 +15,7 @@ import ViewportLoadingIndicator from '../../viewer/ViewportLoadingIndicator';
 //import cornerstone from 'cornerstone-core';
 function ImageThumbnail(props) {
   const {
+    active,
     width,
     height,
     imageSrc,
