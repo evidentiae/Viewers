@@ -35,6 +35,10 @@ function StudyBrowser(props) {
                 hasWarnings,
               } = thumb;
 
+              console.log("active:");
+              console.log(thumbIndex);
+              console.log(activeSeriesIndex);
+
               return (
                 <div
                   key={thumb.displaySetInstanceUID}
