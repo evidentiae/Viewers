@@ -60,7 +60,8 @@ function StudyBrowser(props) {
                     stackPercentComplete={stackPercentComplete}
                     // Events
                     onClick={() => {
-                      setActiveSeriesIndex(seriesIndex);
+                      var index = seriesIndex;
+                      setActiveSeriesIndex(index);
                       onThumbnailClick(displaySetInstanceUID, SeriesInstanceUID);
                     }}
                     onDoubleClick={onThumbnailDoubleClick}
