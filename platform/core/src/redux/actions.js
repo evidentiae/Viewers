@@ -121,7 +121,7 @@ export const setStudyData = (StudyInstanceUID, data) => ({
   data,
 });
 
-export const setActiveSeries = (SeriesInstanceUID) => ({
+export const setActiveSeries = SeriesInstanceUID => ({
   type: 'SET_ACTIVE_SERIES',
   SeriesInstanceUID,
 });
@@ -152,6 +152,7 @@ const actions = {
   setTimepoints,
   setMeasurements,
   setStudyData,
+  setActiveSeries,
   setServers,
 };
 
