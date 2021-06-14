@@ -78,7 +78,10 @@ const mapDispatchToProps = dispatch => {
           {numRows: numRows, numColumns: numColumns, viewports: viewports},
           displaySets
         ));
-        dispatch(setActiveSeries(studies[0].getFirstSeries().getSeriesInstanceUID()));
+
+        if (studies[0].series.length > 0) {
+          dispatch(setActiveSeries(studies[0].series[0].SeriesInstanceUID));
+        }
       }
     }
   };
