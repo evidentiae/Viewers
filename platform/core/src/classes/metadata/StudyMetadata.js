@@ -106,7 +106,6 @@ export class StudyMetadata extends Metadata {
    * @returns {Array} The list of display sets created for the given series object
    */
   _createDisplaySetsForSeries(sopClassHandlerModules, series) {
-    console.log("_createDisplaySetsForSeries");
     const study = this;
     const displaySets = [];
 
@@ -152,8 +151,6 @@ export class StudyMetadata extends Metadata {
       }
     }
 
-    console.log("Going through instances of study and creating display sets");
-
     // WAERN TODO: either add sop class plugin, or  change isImage logic (create display set even if not image)
 
     // WE NEED A BETTER WAY TO NOTE THAT THIS IS THE DEFAULT BEHAVIOR FOR LOADING
@@ -189,7 +186,6 @@ export class StudyMetadata extends Metadata {
             isMultiFrame: isMultiFrame(instance),
             InstanceNumber: instanceNumber++
           });
-          console.log("Adding layout frame display set");
           displaySets.push(displaySet);
         });
       } else {
@@ -203,10 +199,7 @@ export class StudyMetadata extends Metadata {
 
         let displaySet;
 
-        console.log("creating display sets");
-
         if (isMultiFrame(instance)) {
-          console.log("Adding multiframe display set");
           displaySet = makeDisplaySet(series, [instance], displaySets);
 
           displaySet.setAttributes({
@@ -221,7 +214,6 @@ export class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else if (isSingleImageModality(instance.Modality)) {
-          console.log("Adding singme image modality display set");
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             sopClassUIDs,
@@ -233,7 +225,6 @@ export class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else {
-          console.log("Adding display set");
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             sopClassUIDs,
@@ -251,7 +242,6 @@ export class StudyMetadata extends Metadata {
     });
 
     if (stackableInstances.length) {
-      console.log("Adding maximized display set");
       const displaySet = makeDisplaySet(series, stackableInstances, displaySets, true);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
@@ -259,9 +249,6 @@ export class StudyMetadata extends Metadata {
         sopClassUIDs,
       });
     }
-
-    console.log("created display sets:");
-    console.log(displaySets);
 
     return displaySets;
   }
@@ -878,18 +865,11 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     imageSet.missingFrames = isReconstructable.missingFrames;
   }
 
-  console.log("inserting image set, based on instance: ");
-  console.log(instance);
-  
   if (!max) {
     // insert in existing layout
     // insert based on instance number
     var foundSet=null;
     displaySets.forEach((set, index) => {
-      console.log("looking to insert");
-      console.log(set.numImageFrames);
-      console.log(set.InstanceNumber);
-      console.log(instance.getTagValue('InstanceNumber'));
       if (!foundSet && set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[index] = imageSet;
         foundSet = imageSet;

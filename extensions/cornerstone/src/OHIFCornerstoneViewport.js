@@ -115,7 +115,6 @@ class OHIFCornerstoneViewport extends Component {
     SOPInstanceUID,
     frameIndex
   ) => {
-    console.log("getViewportData");
     let viewportData;
 
     const stack = OHIFCornerstoneViewport.getCornerstoneStack(
@@ -136,7 +135,6 @@ class OHIFCornerstoneViewport extends Component {
   };
 
   setStateFromProps() {
-    console.log("setStateFromProps");
     const { studies, displaySet } = this.props.viewportData;
     const {
       StudyInstanceUID,
@@ -174,7 +172,6 @@ class OHIFCornerstoneViewport extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("componentDidUpdate");
     const { displaySet } = this.props.viewportData;
     const prevDisplaySet = prevProps.viewportData.displaySet;
 
@@ -190,17 +187,12 @@ class OHIFCornerstoneViewport extends Component {
 
   /*
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("shouldComponentUpdate OHIFCornerstoneViewport");
-    console.log(nextProps);
-    console.log(nextState);
-    //return !(this.props.viewportData === nextProps.viewportData);
+    /return !(this.props.viewportData === nextProps.viewportData);
     return false;
   }
   */
 
   render() {
-    console.log("OHIFCornerstoneViewport render()");
-
     let childrenWithProps = null;
 
     if (!this.state.viewportData) {

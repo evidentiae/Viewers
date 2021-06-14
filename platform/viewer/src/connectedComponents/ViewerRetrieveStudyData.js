@@ -216,8 +216,6 @@ function ViewerRetrieveStudyData({
   patientID,
   activeSeries
 }) {
-  console.log("ViewerRetrieveStudyData render");
-
   // hooks
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
@@ -336,7 +334,6 @@ function ViewerRetrieveStudyData({
   };
 
   const loadStudies = async (refresh) => {
-    console.log("loadStudies()");
     try {
       const filters = {};
       // Use the first, discard others
@@ -359,11 +356,8 @@ function ViewerRetrieveStudyData({
         appConfig.splitQueryParameterCalls ||
         appConfig.enableGoogleCloudAdapter;
    
-      console.log("refresh:");
-      console.log(refresh);
       retrieveParams.push(separateUIDFilters); // Seperate SeriesInstanceUID filter calls.
       retrieveParams.push(refresh);
-      console.log(retrieveParams);
 
       cancelableStudiesPromises[studyInstanceUIDs] = makeCancelable(
         retrieveStudiesMetadata(...retrieveParams)
@@ -411,7 +405,6 @@ function ViewerRetrieveStudyData({
   );
 
   useEffect(() => {
-    console.log("useEffect() 1");
     if (reloadStudies) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
@@ -419,7 +412,6 @@ function ViewerRetrieveStudyData({
   }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
 
   useEffect(() => {
-    console.log("useEffect() 2");
     if (reloadStudies) {
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
@@ -446,7 +438,6 @@ function ViewerRetrieveStudyData({
       studyInstanceUIDs={studyInstanceUIDs}
       patientID={patientID}
       afterUpload={() => {
-        console.log("AFTER UPLOAD");
         studyMetadataManager.purge();
         purgeCancellablePromises();
         cancelableSeriesPromises = {};

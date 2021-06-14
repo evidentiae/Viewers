@@ -303,7 +303,6 @@ class Viewer extends Component {
   }
 
   uploadImage() {
-    console.log("uploadImage()");
     var index = this.props.activeViewportIndex;
     var self = this;
     this.loadImage(function (imageData) {
@@ -319,7 +318,6 @@ class Viewer extends Component {
       var file = e.target.files[0]; 
       var reader = new FileReader();
       reader.onerror = ev => {
-        console.log("reader error");
         console.log(ev);
       };
       reader.onload = ev => {
@@ -348,7 +346,6 @@ class Viewer extends Component {
   }
 
   createNewImageInstance(index, imageData) {
-    console.log("createNewImageInstance()");
     var viewport = this.props.viewports[index];
     const fileMetaInformationVersionArray = new Uint8Array(2);
     fileMetaInformationVersionArray[1] = 1;
@@ -403,10 +400,7 @@ class Viewer extends Component {
         j+= 3;
     }
     */
-    console.log("jpeg encode");
-
     var jpegImageData = jpeg.encode(imageData, 90);
-    console.log(jpegImageData.data.buffer);
 
     // We need to manually pad the buffer to avoid complaints from Google even
     // though dcmjs also adds padding (could be a bug in dcmjs encapsulation logic).
@@ -430,12 +424,10 @@ class Viewer extends Component {
     const url = this.props.activeServer.wadoRoot;
     const client = this.getClient(url);
     const props = this.props;
-    console.log("storeInstances()");
     // XXX: we need a spinner here
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       //var ohifInstanceMetadata = new OHIFInstanceMetadata(data, [], [], data.SOPInstanceUID);
       //viewport.images = [ohifInstanceMetadata]; 
-      console.log("call afterUpload");
       props.afterUpload();
     });
   }
@@ -461,8 +453,6 @@ class Viewer extends Component {
   }
 
   render() {
-    console.log("Viewer render");
-
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 
