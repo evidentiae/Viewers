@@ -12,8 +12,8 @@ function StudyBrowser(props) {
     activeSeries,
   } = props;
 
-  console.log("StudyBrowser render, activeSeries:"):
-  console.log(activeSeries):
+  console.log("StudyBrowser render, activeSeries:");
+  console.log(activeSeries);
 
   return (
     <div className="study-browser">
