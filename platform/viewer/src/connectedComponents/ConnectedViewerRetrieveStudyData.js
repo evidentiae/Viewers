@@ -36,6 +36,7 @@ const mapDispatchToProps = dispatch => {
         for (var i=0; i<studies.length; i++) {
           for (var j=0; j<studies[i].series.length; j++) {
             if (studies[i].series[j].SeriesInstanceUID === seriesUID) {
+              console.log("found active series");
               studyUID = studies[i].StudyInstanceUID;
               displaySets = studies[i].displaySets;
               found = true;
@@ -45,7 +46,8 @@ const mapDispatchToProps = dispatch => {
           if (found) break;
         }
       }
-      if (!seriesUID && studies.length > 0 && studies[0].series.length > 0) {
+      else if (studies.length > 0 && studies[0].series.length > 0) {
+        console.log("picking first series");
         studyUID = studies[0].StudyInstanceUID;
         seriesUID = studies[0].series[0].SeriesInstanceUID;
         displaySets = studies[0].displaySets;
