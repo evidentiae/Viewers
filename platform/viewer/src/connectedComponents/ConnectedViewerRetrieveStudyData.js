@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => {
     doneLoadingStudies: (studies, activeSeries) => {
       console.log("doneLoadingStudies()");
       console.log(studies);
-      if (studies.length > 0 && studies[0].displaySets.length > 0) {
+      if (!activeSeries && studies.length > 0 && studies[0].displaySets.length > 0) {
         var displaySets = studies[0].displaySets;
         var numFrames = 0;
         for (var i = 0; i < displaySets.length; i++) {
@@ -80,10 +80,9 @@ const mapDispatchToProps = dispatch => {
           displaySets
         ));
 
-        if (!activeSeries && studies[0].series.length > 0) {
+        if (studies[0].series.length > 0) {
           console.log("dispatching setActiveSeries");
-          console.log(studies[0]);
-          dispatch(setActiveSeries(studies[0].series[0].SeriesInstanceUID));
+          dispatch(setActiveSeries(.SeriesInstanceUID));
         }
       }
     }
