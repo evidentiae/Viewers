@@ -12,10 +12,6 @@ function StudyBrowser(props) {
     activeSeries,
   } = props;
 
-  //const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
-
-  var seriesIndex = -1;
-
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
@@ -36,9 +32,6 @@ function StudyBrowser(props) {
                 stackPercentComplete,
                 hasWarnings,
               } = thumb;
-
-              seriesIndex++;
-              var index = seriesIndex; // copy to this closure
 
               return (
                 <div

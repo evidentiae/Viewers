@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ViewerRetrieveStudyData from './ViewerRetrieveStudyData.js';
 import OHIF from '@ohif/core';
 
-const { clearViewportSpecificData, setStudyData, setViewportLayoutAndData } = OHIF.redux.actions;
+const { clearViewportSpecificData, setStudyData, setActiveSeries, setViewportLayoutAndData } = OHIF.redux.actions;
 const isActive = a => a.active === true;
 
 const mapStateToProps = (state, ownProps) => {
@@ -78,6 +78,7 @@ const mapDispatchToProps = dispatch => {
           {numRows: numRows, numColumns: numColumns, viewports: viewports},
           displaySets
         ));
+        dispatch(setActiveSeries(studies[0].getFirstSeries().getSeriesInstanceUID()));
       }
     }
   };
