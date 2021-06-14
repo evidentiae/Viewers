@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch => {
 
         if (studies[0].series.length > 0) {
           console.log("dispatching setActiveSeries");
-          dispatch(setActiveSeries(.SeriesInstanceUID));
+          dispatch(setActiveSeries(studies[0].series[0].SeriesInstanceUID));
         }
       }
     }
