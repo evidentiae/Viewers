@@ -45,8 +45,7 @@ const mapDispatchToProps = dispatch => {
           }
           if (found) break;
         }
-      }
-      else if (studies.length > 0 && studies[0].series.length > 0) {
+      } else if (studies.length > 0 && studies[0].series.length > 0) {
         console.log("picking first series");
         studyUID = studies[0].StudyInstanceUID;
         seriesUID = studies[0].series[0].SeriesInstanceUID;

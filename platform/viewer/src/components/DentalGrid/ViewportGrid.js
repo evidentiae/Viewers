@@ -30,8 +30,6 @@ const ViewportGrid = function (props) {
     onSetActiveViewport
   } = props;
 
-  console.log("ViewportGrid render");
-
   /*
   const displaySet = viewportData[0];
 
