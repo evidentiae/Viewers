@@ -9,9 +9,10 @@ function StudyBrowser(props) {
     onThumbnailClick,
     onThumbnailDoubleClick,
     supportsDrag,
+    activeSeries;
   } = props;
 
-  const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
+  //const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
 
   var seriesIndex = -1;
 
@@ -46,7 +47,7 @@ function StudyBrowser(props) {
                   data-cy="thumbnail-list"
                 >
                   <Thumbnail
-                    active={index === activeSeriesIndex}
+                    active={SeriesInstanceUID === activeSeries}
                     supportsDrag={supportsDrag}
                     key={`${studyIndex}_${thumbIndex}`}
                     id={`${studyIndex}_${thumbIndex}`} // Unused?
@@ -64,7 +65,7 @@ function StudyBrowser(props) {
                     stackPercentComplete={stackPercentComplete}
                     // Events
                     onClick={() => {
-                      setActiveSeriesIndex(index);
+                      //setActiveSeriesIndex(index);
                       onThumbnailClick(displaySetInstanceUID, SeriesInstanceUID);
                     }}
                     onDoubleClick={onThumbnailDoubleClick}

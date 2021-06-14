@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Viewer from './Viewer.js';
 import OHIF from '@ohif/core';
 
-const { setTimepoints, setMeasurements, maximize, setStudyData, setLayout } = OHIF.redux.actions;
+const { setTimepoints, setMeasurements, maximize, setStudyData, setActiveSeries, setLayout } = OHIF.redux.actions;
 
 const getActiveServer = servers => {
   const isActive = a => a.active === true;
@@ -33,6 +33,7 @@ const mapDispatchToProps = dispatch => {
     onNewStudy: (structuredDisplay, layout) => {
       dispatch(setStudyData(structuredDisplay.StudyInstanceUID, structuredDisplay));
       dispatch(setLayout(layout));
+      dispatch(setActiveSeries(structuredDisplay.SeriesInstaceUID));
     },
   };
 };
