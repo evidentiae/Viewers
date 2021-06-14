@@ -946,19 +946,22 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
   if (!max) {
     // insert in existing layout
     // insert based on instance number
+    var foundSet=null;
     displaySets.forEach((set, index) => {
       console.log("looking to insert");
       console.log(set.numImageFrames);
       console.log(set.InstanceNumber);
       console.log(instance.getTagValue('InstanceNumber'));
-      if (set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
+      if (!foundSet && set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[index] = imageSet;
-        return imageSet;
+        foundSet = imageSet;
       }
     });
-    // no layout frame found: just add to display sets
-    // XXX: what about order: it is not sorted by instance number?
-    displaySets.push(imageSet);
+    if (!foundSet) {
+      // no layout frame found: just add to display sets
+      // XXX: what about order: it is not sorted by instance number?
+      displaySets.push(imageSet);
+    }
   } else {
     displaySets.push(imageSet);
   }
