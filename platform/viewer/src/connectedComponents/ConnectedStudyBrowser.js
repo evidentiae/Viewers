@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     studies: studiesWithLoadingData,
-    activeSeries: state.studies.activeSeries;
+    activeSeries: state.studies.activeSeries,
   };
 };
 
