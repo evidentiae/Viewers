@@ -26,6 +26,7 @@ const mapDispatchToProps = dispatch => {
     doneLoadingStudies: (studies, activeSeries) => {
       console.log("doneLoadingStudies()");
       console.log(studies);
+      console.log(activeSeries);
 
       var studyUID = null;
       var seriesUID = activeSeries;

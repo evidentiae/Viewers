@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => {
     },
     onNewStudy: (structuredDisplay, layout) => {
       dispatch(setStudyData(structuredDisplay.StudyInstanceUID, structuredDisplay));
-      dispatch(setActiveSeries(structuredDisplay.SeriesInstaceUID));
+      dispatch(setActiveSeries(structuredDisplay.SeriesInstanceUID));
       dispatch(setLayout(layout));
     },
   };
