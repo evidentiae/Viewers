@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     server: ownProps.server || activeServer,
     studyInstanceUIDs: studyInstanceUIDs,
-    activeSeries: state.studes.activeSeries,
+    activeSeries: state.studies.activeSeries,
   };
 };
 const mapDispatchToProps = dispatch => {
