@@ -9,7 +9,7 @@ function StudyBrowser(props) {
     onThumbnailClick,
     onThumbnailDoubleClick,
     supportsDrag,
-    activeSeries;
+    activeSeries,
   } = props;
 
   //const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
