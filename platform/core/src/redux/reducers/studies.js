@@ -16,7 +16,7 @@ const servers = (state = defaultState, action) => {
     case 'SET_ACTIVE_SERIES': {
       console.log("SET_ACTIVE_SERIES");
       console.log(action);
-      var r = Object.assign({}, state, { activeSeries: action.activeSeries }); 
+      var r = Object.assign({}, state, { activeSeries: action.SeriesInstanceUID }); 
       console.log(r);
       return r;
     }
