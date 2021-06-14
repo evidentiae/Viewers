@@ -213,7 +213,8 @@ function ViewerRetrieveStudyData({
   clearViewportSpecificData,
   setStudyData,
   doneLoadingStudies,
-  patientID
+  patientID,
+  activeSeries
 }) {
   console.log("ViewerRetrieveStudyData render");
 
@@ -309,7 +310,7 @@ function ViewerRetrieveStudyData({
       });
 
       setStudies(studies);
-      doneLoadingStudies(studies);
+      doneLoadingStudies(studies, activeSeries);
     }
   };
 

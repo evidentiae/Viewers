@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     server: ownProps.server || activeServer,
-    studyInstanceUIDs: studyInstanceUIDs
+    studyInstanceUIDs: studyInstanceUIDs,
+    activeSeries: state.studes.activeSeries,
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -22,7 +23,7 @@ const mapDispatchToProps = dispatch => {
     clearViewportSpecificData: () => {
       dispatch(clearViewportSpecificData());
     },
-    doneLoadingStudies: (studies) => {
+    doneLoadingStudies: (studies, activeSeries) => {
       console.log("doneLoadingStudies()");
       console.log(studies);
       if (studies.length > 0 && studies[0].displaySets.length > 0) {
@@ -79,7 +80,7 @@ const mapDispatchToProps = dispatch => {
           displaySets
         ));
 
-        if (studies[0].series.length > 0) {
+        if (!activeSeries && studies[0].series.length > 0) {
           console.log("dispatching setActiveSeries");
           console.log(studies[0]);
           dispatch(setActiveSeries(studies[0].series[0].SeriesInstanceUID));
