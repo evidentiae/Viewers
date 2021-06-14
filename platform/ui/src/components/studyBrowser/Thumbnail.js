@@ -132,10 +132,6 @@ function Thumbnail(props) {
     supportsDrag,
   } = props;
 
-  console.log("Thumbnail()");
-  console.log(imageId);
-  console.log(imageSrc);
-
   const [collectedProps, drag, dragPreview] = useDrag({
     // `droppedItem` in `dropTarget`
     // The only data it will have access to

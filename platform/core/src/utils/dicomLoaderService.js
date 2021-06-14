@@ -50,8 +50,6 @@ const fetchIt = (url, headers = DICOMWeb.getAuthorizationHeader()) => {
 };
 
 const cornerstoneRetriever = imageId => {
-  console.log("cornerstoneRetriever");
-  console.log(imageId);
   return cornerstone.loadAndCacheImage(imageId).then(image => {
     return image && image.data && image.data.byteArray.buffer;
   });

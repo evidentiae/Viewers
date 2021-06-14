@@ -46,7 +46,6 @@ function ImageThumbnail(props) {
   };
 
   const fetchImagePromise = () => {
-    console.log("fetchImagePromise");
     if (!cancelablePromise) {
       return;
     }
@@ -54,7 +53,6 @@ function ImageThumbnail(props) {
     setLoading(true);
     cancelablePromise
       .then(response => {
-        console.log("setImage");
         setImage(response);
       })
       .catch(error => {
@@ -77,8 +75,6 @@ function ImageThumbnail(props) {
 
   const setImagePromise = () => {
     if (shouldRenderToCanvas()) {
-      console.log("calling loadAndCacheImage");
-      console.log(imageId);
       cancelablePromise = utils.makeCancelable(
         cornerstone.loadAndCacheImage(imageId)
       );
@@ -99,9 +95,6 @@ function ImageThumbnail(props) {
 
   useEffect(() => {
     if (image.imageId) {
-      console.log("renderToCanvas");
-      console.log(canvasRef);
-      console.log(image);
       cornerstone.renderToCanvas(canvasRef.current, image);
       setLoading(false);
     }
@@ -109,7 +102,6 @@ function ImageThumbnail(props) {
 
   useEffect(() => {
     if (!error && (!image.imageId || image.imageId !== imageId)) {
-      console.log("third useEffect in image thumbnail");
       purgeCancelablePromise();
       setImagePromise();
       fetchImagePromise();

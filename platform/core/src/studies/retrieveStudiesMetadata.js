@@ -22,9 +22,6 @@ export default function retrieveStudiesMetadata(
   separateSeriesInstanceUIDFilters = false,
   force
 ) {
-  console.log("retrieveStudiesMetadata: ");
-  console.log(force);
-
   // Create an empty array to store the Promises for each metaData retrieval call
   const promises = [];
 
