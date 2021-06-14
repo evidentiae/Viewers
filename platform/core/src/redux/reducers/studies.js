@@ -14,6 +14,7 @@ const servers = (state = defaultState, action) => {
       return Object.assign({}, state, { studyData: updatedStudyData });
     }
     case 'SET_ACTIVE_SERIES': {
+      console.log("SET_ACTIVE_SERIES");
       return Object.assign({}, state, { activeSeries: action.activeSeries });
     }
     default:

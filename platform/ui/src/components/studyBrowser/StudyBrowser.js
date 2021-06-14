@@ -12,6 +12,9 @@ function StudyBrowser(props) {
     activeSeries,
   } = props;
 
+  console.log("StudyBrowser render, activeSeries:"):
+  console.log(activeSeries):
+
   return (
     <div className="study-browser">
       <div className="scrollable-study-thumbnails">
@@ -30,6 +33,10 @@ function StudyBrowser(props) {
                 SeriesNumber,
                 stackPercentComplete,
               } = thumb;
+
+              console.log("IN LOOP");
+              console.log(SeriesInstanceUID);
+              console.log(SeriesInstanceUID === activeSeries);
 
               return (
                 <div
