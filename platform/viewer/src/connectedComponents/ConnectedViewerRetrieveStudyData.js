@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => {
     },
     doneLoadingStudies: (studies) => {
       console.log("doneLoadingStudies()");
+      console.log(studies);
       if (studies.length > 0 && studies[0].displaySets.length > 0) {
         var displaySets = studies[0].displaySets;
         var numFrames = 0;
