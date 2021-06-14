@@ -33,6 +33,9 @@ const mapStateToProps = (state, ownProps) => {
     });
   });
 
+  console.log("MAPPING");
+  console.log(state.studies.activeSeries);
+
   return {
     studies: studiesWithLoadingData,
     activeSeries: state.studies.activeSeries,
