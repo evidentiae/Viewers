@@ -6,7 +6,7 @@ import findDisplaySetByUID from './findDisplaySetByUID';
 
 const { studyMetadataManager } = OHIF.utils;
 
-const { clearViewportSpecificData, setActiveViewportSpecificData, setViewportLayoutAndData } = OHIF.redux.actions;
+const { clearViewportSpecificData, setActiveViewportSpecificData, setViewportLayoutAndData, setActiveSeries } = OHIF.redux.actions;
 
 // TODO
 // - Determine in which display set is active from Redux (activeViewportIndex and layout viewportData)
@@ -35,6 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     studies: studiesWithLoadingData,
+    activeSeries: state.studies.activeSeries;
   };
 };
 
@@ -123,6 +124,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         {numRows: numRows, numColumns: numColumns, viewports: viewports},
         displaySets
       ));
+      dispatch(setActiveSeries(seriesInstanceUID));
     },
   };
 };

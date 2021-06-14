@@ -121,6 +121,11 @@ export const setStudyData = (StudyInstanceUID, data) => ({
   data,
 });
 
+export const setActiveSeries = (SeriesInstanceUID) => ({
+  type: 'SET_ACTIVE_SERIES',
+  SeriesInstanceUID,
+});
+
 export const setServers = servers => ({
   type: SET_SERVERS,
   servers,
