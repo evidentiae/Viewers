@@ -17,7 +17,7 @@ export default class LayoutPickerDialog extends Component {
     super(props);
 
     this.state = {
-      layouts: ['Panoramic', 'Four Bitewings'],
+      layouts: ['Panoramic', 'Four Bitewings', 'FMX'],
       pick: -1
     };
   }

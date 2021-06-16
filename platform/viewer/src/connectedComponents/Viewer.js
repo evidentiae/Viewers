@@ -261,16 +261,40 @@ class Viewer extends Component {
       "00020010": { Value: ["1.2.840.10008.1.2"], vr: "UI" } // Transfer Syntax UID
     };
 
+    var numImageBoxes = 1;
+    var numRows = 1;
+    var numColumns = 1;
+
+    if (layout === 'Panoramic') {
+      numImageBoxes = 1;
+      numRows = 1;
+      numColumns = 1;
+    }
+    else if (layout === 'Four Bitewings') {
+      numImageBoxes = 4;
+      numRows = 1;
+      numColumns = 4;
+    }
+    else if (layout === 'FMX') {
+      numImageBoxes = 21;
+      numRows = 3;
+      numColumns = 7;
+    }
+
+    var imageBoxes = [];
+    var viewports = [];
+    for (var i=0; i<numImageBoxes; i++) {
+      imageBoxes.push({"00720302": {vr: "US", Value: [i]}});
+      viewports.push({plugin: "cornerstone"});
+    }
+    var layout = {numRows: numRows, numColumns: numColumns, viewports: viewports};
+
     var structuredDisplay = {
       StudyInstanceUID: guid(),
       SeriesInstanceUID: guid(),
       SOPInstanceUID: guid(),
       SOPClassUID: "1.2.840.10008.5.1.4.1.1.131", // Structured Display
-      ImageBoxes: [
-        {"00720302": {vr: "US", Value: [0]}}, // Image Box Number
-        {"00720302": {vr: "US", Value: [1]}}, // Image Box Number
-        {"00720302": {vr: "US", Value: [2]}}  // Image Box Number
-      ]
+      ImageBoxes: imageBoxes
     };
 
     var dict = new DicomDict(metadata);
@@ -290,8 +314,6 @@ class Viewer extends Component {
     const props = this.props;
     //var encoder = new TextEncoder();
     //const buffer = encoder.encode(JSON.stringify(dataset));
-    var viewports = [{plugin: "cornerstone"}, {plugin: "cornerstone"}, {plugin: "cornerstone"}];
-    var layout = {numRows: 1, numColumns: 3, viewports: viewports};
 
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
       props.onNewStudy(structuredDisplay, layout);
