@@ -233,6 +233,7 @@ const ViewportGrid = function (props) {
           active: activeViewportIndex === viewportIndex,
         })}
         key={viewportIndex}
+        pos={layout.pos}
       >
         {ViewportComponent}
       </ViewportPane>
