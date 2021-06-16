@@ -39,6 +39,13 @@ const ViewportPane = function (props) {
       ref={drop}
       data-cy={`viewport-container-${viewportIndex}`}
       onClick={ev => onClick(viewportIndex)}
+      style={
+        position: 'relative',
+        left: props.pos.x1,
+        top: props.pos.y1,
+        width: (props.pos.x2 - props.pos.x1) + 'px', 
+        height: (props.pos.y1 - props.pos.y2) + 'px'
+      }
     >
       {children}
     </div>
@@ -51,6 +58,7 @@ ViewportPane.propTypes = {
   onDrop: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
+  pos: PropTypes.object.isRequired
 };
 
 export default ViewportPane;

@@ -43,11 +43,9 @@ export const setViewportActive = viewportIndex => ({
 /**
  * @param {ViewportLayout} layout
  */
-export const setLayout = ({ numRows, numColumns, viewports }) => ({
+export const setLayout = viewports => ({
   type: SET_VIEWPORT_LAYOUT,
-  numRows,
-  numColumns,
-  viewports,
+  viewports
 });
 
 export const maximize = () => ({
@@ -60,12 +58,10 @@ export const maximize = () => ({
  * @param {array} viewports
  */
 export const setViewportLayoutAndData = (
-  { numRows, numColumns, viewports },
+  viewports,
   viewportSpecificData
 ) => ({
   type: SET_VIEWPORT_LAYOUT_AND_DATA,
-  numRows,
-  numColumns,
   viewports,
   viewportSpecificData,
 });

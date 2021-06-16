@@ -35,7 +35,7 @@ export default function makeLayout(studies, seriesInstanceUID) {
   var numRows = 1;
   var numColumns = 1;
   var foundStructuredDisplay = false;
-  var boxes = [];
+  var viewports = [];
 
   for (var i=0; i<series.instances.length; i++) {
     var instance = series.instances[i];
@@ -48,10 +48,10 @@ export default function makeLayout(studies, seriesInstanceUID) {
         var position = imageBox.DisplayEnvironmentSpatialPosition;
         var pos = {x1: position[0], y1: position[1], x2: position[2], y2: position[3]};
         //var imageInstanceUID = imageBox.ReferencedImageSequence && imageBox.ReferencedImageSequence.length > 0 ? imageBox.ReferencedImageSequence[0] : null;
-        boxes.push({
+        viewports.push({
           pos: pos,
           instanceNumber: imageBox.ImageBoxNumber,
-          viewport: {plugin: "cornerstone"} 
+          plugin: "cornerstone"
         });
       }
       // TODO: take position etc, change our layout data format in store
@@ -109,10 +109,10 @@ export default function makeLayout(studies, seriesInstanceUID) {
     for (var y=0; y<numRows; y++) {
       for (var x=0; x<numColumns; x++) {
         var pos = {x1: x*width, y1: 1 - y*height, x2: (x+1)*width, y2: 1 - (y+1)*height};
-        boxes.push({
+        viewports.push({
           pos: pos,
           instanceNumber: number++,
-          viewport: {plugin: "cornerstone"} 
+          plugin: "cornerstone"
         });
       }
     }
@@ -126,7 +126,7 @@ export default function makeLayout(studies, seriesInstanceUID) {
   */
 
   return {
-    layout: boxes, //{numRows: numRows, numColumns: numColumns, viewports: viewports},
+    layout: viewports, //{numRows: numRows, numColumns: numColumns, viewports: viewports},
     data: displaySets,
     activeSeriesUID: seriesUID 
   };
