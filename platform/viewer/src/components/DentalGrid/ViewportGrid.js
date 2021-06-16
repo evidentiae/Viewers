@@ -91,6 +91,10 @@ const ViewportGrid = function (props) {
   const rowSize = 100 / effectiveNumRows;
   const colSize = 100 / effectiveNumColumns;
 
+  console.log("EFFETIVE NUM ROWS");
+  console.log(effectiveNumRows);
+  console.log(rowSize);
+
   // http://grid.malven.co/
   if (!viewportData || !viewportData.length) {
     return null;
