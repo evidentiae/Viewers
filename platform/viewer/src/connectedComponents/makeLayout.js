@@ -35,6 +35,7 @@ export default function makeLayout(studies, seriesInstanceUID) {
   var numRows = 1;
   var numColumns = 1;
   var foundStructuredDisplay = false;
+  var boxes = [];
 
   for (var i=0; i<series.instances.length; i++) {
     var instance = series.instances[i];
@@ -42,6 +43,17 @@ export default function makeLayout(studies, seriesInstanceUID) {
       // structured display
       foundStructuredDisplay = true;
       numFrames = instance.metadata.StructuredDisplayImageBoxSequence.length;
+      for (var j=0; j<numFrames; j++) {
+        var imageBox = instance.metadata.StructuredDisplayImageBoxSequence[j];
+        var position = imageBox.DisplayEnvironmentSpatialPosition;
+        var pos = {x1: position[0], y1: position[1], x2: position[2], y2: position[3]};
+        //var imageInstanceUID = imageBox.ReferencedImageSequence && imageBox.ReferencedImageSequence.length > 0 ? imageBox.ReferencedImageSequence[0] : null;
+        boxes.push({
+          pos: pos,
+          instanceNumber: imageBox.ImageBoxNumber,
+          viewport: {plugin: "cornerstone"} 
+        });
+      }
       // TODO: take position etc, change our layout data format in store
       if (numFrames === 4) { // HACK
         numRows = 1;
@@ -90,15 +102,31 @@ export default function makeLayout(studies, seriesInstanceUID) {
       numRows = 3;
       numColumns = 4;
     }
+
+    var width = 1/numColumns;
+    var height = 1/numRows;
+    var number = 0;
+    for (var y=0; y<numRows; y++) {
+      for (var x=0; x<numColumns; x++) {
+        var pos = {x1: x*width, y1: 1 - y*height, x2: (x+1)*width, y2: 1 - (y+1)*height};
+        boxes.push({
+          pos: pos,
+          instanceNumber: number++,
+          viewport: {plugin: "cornerstone"} 
+        });
+      }
+    }
   }
 
+  /*
   var viewports = [];
   for (var i=0; i<numFrames; i++) {
     viewports.push({plugin: "cornerstone"});
   }
+  */
 
   return {
-    layout: {numRows: numRows, numColumns: numColumns, viewports: viewports},
+    layout: boxes, //{numRows: numRows, numColumns: numColumns, viewports: viewports},
     data: displaySets,
     activeSeriesUID: seriesUID 
   };
