@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { StudyBrowser } from '@ohif/ui';
 import cloneDeep from 'lodash.clonedeep';
 import findDisplaySetByUID from './findDisplaySetByUID';
+import makeLayout from './makeLayout.js';
 
 const { studyMetadataManager } = OHIF.utils;
 
@@ -45,6 +46,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
+      makeLayout(ownProps.studyMetadata, seriesInstanceUID);
+      /*
       var displaySets = [];
       var numFrames = 0;
       for (var i=0; i<ownProps.studyMetadata.length; i++) {
@@ -57,31 +60,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           }
         }
       }
-
-      /*
-      let displaySet = findDisplaySetByUID(
-        ownProps.studyMetadata,
-        displaySetInstanceUID
-      );
-      */
-
-      /*
-      if (displaySet.isDerived) {
-        const { Modality } = displaySet;
-
-        displaySet = displaySet.getSourceDisplaySet(ownProps.studyMetadata);
-
-        if (!displaySet) {
-          throw new Error(
-            `Referenced series for ${Modality} dataset not present.`
-          );
-        }
-
-        if (!displaySet) {
-          throw new Error('Source data not present');
-        }
-      }
-      */
 
       var numRows = 2;
       var numColumns = 2;
@@ -128,6 +106,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         displaySets
       ));
       dispatch(setActiveSeries(seriesInstanceUID));
+      */
     },
   };
 };
