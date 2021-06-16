@@ -32,8 +32,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
   }
 
   var numFrames = 0;
-  var numRows = 1;
-  var numColumns = 1;
   var foundStructuredDisplay = false;
   var viewports = [];
 
@@ -54,11 +52,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
           plugin: "cornerstone"
         });
       }
-      // TODO: take position etc, change our layout data format in store
-      if (numFrames === 4) { // HACK
-        numRows = 1;
-        numColumns = 4;
-      }
     }
   }
 
@@ -68,8 +61,8 @@ export default function makeLayout(studies, seriesInstanceUID) {
       if (!displaySets[i].Maximized) numFrames++;
     }
 
-    // XXX: copied from ConnectedStudyBrowser
-    // XXX: clean up, handle all cases, and share code
+    var numRows = 1;
+    var numColumns = 1;
 
     if (numFrames == 1) {
       numRows = 1;

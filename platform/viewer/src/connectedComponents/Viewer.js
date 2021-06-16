@@ -262,14 +262,10 @@ class Viewer extends Component {
     };
 
     var numImageBoxes = 1;
-    var numRows = 1;
-    var numColumns = 1;
     var imageBoxes = [];
 
     if (layout === 'Panoramic') {
       numImageBoxes = 1;
-      numRows = 1;
-      numColumns = 1;
       imageBoxes = [{
         "00720302": {vr: "US", Value: [0]},
         "00720108": {vr: "FD", Value: [0, 1, 1, 0]} // (x1,y1), (x2,y2)
@@ -277,8 +273,6 @@ class Viewer extends Component {
     }
     else if (layout === 'Four Bitewings') {
       numImageBoxes = 4;
-      numRows = 1;
-      numColumns = 4;
       imageBoxes = [
         {
           "00720302": {vr: "US", Value: [0]},
@@ -300,16 +294,7 @@ class Viewer extends Component {
     }
     else if (layout === 'FMX') {
       numImageBoxes = 21;
-      numRows = 3;
-      numColumns = 7;
     }
-
-    var viewports = [];
-    for (var i=0; i<numImageBoxes; i++) {
-      //imageBoxes.push({"00720302": {vr: "US", Value: [i]}});
-      viewports.push({plugin: "cornerstone"});
-    }
-    var layout = {numRows: numRows, numColumns: numColumns, viewports: viewports};
 
     var structuredDisplay = {
       StudyInstanceUID: guid(),
@@ -338,7 +323,7 @@ class Viewer extends Component {
     //const buffer = encoder.encode(JSON.stringify(dataset));
 
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      props.onNewStudy(structuredDisplay, layout);
+      props.onNewStudy(structuredDisplay);
     });
 
     // then make dicomWeb call to create these in google healthcare
