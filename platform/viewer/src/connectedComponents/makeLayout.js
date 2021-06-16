@@ -3,7 +3,34 @@ export default function makeLayout(studies, seriesInstanceUID) {
   console.log("MAKE_LAYOUT");
   console.log(studies);
   console.log(seriesInstanceUID);
-  /*
+
+  var studyUID = null;
+  var seriesUID = seriesInstanceUID;
+  var series;
+  var displaySets;
+  var found = false;
+  if (seriesUID) {
+    for (var i=0; i<studies.length; i++) {
+      for (var j=0; j<studies[i].series.length; j++) {
+        if (studies[i].series[j].SeriesInstanceUID === seriesUID) {
+          console.log("found active series");
+          studyUID = studies[i].StudyInstanceUID;
+          displaySets = studies[i].displaySets;
+          series = studies[i].series[j];
+          found = true;
+          break;
+        }
+      }
+      if (found) break;
+    }
+  } else if (studies.length > 0 && studies[0].series.length > 0) {
+    console.log("picking first series");
+    studyUID = studies[0].StudyInstanceUID;
+    seriesUID = studies[0].series[0].SeriesInstanceUID;
+    series = studies[0].series[0];
+    displaySets = studies[0].displaySets;
+  }
+
   var numFrames = 0;
   var numRows = 1;
   var numColumns = 1;
@@ -70,14 +97,9 @@ export default function makeLayout(studies, seriesInstanceUID) {
     viewports.push({plugin: "cornerstone"});
   }
 
-  dispatch(setViewportLayoutAndData(
-    {numRows: numRows, numColumns: numColumns, viewports: viewports},
-    displaySets
-  ));
-
-  if (seriesUID) {
-    console.log("dispatching setActiveSeries");
-    dispatch(setActiveSeries(seriesUID));
-  }
-  */
+  return {
+    layout: {numRows: numRows, numColumns: numColumns, viewports: viewports},
+    data: displaySets,
+    activeSeriesUID: seriesUID 
+  };
 }

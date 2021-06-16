@@ -25,10 +25,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
-      makeLayout(studies, null);
+      var stuff = makeLayout(studies, null);
+      dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
+      if (stuff.activeSeriesUID) {
+        dispatch(setActiveSeries(stuff.activeSeriesUID));
+      }
 
       /*
-
       // We have loaded all studies
       // Now, either we have an active one or we default to one.
       // Then we should set layout to match it.
