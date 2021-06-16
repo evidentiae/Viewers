@@ -2,7 +2,7 @@ import cornerstone from 'cornerstone-core';
 import cornerstoneTools from 'cornerstone-tools';
 import OHIF from '@ohif/core';
 
-import setCornerstoneLayout from './utils/setCornerstoneLayout.js';
+//import setCornerstoneLayout from './utils/setCornerstoneLayout.js';
 import { getEnabledElement } from './state';
 import CornerstoneViewportDownloadForm from './CornerstoneViewportDownloadForm';
 const scroll = cornerstoneTools.import('util/scroll');
@@ -247,9 +247,11 @@ const commandsModule = ({ servicesManager }) => {
       cornerstoneTools.removeToolState(element, toolType, tool);
       cornerstone.updateImage(element);
     },
+    /*
     setCornerstoneLayout: () => {
       setCornerstoneLayout();
     },
+    */
     setWindowLevel: ({ viewports, window, level }) => {
       const enabledElement = getEnabledElement(viewports.activeViewportIndex);
 
@@ -398,12 +400,14 @@ const commandsModule = ({ servicesManager }) => {
       storeContexts: [],
       options: { toolName: 'Zoom' },
     },
+    /*
     setCornerstoneLayout: {
       commandFn: actions.setCornerstoneLayout,
       storeContexts: [],
       options: {},
       context: 'VIEWER',
     },
+    */
     setWindowLevel: {
       commandFn: actions.setWindowLevel,
       storeContexts: ['viewports'],
