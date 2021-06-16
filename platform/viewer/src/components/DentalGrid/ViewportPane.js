@@ -41,10 +41,10 @@ const ViewportPane = function (props) {
       onClick={ev => onClick(viewportIndex)}
       style={{
         position: 'relative',
-        left: props.pos.x1,
-        top: props.pos.y1,
-        width: (props.pos.x2 - props.pos.x1) + 'px', 
-        height: (props.pos.y1 - props.pos.y2) + 'px'
+        left: (props.pos.x1 * 100) + '%',
+        top: (props.pos.y1 * 100) + '%',
+        width: ((props.pos.x2 - props.pos.x1) * 100) + '%', 
+        height: ((props.pos.y1 - props.pos.y2) * 100) + '%'
       }}
     >
       {children}
