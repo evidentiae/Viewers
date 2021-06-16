@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ViewerRetrieveStudyData from './ViewerRetrieveStudyData.js';
 import OHIF from '@ohif/core';
+import makeLayout from './makeLayout.js';
 
 const { clearViewportSpecificData, setStudyData, setActiveSeries, setViewportLayoutAndData } = OHIF.redux.actions;
 const isActive = a => a.active === true;
@@ -24,6 +25,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
+      makeLayout(studies, null);
+
+      /*
+
       // We have loaded all studies
       // Now, either we have an active one or we default to one.
       // Then we should set layout to match it.
@@ -134,6 +139,7 @@ const mapDispatchToProps = dispatch => {
         console.log("dispatching setActiveSeries");
         dispatch(setActiveSeries(seriesUID));
       }
+    */
     }
   };
 };
