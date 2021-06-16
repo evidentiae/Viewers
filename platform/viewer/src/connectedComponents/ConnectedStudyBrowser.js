@@ -47,7 +47,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
-      makeLayout(ownProps.studyMetadata, seriesInstanceUID);
+      var stuff = makeLayout(ownProps.studyMetadata, seriesInstanceUID);
+      dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
+      dispatch(setActiveSeries(seriesInstanceUID));
+
       /*
       var displaySets = [];
       var numFrames = 0;
