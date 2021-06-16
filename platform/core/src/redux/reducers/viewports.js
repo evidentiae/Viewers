@@ -15,11 +15,9 @@ import {
 setAutoFreeze(false);
 
 export const DEFAULT_STATE = {
-  numRows: 1,
-  numColumns: 1,
   activeViewportIndex: 0,
   layout: {
-    viewports: [{}],
+    viewports: [{pos: {x1: 0, y1: 1, x2: 1, y2: 0}, instanceNumber: 0}],
   },
   viewportSpecificData: {},
   maximized: false
@@ -61,11 +59,10 @@ const findActiveViewportSpecificData = (
  * @returns
  */
 const getActiveViewportIndex = (
-  numRows,
-  numColumns,
+  viewports,
   currentActiveViewportIndex
 ) => {
-  const numberOfViewports = numRows * numColumns;
+  const numberOfViewports = viewports.length;
 
   return currentActiveViewportIndex > numberOfViewports - 1
     ? DEFAULT_STATE.activeViewportIndex
@@ -99,8 +96,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
     case SET_VIEWPORT_ACTIVE: {
       return produce(state, draftState => {
         draftState.activeViewportIndex = getActiveViewportIndex(
-          draftState.numRows,
-          draftState.numColumns,
+          draftState.layout.viewports,
           action.viewportIndex
         );
       });
@@ -112,7 +108,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT: {
-      const { numRows, numColumns } = action;
+      const { viewports } = action;
       /*
       const viewportSpecificData = findActiveViewportSpecificData(
         numRows,
@@ -121,15 +117,12 @@ const viewports = (state = DEFAULT_STATE, action) => {
       );
       */
       const activeViewportIndex = getActiveViewportIndex(
-        numRows,
-        numColumns,
+        viewports,
         state.activeViewportIndex
       );
 
       return {
         ...state,
-        numRows: action.numRows,
-        numColumns: action.numColumns,
         layout: { viewports: [...action.viewports] },
         activeViewportIndex,
       };
@@ -141,7 +134,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT_AND_DATA: {
-      const { numRows, numColumns } = action;
+      const { viewports } = action;
       const viewportSpecificData = cloneDeep(action.viewportSpecificData);
       /*
       const viewportSpecificData = findActiveViewportSpecificData(
@@ -151,15 +144,12 @@ const viewports = (state = DEFAULT_STATE, action) => {
       );
       */
       const activeViewportIndex = getActiveViewportIndex(
-        numRows,
-        numColumns,
+        viewports,
         state.activeViewportIndex
       );
 
       return {
         ...state,
-        numRows: action.numRows,
-        numColumns: action.numColumns,
         layout: { viewports: [...action.viewports] },
         viewportSpecificData,
         activeViewportIndex,

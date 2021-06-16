@@ -19,8 +19,6 @@ const ViewportGrid = function (props) {
     availablePlugins,
     defaultPlugin: defaultPluginName,
     layout,
-    numRows,
-    numColumns,
     setViewportData,
     studies,
     viewportData,
@@ -85,6 +83,7 @@ const ViewportGrid = function (props) {
   }
   */
 
+  /*
   const effectiveNumRows = maximized ? 1 : numRows;
   const effectiveNumColumns = maximized ? 1 : numColumns;
 
@@ -94,6 +93,7 @@ const ViewportGrid = function (props) {
   console.log("EFFETIVE NUM ROWS");
   console.log(effectiveNumRows);
   console.log(rowSize);
+  */
 
   // http://grid.malven.co/
   if (!viewportData || !viewportData.length) {
@@ -179,6 +179,7 @@ const ViewportGrid = function (props) {
           active: activeViewportIndex === viewportIndex,
         })}
         key={viewportIndex}
+        pos={layout.pos}
       >
         {ViewportComponent}
       </ViewportPane>
@@ -266,9 +267,10 @@ const ViewportGrid = function (props) {
     <div
       data-cy="viewprt-grid"
       style={{
-        display: 'grid',
-        gridTemplateRows: `repeat(${effectiveNumRows}, ${rowSize}%)`,
-        gridTemplateColumns: `repeat(${effectiveNumColumns}, ${colSize}%)`,
+        display: 'block',
+        //display: 'grid',
+        //gridTemplateRows: `repeat(${effectiveNumRows}, ${rowSize}%)`,
+        //gridTemplateColumns: `repeat(${effectiveNumColumns}, ${colSize}%)`,
         height: '100%',
         width: '100%',
       }}
@@ -288,14 +290,10 @@ ViewportGrid.propTypes = {
   studies: PropTypes.array,
   children: PropTypes.node,
   defaultPlugin: PropTypes.string,
-  numRows: PropTypes.number.isRequired,
-  numColumns: PropTypes.number.isRequired,
   maximized: PropTypes.bool.isRequired
 };
 ViewportGrid.defaultProps = {
   viewportData: [],
-  numRows: 1,
-  numColumns: 1,
   layout: {
     viewports: [{}],
   },
