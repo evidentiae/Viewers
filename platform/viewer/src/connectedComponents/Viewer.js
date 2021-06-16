@@ -264,16 +264,39 @@ class Viewer extends Component {
     var numImageBoxes = 1;
     var numRows = 1;
     var numColumns = 1;
+    var imageBoxes = [];
 
     if (layout === 'Panoramic') {
       numImageBoxes = 1;
       numRows = 1;
       numColumns = 1;
+      imageBoxes = [{
+        "00720302": {vr: "US", Value: [0]},
+        "00720108": {vr: "FD", Value: [0, 1, 1, 0]} // (x1,y1), (x2,y2)
+      }];
     }
     else if (layout === 'Four Bitewings') {
       numImageBoxes = 4;
       numRows = 1;
       numColumns = 4;
+      imageBoxes = [
+        {
+          "00720302": {vr: "US", Value: [0]},
+          "00720108": {vr: "FD", Value: [0, 1, 0.25, 0]}
+        },
+        {
+          "00720302": {vr: "US", Value: [0]},
+          "00720108": {vr: "FD", Value: [0.25, 1, 0.5, 0]}
+        },
+        {
+          "00720302": {vr: "US", Value: [0]},
+          "00720108": {vr: "FD", Value: [0.5, 1, 0.75, 0]}
+        },
+        {
+          "00720302": {vr: "US", Value: [0]},
+          "00720108": {vr: "FD", Value: [0.75, 1, 1, 0]}
+        }
+      ];
     }
     else if (layout === 'FMX') {
       numImageBoxes = 21;
@@ -281,10 +304,9 @@ class Viewer extends Component {
       numColumns = 7;
     }
 
-    var imageBoxes = [];
     var viewports = [];
     for (var i=0; i<numImageBoxes; i++) {
-      imageBoxes.push({"00720302": {vr: "US", Value: [i]}});
+      //imageBoxes.push({"00720302": {vr: "US", Value: [i]}});
       viewports.push({plugin: "cornerstone"});
     }
     var layout = {numRows: numRows, numColumns: numColumns, viewports: viewports};

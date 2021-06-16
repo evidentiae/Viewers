@@ -24,12 +24,17 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
+      // We have loaded all studies
+      // Now, either we have an active one or we default to one.
+      // Then we should set layout to match it.
+      // To do that, we either find a structured display instance, or we invent layout.
       console.log("doneLoadingStudies()");
       console.log(studies);
       console.log(activeSeries);
 
       var studyUID = null;
       var seriesUID = activeSeries;
+      var series;
       var displaySets;
       var found = false;
       if (seriesUID) {
@@ -39,6 +44,7 @@ const mapDispatchToProps = dispatch => {
               console.log("found active series");
               studyUID = studies[i].StudyInstanceUID;
               displaySets = studies[i].displaySets;
+              series = studies[i].series[j];
               found = true;
               break;
             }
@@ -49,50 +55,69 @@ const mapDispatchToProps = dispatch => {
         console.log("picking first series");
         studyUID = studies[0].StudyInstanceUID;
         seriesUID = studies[0].series[0].SeriesInstanceUID;
+        series = studies[0].series[0];
         displaySets = studies[0].displaySets;
       }
 
       var numFrames = 0;
-      for (var i = 0; i < displaySets.length; i++) {
-        if (!displaySets[i].Maximized) numFrames++;
+      var numRows = 1;
+      var numColumns = 1;
+      var foundStructuredDisplay = false;
+
+      for (var i=0; i<series.instances.length; i++) {
+        var instance = series.instances[i];
+        if (instance.metadata.MediaStorageSOPClassUID === '1.2.840.10008.5.1.4.1.1.131') {
+          // structured display
+          foundStructuredDisplay = true;
+          numFrames = instance.metadata.StructuredDisplayImageBoxSequence.length;
+          // TODO: take position etc, change our layout data format in store
+          if (numFrames === 4) { // HACK
+            numRows = 1;
+            numColumns = 4;
+          }
+        }
       }
 
-      // XXX: copied from ConnectedStudyBrowser
-      // XXX: clean up, handle all cases, and share code
+      if (!foundStructuredDisplay) {
+        numFrames = 0;
+        for (var i = 0; i < displaySets.length; i++) {
+          if (!displaySets[i].Maximized) numFrames++;
+        }
 
-      var numRows = 2;
-      var numColumns = 2;
+        // XXX: copied from ConnectedStudyBrowser
+        // XXX: clean up, handle all cases, and share code
 
-      if (numFrames == 1) {
-        numRows = 1;
-        numColumns = 1;
-      } else if (numFrames == 2) {
-        numRows = 1;
-        numColumns = 2;
-      } else if (numFrames == 3) {
-        numRows = 1;
-        numColumns = 3;
-      } else if (numFrames == 4) {
-        numRows = 2;
-        numColumns = 2;
-      } else if (numFrames == 5) {
-        numRows = 2;
-        numColumns = 3;
-      } else if (numFrames == 6) {
-        numRows = 2;
-        numColumns = 3;
-      } else if (numFrames == 7) {
-        numRows = 2;
-        numColumns = 4;
-      } else if (numFrames == 8) {
-        numRows = 2;
-        numColumns = 4;
-      } else if (numFrames == 9) {
-        numRows = 3;
-        numColumns = 3;
-      } else if (numFrames == 10) {
-        numRows = 3;
-        numColumns = 4;
+        if (numFrames == 1) {
+          numRows = 1;
+          numColumns = 1;
+        } else if (numFrames == 2) {
+          numRows = 1;
+          numColumns = 2;
+        } else if (numFrames == 3) {
+          numRows = 1;
+          numColumns = 3;
+        } else if (numFrames == 4) {
+          numRows = 2;
+          numColumns = 2;
+        } else if (numFrames == 5) {
+          numRows = 2;
+          numColumns = 3;
+        } else if (numFrames == 6) {
+          numRows = 2;
+          numColumns = 3;
+        } else if (numFrames == 7) {
+          numRows = 2;
+          numColumns = 4;
+        } else if (numFrames == 8) {
+          numRows = 2;
+          numColumns = 4;
+        } else if (numFrames == 9) {
+          numRows = 3;
+          numColumns = 3;
+        } else if (numFrames == 10) {
+          numRows = 3;
+          numColumns = 4;
+        }
       }
 
       var viewports = [];
