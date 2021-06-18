@@ -45,6 +45,8 @@ export default function makeLayout(studies, seriesInstanceUID) {
       numFrames = imageBoxArray.length;
       for (var j=0; j<numFrames; j++) {
         var imageBox = imageBoxArray[j];
+        console.log("imageBox:");
+        console.log(imageBox);
         var position = imageBox.DisplayEnvironmentSpatialPosition;
         var pos = {x1: position[0], y1: position[1], x2: position[2], y2: position[3]};
         //var imageInstanceUID = imageBox.ReferencedImageSequence && imageBox.ReferencedImageSequence.length > 0 ? imageBox.ReferencedImageSequence[0] : null;
