@@ -41,7 +41,7 @@ export default function makeLayout(studies, seriesInstanceUID) {
       // structured display
       foundStructuredDisplay = true;
       var imageBoxSeq = instance.metadata.StructuredDisplayImageBoxSequence;
-      var imageBoxArray = typeof imageBoxSeq === 'object' ? [imageBoxSeq] : imageBoxSeq;
+      var imageBoxArray = Array.isArray(imageBoxSeq) ? imageBoxSeq : [imageBoxSeq];
       numFrames = imageBoxArray.length;
       for (var j=0; j<numFrames; j++) {
         var imageBox = imageBoxArray[j];
