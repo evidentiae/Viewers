@@ -47,6 +47,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
       var stuff = makeLayout(ownProps.studyMetadata, seriesInstanceUID);
+      console.log("mapping onThumbnailClick to layout state update: ");
+      console.log(stuff.layout);
       dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       dispatch(setActiveSeries(seriesInstanceUID));
 
