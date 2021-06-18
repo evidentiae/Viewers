@@ -126,6 +126,10 @@ const ViewportGrid = function (props) {
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
   const getMaximizedViewportPane = (layout, viewportIndex) => {
+    console.log("getMaximizedViewportPane:");
+    console.log(layout);
+    console.log(viewportIndex);
+    console.log(viewportData);
     var displaySet = viewportData[viewportIndex];
 
     for (var i=0; i<viewportData.length; i++) {
