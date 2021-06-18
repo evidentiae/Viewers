@@ -55,6 +55,11 @@ export default function makeLayout(studies, seriesInstanceUID) {
     }
   }
 
+  console.log("Found structured display and viewports: ");
+  console.log(foundStructuredDisplay);
+  console.log(viewports);
+  console.log(series);
+
   if (!foundStructuredDisplay) {
     numFrames = 0;
     for (var i = 0; i < displaySets.length; i++) {
