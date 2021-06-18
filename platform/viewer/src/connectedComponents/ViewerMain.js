@@ -45,6 +45,9 @@ class ViewerMain extends Component {
       }
     });
 
+    console.log("getDisplaySets:");
+    console.log(displaySets);
+
     return displaySets;
   }
 
