@@ -130,7 +130,7 @@ const ViewportGrid = function (props) {
     console.log(layout);
     console.log(viewportIndex);
     console.log(viewportData);
-    var displaySet = viewportData[viewportIndex];
+    var displaySet;
 
     for (var i=0; i<viewportData.length; i++) {
       var set = viewportData[i];
