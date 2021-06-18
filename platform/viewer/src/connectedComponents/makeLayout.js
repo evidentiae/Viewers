@@ -40,9 +40,11 @@ export default function makeLayout(studies, seriesInstanceUID) {
     if (instance.metadata.MediaStorageSOPClassUID === '1.2.840.10008.5.1.4.1.1.131') {
       // structured display
       foundStructuredDisplay = true;
-      numFrames = instance.metadata.StructuredDisplayImageBoxSequence.length;
+      var imageBoxSeq = instance.metadata.StructuredDisplayImageBoxSequence;
+      if (typeof imageBoxSeq === 'object') imageBoxSeq = [imageBoxSeq];
+      numFrames = imageBoxSeq.length;
       for (var j=0; j<numFrames; j++) {
-        var imageBox = instance.metadata.StructuredDisplayImageBoxSequence[j];
+        var imageBox = imageBoxSeq[j];
         var position = imageBox.DisplayEnvironmentSpatialPosition;
         var pos = {x1: position[0], y1: position[1], x2: position[2], y2: position[3]};
         //var imageInstanceUID = imageBox.ReferencedImageSequence && imageBox.ReferencedImageSequence.length > 0 ? imageBox.ReferencedImageSequence[0] : null;
