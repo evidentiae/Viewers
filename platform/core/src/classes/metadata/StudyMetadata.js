@@ -833,6 +833,7 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     isMultiFrame: isMultiFrame(instance),
   });
 
+  /*
   // Sort the images in this series if needed
   const shallSort = true; //!OHIF.utils.ObjectPath.get(Meteor, 'settings.public.ui.sortSeriesByIncomingOrder');
   if (shallSort) {
@@ -844,6 +845,7 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
       );
     });
   }
+  */
 
   // Include the first image instance number (after sorted)
   imageSet.setAttribute(
@@ -855,9 +857,11 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
 
   imageSet.isReconstructable = isReconstructable.value;
 
+  /*
   if (shallSort && imageSet.isReconstructable) {
     imageSet.sortByImagePositionPatient();
   }
+  */
 
   if (isReconstructable.missingFrames) {
     // TODO -> This is currently unused, but may be used for reconstructing
