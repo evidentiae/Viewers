@@ -921,13 +921,14 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
   if (!max) {
     // insert in existing layout
     // insert based on instance number
-    var foundSet=null;
-    displaySets.forEach((set, index) => {
-      if (!foundSet && set.numImageFrames === 0 && set.InstanceNumber === instance.getTagValue('InstanceNumber')) {
-        displaySets[index] = imageSet;
-        foundSet = imageSet;
+    var foundSet=false;
+    for (var i=0; i<displaySets.length; i++) {
+      if (displaySets[i].numImageFrames === 0 && displaySets[i].InstanceNumber === instance.getTagValue('InstanceNumber')) {
+        displaySets[i] = imageSet;
+        foundSet = true;
+        break;
       }
-    });
+    }
     if (!foundSet) {
       console.warn("Could not find display set:");
       console.log(instance.getTagValue('InstanceNumber'));
