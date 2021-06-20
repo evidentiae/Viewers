@@ -163,8 +163,7 @@ class StudyMetadata extends Metadata {
     // Split Multi-frame instances and Single-image modalities
     // into their own specific display sets. Place the rest of each
     // series into another display set.
-    const stackableInstances = [];
-    var i = 0;
+
     series.forEachInstance(instance => {
       console.log("SOPClassUID of instance: ");
       console.log(instance.getTagValue('SOPClassUID'));
@@ -198,7 +197,13 @@ class StudyMetadata extends Metadata {
           console.log("Added empty display set");
           displaySets.push(displaySet);
         });
-      } else {
+      }
+    });
+
+    const stackableInstances = [];
+
+    series.forEachInstance(instance => {
+      if (instance.getTagValue('SOPClassUID') != '1.2.840.10008.5.1.4.1.1.131') {
         // All imaging modalities must have a valid value for SOPClassUID (x00080016) or Rows (x00280010)
         if (
           !isImage(instance.getTagValue('SOPClassUID')) &&
