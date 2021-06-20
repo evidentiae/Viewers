@@ -256,6 +256,9 @@ export class StudyMetadata extends Metadata {
       */
     }
 
+    console.log("_createDisplaySetsForSeries resulting display sets:");
+    console.log(displaySets);
+
     return displaySets;
   }
 
