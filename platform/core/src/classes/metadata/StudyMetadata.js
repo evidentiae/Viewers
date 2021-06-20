@@ -914,6 +914,9 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     // insert based on instance number
     var foundSet=false;
     for (var i=0; i<displaySets.length; i++) {
+      console.log("IN LOOP");
+      console.log(displaySets[i].numImageFrames);
+      console.log(displaySets[i].InstanceNumber);
       if (displaySets[i].numImageFrames === 0 && displaySets[i].InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[i] = imageSet;
         foundSet = true;
