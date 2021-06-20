@@ -28,60 +28,6 @@ const ViewportGrid = function (props) {
     onSetActiveViewport
   } = props;
 
-  /*
-  const displaySet = viewportData[0];
-
-  if (displaySet) {
-    var numFrames = displaySet.numImageFrames;
-    displaySet.frameIndex = 0;
-
-    // try to find clones of display set in studies
-    // use them to fill up grid (viewport data)
-    var j = 1;
-    studies.forEach(study => {
-      study.displaySets.forEach(set => {
-        if (set.clonedUID && set.clonedUID === displaySet.displaySetInstanceUID) {
-          set.frameIndex = j; // reset index if it was changed by user
-          viewportData[j] = set;
-          j++;
-        }
-      });
-    });
-
-    // if we did not find any clone, make clones
-    if (j == 1) {
-      for (var i=1; i<numFrames; i++) {
-        //layout.viewports.push({});
-        var ds = cloneDeep(displaySet);
-        ds.frameIndex = i;
-        ds.displaySetInstanceUID = utils.guid();
-        ds.clonedUID = displaySet.displaySetInstanceUID;
-        viewportData[i] = ds;
-      }
-
-      // find study with this display set
-      var relevantStudy;
-      var relevantDisplaySet;
-      studies.forEach(study => {
-        study.displaySets.forEach(set => {
-          if (set.displaySetInstanceUID === displaySet.displaySetInstanceUID) {
-            relevantStudy = study;
-            relevantDisplaySet = set;
-          }
-        });
-      });
-
-      // if found, add the cloned display sets
-      if (relevantStudy) {
-        for (var k=1; k < numFrames; k++) {
-          var ds = viewportData[k];
-          ds.images = relevantDisplaySet.images;
-          relevantStudy.displaySets.push(ds);
-        }
-      }
-    }
-  }
-  */
 
   /*
   const effectiveNumRows = maximized ? 1 : numRows;

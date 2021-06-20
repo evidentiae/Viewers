@@ -238,6 +238,7 @@ class StudyMetadata extends Metadata {
             AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
             Maximized: false
           });
+          displaySet.frameIndex = instance.getTagValue('InstanceNumber');
           //displaySet.frameIndex = i;
           //displaySets.push(displaySet);
           stackableInstances.push(instance);
@@ -249,7 +250,7 @@ class StudyMetadata extends Metadata {
       const displaySet = makeDisplaySet(series, stackableInstances, displaySets, true);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
-      displaySet.frameIndex = instance.getTagValue('InstanceNumber');
+      //displaySet.frameIndex = instance.getTagValue('InstanceNumber');
     }
 
     return displaySets;
@@ -884,7 +885,6 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
 
   // Sort the images in this series by instanceNumber
   let displaySpacingInfo = undefined;
-  /*
   if (shallSort && imageSet.isReconstructable) {
     // sort images by image position
     imageSet.sortByImagePositionPatient();
@@ -901,7 +901,6 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
       imageSet.missingFrames = displaySpacingInfo.missingFrames;
     }
   }
-  */
 
   if (!imageSet.displayReconstructableInfo) {
     // It is not reconstrabale Save type of warning
