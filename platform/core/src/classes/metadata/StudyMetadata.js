@@ -165,10 +165,15 @@ export class StudyMetadata extends Metadata {
     const stackableInstances = [];
     var i = 0;
     series.forEachInstance(instance => {
+      console.log("SOPClassUID of instance: ");
+      console.log(instance.getTagValue('SOPClassUID'));
       if (instance.getTagValue('SOPClassUID') === '1.2.840.10008.5.1.4.1.1.131') {
         // structured display
         var seq = instance.getTagValue('StructuredDisplayImageBoxSequence');
         var boxes = Array.isArray(seq) ? seq : [seq];
+
+        console.log("Layout boxes: ");
+        console.log(boxes);
 
         var instanceNumber = 0;
         boxes.forEach(box => {
@@ -189,6 +194,7 @@ export class StudyMetadata extends Metadata {
             frameIndex: 0,
             InstanceNumber: instanceNumber++
           });
+          console.log("Added empty display set");
           displaySets.push(displaySet);
         });
       } else {
