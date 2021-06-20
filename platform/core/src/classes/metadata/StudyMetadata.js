@@ -203,6 +203,8 @@ export class StudyMetadata extends Metadata {
         let displaySet;
 
         if (isMultiFrame(instance)) {
+          console.log("displaySets length: ");
+          console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
 
           displaySet.setAttributes({
@@ -217,6 +219,8 @@ export class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else if (isSingleImageModality(instance.Modality)) {
+          console.log("displaySets length: ");
+          console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             //sopClassUIDs,
@@ -228,6 +232,8 @@ export class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else {
+          console.log("displaySets length: ");
+          console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             //sopClassUIDs,
