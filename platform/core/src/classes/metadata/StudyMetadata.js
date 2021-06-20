@@ -107,9 +107,6 @@ class StudyMetadata extends Metadata {
    * @returns {Array} The list of display sets created for the given series object
    */
   _createDisplaySetsForSeries(sopClassHandlerModules, series) {
-    console.log("_createDisplaySetsForSeries:");
-    console.log(series);
-
     const study = this;
     const displaySets = [];
 
@@ -256,9 +253,6 @@ class StudyMetadata extends Metadata {
       });
       */
     }
-
-    console.log("_createDisplaySetsForSeries resulting display sets:");
-    console.log(displaySets);
 
     return displaySets;
   }
@@ -931,14 +925,11 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     }
     if (!foundSet) {
       console.warn("Could not find display set:");
-      console.log(instance.getTagValue('InstanceNumber'));
-      console.log(displaySets);
       // no layout frame found: just add to display sets
       // XXX: what about order: it is not sorted by instance number?
       displaySets.push(imageSet);
     }
   } else {
-    console.log("MAX: adding display set");
     displaySets.push(imageSet);
   }
 

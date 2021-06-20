@@ -27,9 +27,6 @@ const mapStateToProps = state => {
 
   const { layout, activeViewportIndex } = state.viewports;
 
-  console.log("layout mapping from state to ViewportGrid:");
-  console.log(layout);
-
   return {
     layout,
     activeViewportIndex,

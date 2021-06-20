@@ -170,8 +170,6 @@ class OHIFStandaloneViewer extends Component {
     const queryParams = new URLSearchParams(this.props.location.search);
     const token = queryParams.get('token');
     const projectId = queryParams.get('projectId');
-    console.log("In OHIFStandaloneViewer");
-    console.log(projectId);
     if (token && projectId) {
       window.access_token = token;
       window.projectId = projectId;
