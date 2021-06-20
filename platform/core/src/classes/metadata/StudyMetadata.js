@@ -238,7 +238,7 @@ class StudyMetadata extends Metadata {
             AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
             Maximized: false
           });
-          displaySet.frameIndex = instance.getTagValue('InstanceNumber');
+          //displaySet.frameIndex = instance.getTagValue('InstanceNumber');
           //displaySet.frameIndex = i;
           //displaySets.push(displaySet);
           stackableInstances.push(instance);
