@@ -186,6 +186,7 @@ export class StudyMetadata extends Metadata {
             frameRate: instance.getTagValue('FrameTime'),
             Modality: instance.getTagValue('Modality'),
             isMultiFrame: isMultiFrame(instance),
+            frameIndex: 0,
             InstanceNumber: instanceNumber++
           });
           displaySets.push(displaySet);
@@ -236,7 +237,7 @@ export class StudyMetadata extends Metadata {
             AcquisitionDatetime: instance.getTagValue('AcquisitionDateTime'), // Include the acquisition datetime
             Maximized: false
           });
-          displaySet.frameIndex = i;
+          //displaySet.frameIndex = i;
           //displaySets.push(displaySet);
           stackableInstances.push(instance);
         }
@@ -247,10 +248,7 @@ export class StudyMetadata extends Metadata {
       const displaySet = makeDisplaySet(series, stackableInstances, displaySets, true);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
-      /*displaySet.setAttributes({
-        sopClassUIDs,
-      });
-      */
+      displaySet.frameIndex = instance.getTagValue('InstanceNumber');
     }
 
     return displaySets;
