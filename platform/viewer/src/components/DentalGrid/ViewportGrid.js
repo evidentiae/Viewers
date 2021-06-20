@@ -28,9 +28,6 @@ const ViewportGrid = function (props) {
     onSetActiveViewport
   } = props;
 
-  console.log("RENDER ViewportGrid");
-  console.log(layout);
-
   /*
   const displaySet = viewportData[0];
 
@@ -92,10 +89,6 @@ const ViewportGrid = function (props) {
 
   const rowSize = 100 / effectiveNumRows;
   const colSize = 100 / effectiveNumColumns;
-
-  console.log("EFFETIVE NUM ROWS");
-  console.log(effectiveNumRows);
-  console.log(rowSize);
   */
 
   // http://grid.malven.co/
@@ -126,10 +119,6 @@ const ViewportGrid = function (props) {
   }, [studies, viewportData, isStudyLoaded, snackbar]);
 
   const getMaximizedViewportPane = (layout, viewportIndex) => {
-    console.log("getMaximizedViewportPane:");
-    console.log(layout);
-    console.log(viewportIndex);
-    console.log(viewportData);
     var displaySet;
 
     for (var i=0; i<viewportData.length; i++) {

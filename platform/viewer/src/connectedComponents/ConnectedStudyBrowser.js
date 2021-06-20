@@ -34,9 +34,6 @@ const mapStateToProps = (state, ownProps) => {
     });
   });
 
-  console.log("MAPPING");
-  console.log(state.studies.activeSeries);
-
   return {
     studies: studiesWithLoadingData,
     activeSeries: state.studies.activeSeries,
@@ -47,8 +44,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
       var stuff = makeLayout(ownProps.studyMetadata, seriesInstanceUID);
-      console.log("mapping onThumbnailClick to layout state update: ");
-      console.log(stuff.layout);
       dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       dispatch(setActiveSeries(seriesInstanceUID));
 

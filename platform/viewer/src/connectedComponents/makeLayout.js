@@ -1,9 +1,5 @@
 // if seriesInstanceUID is null, we use first series
 export default function makeLayout(studies, seriesInstanceUID) {
-  console.log("MAKE_LAYOUT");
-  console.log(studies);
-  console.log(seriesInstanceUID);
-
   var studyUID = null;
   var seriesUID = seriesInstanceUID;
   var series;
@@ -13,7 +9,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
     for (var i=0; i<studies.length; i++) {
       for (var j=0; j<studies[i].series.length; j++) {
         if (studies[i].series[j].SeriesInstanceUID === seriesUID) {
-          console.log("found active series");
           studyUID = studies[i].StudyInstanceUID;
           displaySets = studies[i].displaySets;
           series = studies[i].series[j];
@@ -24,7 +19,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
       if (found) break;
     }
   } else if (studies.length > 0 && studies[0].series.length > 0) {
-    console.log("picking first series");
     studyUID = studies[0].StudyInstanceUID;
     seriesUID = studies[0].series[0].SeriesInstanceUID;
     series = studies[0].series[0];
@@ -45,8 +39,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
       numFrames = imageBoxArray.length;
       for (var j=0; j<numFrames; j++) {
         var imageBox = imageBoxArray[j];
-        console.log("imageBox:");
-        console.log(imageBox);
         var position = imageBox.DisplayEnvironmentSpatialPosition;
         var pos = {x1: position[0], y1: position[1], x2: position[2], y2: position[3]};
         //var imageInstanceUID = imageBox.ReferencedImageSequence && imageBox.ReferencedImageSequence.length > 0 ? imageBox.ReferencedImageSequence[0] : null;
@@ -58,11 +50,6 @@ export default function makeLayout(studies, seriesInstanceUID) {
       }
     }
   }
-
-  console.log("Found structured display and viewports: ");
-  console.log(foundStructuredDisplay);
-  console.log(viewports);
-  console.log(series);
 
   if (!foundStructuredDisplay) {
     numFrames = 0;
@@ -120,15 +107,8 @@ export default function makeLayout(studies, seriesInstanceUID) {
     }
   }
 
-  /*
-  var viewports = [];
-  for (var i=0; i<numFrames; i++) {
-    viewports.push({plugin: "cornerstone"});
-  }
-  */
-
   return {
-    layout: viewports, //{numRows: numRows, numColumns: numColumns, viewports: viewports},
+    layout: viewports,
     data: displaySets,
     activeSeriesUID: seriesUID 
   };

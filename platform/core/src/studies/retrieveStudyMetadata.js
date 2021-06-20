@@ -22,8 +22,6 @@ export function retrieveStudyMetadata(
   separateSeriesInstanceUIDFilters = false,
   force
 ) {
-  console.log("retrieveStudyMetadata: ");
-  console.log(force);
   // @TODO: Whenever a study metadata request has failed, its related promise will be rejected once and for all
   // and further requests for that metadata will always fail. On failure, we probably need to remove the
   // corresponding promise from the "StudyMetaDataPromises" map...
@@ -39,7 +37,6 @@ export function retrieveStudyMetadata(
 
   // Already waiting on result? Return cached promise
   if (!force && StudyMetaDataPromises.has(StudyInstanceUID)) {
-    console.log("using cached promise");
     return StudyMetaDataPromises.get(StudyInstanceUID);
   }
 
@@ -57,7 +54,6 @@ export function retrieveStudyMetadata(
       filters
     );
   } else {
-    console.log("RetrieveMatadata");
     promise = RetrieveMetadata(server, StudyInstanceUID, filters);
 
     /*
