@@ -134,6 +134,7 @@ class StudyMetadata extends Metadata {
 
     const sopClassUIDs = getSopClassUIDs(series);
 
+    /*
     if (sopClassHandlerModules && sopClassHandlerModules.length > 0) {
       const displaySet = _getDisplaySetFromSopClassModule(
         sopClassHandlerModules,
@@ -154,6 +155,7 @@ class StudyMetadata extends Metadata {
         return displaySets;
       }
     }
+    */
 
     // WAERN TODO: either add sop class plugin, or  change isImage logic (create display set even if not image)
 
@@ -207,7 +209,7 @@ class StudyMetadata extends Metadata {
           displaySet = makeDisplaySet(series, [instance], displaySets);
 
           displaySet.setAttributes({
-            sopClassUIDs,
+            //sopClassUIDs,
             isClip: true,
             SeriesInstanceUID: series.getSeriesInstanceUID(),
             StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID for drag/drop purposes
@@ -220,7 +222,7 @@ class StudyMetadata extends Metadata {
         } else if (isSingleImageModality(instance.Modality)) {
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
-            sopClassUIDs,
+            //sopClassUIDs,
             StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
             SeriesInstanceUID: series.getSeriesInstanceUID(),
             InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
@@ -231,7 +233,7 @@ class StudyMetadata extends Metadata {
         } else {
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
-            sopClassUIDs,
+            //sopClassUIDs,
             StudyInstanceUID: study.getStudyInstanceUID(), // Include the study instance UID
             SeriesInstanceUID: series.getSeriesInstanceUID(),
             InstanceNumber: instance.getTagValue('InstanceNumber'), // Include the instance number
@@ -249,9 +251,10 @@ class StudyMetadata extends Metadata {
       const displaySet = makeDisplaySet(series, stackableInstances, displaySets, true);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
-      displaySet.setAttributes({
+      /*displaySet.setAttributes({
         sopClassUIDs,
       });
+      */
     }
 
     return displaySets;
