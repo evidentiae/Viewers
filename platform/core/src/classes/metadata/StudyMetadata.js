@@ -880,6 +880,8 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     }
     if (!foundSet) {
       console.warn("Could not find display set:");
+      console.log(displaySets);
+      console.log(instance.getTagValue('InstanceNumber'));
       // no layout frame found: just add to display sets
       // XXX: what about order: it is not sorted by instance number?
       displaySets.push(imageSet);
