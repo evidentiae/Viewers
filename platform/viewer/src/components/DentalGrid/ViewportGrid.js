@@ -75,12 +75,7 @@ const ViewportGrid = function (props) {
       }
     }
 
-    if (viewportIndex >= displaySet.numImageFrames) {
-      //displaySet.frameIndex = displaySet.numImageFrames-1;
-      console.log("FAIL");
-    } else {
-      displaySet.frameIndex = viewportIndex;
-    }
+    displaySet.frameIndex = viewportIndex;
 
     if (!displaySet) {
       return null;
