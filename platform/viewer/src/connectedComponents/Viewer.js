@@ -511,6 +511,14 @@ class Viewer extends Component {
     console.log(this.props.studies);
     console.log(this.props.viewports);
 
+    var maxDisplaySet;
+    for (var i=0; i<this.props.viewports; i++) {
+      if (this.props.viewports[i].Maximized) {
+        maxDisplaySet = this.props.viewports[i];
+        break;
+      }
+    }
+
     let VisiblePanelLeft, VisiblePanelRight;
     const panelExtensions = extensionManager.modules[MODULE_TYPES.PANEL];
 
@@ -583,7 +591,10 @@ class Viewer extends Component {
             handleUpload={this.uploadImage.bind(this)}
             studies={this.props.studies}
             maximized={this.props.maximized}
-            showMaxMin={this.props.studies.length > 0 && this.props.activeViewportIndex < 2}
+            showMaxMin={
+              maxDisplaySet &&
+              this.props.activeViewportIndex < maxDisplaySet.numImageFrames
+            }
           />
         </ErrorBoundaryDialog>
 
