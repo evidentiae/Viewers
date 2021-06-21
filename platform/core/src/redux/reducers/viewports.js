@@ -94,7 +94,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_ACTIVE: {
-      return produce(state, draftState => {
+      return state.maximized ? state : produce(state, draftState => {
         draftState.activeViewportIndex = getActiveViewportIndex(
           draftState.layout.viewports,
           action.viewportIndex
