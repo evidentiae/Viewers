@@ -487,7 +487,7 @@ class Viewer extends Component {
     console.log(this.props.viewports);
 
     var maxDisplaySet;
-    for (var i=0; i<this.props.viewports; i++) {
+    for (var i=0; i<this.props.viewports.length; i++) {
       if (this.props.viewports[i].Maximized) {
         maxDisplaySet = this.props.viewports[i];
         break;
