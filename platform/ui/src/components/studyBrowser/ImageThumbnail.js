@@ -102,6 +102,7 @@ function ImageThumbnail(props) {
   useEffect(() => {
     if (!error && (!image.imageId || image.imageId !== imageId)) {
       purgeCancelablePromise();
+      console.log("ImageThumbnail loading as no image ID");
       setImagePromise();
       fetchImagePromise();
     }
