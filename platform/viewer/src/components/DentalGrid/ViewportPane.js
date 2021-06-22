@@ -40,7 +40,7 @@ const ViewportPane = function (props) {
       style={{
         position: 'absolute',
         left: (props.pos.x1 * 100) + '%',
-        top: (props.pos.y1 * 100) + '%',
+        top: ((1-props.pos.y1) * 100) + '%',
         width: ((props.pos.x2 - props.pos.x1) * 100) + '%', 
         height: ((props.pos.y1 - props.pos.y2) * 100) + '%'
       }}
