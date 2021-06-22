@@ -263,8 +263,6 @@ class Viewer extends Component {
 
     var numImageBoxes = 1;
     var imageBoxes = [];
-    var m=0.005;
-    var h=0.25;
 
     if (layout === 'Panoramic') {
       numImageBoxes = 1;
@@ -275,6 +273,8 @@ class Viewer extends Component {
     }
     else if (layout === 'Four Bitewings') {
       numImageBoxes = 4;
+      var m=0.01;
+      var h=0.25;
       imageBoxes = [
         {
           "00720302": {vr: "US", Value: [0]},
@@ -296,6 +296,88 @@ class Viewer extends Component {
     }
     else if (layout === 'FMX') {
       numImageBoxes = 21;
+      var m=0.01;
+      var hm=0.10;
+      var w=1/7;
+      var h=1/3;
+      imageBoxes = [
+        // left six boxes
+        {
+          "00720302": {vr: "US", Value: [0]},
+          "00720108": {vr: "FD", Value: [0+m, 1-hm, w-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [1]},
+          "00720108": {vr: "FD", Value: [w+m/2, 1-hm, w*2-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [2]},
+          "00720108": {vr: "FD", Value: [0+m, 1-hm-h, w-m/2, 1-hm-h*2]}
+        },
+        {
+          "00720302": {vr: "US", Value: [3]},
+          "00720108": {vr: "FD", Value: [w+m/2, 1-hm-h, w*2-m/2, 1-hm-h*2]}
+        },
+        {
+          "00720302": {vr: "US", Value: [4]},
+          "00720108": {vr: "FD", Value: [0+m, 1-hm-h*2, w-m/2, 1-hm-h*3]}
+        },
+        {
+          "00720302": {vr: "US", Value: [5]},
+          "00720108": {vr: "FD", Value: [w+m/2, 1-hm-h*2, w*2-m/2, 1-hm-h*3]}
+        },
+        // middle top boxes
+        {
+          "00720302": {vr: "US", Value: [6]},
+          "00720108": {vr: "FD", Value: [w*2+m, 1-hm, w*3-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [7]},
+          "00720108": {vr: "FD", Value: [w*3+m/2, 1-hm, w*4-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [8]},
+          "00720108": {vr: "FD", Value: [w*4+m/2, 1-hm, w*5-m/2, 1-hm-h]}
+        },
+        // middle bottom boxes
+        {
+          "00720302": {vr: "US", Value: [9]},
+          "00720108": {vr: "FD", Value: [w*2+m, 1-hm-h*2, w*3-m/2, 1-hm-h*3]}
+        },
+        {
+          "00720302": {vr: "US", Value: [10]},
+          "00720108": {vr: "FD", Value: [w*3+m/2, 1-hm-h*2, w*4-m/2, 1-hm-h*3]}
+        },
+        {
+          "00720302": {vr: "US", Value: [11]},
+          "00720108": {vr: "FD", Value: [w*4+m/2, 1-hm-h*2, w*5-m/2, 1-hm-h*3]}
+        },
+        // right six boxes
+        {
+          "00720302": {vr: "US", Value: [12]},
+          "00720108": {vr: "FD", Value: [w*5+m, 1-hm, w*6-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [13]},
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm, w*7-m/2, 1-hm-h]}
+        },
+        {
+          "00720302": {vr: "US", Value: [14]},
+          "00720108": {vr: "FD", Value: [w*5+m, 1-hm-h, w*6-m/2, 1-hm-h*2]}
+        },
+        {
+          "00720302": {vr: "US", Value: [15]},
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm-h, w*7-m/2, 1-hm-h*2]}
+        },
+        {
+          "00720302": {vr: "US", Value: [16]},
+          "00720108": {vr: "FD", Value: [w*5+m, 1-hm-h*2, w*6-m/2, 1-hm-h*3]}
+        },
+        {
+          "00720302": {vr: "US", Value: [17]},
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm-h*2, w*7-m/2, 1-hm-h*3]}
+        },
+      ];
     }
 
     var structuredDisplay = {
