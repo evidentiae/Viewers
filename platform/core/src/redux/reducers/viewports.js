@@ -175,17 +175,32 @@ const viewports = (state = DEFAULT_STATE, action) => {
       console.log("SET_VIEWPORT");
       console.log(action);
       return produce(state, draftState => {
-        draftState.viewportSpecificData[action.viewportIndex] =
-          draftState.viewportSpecificData[action.viewportIndex] || {};
+        if (state.maximized) {
+          var maxData;
+          for (var i=0; i<draftState.viewportSpecificData.length; i++) {
+            if (draftState.viewportSpecificData[i].Maximized) {
+              maxData = draftState.viewportSpecificData[i];
+              break;
+            }
+          }
+          if (maxData) {
+            Object.keys(action.viewportSpecificData).forEach(key => {
+              maxData[key] = action.viewportSpecificData[key];
+            });
+          }
+        } else {
+          draftState.viewportSpecificData[action.viewportIndex] =
+            draftState.viewportSpecificData[action.viewportIndex] || {};
 
-        Object.keys(action.viewportSpecificData).forEach(key => {
-          draftState.viewportSpecificData[action.viewportIndex][key] =
-            action.viewportSpecificData[key];
-        });
+          Object.keys(action.viewportSpecificData).forEach(key => {
+            draftState.viewportSpecificData[action.viewportIndex][key] =
+              action.viewportSpecificData[key];
+          });
 
-        if (action.viewportSpecificData && action.viewportSpecificData.plugin) {
-          draftState.layout.viewports[action.viewportIndex].plugin =
-            action.viewportSpecificData.plugin;
+          if (action.viewportSpecificData && action.viewportSpecificData.plugin) {
+            draftState.layout.viewports[action.viewportIndex].plugin =
+              action.viewportSpecificData.plugin;
+          }
         }
       });
     }
