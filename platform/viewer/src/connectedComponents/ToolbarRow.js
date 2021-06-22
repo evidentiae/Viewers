@@ -92,9 +92,15 @@ class ToolbarRow extends Component {
         console.log("STUDIES SENT TO menuOption.isDisabled():");
         console.log(this.props.studies);
         console.log(this.props.activeViewport);
-        const isDisabled =
-          typeof menuOption.isDisabled === 'function' &&
+
+        // WAERN: try-catch is my workaround for studies prop updating with panel open
+        var isDisabled;
+        try {
+          isDisabled = typeof menuOption.isDisabled === 'function' &&
           menuOption.isDisabled(this.props.studies, this.props.activeViewport);
+        } catch (error) {
+          isDisabled = true;
+        }
 
         if (hasActiveContext && !isDisabled) {
           const menuOptionEntry = {
