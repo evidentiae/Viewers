@@ -384,7 +384,7 @@ class Viewer extends Component {
         },
         {
           "00720302": {vr: "US", Value: [13]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm, w*7-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm, w*7-m, 1+hm/2-h]}
         },
         {
           "00720302": {vr: "US", Value: [14]},
@@ -392,7 +392,7 @@ class Viewer extends Component {
         },
         {
           "00720302": {vr: "US", Value: [15]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h, w*7-m/2, 1+hm/2-h*2]}
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h, w*7-m, 1+hm/2-h*2]}
         },
         {
           "00720302": {vr: "US", Value: [16]},
@@ -400,7 +400,7 @@ class Viewer extends Component {
         },
         {
           "00720302": {vr: "US", Value: [17]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h*2, w*7-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h*2, w*7-m, 1+hm/2-h*3]}
         },
       ];
     }
