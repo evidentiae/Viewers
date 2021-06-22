@@ -89,6 +89,8 @@ class ToolbarRow extends Component {
 
         // It's a bit beefy to pass studies; probably only need to be reactive on `studyInstanceUIDs` and activeViewport?
         // Note: This does not cleanly handle `studies` prop updating with panel open
+        console.log("STUDIES SENT TO menuOption.isDisabled():");
+        console.log(this.props.studies);
         const isDisabled =
           typeof menuOption.isDisabled === 'function' &&
           menuOption.isDisabled(this.props.studies, this.props.activeViewport);
