@@ -211,6 +211,7 @@ const ViewportGrid = function (props) {
     <div
       data-cy="viewprt-grid"
       style={{
+        position: 'relative',
         display: 'block',
         //display: 'grid',
         //gridTemplateRows: `repeat(${effectiveNumRows}, ${rowSize}%)`,

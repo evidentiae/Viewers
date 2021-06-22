@@ -38,7 +38,7 @@ const ViewportPane = function (props) {
       data-cy={`viewport-container-${viewportIndex}`}
       onClick={ev => onClick(viewportIndex)}
       style={{
-        position: 'static',
+        position: 'absolute',
         left: (props.pos.x1 * 100) + '%',
         top: (props.pos.y1 * 100) + '%',
         width: ((props.pos.x2 - props.pos.x1) * 100) + '%', 
