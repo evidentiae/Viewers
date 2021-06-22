@@ -91,6 +91,7 @@ class ToolbarRow extends Component {
         // Note: This does not cleanly handle `studies` prop updating with panel open
         console.log("STUDIES SENT TO menuOption.isDisabled():");
         console.log(this.props.studies);
+        console.log(this.props.activeViewport);
         const isDisabled =
           typeof menuOption.isDisabled === 'function' &&
           menuOption.isDisabled(this.props.studies, this.props.activeViewport);
