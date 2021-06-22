@@ -289,6 +289,7 @@ class Viewer extends Component {
     var numImageBoxes = 1;
     var imageBoxes = [];
     var m=0.005;
+    var h=0.25;
 
     if (layout === 'Panoramic') {
       numImageBoxes = 1;
@@ -302,19 +303,19 @@ class Viewer extends Component {
       imageBoxes = [
         {
           "00720302": {vr: "US", Value: [0]},
-          "00720108": {vr: "FD", Value: [0+m, 1-m, 0.25-m, 0+m]}
+          "00720108": {vr: "FD", Value: [0+m, 1-h, 0.25-m/2, 0+h]}
         },
         {
           "00720302": {vr: "US", Value: [1]},
-          "00720108": {vr: "FD", Value: [0.25+m, 1-m, 0.5-m, 0+m]}
+          "00720108": {vr: "FD", Value: [0.25+m/2, 1-h, 0.5-m/2, 0+h]}
         },
         {
           "00720302": {vr: "US", Value: [2]},
-          "00720108": {vr: "FD", Value: [0.5+m, 1-m, 0.75-m, 0+m]}
+          "00720108": {vr: "FD", Value: [0.5+m/2, 1-h, 0.75-m/2, 0+h]}
         },
         {
           "00720302": {vr: "US", Value: [3]},
-          "00720108": {vr: "FD", Value: [0.75+m, 1-m, 1-m, 0+m]}
+          "00720108": {vr: "FD", Value: [0.75+m/2, 1-h, 1-m, 0+h]}
         }
       ];
     }
