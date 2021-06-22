@@ -184,10 +184,13 @@ const viewports = (state = DEFAULT_STATE, action) => {
             }
           }
           if (maxData) {
+            /*
             Object.keys(action.viewportSpecificData).forEach(key => {
               maxData[key] = action.viewportSpecificData[key];
             });
             maxData.Maximized = true;
+            */
+            maxData.frameIndex = action.viewportSpecificData.frameIndex;
           }
         } else {
           draftState.viewportSpecificData[action.viewportIndex] =
