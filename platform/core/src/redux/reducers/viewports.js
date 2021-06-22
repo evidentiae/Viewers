@@ -187,6 +187,7 @@ const viewports = (state = DEFAULT_STATE, action) => {
             Object.keys(action.viewportSpecificData).forEach(key => {
               maxData[key] = action.viewportSpecificData[key];
             });
+            maxData.Maximized = true;
           }
         } else {
           draftState.viewportSpecificData[action.viewportIndex] =
