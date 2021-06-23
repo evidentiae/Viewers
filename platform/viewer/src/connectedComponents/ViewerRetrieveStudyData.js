@@ -216,6 +216,9 @@ function ViewerRetrieveStudyData({
   patientID,
   activeSeries
 }) {
+  console.log("ViewerRetrieveStudyData render:"):
+  console.log(activeSeries);
+
   // hooks
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
