@@ -10,6 +10,9 @@ const mapStateToProps = (state, ownProps) => {
   const activeServer = state.servers.servers.find(isActive);
   const studyInstanceUIDs = Object.keys(state.studies.studyData);
 
+  console.log("ConnectedViewerRetrieveStudyData mapStateToPropS state:");
+  console.log(state);
+
   return {
     server: ownProps.server || activeServer,
     studyInstanceUIDs: studyInstanceUIDs,
