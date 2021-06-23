@@ -216,7 +216,7 @@ function ViewerRetrieveStudyData({
   patientID,
   activeSeries
 }) {
-  console.log("ViewerRetrieveStudyData render:"):
+  console.log("ViewerRetrieveStudyData render:");
   console.log(activeSeries);
 
   // hooks
