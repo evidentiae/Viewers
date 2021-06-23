@@ -28,6 +28,8 @@ const mapDispatchToProps = dispatch => {
       var stuff = makeLayout(studies, activeSeries);
       dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       if (stuff.activeSeriesUID) {
+        console.log("setActiveSeries (in doneLoadingStudies):");
+        console.log(stuff.activeSeriesUID);
         dispatch(setActiveSeries(stuff.activeSeriesUID));
       }
     }
