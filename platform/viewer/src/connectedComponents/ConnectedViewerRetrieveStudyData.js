@@ -25,6 +25,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
+      console.log("doneLoadingStudies, activeSeries: ");
+      console.log(activeSeries);
       var stuff = makeLayout(studies, activeSeries);
       dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       if (stuff.activeSeriesUID) {
