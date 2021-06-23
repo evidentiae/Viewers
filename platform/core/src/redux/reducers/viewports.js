@@ -94,6 +94,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_ACTIVE: {
+      console.log("SET_VIEWPORT_ACTIVE");
+      console.log(action);
       return produce(state, draftState => {
         draftState.activeViewportIndex = getActiveViewportIndex(
           draftState.layout.viewports,
