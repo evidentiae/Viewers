@@ -132,7 +132,6 @@ const ViewportGrid = function (props) {
     var displaySet = viewportData[viewportIndex];
 
     if (!displaySet) {
-      console.log("NO DISPLAY SET - RETURNING EARLY");
       return null;
     }
 

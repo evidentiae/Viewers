@@ -10,9 +10,6 @@ const mapStateToProps = (state, ownProps) => {
   const activeServer = state.servers.servers.find(isActive);
   const studyInstanceUIDs = Object.keys(state.studies.studyData);
 
-  console.log("ConnectedViewerRetrieveStudyData mapStateToPropS state:");
-  console.log(state);
-
   return {
     server: ownProps.server || activeServer,
     studyInstanceUIDs: studyInstanceUIDs,
@@ -28,13 +25,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
-      console.log("doneLoadingStudies, activeSeries: ");
-      console.log(activeSeries);
       var stuff = makeLayout(studies, activeSeries);
       dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       if (stuff.activeSeriesUID) {
-        console.log("setActiveSeries (in doneLoadingStudies):");
-        console.log(stuff.activeSeriesUID);
         dispatch(setActiveSeries(stuff.activeSeriesUID));
       }
     }

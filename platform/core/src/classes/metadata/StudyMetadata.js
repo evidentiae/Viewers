@@ -165,15 +165,15 @@ class StudyMetadata extends Metadata {
     // series into another display set.
 
     series.forEachInstance(instance => {
-      console.log("SOPClassUID of instance: ");
-      console.log(instance.getTagValue('SOPClassUID'));
+      //console.log("SOPClassUID of instance: ");
+      //console.log(instance.getTagValue('SOPClassUID'));
       if (instance.getTagValue('SOPClassUID') === '1.2.840.10008.5.1.4.1.1.131') {
         // structured display
         var seq = instance.getTagValue('StructuredDisplayImageBoxSequence');
         var boxes = Array.isArray(seq) ? seq : [seq];
 
-        console.log("Layout boxes: ");
-        console.log(boxes);
+        //console.log("Layout boxes: ");
+        //console.log(boxes);
 
         var instanceNumber = 0;
         boxes.forEach(box => {
@@ -194,7 +194,7 @@ class StudyMetadata extends Metadata {
             frameIndex: 0,
             InstanceNumber: instanceNumber++
           });
-          console.log("Added empty display set");
+          //console.log("Added empty display set");
           displaySets.push(displaySet);
         });
       }
@@ -215,8 +215,8 @@ class StudyMetadata extends Metadata {
         let displaySet;
 
         if (isMultiFrame(instance)) {
-          console.log("displaySets length: ");
-          console.log(displaySets.length);
+          //console.log("displaySets length: ");
+          //console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
 
           displaySet.setAttributes({
@@ -231,8 +231,8 @@ class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else if (isSingleImageModality(instance.Modality)) {
-          console.log("displaySets length: ");
-          console.log(displaySets.length);
+          //console.log("displaySets length: ");
+          //console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             //sopClassUIDs,
@@ -244,8 +244,8 @@ class StudyMetadata extends Metadata {
           });
           //displaySets.push(displaySet);
         } else {
-          console.log("displaySets length: ");
-          console.log(displaySets.length);
+          //console.log("displaySets length: ");
+          //console.log(displaySets.length);
           displaySet = makeDisplaySet(series, [instance], displaySets);
           displaySet.setAttributes({
             //sopClassUIDs,
@@ -931,9 +931,9 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     // insert based on instance number
     var foundSet=false;
     for (var i=0; i<displaySets.length; i++) {
-      console.log("IN LOOP");
-      console.log(displaySets[i].numImageFrames);
-      console.log(displaySets[i].InstanceNumber);
+      //console.log("IN LOOP");
+      //console.log(displaySets[i].numImageFrames);
+      //console.log(displaySets[i].InstanceNumber);
       if (displaySets[i].numImageFrames === 0 && displaySets[i].InstanceNumber === instance.getTagValue('InstanceNumber')) {
         displaySets[i] = imageSet;
         foundSet = true;
@@ -942,8 +942,8 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
     }
     if (!foundSet) {
       console.warn("Could not find display set:");
-      console.log(displaySets);
-      console.log(instance.getTagValue('InstanceNumber'));
+      //console.log(displaySets);
+      //console.log(instance.getTagValue('InstanceNumber'));
       // no layout frame found: just add to display sets
       // XXX: what about order: it is not sorted by instance number?
       displaySets.push(imageSet);

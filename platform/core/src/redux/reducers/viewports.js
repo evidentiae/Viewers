@@ -94,8 +94,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_ACTIVE: {
-      console.log("SET_VIEWPORT_ACTIVE");
-      console.log(action);
+      //console.log("SET_VIEWPORT_ACTIVE");
+      //console.log(action);
       return produce(state, draftState => {
         draftState.activeViewportIndex = getActiveViewportIndex(
           draftState.layout.viewports,
@@ -110,8 +110,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT: {
-      console.log("SET_VIEWPORT_LAYOUT");
-      console.log(action);
+      //console.log("SET_VIEWPORT_LAYOUT");
+      //console.log(action);
       const { viewports } = action;
       /*
       const viewportSpecificData = findActiveViewportSpecificData(
@@ -138,8 +138,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT_LAYOUT_AND_DATA: {
-      console.log("SET_VIEWPORT_LAYOUT_AND_DATA");
-      console.log(action);
+      //console.log("SET_VIEWPORT_LAYOUT_AND_DATA");
+      //console.log(action);
       const { viewports } = action;
       const viewportSpecificData = cloneDeep(action.viewportSpecificData);
       /*
@@ -174,8 +174,8 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_VIEWPORT: {
-      console.log("SET_VIEWPORT");
-      console.log(action);
+      //console.log("SET_VIEWPORT");
+      //console.log(action);
       return produce(state, draftState => {
         if (state.maximized) {
           var maxData;
@@ -217,15 +217,15 @@ const viewports = (state = DEFAULT_STATE, action) => {
      * @return {Object} New state.
      */
     case SET_ACTIVE_SPECIFIC_DATA: {
-      console.log("SET_ACTIVE_SPECIFIC_DATA");
-      console.log(action);
+      //console.log("SET_ACTIVE_SPECIFIC_DATA");
+      //console.log(action);
       useActiveViewport = true;
     }
     // Allow fall-through
     // eslint-disable-next-line
     case SET_SPECIFIC_DATA: {
-      console.log("SET_SPECIFIC_DATA");
-      console.log(action);
+      //console.log("SET_SPECIFIC_DATA");
+      //console.log(action);
       const layout = cloneDeep(state.layout);
       const viewportIndex = useActiveViewport
         ? state.activeViewportIndex
