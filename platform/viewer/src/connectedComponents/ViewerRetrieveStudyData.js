@@ -269,7 +269,6 @@ function ViewerRetrieveStudyData({
 
     setStudies([...studies, study]);
     setIsStudyLoaded(true);
-    doneLoadingStudies(studies, activeSeries);
   };
 
   /**
@@ -297,11 +296,11 @@ function ViewerRetrieveStudyData({
           loadRemainingSeries(studyMetadata)
         )
           .then(result => {
-            console.log("RESULT:");
-            console.log(result);
             if (result && !result.isCanceled) {
               studyDidLoad(study, studyMetadata, filters);
             }
+            // result is null on sync loading
+            doneLoadingStudies(studies, activeSeries);
           })
           .catch(error => {
             if (error && !error.isCanceled) {
