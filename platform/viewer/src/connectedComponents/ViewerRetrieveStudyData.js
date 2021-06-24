@@ -297,6 +297,8 @@ function ViewerRetrieveStudyData({
           loadRemainingSeries(studyMetadata)
         )
           .then(result => {
+            console.log("RESULT:");
+            console.log(result);
             if (result && !result.isCanceled) {
               studyDidLoad(study, studyMetadata, filters);
             }
