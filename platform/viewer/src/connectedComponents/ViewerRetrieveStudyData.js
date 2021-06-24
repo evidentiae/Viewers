@@ -240,6 +240,8 @@ function ViewerRetrieveStudyData({
    * @param {string} [filter.seriesInstanceUID] - series instance uid to filter results against
    */
   const studyDidLoad = (study, studyMetadata, filters) => {
+    console.log("STUDY DID LOAD");
+
     // User message
     const promoted = _promoteList(
       study,
