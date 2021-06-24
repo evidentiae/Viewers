@@ -427,7 +427,7 @@ function ViewerRetrieveStudyData({
   useEffect(() => {
     if (reloadStudies) {
       console.log("RELOADING STUDIES");
-      studyMetadataManager.purge();
+      //studyMetadataManager.purge();
       purgeCancellablePromises();
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
