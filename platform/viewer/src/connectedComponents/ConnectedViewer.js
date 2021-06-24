@@ -31,10 +31,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(maximize());
     },
     onNewStudy: (structuredDisplay, layout) => {
-      dispatch(setStudyData(structuredDisplay.StudyInstanceUID, structuredDisplay));
       console.log("setActiveSeries (in onNewStudy):");
       console.log(structuredDisplay.SeriesInstanceUID);
       dispatch(setActiveSeries(structuredDisplay.SeriesInstanceUID));
+      dispatch(setStudyData(structuredDisplay.StudyInstanceUID, structuredDisplay));
       //dispatch(setLayout(layout)); let it be updated after retrieve study data is done
     },
   };
