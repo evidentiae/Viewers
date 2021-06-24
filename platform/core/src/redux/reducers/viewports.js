@@ -9,7 +9,8 @@ import {
   SET_VIEWPORT_ACTIVE,
   SET_VIEWPORT_LAYOUT,
   SET_VIEWPORT_LAYOUT_AND_DATA,
-  TOGGLE_MAXIMIZE
+  TOGGLE_MAXIMIZE,
+  SET_ACTIVE_SERIES
 } from './../constants/ActionTypes.js';
 
 setAutoFreeze(false);
@@ -20,7 +21,8 @@ export const DEFAULT_STATE = {
     viewports: [{pos: {x1: 0, y1: 1, x2: 1, y2: 0}, instanceNumber: 0}],
   },
   viewportSpecificData: {},
-  maximized: false
+  maximized: false,
+  activeSeries: null
 };
 
 /**
@@ -258,6 +260,24 @@ const viewports = (state = DEFAULT_STATE, action) => {
       } else {
         return DEFAULT_STATE;
       }
+    }
+
+    case SET_ACTIVE_SERIES: {
+      const viewportSpecificData = cloneDeep(action.viewportSpecificData);
+
+      const activeViewportIndex = getActiveViewportIndex(
+        action.viewports,
+        state.activeViewportIndex
+      );
+
+      return {
+        ...state,
+        layout: { viewports: [...action.viewports] },
+        viewportSpecificData,
+        activeViewportIndex,
+        maximized: false,
+        activeSeries: action.seriesInstanceUID
+      };
     }
 
     /**
