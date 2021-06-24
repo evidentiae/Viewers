@@ -267,6 +267,7 @@ function ViewerRetrieveStudyData({
 
     setStudies([...studies, study]);
     setIsStudyLoaded(true);
+    doneLoadingStudies(studies, activeSeries);
   };
 
   /**
@@ -309,7 +310,6 @@ function ViewerRetrieveStudyData({
       });
 
       setStudies(studies);
-      doneLoadingStudies(studies, activeSeries);
     }
   };
 
@@ -418,6 +418,7 @@ function ViewerRetrieveStudyData({
 
   useEffect(() => {
     if (reloadStudies) {
+      console.log("RELOADING STUDIES");
       studyMetadataManager.purge();
       purgeCancellablePromises();
       cancelableSeriesPromises = {};
