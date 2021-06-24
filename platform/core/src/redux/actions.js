@@ -119,12 +119,12 @@ export const setStudyData = (StudyInstanceUID, data) => ({
 });
 
 export const setActiveSeries = (
-  SeriesInstanceUID,
+  seriesInstanceUID,
   viewports,
   viewportSpecificData
 ) => ({
   type: SET_ACTIVE_SERIES,
-  SeriesInstanceUID,
+  seriesInstanceUID,
   viewports,
   viewportSpecificData
 });
