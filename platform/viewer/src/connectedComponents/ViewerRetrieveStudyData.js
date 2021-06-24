@@ -321,10 +321,17 @@ function ViewerRetrieveStudyData({
 
   const loadRemainingSeries = async studyMetadata => {
     const { seriesLoader } = studyMetadata.getData();
-    if (!seriesLoader) return;
+    if (!seriesLoader) {
+      console.log("NO SERIES LOADER - RETURNING");
+      return;
+    }
 
     const loadNextSeries = async () => {
-      if (!seriesLoader.hasNext()) return;
+      console.log("loadNextSeries");
+      if (!seriesLoader.hasNext()) {
+        console.log("series loader no has next, returning");
+        return;
+      }
       const series = await seriesLoader.next();
       _addSeriesToStudy(studyMetadata, series);
       forceRerender();
