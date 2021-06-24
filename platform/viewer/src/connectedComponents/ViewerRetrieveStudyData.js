@@ -410,15 +410,19 @@ function ViewerRetrieveStudyData({
     studyInstanceUIDs.every(e => prevStudyInstanceUIDs.includes(e))
   );
 
+  /*
   useEffect(() => {
     if (reloadStudies) {
       studyMetadataManager.purge();
       purgeCancellablePromises();
     }
   }, [prevStudyInstanceUIDs, purgeCancellablePromises, studyInstanceUIDs]);
+  */
 
   useEffect(() => {
     if (reloadStudies) {
+      studyMetadataManager.purge();
+      purgeCancellablePromises();
       cancelableSeriesPromises = {};
       cancelableStudiesPromises = {};
       loadStudies(false);
