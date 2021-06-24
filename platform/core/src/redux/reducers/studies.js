@@ -1,8 +1,7 @@
 import cloneDeep from 'lodash.clonedeep';
 
 const defaultState = {
-  studyData: {},
-  activeSeries: null
+  studyData: {}
 };
 
 const servers = (state = defaultState, action) => {
@@ -12,11 +11,6 @@ const servers = (state = defaultState, action) => {
       updatedStudyData[action.StudyInstanceUID] = cloneDeep(action.data);
 
       return Object.assign({}, state, { studyData: updatedStudyData });
-    }
-    case 'SET_ACTIVE_SERIES': {
-      //console.log("SET_ACTIVE_SERIES:");
-      //console.log(action);
-      return Object.assign({}, state, { activeSeries: action.SeriesInstanceUID }); 
     }
     default:
       return state;

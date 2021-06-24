@@ -8,7 +8,7 @@ import makeLayout from './makeLayout.js';
 
 const { studyMetadataManager } = OHIF.utils;
 
-const { clearViewportSpecificData, setActiveViewportSpecificData, setViewportLayoutAndData, setActiveSeries } = OHIF.redux.actions;
+const { clearViewportSpecificData, setActiveViewportSpecificData, setActiveSeries } = OHIF.redux.actions;
 
 // TODO
 // - Determine in which display set is active from Redux (activeViewportIndex and layout viewportData)
@@ -44,9 +44,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onThumbnailClick: (displaySetInstanceUID, seriesInstanceUID) => {
+      // TODO: maybe move makeLayout logic to reducers? We should be able to find
+      // eveything in the 'studies' part of the store.
       var stuff = makeLayout(ownProps.studyMetadata, seriesInstanceUID);
-      dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
-      dispatch(setActiveSeries(seriesInstanceUID));
+      //dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
+      dispatch(setActiveSeries(seriesInstanceUID, stuff.layout, stuff.data));
     },
   };
 };

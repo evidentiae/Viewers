@@ -3,7 +3,7 @@ import ViewerRetrieveStudyData from './ViewerRetrieveStudyData.js';
 import OHIF from '@ohif/core';
 import makeLayout from './makeLayout.js';
 
-const { clearViewportSpecificData, setStudyData, setActiveSeries, setViewportLayoutAndData } = OHIF.redux.actions;
+const { clearViewportSpecificData, setStudyData, setActiveSeries } = OHIF.redux.actions;
 const isActive = a => a.active === true;
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,11 +25,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearViewportSpecificData());
     },
     doneLoadingStudies: (studies, activeSeries) => {
+      // TODO: maybe move makeLayout logic to reducers? We should be able to find
+      // eveything in the 'studies' part of the store.
       var stuff = makeLayout(studies, activeSeries);
-      dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
-      if (stuff.activeSeriesUID) {
-        dispatch(setActiveSeries(stuff.activeSeriesUID));
-      }
+      dispatch(setActiveSeries(stuff.activeSeriesUID, stuff.layout, stuff.data));
     }
   };
 };

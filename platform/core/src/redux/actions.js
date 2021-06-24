@@ -12,6 +12,7 @@ import {
   SET_VIEWPORT_LAYOUT_AND_DATA,
   TOGGLE_MAXIMIZE,
   SET_USER_PREFERENCES,
+  SET_ACTIVE_SERIES
 } from './constants/ActionTypes.js';
 
 /**
@@ -59,7 +60,7 @@ export const maximize = () => ({
  */
 export const setViewportLayoutAndData = (
   viewports,
-  viewportSpecificData
+  viewportSpecificData,
 ) => ({
   type: SET_VIEWPORT_LAYOUT_AND_DATA,
   viewports,
@@ -117,9 +118,15 @@ export const setStudyData = (StudyInstanceUID, data) => ({
   data,
 });
 
-export const setActiveSeries = SeriesInstanceUID => ({
-  type: 'SET_ACTIVE_SERIES',
+export const setActiveSeries = (
   SeriesInstanceUID,
+  viewports,
+  viewportSpecificData
+) => ({
+  type: SET_ACTIVE_SERIES,
+  SeriesInstanceUID,
+  viewports,
+  viewportSpecificData
 });
 
 export const setServers = servers => ({
