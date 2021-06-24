@@ -243,6 +243,7 @@ class OHIFCornerstoneViewport extends Component {
       return (
       <>
         <ConnectedCornerstoneViewport
+          enableResizeDetector={false}
           viewportIndex={viewportIndex}
           imageIds={imageIds}
           imageIdIndex={currentImageIdIndex}
