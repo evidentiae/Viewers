@@ -291,6 +291,9 @@ function ViewerRetrieveStudyData({
         _updateStudyDisplaySets(study, studyMetadata);
         _updateStudyMetadataManager(study, studyMetadata);
 
+        /*
+        // Not necessary when sync loading
+
         // Attempt to load remaning series if any
         cancelableSeriesPromises[study.StudyInstanceUID] = makeCancelable(
           loadRemainingSeries(studyMetadata)
@@ -303,7 +306,6 @@ function ViewerRetrieveStudyData({
               studyDidLoad(study, studyMetadata, filters);
             }
             // result is null on sync loading
-            //doneLoadingStudies(studies, activeSeries);
           })
           .catch(error => {
             if (error && !error.isCanceled) {
@@ -311,11 +313,13 @@ function ViewerRetrieveStudyData({
               log.error(error);
             }
           });
+        */
 
         return study;
       });
 
       setStudies(studies);
+      doneLoadingStudies(studies, activeSeries);
     }
   };
 
