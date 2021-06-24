@@ -216,9 +216,6 @@ function ViewerRetrieveStudyData({
   patientID,
   activeSeries
 }) {
-  console.log("ViewerRetrieveStudyData render:");
-  console.log(activeSeries);
-
   // hooks
   const [error, setError] = useState(false);
   const [studies, setStudies] = useState([]);
@@ -240,8 +237,6 @@ function ViewerRetrieveStudyData({
    * @param {string} [filter.seriesInstanceUID] - series instance uid to filter results against
    */
   const studyDidLoad = (study, studyMetadata, filters) => {
-    console.log("STUDY DID LOAD");
-
     // User message
     const promoted = _promoteList(
       study,
@@ -328,14 +323,11 @@ function ViewerRetrieveStudyData({
   const loadRemainingSeries = async studyMetadata => {
     const { seriesLoader } = studyMetadata.getData();
     if (!seriesLoader) {
-      console.log("NO SERIES LOADER - RETURNING");
       return;
     }
 
     const loadNextSeries = async () => {
-      console.log("loadNextSeries");
       if (!seriesLoader.hasNext()) {
-        console.log("series loader no has next, returning");
         return;
       }
       const series = await seriesLoader.next();
@@ -435,7 +427,6 @@ function ViewerRetrieveStudyData({
 
   useEffect(() => {
     if (reloadStudies) {
-      console.log("RELOADING STUDIES");
       //studyMetadataManager.purge();
       purgeCancellablePromises();
       cancelableSeriesPromises = {};
