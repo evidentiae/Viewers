@@ -64,6 +64,8 @@ const getActiveViewportIndex = (
   viewports,
   currentActiveViewportIndex
 ) => {
+  if (!viewports) return DEFAULT_STATE.activeViewportIndex;
+
   const numberOfViewports = viewports.length;
 
   return currentActiveViewportIndex > numberOfViewports - 1
