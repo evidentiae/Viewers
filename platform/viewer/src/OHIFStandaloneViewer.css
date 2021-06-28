@@ -35,3 +35,7 @@ body {
   opacity: 0;
   transition: opacity 200ms;
 }
+
+.ViewportOverlay {
+  display: none;
+}
