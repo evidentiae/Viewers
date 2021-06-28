@@ -175,7 +175,7 @@ const ViewportGrid = function (props) {
         className={classNames('viewport-container', {
           active: activeViewportIndex === viewportIndex,
         })}
-        key={activeSeriesUID + '-' viewportIndex}
+        key={activeSeriesUID + '-' + viewportIndex}
         pos={layout.pos}
       >
         {ViewportComponent}
