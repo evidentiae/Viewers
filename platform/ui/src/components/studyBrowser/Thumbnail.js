@@ -93,9 +93,11 @@ function ThumbnailFooter({
       return;
     }
     const seriesInformation =
+    /*
+     {getInfo(SeriesNumber, 'S:')}
+     {getInfo(InstanceNumber, 'I:')}
+    */
       <div className="series-information">
-        {getInfo(SeriesNumber, 'S:')}
-        {getInfo(InstanceNumber, 'I:')}
         {getInfo(numImageFrames, '', 'image-frames')}
         {getWarningInfo(SeriesNumber, inconsistencyWarnings)}
       </div>
