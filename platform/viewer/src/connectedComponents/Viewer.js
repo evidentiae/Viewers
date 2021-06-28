@@ -566,6 +566,9 @@ class Viewer extends Component {
   }
 
   render() {
+    console.log("Viewer render(), active viewportSpecificData: ");
+    console.log(this.props.viewports[this.props.activeViewportIndex]);
+
     var maxDisplaySet;
     for (var i=0; i<this.props.viewports.length; i++) {
       if (this.props.viewports[i].Maximized) {
@@ -647,7 +650,7 @@ class Viewer extends Component {
             maximized={this.props.maximized}
             showMaxMin={
               maxDisplaySet &&
-              this.props.viewports[this.props.activeViewportIndex] &&
+              this.props.viewports[this.props.activeViewportIndex].images &&
               this.props.viewports[this.props.activeViewportIndex].images.length > 0
             }
           />
