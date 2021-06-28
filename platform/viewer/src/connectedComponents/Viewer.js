@@ -673,6 +673,7 @@ class Viewer extends Component {
             maximized={this.props.maximized}
             showMaxMin={
               maxDisplaySet &&
+              this.props.viewports[this.props.activeViewportIndex] &&
               this.props.viewports[this.props.activeViewportIndex].images.length > 0
             }
           />
