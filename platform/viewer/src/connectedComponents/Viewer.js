@@ -407,7 +407,7 @@ class Viewer extends Component {
     //const buffer = encoder.encode(JSON.stringify(dataset));
 
     client.storeInstances({ datasets: [buffer] }).then(function (result) {
-      props.onNewStudy(structuredDisplay);
+      props.onNewStudy(structuredDisplay, []);
     });
 
     // then make dicomWeb call to create these in google healthcare
