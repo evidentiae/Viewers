@@ -80,6 +80,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
      * easier.
      */
     onElementEnabled: event => {
+      console.log("ON ELEMENT ENABLED");
       const enabledElement = event.detail.element;
       setEnabledElement(viewportIndex, enabledElement);
       dispatch(
