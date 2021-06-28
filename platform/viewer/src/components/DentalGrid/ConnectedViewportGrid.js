@@ -25,11 +25,12 @@ const mapStateToProps = state => {
     defaultPlugin = viewportModules[0].extensionId;
   }
 
-  const { layout, activeViewportIndex } = state.viewports;
+  const { layout, activeViewportIndex, activeSeries } = state.viewports;
 
   return {
     layout,
     activeViewportIndex,
+    activeSeriesUID = activeSeries,
     // TODO: rename `availableViewportModules`
     availablePlugins: availableViewportModules,
     // TODO: rename `defaultViewportModule`

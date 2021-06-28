@@ -237,25 +237,6 @@ class OHIFCornerstoneViewport extends Component {
       }
     };
 
-    return (<>
-        <ConnectedCornerstoneViewport
-          viewportIndex={viewportIndex}
-          imageIds={imageIds}
-          imageIdIndex={currentImageIdIndex}
-          onNewImage={newImageHandler}
-          onNewImageDebounceTime={700}
-          // ~~ Connected (From REDUX)
-          // frameRate={frameRate}
-          // isPlaying={false}
-          // isStackPrefetchEnabled={true}
-          // onElementEnabled={() => {}}
-          // setViewportActive{() => {}}
-          {...this.props.customProps}
-        />
-        {childrenWithProps}
-      </>
-    );
-    /*
     if (imageIds.length === 0)
       return null;
     else
@@ -278,7 +259,6 @@ class OHIFCornerstoneViewport extends Component {
         {childrenWithProps}
       </>
     );
-    */
   }
 }
 
