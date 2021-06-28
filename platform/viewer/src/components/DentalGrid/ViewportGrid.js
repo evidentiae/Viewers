@@ -16,6 +16,7 @@ const { loadAndCacheDerivedDisplaySets } = utils;
 const ViewportGrid = function (props) {
   var {
     activeViewportIndex,
+    activeSeriesUID,
     availablePlugins,
     defaultPlugin: defaultPluginName,
     layout,
@@ -174,7 +175,7 @@ const ViewportGrid = function (props) {
         className={classNames('viewport-container', {
           active: activeViewportIndex === viewportIndex,
         })}
-        //key={viewportIndex}
+        key={activeSeriesUID + '-' viewportIndex}
         pos={layout.pos}
       >
         {ViewportComponent}
