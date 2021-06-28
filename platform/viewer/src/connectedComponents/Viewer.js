@@ -647,7 +647,7 @@ class Viewer extends Component {
             maximized={this.props.maximized}
             showMaxMin={
               maxDisplaySet &&
-              this.props.activeViewportIndex < maxDisplaySet.numImageFrames
+              this.props.viewports[this.props.activeViewportIndex].images.length > 0
             }
           />
         </ErrorBoundaryDialog>
