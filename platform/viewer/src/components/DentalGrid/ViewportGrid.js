@@ -68,15 +68,16 @@ const ViewportGrid = function (props) {
   const getMaximizedViewportPane = (layout, viewportIndex) => {
     var displaySet;
 
+    var maxIndex = 0;
+    var activeMaxIndex = 0;
     for (var i=0; i<viewportData.length; i++) {
       var set = viewportData[i];
-      if (set.Maximized) {
-        displaySet = set;
-        break;
-      }
+      if (set.Maximized) displaySet = set;
+      if (i === viewportIndex) activeMaxIndex = maxIndex;
+      if (set.numImageFrames > 0) maxIndex++;
     }
 
-    displaySet.frameIndex = viewportIndex;
+    displaySet.frameIndex = activeMaxIndex;
 
     if (!displaySet) {
       return null;
