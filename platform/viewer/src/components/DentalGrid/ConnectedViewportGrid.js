@@ -30,7 +30,7 @@ const mapStateToProps = state => {
   return {
     layout,
     activeViewportIndex,
-    activeSeriesUID = activeSeries,
+    activeSeriesUID: activeSeries,
     // TODO: rename `availableViewportModules`
     availablePlugins: availableViewportModules,
     // TODO: rename `defaultViewportModule`
