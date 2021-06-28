@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       var stuff = makeLayout(ownProps.studyMetadata, seriesInstanceUID);
       //dispatch(setViewportLayoutAndData(stuff.layout, stuff.data));
       dispatch(setActiveSeries(seriesInstanceUID, stuff.layout, stuff.data));
+      window.dispatchEvent(new Event('resize'));
     },
   };
 };
