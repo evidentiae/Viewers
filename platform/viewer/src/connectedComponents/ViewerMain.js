@@ -146,9 +146,7 @@ class ViewerMain extends Component {
       displaySetInstanceUID
     );
 
-    console.log(displaySet);
-
-    if (displaySet.isDerived) {
+    if (displaySet && displaySet.isDerived) {
       const { Modality } = displaySet;
       if (Modality === 'SEG' && servicesManager) {
         const {LoggerService, UINotificationService} = servicesManager.services;
