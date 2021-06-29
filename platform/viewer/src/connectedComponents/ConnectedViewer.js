@@ -32,8 +32,6 @@ const mapDispatchToProps = dispatch => {
     },
     onNewStudy: (structuredDisplay, viewports) => {
       // NOTE: order of dispatch matters
-      console.log('onNewStudy:');
-      console.log(structuredDisplay);
       dispatch(setActiveSeries(structuredDisplay.SeriesInstanceUID, viewports, {}));
       dispatch(setStudyData(structuredDisplay.StudyInstanceUID, structuredDisplay));
       //dispatch(setLayout(layout)); let it be updated after retrieve study data is done
