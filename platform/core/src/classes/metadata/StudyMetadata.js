@@ -901,6 +901,27 @@ const makeDisplaySet = (series, instances, displaySets, max) => {
   });
 
   // Sort the images in this series by instanceNumber
+  const shallSort = true; //!OHIF.utils.ObjectPath.get(Meteor, 'settings.public.ui.sortSeriesByIncomingOrder');
+  if (shallSort) {
+    imageSet.sortBy((a, b) => {
+      // Sort by InstanceNumber (0020,0013)
+      return (
+        (parseInt(a.getTagValue('InstanceNumber', 0)) || 0) -
+        (parseInt(b.getTagValue('InstanceNumber', 0)) || 0)
+      );
+    });
+  }
+
+  // Include the first image instance number (after sorted)
+  imageSet.setAttribute(
+    'InstanceNumber',
+    imageSet.getImage(0).getTagValue('InstanceNumber')
+  );
+
+  const displayReconstructableInfo = isDisplaySetReconstructable(instances);
+  imageSet.isReconstructable = displayReconstructableInfo.value;
+
+  // Sort the images in this series by instanceNumber
   let displaySpacingInfo = undefined;
   if (shallSort && imageSet.isReconstructable) {
     // sort images by image position
