@@ -253,7 +253,7 @@ class OHIFCornerstoneViewport extends Component {
           imageIds={imageIds}
           imageIdIndex={currentImageIdIndex}
           onNewImageDebounced={newImageHandler}
-          onNewImageDebounceTime={300}
+          onNewImageDebounceTime={3}
           viewportOverlayComponent={warningsOverlay}
           // ~~ Connected (From REDUX)
           // frameRate={frameRate}

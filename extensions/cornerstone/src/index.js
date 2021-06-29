@@ -44,6 +44,8 @@ export default {
        * and we should remove it.
        */
       const onNewImageHandler = jumpData => {
+        console.log("ON NEW IMAGE HANDLER");
+        console.log(jumpData);
         /** Do not trigger all viewports to render unnecessarily */
         jumpData.refreshViewports = false;
         commandsManager.runCommand('jumpToImage', jumpData);
