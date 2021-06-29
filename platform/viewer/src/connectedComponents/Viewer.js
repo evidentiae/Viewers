@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useLogger } from '@ohif/ui';
 
-import OHIF, { MODULE_TYPES, DICOMSR } from '@ohif/core';
+import OHIF, { MODULE_TYPES, DICOMSR, user, utils } from '@ohif/core';
 import { withDialog } from '@ohif/ui';
 import jpeg from 'jpeg-js';
 import moment from 'moment';
@@ -15,9 +15,7 @@ import ErrorBoundaryDialog from './../components/ErrorBoundaryDialog';
 import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
 import { ReconstructionIssues } from './../../../core/src/enums.js';
-import dcmjs from 'dcmjs';
 import guid from '../utils/guid.js';
-import { user, utils } from '@ohif/core';
 import { api } from 'dicomweb-client';
 import dcmjs from 'dcmjs';
 const { DicomMessage, DicomMetaDictionary, DicomDict, WriteBufferStream } = dcmjs.data;
