@@ -162,6 +162,7 @@ class OHIFCornerstoneViewport extends Component {
       SOPInstanceUID,
       frameIndex
     ).then(viewportData => {
+      console.log("GOT VIEWPORT DATA");
       this.setState({
         viewportData,
       });
@@ -169,10 +170,12 @@ class OHIFCornerstoneViewport extends Component {
   }
 
   componentDidMount() {
+    console.log("COMPONENT DID MOUNT");
     this.setStateFromProps();
   }
 
   componentDidUpdate(prevProps) {
+    console.log("COMPONENT DID UPDATE");
     const { displaySet } = this.props.viewportData;
     const prevDisplaySet = prevProps.viewportData.displaySet;
 
