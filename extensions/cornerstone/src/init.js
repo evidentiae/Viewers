@@ -210,16 +210,78 @@ const _connectToolsToMeasurementService = measurementService => {
     getAnnotation,
   } = csToolsVer4MeasurementSource;
 
-  cornerstone.events.addEventListener(
-    cornerstone.EVENTS.IMAGE_RENDERED,
-    event => {
-      console.log("IMAGE_RENDERED");
-      console.log(event);
-    }
-  );
-
   cornerstone.events.addEventListener('cornerstoneimageloaded', function(e) {
     console.log("IMAGE_LOADED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneimagerendered', function(e) {
+    console.log("IMAGE_RENDERED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneinvalidated', function(e) {
+    console.log("INVALIDATED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneprerender', function(e) {
+    console.log("PRERENDER");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneimagecachemaximumsizechanged', function(e) {
+    console.log("MAXSIZECHANGED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneimagecachepromiseremoved', function(e) {
+    console.log("PROMISE_REMOVED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneimagecachefull', function(e) {
+    console.log("CACHE_FULL");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneimagecachechanged', function(e) {
+    console.log("CACHE_CHANGED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstonewebgltextureremoved', function(e) {
+    console.log("WEBGL_TEXTURE_REMOVED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstonewebgltexturecachefull', function(e) {
+    console.log("WEBGL_TEXTURE_CACHE_FULL");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneelementresized', function(e) {
+    console.log("ELEMENT_RESIZED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstonelayeradded', function(e) {
+    console.log("LAYER_ADDED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstonelayerremoved', function(e) {
+    console.log("LAYER_REMOVED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneactivelayerchanged', function(e) {
+    console.log("ACTIVE_LAYER_CHANGED");
+    console.log(e);
+  });
+
+  cornerstone.events.addEventListener('cornerstoneelementdisabled', function(e) {
+    console.log("ELEMENT_DISABLED");
     console.log(e);
   });
 
