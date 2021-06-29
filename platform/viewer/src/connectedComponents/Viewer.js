@@ -15,7 +15,7 @@ import ErrorBoundaryDialog from './../components/ErrorBoundaryDialog';
 import LayoutPickerDialog from './../components/LayoutPickerDialog';
 import { extensionManager } from './../App.js';
 import { ReconstructionIssues } from './../../../core/src/enums.js';
-import guid from '../utils/guid.js';
+//import guid from '../utils/guid.js';
 import { api } from 'dicomweb-client';
 import dcmjs from 'dcmjs';
 const { DicomMessage, DicomMetaDictionary, DicomDict, WriteBufferStream } = dcmjs.data;
