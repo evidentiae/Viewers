@@ -13,6 +13,7 @@ import measurementServiceMappingsFactory from './utils/measurementServiceMapping
  * @param {Object|Array} configuration.csToolsConfig
  */
 export default function init({ servicesManager, configuration }) {
+  console.log("INIT");
   const { UIDialogService, MeasurementService } = servicesManager.services;
 
   const callInputDialog = (data, event, callback) => {
@@ -40,6 +41,7 @@ export default function init({ servicesManager, configuration }) {
   const { csToolsConfig } = configuration;
   const metadataProvider = OHIF.cornerstone.metadataProvider;
 
+  console.log("ADD PROVIDER");
   cornerstone.metaData.addProvider(
     metadataProvider.get.bind(metadataProvider),
     9999
@@ -52,6 +54,7 @@ export default function init({ servicesManager, configuration }) {
     autoResizeViewports: false,
   };
 
+  console.log("INIT TOOLS");
   initCornerstoneTools(defaultCsToolsConfig);
 
   const toolsGroupedByType = {
@@ -84,6 +87,7 @@ export default function init({ servicesManager, configuration }) {
   );
 
   /* Measurement Service */
+  console.log("CONNECT MEASUREMENT SERVICE");
   _connectToolsToMeasurementService(MeasurementService);
 
   /* Add extension tools configuration here. */
@@ -131,6 +135,7 @@ export default function init({ servicesManager, configuration }) {
   };
 
   /* Add tools with its custom props through extension configuration. */
+  console.log("ADD TOOLS");
   tools.forEach(tool => {
     const toolName = tool.name.replace('Tool', '');
     const externalToolsConfig = configuration.tools || {};
@@ -160,6 +165,8 @@ export default function init({ servicesManager, configuration }) {
   csTools.setToolActive('PanMultiTouch', { pointers: 2 }); // TODO: Better error if no options
   csTools.setToolActive('ZoomTouchPinch', {});
   csTools.setToolEnabled('Overlay', {});
+
+  console.log("INIT DONE");
 }
 
 const _initMeasurementService = measurementService => {
