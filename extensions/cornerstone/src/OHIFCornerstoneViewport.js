@@ -109,7 +109,7 @@ class OHIFCornerstoneViewport extends Component {
     return stack;
   }
 
-  getViewportData = async (
+  getViewportData = (
     studies,
     StudyInstanceUID,
     displaySetInstanceUID,
@@ -155,17 +155,16 @@ class OHIFCornerstoneViewport extends Component {
       );
     }
 
-    this.getViewportData(
+    var viewportData = this.getViewportData(
       studies,
       StudyInstanceUID,
       displaySetInstanceUID,
       SOPInstanceUID,
       frameIndex
-    ).then(viewportData => {
-      console.log("GOT VIEWPORT DATA");
-      this.setState({
-        viewportData,
-      });
+    );
+
+    this.setState({
+      viewportData,
     });
   }
 
