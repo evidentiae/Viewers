@@ -36,6 +36,6 @@ body {
   transition: opacity 200ms;
 }
 
-.ViewportOverlay {
+.OHIFCornerstoneViewportOverlay {
   display: none;
 }
