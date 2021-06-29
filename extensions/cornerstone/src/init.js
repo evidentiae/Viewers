@@ -210,6 +210,14 @@ const _connectToolsToMeasurementService = measurementService => {
     getAnnotation,
   } = csToolsVer4MeasurementSource;
 
+  cornerstone.events.addEventListener(
+    cornerstone.EVENTS.IMAGE_RENDERED,
+    event => {
+      console.log("IMAGE_RENDERED");
+      console.log(event);
+    }
+  );
+
   /* Measurement Service Events */
   cornerstone.events.addEventListener(
     cornerstone.EVENTS.ELEMENT_ENABLED,
