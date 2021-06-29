@@ -263,14 +263,14 @@ const viewports = (state = DEFAULT_STATE, action) => {
     }
 
     case SET_ACTIVE_SERIES: {
+      console.log('SET_ACTIVE_SERIES:');
+      console.log(action);
       const viewportSpecificData = cloneDeep(action.viewportSpecificData);
 
       const activeViewportIndex = getActiveViewportIndex(
         action.viewports,
         state.activeViewportIndex
       );
-
-
 
       return {
         ...state,

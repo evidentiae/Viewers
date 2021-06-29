@@ -10,6 +10,9 @@ const mapStateToProps = (state, ownProps) => {
   const activeServer = state.servers.servers.find(isActive);
   const studyInstanceUIDs = Object.keys(state.studies.studyData);
 
+  console.log('mapStateToProps:');
+  console.log(state.viewports.activeSeries);
+
   return {
     server: ownProps.server || activeServer,
     studyInstanceUIDs: studyInstanceUIDs,
@@ -27,6 +30,8 @@ const mapDispatchToProps = dispatch => {
     doneLoadingStudies: (studies, activeSeries) => {
       // TODO: maybe move makeLayout logic to reducers? We should be able to find
       // eveything in the 'studies' part of the store.
+      console.log('doneLoadingStudies:');
+      console.log(activeSeries);
       var stuff = makeLayout(studies, activeSeries);
       dispatch(setActiveSeries(stuff.activeSeriesUID, stuff.layout, stuff.data));
     }
