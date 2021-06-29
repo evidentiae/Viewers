@@ -218,6 +218,11 @@ const _connectToolsToMeasurementService = measurementService => {
     }
   );
 
+  cornerstone.events.addEventListener('cornerstoneimageloaded', function(e) {
+    console.log("IMAGE_LOADED");
+    console.log(e);
+  });
+
   /* Measurement Service Events */
   cornerstone.events.addEventListener(
     cornerstone.EVENTS.ELEMENT_ENABLED,
