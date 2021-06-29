@@ -48,7 +48,7 @@ export default function init({ servicesManager, configuration }) {
   // ~~
   const defaultCsToolsConfig = csToolsConfig || {
     globalToolSyncEnabled: true,
-    showSVGCursors: true,
+    showSVGCursors: false,
     autoResizeViewports: false,
   };
 
