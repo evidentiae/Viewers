@@ -166,6 +166,8 @@ export default function init({ servicesManager, configuration }) {
   csTools.setToolActive('ZoomTouchPinch', {});
   csTools.setToolEnabled('Overlay', {});
 
+  cornerstone.imageCache.setMaximumSizeBytes(3 * 1024 * 1024 * 1024);
+
   console.log("INIT DONE");
 }
 
