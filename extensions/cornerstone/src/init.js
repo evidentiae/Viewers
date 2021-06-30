@@ -260,6 +260,7 @@ const _connectToolsToMeasurementService = measurementService => {
   cornerstone.events.addEventListener('cornerstonewebgltexturecachefull', function(e) {
     console.log("WEBGL_TEXTURE_CACHE_FULL");
     console.log(e);
+    cornerstone.imageCache.setMaximumSizeBytes(3 * 1024 * 1024 * 1024);
   });
 
   cornerstone.events.addEventListener('cornerstoneelementresized', function(e) {
