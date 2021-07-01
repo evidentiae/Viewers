@@ -256,7 +256,6 @@ class OHIFCornerstoneViewport extends Component {
           onNewImageDebounced={newImageHandler}
           onNewImageDebounceTime={3}
           viewportOverlayComponent={warningsOverlay}
-          cornerstoneOptions={{renderer: 'webgl'}}
           // ~~ Connected (From REDUX)
           // frameRate={frameRate}
           // isPlaying={false}
