@@ -402,11 +402,11 @@ class Viewer extends Component {
         },
         {
           "00720302": {vr: "US", Value: [16]},
-          "00720108": {vr: "FD", Value: rect(7,0)}
+          "00720108": {vr: "FD", Value: rect(5,2)}
         },
         {
           "00720302": {vr: "US", Value: [17]},
-          "00720108": {vr: "FD", Value: rect(7,1)}
+          "00720108": {vr: "FD", Value: rect(6,2)}
         },
       ];
     }
