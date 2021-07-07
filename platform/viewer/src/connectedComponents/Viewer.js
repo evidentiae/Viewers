@@ -321,84 +321,92 @@ class Viewer extends Component {
       numImageBoxes = 21;
       var m=0.02;
       var hm=0.03;
-      var w=1/7;
-      var h=1/3;
+      var w = (1 - 8*m) / 7;
+      var h = (1 - 4*hm) / 3;
+      function rect(x, y) {
+        return [
+          x*w + (x+1)*m,
+          1 - y*h - (y+1)*hm,
+          (x+1)*w + (x+1)*m,
+          1 - (y+1)*h - (y+1)*hm
+        ];
+      }
       imageBoxes = [
         // left six boxes
         {
           "00720302": {vr: "US", Value: [0]},
-          "00720108": {vr: "FD", Value: [0+m, 1-hm, w-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(0,0)]}
         },
         {
           "00720302": {vr: "US", Value: [1]},
-          "00720108": {vr: "FD", Value: [w+m/2, 1-hm, w*2-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(1,0)}
         },
         {
           "00720302": {vr: "US", Value: [2]},
-          "00720108": {vr: "FD", Value: [0+m, 1-hm/2-h, w-m/2, 1+hm/2-h*2]}
+          "00720108": {vr: "FD", Value: rect(0,1)}
         },
         {
           "00720302": {vr: "US", Value: [3]},
-          "00720108": {vr: "FD", Value: [w+m/2, 1-hm/2-h, w*2-m/2, 1+hm/2-h*2]}
+          "00720108": {vr: "FD", Value: rect(1,1)}
         },
         {
           "00720302": {vr: "US", Value: [4]},
-          "00720108": {vr: "FD", Value: [0+m, 1-hm/2-h*2, w-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(0,2)}
         },
         {
           "00720302": {vr: "US", Value: [5]},
-          "00720108": {vr: "FD", Value: [w+m/2, 1-hm/2-h*2, w*2-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(1,2)}
         },
         // middle top boxes
         {
           "00720302": {vr: "US", Value: [6]},
-          "00720108": {vr: "FD", Value: [w*2+m/2, 1-hm, w*3-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(2,0)}
         },
         {
           "00720302": {vr: "US", Value: [7]},
-          "00720108": {vr: "FD", Value: [w*3+m/2, 1-hm, w*4-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(3,0)}
         },
         {
           "00720302": {vr: "US", Value: [8]},
-          "00720108": {vr: "FD", Value: [w*4+m/2, 1-hm, w*5-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(4,0)}
         },
         // middle bottom boxes
         {
           "00720302": {vr: "US", Value: [9]},
-          "00720108": {vr: "FD", Value: [w*2+m/2, 1-hm/2-h*2, w*3-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(2,2)}
         },
         {
           "00720302": {vr: "US", Value: [10]},
-          "00720108": {vr: "FD", Value: [w*3+m/2, 1-hm/2-h*2, w*4-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(3,2)}
         },
         {
           "00720302": {vr: "US", Value: [11]},
-          "00720108": {vr: "FD", Value: [w*4+m/2, 1-hm/2-h*2, w*5-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(4,2)}
         },
         // right six boxes
         {
           "00720302": {vr: "US", Value: [12]},
-          "00720108": {vr: "FD", Value: [w*5+m/2, 1-hm, w*6-m/2, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(5,0)}
         },
         {
           "00720302": {vr: "US", Value: [13]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm, w*7-m, 1+hm/2-h]}
+          "00720108": {vr: "FD", Value: rect(6,0)}
         },
         {
           "00720302": {vr: "US", Value: [14]},
-          "00720108": {vr: "FD", Value: [w*5+m/2, 1-hm/2-h, w*6-m/2, 1+hm/2-h*2]}
+          "00720108": {vr: "FD", Value: rect(5,1)}
         },
         {
           "00720302": {vr: "US", Value: [15]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h, w*7-m, 1+hm/2-h*2]}
+          "00720108": {vr: "FD", Value: rect(6,1)}
         },
         {
           "00720302": {vr: "US", Value: [16]},
-          "00720108": {vr: "FD", Value: [w*5+m/2, 1-hm/2-h*2, w*6-m/2, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(7,0)}
         },
         {
           "00720302": {vr: "US", Value: [17]},
-          "00720108": {vr: "FD", Value: [w*6+m/2, 1-hm/2-h*2, w*7-m, 1+hm/2-h*3]}
+          "00720108": {vr: "FD", Value: rect(7,1)}
         },
       ];
     }
