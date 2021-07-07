@@ -111,6 +111,7 @@ async function loadAndCacheDerivedDisplaySets(referencedDisplaySet, studies, log
         typeof recentDisplaySet.getSourceDisplaySet === 'function') {
         await recentDisplaySet.getSourceDisplaySet(studies);
       } else {
+        console.log("LOADING DISPLAY SET");
         await recentDisplaySet.load(referencedDisplaySet, studies);
       }
     } catch (error) {
