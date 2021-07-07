@@ -335,7 +335,7 @@ class Viewer extends Component {
         // left six boxes
         {
           "00720302": {vr: "US", Value: [0]},
-          "00720108": {vr: "FD", Value: rect(0,0)]}
+          "00720108": {vr: "FD", Value: rect(0,0)}
         },
         {
           "00720302": {vr: "US", Value: [1]},
