@@ -198,6 +198,7 @@ class OHIFCornerstoneViewport extends Component {
 
   render() {
     console.log("OHIFCornerstoneViewport render()");
+
     let childrenWithProps = null;
 
     if (!this.state.viewportData) {
@@ -212,6 +213,9 @@ class OHIFCornerstoneViewport extends Component {
       // `FrameTime` in the instance
       // frameRate = 0,
     } = this.state.viewportData.stack;
+
+    console.log('viewport index: ' + viewportIndex.toString);
+    console.log('imageIds: ' + imageIds.toString);
 
     // TODO: Does it make more sense to use Context?
     if (this.props.children && this.props.children.length) {
