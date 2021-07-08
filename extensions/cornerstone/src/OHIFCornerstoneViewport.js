@@ -215,7 +215,7 @@ class OHIFCornerstoneViewport extends Component {
     } = this.state.viewportData.stack;
 
     console.log('viewport index: ' + viewportIndex.toString());
-    console.log('imageIds: ' + imageIds.toString());
+    console.log(imageIds);
 
     // TODO: Does it make more sense to use Context?
     if (this.props.children && this.props.children.length) {
