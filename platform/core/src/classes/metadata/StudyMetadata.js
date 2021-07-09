@@ -263,14 +263,12 @@ class StudyMetadata extends Metadata {
       }
     });
 
-    /*
     if (stackableInstances.length) {
       const displaySet = makeDisplaySet(series, stackableInstances, displaySets, true);
       displaySet.setAttribute('Maximized', true);
       displaySet.setAttribute('StudyInstanceUID', study.getStudyInstanceUID());
       //displaySet.frameIndex = instance.getTagValue('InstanceNumber');
     }
-    */
 
     return displaySets;
   }
