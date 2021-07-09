@@ -289,6 +289,7 @@ const _connectToolsToMeasurementService = measurementService => {
   });
 
   /* Measurement Service Events */
+  /*
   cornerstone.events.addEventListener(
     cornerstone.EVENTS.ELEMENT_ENABLED,
     event => {
@@ -361,4 +362,5 @@ const _connectToolsToMeasurementService = measurementService => {
       });
     }
   );
+  */
 };
