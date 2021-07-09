@@ -184,7 +184,7 @@ class OHIFCornerstoneViewport extends Component {
       displaySet.SOPInstanceUID !== prevDisplaySet.SOPInstanceUID ||
       displaySet.frameIndex !== prevDisplaySet.frameIndex
     ) {
-      this.setStateFromProps();
+      //this.setStateFromProps();
     }
   }
 
